@@ -54,10 +54,10 @@ export default function ScienceLifestyleSection() {
                 <div className="mt-6">
                   <Link
                     href="#science-details"
-                    className="group inline-flex items-center gap-2.5 bg-[#18202b] hover:bg-slate-950 text-white pl-5 pr-1.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm hover:shadow transition-all duration-200"
+                    className="group inline-flex items-center gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-5 pr-1.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm hover:shadow transition-all duration-200"
                   >
                     <span>Learn More</span>
-                    <span className="w-6 h-6 rounded-full bg-white text-slate-950 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <span className="w-6 h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                       <svg
                         width="12"
                         height="12"

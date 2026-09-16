@@ -17,7 +17,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "VISIONOVA - Protect Your Vision. Naturally.",
+  title: "Aarya Eye Care - Protect Your Vision. Naturally.",
   description:
     "Advanced eye wellness supplements formulated with powerful nutrients to support clearer vision, reduce digital eye strain, and maintain long-term eye health.",
 };

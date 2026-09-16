@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -33,12 +34,23 @@ export default function Navbar() {
             : "bg-white/90 shadow-[0_4px_20px_rgba(15,23,42,0.06)] border border-white/80"
         }`}
       >
-        {/* Brand Logo */}
+        {/* Brand Logo & Name */}
         <Link
           href="/"
-          className="font-extrabold text-lg sm:text-xl tracking-wider text-slate-900 hover:opacity-90 transition-opacity uppercase font-sans"
+          className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity group flex-shrink-0"
         >
-          VISIONOVA
+          <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+            <Image
+              src="/logos/logo-main.png"
+              alt="Aarya Eye Care logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 font-sans whitespace-nowrap">
+            Aarya Eye Care
+          </span>
         </Link>
 
         {/* Desktop Navigation Links */}
@@ -58,10 +70,10 @@ export default function Navbar() {
         <div className="hidden sm:flex items-center">
           <Link
             href="#shop"
-            className="group inline-flex items-center gap-2.5 bg-[#17202c] hover:bg-slate-950 text-white pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all hover:shadow"
+            className="group inline-flex items-center gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all hover:shadow"
           >
             <span>Shop Now</span>
-            <span className="w-6 h-6 rounded-full bg-white text-slate-900 flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+            <span className="w-6 h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <svg
                 width="12"
                 height="12"
@@ -83,10 +95,10 @@ export default function Navbar() {
         <div className="flex sm:hidden items-center gap-2">
           <Link
             href="#shop"
-            className="group inline-flex items-center gap-1.5 bg-[#17202c] text-white pl-3 pr-1.5 py-1 rounded-full text-xs font-semibold"
+            className="group inline-flex items-center gap-1.5 bg-[#9A4F3C] text-white pl-3 pr-1.5 py-1 rounded-full text-xs font-semibold"
           >
             <span>Shop</span>
-            <span className="w-5 h-5 rounded-full bg-white text-slate-900 flex items-center justify-center">
+            <span className="w-5 h-5 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center">
               <svg
                 width="10"
                 height="10"

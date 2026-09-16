@@ -37,10 +37,10 @@ export default function HeroSection() {
             {/* Primary Shop Button */}
             <Link
               href="#shop"
-              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-[#17202b] hover:bg-slate-950 text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold shadow-md hover:shadow-lg transition-all"
+              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold shadow-md hover:shadow-lg transition-all"
             >
               <span>Shop Eye Support</span>
-              <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-slate-950 flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <svg
                   className="w-2.5 h-2.5 sm:w-3 sm:h-3"
                   viewBox="0 0 24 24"
@@ -62,7 +62,7 @@ export default function HeroSection() {
               className="group inline-flex items-center gap-2 sm:gap-2.5 bg-white/40 hover:bg-white/70 border border-slate-400/30 text-slate-800 pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold backdrop-blur-sm transition-all"
             >
               <span>Learn More</span>
-              <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#17202b] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#9A4F3C] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <svg
                   className="w-2.5 h-2.5 sm:w-3 sm:h-3"
                   viewBox="0 0 24 24"
