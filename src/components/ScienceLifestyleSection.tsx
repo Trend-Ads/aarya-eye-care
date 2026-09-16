@@ -82,8 +82,18 @@ export default function ScienceLifestyleSection() {
   ];
 
   return (
-    <section className="w-full bg-[#f8fafc] py-16 sm:py-20 md:py-24 px-3 sm:px-6 lg:px-8 border-t border-slate-200/70">
-      <div className="max-w-7xl mx-auto">
+    <section className="relative w-full bg-[#f8fafc] py-16 sm:py-20 md:py-24 px-3 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Feathered mask blend from hero bezel color to section 2 */}
+      <div
+        className="absolute top-0 left-0 right-0 h-32 sm:h-44 md:h-52 pointer-events-none z-0"
+        style={{
+          background: "linear-gradient(to bottom, #7dbd81 0%, #95ce99 25%, rgba(165, 214, 167, 0.45) 55%, rgba(165, 214, 167, 0.15) 75%, transparent 100%)",
+          maskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to bottom, black 0%, black 20%, transparent 100%)",
+        }}
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Visual card with doctor consultation & floating trust badges */}

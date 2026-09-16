@@ -1,11 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LogoTicker from "./LogoTicker";
 
+const heroSlides = [
+  {
+    src: "/hero/hero1.webp",
+    alt: "Pediatric & Family Eye Examination at Aarya Eye Care",
+    tag: "Pediatric & Family Care",
+  },
+  {
+    src: "/hero/hero2.jpg",
+    alt: "Advanced Slit-Lamp Diagnostic Examination",
+    tag: "Advanced Diagnostics",
+  },
+  {
+    src: "/hero/hero3.webp",
+    alt: "State-of-the-art Microsurgical & Laser Ophthalmic Suite",
+    tag: "Microsurgical Precision",
+  },
+];
+
 export default function HeroSection() {
+  // Automatic hero background slideshow timer (5 seconds timespan)
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
   // Interactive layer states for mobile tap and desktop hover
   const [leftFront, setLeftFront] = useState<"tablet" | "runner">("runner");
   const [rightFront, setRightFront] = useState<"senior" | "capsule">("capsule");
@@ -22,27 +51,76 @@ export default function HeroSection() {
     hoveredCard === "capsule" || (hoveredCard !== "senior" && rightFront === "capsule");
 
   return (
-    /* Outer Bezel Frame: provides the outer viewport bezel/margins on all screens */
-    <div className="w-full h-[100dvh] max-h-[100dvh] p-2 sm:p-3 md:p-4 lg:p-5 box-border bg-[#edf2f7] flex flex-col flex-shrink-0 overflow-hidden">
+    /* Outer Bezel Frame: provides the outer viewport bezel with gradient finish based on #A5D6A7 */
+    <div className="w-full h-[100dvh] max-h-[100dvh] p-2 sm:p-3 md:p-4 lg:p-5 box-border bg-gradient-to-br from-[#c8eccb] via-[#A5D6A7] to-[#7dbd81] flex flex-col flex-shrink-0 overflow-hidden">
       
-      {/* Hero Inner Screen/Card with rounded bezels all around */}
-      <section className="relative w-full h-full flex flex-col justify-between bg-gradient-to-b from-[#bad6ee] via-[#c6def2] to-[#d6e7f7] rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[48px] overflow-hidden shadow-[0_8px_30px_rgba(15,23,42,0.06)] border border-white/70">
+      {/* Hero Inner Screen/Card: borderless with soft realistic shadow onto the bezel */}
+      <section className="relative w-full h-full flex flex-col justify-between bg-slate-900 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[48px] overflow-hidden shadow-[0_14px_38px_rgba(0,0,0,0.25),_0_4px_12px_rgba(0,0,0,0.14)]">
         
-        {/* Soft atmospheric ambient glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[250px] bg-white/40 blur-[90px] rounded-full pointer-events-none" />
-        <div className="absolute -top-16 right-4 w-72 h-72 bg-sky-200/50 blur-[70px] rounded-full pointer-events-none" />
+        {/* Background Slideshow: cycling through public/hero images with smooth crossfade */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {heroSlides.map((slide, index) => {
+            const isActive = index === currentSlide;
+            return (
+              <div
+                key={slide.src}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  isActive ? "opacity-100" : "opacity-0"
+                }`}
+              >
+                <Image
+                  src={slide.src}
+                  alt={slide.alt}
+                  fill
+                  priority={index === 0}
+                  className={`object-cover object-center transition-transform duration-[6000ms] ease-out ${
+                    isActive ? "scale-105" : "scale-100"
+                  }`}
+                  sizes="100vw"
+                />
+              </div>
+            );
+          })}
+
+          {/* Black-related transparent layer above the hero background images */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/50 pointer-events-none" />
+        </div>
+
+        {/* Slideshow timespan indicator dots & tag */}
+        <div className="absolute bottom-11 sm:bottom-12 right-3 sm:right-6 z-30 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1 rounded-full border border-white/25 shadow-md">
+          <span className="text-[10px] sm:text-[11px] font-bold text-white tracking-wider">
+            {heroSlides[currentSlide].tag}
+          </span>
+          <div className="flex items-center gap-1">
+            {heroSlides.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentSlide(idx)}
+                aria-label={`Slide ${idx + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-300 pointer-events-auto cursor-pointer ${
+                  idx === currentSlide
+                    ? "w-4 bg-[#9A4F3C]"
+                    : "w-1.5 bg-white/40 hover:bg-white/70"
+                }`}
+              />
+            ))}
+          </div>
+        </div>
 
         {/* Top spacer reserving ample breathing room for the fixed navbar */}
         <div className="h-24 sm:h-28 md:h-32 lg:h-36 w-full flex-shrink-0 pointer-events-none" aria-hidden="true" />
 
         {/* 2. Middle Content: Headline, Subtitle, and Buttons */}
         <div className="flex-shrink-0 max-w-4xl mx-auto px-3 sm:px-6 text-center mt-0 sm:mt-1 relative z-20">
-          <h1 className="font-display font-black text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] tracking-tight text-slate-900 leading-[0.96] uppercase">
+          {/* Shadow in the background of the title and description */}
+          <div className="absolute -inset-x-8 -inset-y-6 bg-radial from-black/65 via-black/30 to-transparent blur-2xl pointer-events-none -z-10" />
+
+          <h1 className="font-display font-black text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] tracking-tight text-white leading-[0.96] uppercase drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] [text-shadow:_0_3px_16px_rgba(0,0,0,0.95)]">
             Aarya Eye Care <br className="hidden sm:inline" />
-            <span className="text-[#9A4F3C]">Super Speciality</span> Eye Care Hospital
+            <span className="text-[#ff7a60] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">Super Speciality</span> Eye Care Hospital
           </h1>
 
-          <p className="mt-1.5 sm:mt-2.5 text-slate-600 text-xs sm:text-[13.5px] md:text-[15px] leading-relaxed max-w-2xl mx-auto font-normal line-clamp-2 sm:line-clamp-none">
+          <p className="mt-2 sm:mt-3 text-white/95 text-xs sm:text-[13.5px] md:text-[15px] leading-relaxed max-w-2xl mx-auto font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)] line-clamp-2 sm:line-clamp-none">
             Delivering advanced clinical excellence, state-of-the-art diagnostic technology, and compassionate vision treatments to safeguard and restore your eyesight.
           </p>
 
@@ -51,7 +129,7 @@ export default function HeroSection() {
             {/* Primary Appointment Button */}
             <Link
               href="#appointment"
-              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold shadow-md hover:shadow-lg transition-all"
+              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold shadow-lg hover:shadow-xl transition-all"
             >
               <span>Book Appointment</span>
               <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -73,7 +151,7 @@ export default function HeroSection() {
             {/* Secondary Learn More Button */}
             <Link
               href="#specialities"
-              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-white/40 hover:bg-white/70 border border-slate-400/30 text-slate-800 pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold backdrop-blur-sm transition-all"
+              className="group inline-flex items-center gap-2 sm:gap-2.5 bg-black/35 hover:bg-black/55 border border-white/40 text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold backdrop-blur-md shadow-md transition-all"
             >
               <span>Our Specialities</span>
               <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#9A4F3C] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -151,38 +229,38 @@ export default function HeroSection() {
               </p>
             </div>
 
-            {/* Card 3: Centerpiece Supplement Bottle (VISIONOVA) */}
-            <div className="relative z-20 h-[92%] sm:h-[95%] max-h-[230px] sm:max-h-[290px] md:max-h-[310px] lg:max-h-[330px] aspect-[3/4] transition-transform duration-300 hover:scale-105 select-none pointer-events-auto flex items-end justify-center -rotate-2 sm:-rotate-1">
-              <div className="relative w-full h-full drop-shadow-[0_18px_30px_rgba(15,23,42,0.22)]">
+            {/* Card 3: Centerpiece Aarya Eye Care Visual Showcase */}
+            <div className="relative z-20 h-[96%] sm:h-[98%] max-h-[240px] sm:max-h-[300px] md:max-h-[325px] lg:max-h-[350px] aspect-[2/3] transition-transform duration-300 hover:scale-105 select-none pointer-events-auto flex items-end justify-center -rotate-1">
+              <div className="relative w-full h-full rounded-2xl sm:rounded-[24px] overflow-hidden border border-white/80 shadow-[0_20px_45px_rgba(15,23,42,0.35)]">
                 <Image
-                  src="/images/bottle.jpg"
-                  alt="VISIONOVA Eye Wellness Formula Supplement Bottle"
+                  src="/hero-cards/main-center.png"
+                  alt="Aarya Eye Care center visual showcase"
                   fill
                   priority
-                  className="object-contain rounded-2xl sm:rounded-3xl"
-                  sizes="(max-width: 640px) 160px, 280px"
+                  className="object-cover"
+                  sizes="(max-width: 640px) 170px, 260px"
                 />
               </div>
 
               {/* Floating Specs 1 (Top right) */}
-              <div className="absolute -top-3 sm:-top-5 -right-5 sm:-right-9 md:-right-12 w-14 sm:w-20 md:w-24 aspect-[2/1] animate-float-capsule pointer-events-none drop-shadow-lg -rotate-12">
+              <div className="absolute -top-3 sm:-top-5 -right-5 sm:-right-8 md:-right-10 w-14 sm:w-18 md:w-22 aspect-[2/1] animate-float-capsule pointer-events-none drop-shadow-xl -rotate-12 z-30">
                 <Image
                   src="/specs/spec1.png"
                   alt="Aarya Eye Care optical frames"
                   fill
                   className="object-contain"
-                  sizes="100px"
+                  sizes="90px"
                 />
               </div>
 
               {/* Floating Specs 2 (Mid right) */}
-              <div className="absolute top-14 sm:top-18 md:top-22 -right-6 sm:-right-10 md:-right-14 w-16 sm:w-22 md:w-26 aspect-[16/10] animate-float-gentle pointer-events-none drop-shadow-xl rotate-6">
+              <div className="absolute top-14 sm:top-18 md:top-22 -right-6 sm:-right-9 md:-right-12 w-16 sm:w-20 md:w-24 aspect-[16/10] animate-float-gentle pointer-events-none drop-shadow-xl rotate-6 z-30">
                 <Image
-                  src="/specs/spec2.webp"
+                  src="/specs/spec2.png"
                   alt="Modern precision vision specs"
                   fill
                   className="object-contain"
-                  sizes="110px"
+                  sizes="100px"
                 />
               </div>
             </div>
