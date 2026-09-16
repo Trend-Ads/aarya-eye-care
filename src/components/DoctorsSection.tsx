@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Doctor {
   name: string;
@@ -162,7 +163,13 @@ export default function DoctorsSection() {
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200/80">
+        <motion.div 
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200/80"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <div>
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#9A4F3C] tracking-tight">
               Our Doctors
@@ -188,11 +195,15 @@ export default function DoctorsSection() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Doctors Grid - matching reference layout with full-bleed image and soft tinted bottom gradient */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10">
-          {filteredDoctors.map((doc, idx) => {
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10"
+          layout
+        >
+          <AnimatePresence>
+            {filteredDoctors.map((doc, idx) => {
             const cardGradients = [
               "from-[#1b5043]/95 via-[#2b6d5d]/60 to-transparent", // Teal / Sage
               "from-[#9e3b4b]/95 via-[#b64f60]/60 to-transparent", // Rose / Coral
@@ -202,41 +213,58 @@ export default function DoctorsSection() {
             const gradient = cardGradients[idx % cardGradients.length];
 
             return (
-              <Link
-                key={idx}
-                href="#appointment"
-                className="relative w-full aspect-[3/4.2] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-4 sm:p-5 group select-none cursor-pointer"
+              <motion.div
+                key={doc.name} // Key by name for AnimatePresence
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4, delay: (idx % 8) * 0.05 }} // Stagger visible items
               >
-                {/* Doctor Photo */}
-                <Image
-                  src={doc.image}
-                  alt={doc.name}
-                  fill
-                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                />
+                <Link
+                  href="#appointment"
+                  className="relative w-full aspect-[3/4.2] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-4 sm:p-5 group select-none cursor-pointer block"
+                >
+                  {/* Doctor Photo */}
+                  <Image
+                    src={doc.image}
+                    alt={doc.name}
+                    fill
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
 
-                {/* Soft Tinted Gradient Overlay matching reference image */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
-                />
+                  {/* Soft Tinted Gradient Overlay matching reference image */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
+                  />
 
-                {/* Doctor Name & Role / Speciality at bottom inside gradient */}
-                <div className="relative z-10 text-left">
-                  <h3 className="font-bold text-sm sm:text-base md:text-lg text-white leading-tight drop-shadow-xs group-hover:underline">
-                    {doc.name}
-                  </h3>
-                  <p className="text-[11px] sm:text-xs md:text-[13px] text-white/90 font-medium leading-snug mt-1 line-clamp-1">
-                    {doc.speciality || doc.role}
-                  </p>
-                </div>
-              </Link>
+                  {/* Doctor Name & Role / Speciality at bottom inside gradient */}
+                  <div className="relative z-10 text-left">
+                    <h3 className="font-bold text-sm sm:text-base md:text-lg text-white leading-tight drop-shadow-xs group-hover:underline">
+                      {doc.name}
+                    </h3>
+                    <p className="text-[11px] sm:text-xs md:text-[13px] text-white/90 font-medium leading-snug mt-1 line-clamp-1">
+                      {doc.speciality || doc.role}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
             );
           })}
-        </div>
+          </AnimatePresence>
+        </motion.div>
 
         {/* Bottom Banner Reassurance */}
-        <div className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#2A835F]/10 border border-[#2A835F]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <motion.div 
+          className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#2A835F]/10 border border-[#2A835F]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-[#2A835F] text-white flex items-center justify-center flex-shrink-0">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -263,7 +291,7 @@ export default function DoctorsSection() {
             <span>Book Consultation With a Specialist</span>
             <span>→</span>
           </Link>
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -3,6 +3,9 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
+const LOADER_DELAY = 2.4;
 
 export default function HeroSection() {
   const tickerItems = [
@@ -60,7 +63,12 @@ export default function HeroSection() {
       {/* ========================================================= */}
       {/* 2. TOP ROW: Photo Cards (Right)                           */}
       {/* ========================================================= */}
-      <div className="hidden sm:flex relative z-30 items-start justify-end max-w-7xl mx-auto w-full flex-shrink-0 mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+      <motion.div 
+        className="hidden sm:flex relative z-30 items-start justify-end max-w-7xl mx-auto w-full flex-shrink-0 mt-2 sm:mt-4 md:mt-6 lg:mt-8"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: LOADER_DELAY + 0.2 }}
+      >
         {/* Top-Right Media Photo Cards */}
         <div className="flex flex-col items-end gap-1.5 sm:gap-2 flex-shrink-0 pt-1 sm:pt-2">
           <div className="flex items-center gap-2 sm:gap-3">
@@ -94,14 +102,19 @@ export default function HeroSection() {
             NABH Accredited. 100% Compassionate Care.
           </p>
         </div>
-      </div>
+      </motion.div>
 
       {/* ========================================================= */}
       {/* 3. CENTER STAGE: Giant Typography & Center Woman Cutout   */}
       {/* ========================================================= */}
       <div className="relative flex-1 flex items-center justify-center my-auto min-h-0 w-full overflow-visible pt-[13dvh] sm:pt-0">
         {/* Giant Background Typography: "CLEAR VISION" */}
-        <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none overflow-hidden px-2 sm:px-4">
+        <motion.div 
+          className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none overflow-hidden px-2 sm:px-4"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: LOADER_DELAY, ease: "easeOut" }}
+        >
           <div className="w-full flex items-center justify-between max-w-7xl">
             {/* Left Word: CLEAR */}
             <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#1e2722] uppercase leading-none opacity-90 sm:opacity-95">
@@ -113,19 +126,24 @@ export default function HeroSection() {
               VISION
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Center Stage: Title + Woman Cutout */}
         <div className="relative z-20 flex flex-col items-center justify-end w-full h-full pointer-events-none">
           {/* Title of Aarya Eye Care just above the hero section PNG image */}
-          <div className="text-center z-25 pointer-events-auto mb-0 sm:mb-2.5">
+          <motion.div 
+            className="text-center z-25 pointer-events-auto mb-0 sm:mb-2.5"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: LOADER_DELAY + 0.3 }}
+          >
             <h1 className="font-display font-black text-4xl sm:text-3xl md:text-4xl lg:text-[42px] uppercase tracking-wider text-slate-900 drop-shadow-xs leading-none">
               Aarya Eye Care
             </h1>
             <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#9A4F3C] mt-1">
               Super Speciality Eye Hospital
             </p>
-          </div>
+          </motion.div>
 
           {/* Mobile-only: Two photo cards below the title */}
           <div className="flex sm:hidden items-center justify-center gap-2.5 mt-2 pointer-events-auto">
@@ -150,7 +168,12 @@ export default function HeroSection() {
           </div>
 
           {/* Center PNG: Crossfade Carousel */}
-          <div className="relative h-full w-auto flex items-end justify-center filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.2)]">
+          <motion.div 
+            className="relative h-full w-auto flex items-end justify-center filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.2)]"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: LOADER_DELAY + 0.5, ease: "easeOut" }}
+          >
             <div style={{ display: "grid", alignItems: "end" }}>
               {heroSlides.map((slide, idx) => (
                 <Image
@@ -170,11 +193,16 @@ export default function HeroSection() {
                 />
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom-Left CTA Pill (matching reference "Order Now" lime pill) */}
-        <div className="absolute bottom-2 left-0 sm:left-4 z-30">
+        <motion.div 
+          className="absolute bottom-2 left-0 sm:left-4 z-30"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: LOADER_DELAY + 0.7 }}
+        >
           <Link
             href="#appointment"
             className="bg-[#d6f075] hover:bg-[#c6e35c] text-slate-900 font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-black/10 shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group cursor-pointer"
@@ -184,13 +212,18 @@ export default function HeroSection() {
               ↗
             </span>
           </Link>
-        </div>
+        </motion.div>
       </div>
 
       {/* ========================================================= */}
       {/* 4. BOTTOM FLOATING TICKER STRIP (matching reference)      */}
       {/* ========================================================= */}
-      <div className="relative z-30 w-full max-w-4xl mx-auto flex-shrink-0 pb-1">
+      <motion.div 
+        className="relative z-30 w-full max-w-4xl mx-auto flex-shrink-0 pb-1"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: LOADER_DELAY + 0.8 }}
+      >
         <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-full py-1.5 sm:py-2 px-4 sm:px-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden">
           <div className="flex items-center animate-ticker whitespace-nowrap gap-8 text-xs sm:text-sm font-semibold text-slate-800">
             {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
@@ -201,7 +234,7 @@ export default function HeroSection() {
             ))}
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

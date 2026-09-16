@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 interface TreatmentItem {
   id: string;
@@ -59,7 +60,16 @@ export default function ServicesSection() {
         {/* ========================================================= */}
         {/* Header: Title and Book Consultation Button                */}
         {/* ========================================================= */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-slate-200/80">
+        {/* ========================================================= */}
+        {/* Header: Title and Book Consultation Button                */}
+        {/* ========================================================= */}
+        <motion.div 
+          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-slate-200/80"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
           <div className="space-y-1 sm:space-y-1.5">
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#2A835F] flex items-center gap-2">
               <span className="w-5 h-[2px] bg-[#2A835F] inline-block rounded-full" />
@@ -77,47 +87,54 @@ export default function ServicesSection() {
             <span>Book Consultation</span>
             <span>↗</span>
           </Link>
-        </div>
+        </motion.div>
 
         {/* ========================================================= */}
         {/* Treatment Cards Grid: Background Image & Title Only       */}
         {/* ========================================================= */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {treatments.map((item) => (
-            <Link
+          {treatments.map((item, index) => (
+            <motion.div
               key={item.id}
-              href="#appointment"
-              className="group relative h-64 sm:h-72 md:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-5 sm:p-6 select-none"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              {/* Background Image */}
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
+              <Link
+                href="#appointment"
+                className="group relative h-64 sm:h-72 md:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-5 sm:p-6 select-none block"
+              >
+                {/* Background Image */}
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
 
-              {/* Dark Gradient Overlay for title clarity */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 group-hover:from-black/90 transition-all duration-300" />
+                {/* Dark Gradient Overlay for title clarity */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 group-hover:from-black/90 transition-all duration-300" />
 
-              {/* Subtle top badge for category */}
-              <div className="absolute top-4 left-4 z-10">
-                <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25">
-                  {item.category}
-                </span>
-              </div>
+                {/* Subtle top badge for category */}
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25">
+                    {item.category}
+                  </span>
+                </div>
 
-              {/* Title & Arrow at Bottom */}
-              <div className="relative z-10 flex items-end justify-between gap-3">
-                <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-none group-hover:text-emerald-300 transition-colors drop-shadow-xs">
-                  {item.title}
-                </h3>
-                <span className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm group-hover:bg-[#2A835F] group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-xs">
-                  ↗
-                </span>
-              </div>
-            </Link>
+                {/* Title & Arrow at Bottom */}
+                <div className="relative z-10 flex items-end justify-between gap-3">
+                  <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-none group-hover:text-emerald-300 transition-colors drop-shadow-xs">
+                    {item.title}
+                  </h3>
+                  <span className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm group-hover:bg-[#2A835F] group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-xs">
+                    ↗
+                  </span>
+                </div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

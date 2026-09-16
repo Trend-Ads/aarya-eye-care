@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 
 import { useState, FormEvent } from "react";
+import { motion } from "framer-motion";
 
 const stats = [
   { value: "12+", label: "Expert Doctors" },
@@ -64,7 +65,13 @@ export default function AppointmentBookingSection() {
     <section id="appointment" className="w-full relative overflow-hidden">
 
       {/* STATS STRIP */}
-      <div className="bg-[#2A835F] px-6 py-10 sm:py-12">
+      <motion.div 
+        className="bg-[#2A835F] px-6 py-10 sm:py-12"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6 }}
+      >
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((s, i) => (
             <div key={i} className="text-center">
@@ -77,12 +84,16 @@ export default function AppointmentBookingSection() {
             </div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* MAIN DARK SECTION */}
-      <div
+      <motion.div
         className="relative w-full px-4 sm:px-8 py-16 sm:py-20 lg:py-24"
         style={{ background: "linear-gradient(135deg, #0d1f17 0%, #112b1f 40%, #0a1a12 100%)" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
       >
         {/* Radial glow */}
         <div
@@ -96,7 +107,13 @@ export default function AppointmentBookingSection() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
             {/* LEFT */}
-            <div className="space-y-8">
+            <motion.div 
+              className="space-y-8"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8 }}
+            >
               <div>
                 <span className="inline-flex items-center gap-2 text-[#6dd4a4] text-[11px] font-bold uppercase tracking-[0.2em]">
                   <span className="w-6 h-px bg-[#6dd4a4] inline-block" />
@@ -150,10 +167,10 @@ export default function AppointmentBookingSection() {
                   </p>
                 </div>
               </a>
-            </div>
+            </motion.div>
 
             {/* RIGHT: GLASS FORM CARD */}
-            <div
+            <motion.div
               className="rounded-3xl p-7 sm:p-9"
               style={{
                 background: "rgba(255,255,255,0.05)",
@@ -162,6 +179,10 @@ export default function AppointmentBookingSection() {
                 border: "1px solid rgba(255,255,255,0.10)",
                 boxShadow: "0 32px 80px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.07)",
               }}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
               {submitted ? (
                 <div className="text-center py-10 space-y-5">
@@ -322,11 +343,11 @@ export default function AppointmentBookingSection() {
                   </form>
                 </>
               )}
-            </div>
+            </motion.div>
 
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

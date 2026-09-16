@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -9,7 +10,13 @@ export default function Footer() {
         id="branches"
         className="w-full bg-[#0d1c16] text-slate-300 px-5 sm:px-8 lg:px-16 pt-7 sm:pt-12 md:pt-14 pb-20 md:pb-10 shadow-2xl relative overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto">
+        <motion.div 
+          className="max-w-7xl mx-auto"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+        >
           {/* Main Content Grid: 2 columns on mobile, 12 on desktop */}
           <div className="grid grid-cols-2 lg:grid-cols-12 gap-x-6 gap-y-7 sm:gap-8 lg:gap-8 pb-7 sm:pb-10">
             
@@ -207,7 +214,7 @@ export default function Footer() {
             </p>
           </div>
 
-        </div>
+        </motion.div>
       </footer>
     </div>
   );
