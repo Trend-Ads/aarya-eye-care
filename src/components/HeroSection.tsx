@@ -16,7 +16,7 @@ export default function HeroSection() {
 
   const heroSlides = [
     { src: "/hero/hero-center-woman.png", alt: "Aarya Eye Care Clear Vision",  xOffset: "50%", sizeClass: "max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
-    { src: "/hero/second.png",            alt: "Aarya Eye Care Pediatric Care", xOffset: "60%", sizeClass: "max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
+    { src: "/hero/second.png",            alt: "Aarya Eye Care Pediatric Care", xOffset: "var(--second-slide-offset, 28%)", sizeClass: "max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
     { src: "/hero/third.png",             alt: "Aarya Eye Care Eye Care",       xOffset: "0%",  sizeClass: "max-h-[47dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
   ];
   const [activeSlide, setActiveSlide] = useState(0);
