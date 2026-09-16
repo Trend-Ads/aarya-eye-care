@@ -39,7 +39,7 @@ export default function Navbar() {
       lastScrollY.current = currentScrollY;
 
       // Detect active section based on scroll position
-      const sections = ["home", "facilities", "treatments", "branches"];
+      const sections = ["home", "treatments", "doctors", "branches"];
       const scrollPosition = currentScrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -80,26 +80,6 @@ export default function Navbar() {
       ),
     },
     {
-      label: "Facilities",
-      href: "#facilities",
-      id: "facilities",
-      icon: (isActive: boolean) => (
-        <svg
-          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
-          viewBox="0 0 24 24"
-          fill={isActive ? "currentColor" : "none"}
-          stroke="currentColor"
-          strokeWidth={isActive ? "2" : "1.8"}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
-          <path d="M9 22v-4h6v4" />
-          <path d="M8 6h.01M16 6h.01M8 10h.01M16 10h.01M8 14h.01M16 14h.01" />
-        </svg>
-      ),
-    },
-    {
       label: "Treatments",
       href: "#treatments",
       id: "treatments",
@@ -115,6 +95,27 @@ export default function Navbar() {
         >
           <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
           <circle cx="12" cy="12" r="3" />
+        </svg>
+      ),
+    },
+    {
+      label: "Doctors",
+      href: "#doctors",
+      id: "doctors",
+      icon: (isActive: boolean) => (
+        <svg
+          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
+          viewBox="0 0 24 24"
+          fill={isActive ? "currentColor" : "none"}
+          stroke="currentColor"
+          strokeWidth={isActive ? "2" : "1.8"}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+          <circle cx="9" cy="7" r="4" />
+          <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+          <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
       ),
     },
@@ -144,29 +145,29 @@ export default function Navbar() {
       {/* ========================================================= */}
       {/* 1. TOP HEADER (Desktop Links + Clean Mobile Brand Header) */}
       {/* ========================================================= */}
-      <header className="fixed top-3 sm:top-5 md:top-6 lg:top-7 left-0 right-0 z-50 px-3 sm:px-6 max-w-5xl mx-auto pointer-events-none transition-all duration-300">
+      <header className="fixed top-2.5 sm:top-3.5 md:top-4.5 left-0 right-0 z-50 px-3 sm:px-6 max-w-5xl mx-auto pointer-events-none transition-all duration-300">
         <nav
-          className={`pointer-events-auto backdrop-blur-md rounded-full px-4 sm:px-6 py-2 sm:py-2.5 flex items-center justify-between transition-all duration-200 ${
+          className={`pointer-events-auto backdrop-blur-md rounded-full px-5 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 flex items-center justify-between transition-all duration-200 ${
             scrolled
-              ? "bg-white/95 shadow-[0_8px_28px_rgba(15,23,42,0.12)] border border-slate-200/80"
-              : "bg-white/90 shadow-[0_4px_20px_rgba(15,23,42,0.06)] border border-white/80"
+              ? "bg-[#2A835F] shadow-[0_12px_36px_rgba(42,131,95,0.4)] border border-white/20"
+              : "bg-[#2A835F]/95 shadow-[0_8px_28px_rgba(42,131,95,0.3)] border border-white/25"
           }`}
         >
           {/* Brand Logo & Name */}
           <Link
             href="#home"
-            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity group flex-shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 hover:opacity-95 transition-opacity group flex-shrink-0"
           >
-            <div className="relative w-6 h-6 sm:w-7 sm:h-7 flex-shrink-0">
+            <div className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white p-1 flex items-center justify-center shadow-xs flex-shrink-0">
               <Image
                 src="/logos/logo-main.png"
                 alt="Aarya Eye Care logo"
                 fill
-                className="object-contain"
+                className="object-contain p-0.5"
                 priority
               />
             </div>
-            <span className="font-extrabold text-base sm:text-lg tracking-tight text-slate-900 font-sans whitespace-nowrap">
+            <span className="font-extrabold text-base sm:text-lg md:text-xl tracking-tight text-white font-sans whitespace-nowrap">
               Aarya Eye Care
             </span>
           </Link>
@@ -179,10 +180,10 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-[13.5px] lg:text-[14.5px] font-medium transition-colors ${
+                  className={`text-[13.5px] lg:text-[14.5px] font-medium transition-all ${
                     isActive
-                      ? "text-[#9A4F3C] font-semibold"
-                      : "text-slate-600 hover:text-slate-950"
+                      ? "text-white font-bold bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs shadow-2xs"
+                      : "text-emerald-100 hover:text-white"
                   }`}
                 >
                   {item.label}
@@ -193,13 +194,13 @@ export default function Navbar() {
 
           {/* Right CTA Button (Desktop & Mobile Compact) */}
           <div className="flex items-center">
-            {/* Desktop Full CTA */}
+            {/* Desktop Full CTA (Crisp contrast white pill) */}
             <Link
               href="#appointment"
-              className="hidden sm:inline-flex group items-center gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all hover:shadow"
+              className="hidden sm:inline-flex group items-center gap-2.5 bg-white hover:bg-emerald-50 text-[#2A835F] pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-2 rounded-full text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-105 active:scale-95"
             >
               <span>Book Appointment</span>
-              <span className="w-6 h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <span className="w-6 h-6 rounded-full bg-[#2A835F] text-white flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <svg
                   width="12"
                   height="12"
@@ -219,10 +220,10 @@ export default function Navbar() {
             {/* Mobile Compact CTA */}
             <Link
               href="#appointment"
-              className="sm:hidden inline-flex items-center gap-1.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-3 pr-1.5 py-1 rounded-full text-xs font-semibold shadow-xs"
+              className="sm:hidden inline-flex items-center gap-1.5 bg-white hover:bg-emerald-50 text-[#2A835F] pl-3.5 pr-2 py-1.5 rounded-full text-xs font-bold shadow-sm"
             >
               <span>Book</span>
-              <span className="w-5 h-5 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center text-[10px]">
+              <span className="w-5 h-5 rounded-full bg-[#2A835F] text-white flex items-center justify-center text-[10px]">
                 ↗
               </span>
             </Link>
@@ -249,13 +250,13 @@ export default function Navbar() {
                 onClick={() => setActiveSection(item.id)}
                 className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors duration-150 relative ${
                   isActive
-                    ? "text-[#9A4F3C]"
+                    ? "text-[#2A835F]"
                     : "text-slate-500 hover:text-slate-900"
                 }`}
               >
                 {/* Top Active Line Indicator */}
                 {isActive && (
-                  <span className="absolute -top-2 w-8 h-0.5 bg-[#9A4F3C] rounded-full" />
+                  <span className="absolute -top-2 w-8 h-0.5 bg-[#2A835F] rounded-full" />
                 )}
 
                 {/* Tab Icon */}
@@ -266,7 +267,7 @@ export default function Navbar() {
                 {/* Tab Label */}
                 <span
                   className={`text-[10px] tracking-tight font-medium ${
-                    isActive ? "font-bold text-[#9A4F3C]" : "text-slate-600"
+                    isActive ? "font-bold text-[#2A835F]" : "text-slate-600"
                   }`}
                 >
                   {item.label}

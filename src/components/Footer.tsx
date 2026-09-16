@@ -4,10 +4,10 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="w-full bg-[#fcfdfd]">
+    <div className="w-full">
       <footer
         id="branches"
-        className="w-full bg-[#0d1c16] text-slate-300 rounded-t-[24px] sm:rounded-t-[40px] md:rounded-t-[52px] px-5 sm:px-8 lg:px-16 pt-7 sm:pt-12 md:pt-14 pb-20 md:pb-10 shadow-2xl relative overflow-hidden"
+        className="w-full bg-[#0d1c16] text-slate-300 px-5 sm:px-8 lg:px-16 pt-7 sm:pt-12 md:pt-14 pb-20 md:pb-10 shadow-2xl relative overflow-hidden"
       >
         <div className="max-w-7xl mx-auto">
           {/* Main Content Grid: 2 columns on mobile, 12 on desktop */}

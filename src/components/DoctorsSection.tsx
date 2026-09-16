@@ -180,7 +180,7 @@ export default function DoctorsSection() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#9A4F3C] text-white shadow-xs"
+                    ? "bg-[#2A835F] text-white shadow-xs"
                     : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
                 }`}
               >
@@ -190,60 +190,55 @@ export default function DoctorsSection() {
           </div>
         </div>
 
-        {/* Doctors Grid - 5 columns on desktop matching reference layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10">
-          {filteredDoctors.map((doc, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-[22px] sm:rounded-[26px] p-2.5 sm:p-3 border border-slate-200/80 shadow-[0_4px_16px_rgba(15,23,42,0.04)] hover:shadow-[0_12px_28px_rgba(15,23,42,0.08)] hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                {/* Doctor Photo */}
-                <div className="relative w-full aspect-[4/4.4] rounded-[18px] sm:rounded-[22px] overflow-hidden bg-slate-100 shadow-inner">
-                  <Image
-                    src={doc.image}
-                    alt={doc.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 20vw"
-                  />
-                  
-                  {/* Subtle speciality pill tag */}
-                  <div className="absolute top-2 left-2">
-                    <span className="bg-white/90 backdrop-blur-xs text-[9px] font-bold text-slate-700 px-1.5 py-0.5 rounded-md shadow-2xs">
-                      {doc.category}
-                    </span>
-                  </div>
-                </div>
+        {/* Doctors Grid - matching reference layout with full-bleed image and soft tinted bottom gradient */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10">
+          {filteredDoctors.map((doc, idx) => {
+            const cardGradients = [
+              "from-[#1b5043]/95 via-[#2b6d5d]/60 to-transparent", // Teal / Sage
+              "from-[#9e3b4b]/95 via-[#b64f60]/60 to-transparent", // Rose / Coral
+              "from-[#887a32]/95 via-[#a19241]/60 to-transparent", // Gold / Olive
+              "from-[#2d5d7e]/95 via-[#41769d]/60 to-transparent", // Sky / Slate Blue
+            ];
+            const gradient = cardGradients[idx % cardGradients.length];
 
-                {/* Name & Role */}
-                <div className="text-center mt-3 px-1">
-                  <h3 className="font-bold text-xs sm:text-[13px] md:text-[13.5px] text-slate-900 leading-tight uppercase tracking-tight group-hover:text-[#9A4F3C] transition-colors">
+            return (
+              <Link
+                key={idx}
+                href="#appointment"
+                className="relative w-full aspect-[3/4.2] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-4 sm:p-5 group select-none cursor-pointer"
+              >
+                {/* Doctor Photo */}
+                <Image
+                  src={doc.image}
+                  alt={doc.name}
+                  fill
+                  className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                />
+
+                {/* Soft Tinted Gradient Overlay matching reference image */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
+                />
+
+                {/* Doctor Name & Role / Speciality at bottom inside gradient */}
+                <div className="relative z-10 text-left">
+                  <h3 className="font-bold text-sm sm:text-base md:text-lg text-white leading-tight drop-shadow-xs group-hover:underline">
                     {doc.name}
                   </h3>
-                  <p className="text-[10px] sm:text-[11px] text-slate-500 leading-snug mt-1 font-medium line-clamp-2">
-                    {doc.role}
+                  <p className="text-[11px] sm:text-xs md:text-[13px] text-white/90 font-medium leading-snug mt-1 line-clamp-1">
+                    {doc.speciality || doc.role}
                   </p>
                 </div>
-              </div>
-
-              {/* Make Appointment Button matching reference layout */}
-              <div className="mt-3.5 pt-2 border-t border-slate-100 flex justify-center">
-                <Link
-                  href="#appointment"
-                  className="w-full text-center px-3 py-1.5 rounded-full border border-[#9A4F3C] text-[#9A4F3C] hover:bg-[#9A4F3C] hover:text-white text-[10.5px] sm:text-[11px] font-semibold transition-all duration-200 shadow-2xs hover:shadow-xs active:scale-95"
-                >
-                  Make Appointment
-                </Link>
-              </div>
-            </div>
-          ))}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Bottom Banner Reassurance */}
-        <div className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#9A4F3C]/5 border border-[#9A4F3C]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#2A835F]/10 border border-[#2A835F]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#9A4F3C] text-white flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#2A835F] text-white flex items-center justify-center flex-shrink-0">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -263,7 +258,7 @@ export default function DoctorsSection() {
 
           <Link
             href="#appointment"
-            className="inline-flex items-center gap-2 bg-[#9A4F3C] hover:bg-[#854231] text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm transition-all"
+            className="inline-flex items-center gap-2 bg-[#2A835F] hover:bg-[#236e4f] text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm transition-all"
           >
             <span>Book Consultation With a Specialist</span>
             <span>→</span>
