@@ -55,7 +55,7 @@ export default function HeroSection() {
     <div className="w-full h-[100dvh] max-h-[100dvh] p-2 sm:p-3 md:p-4 lg:p-5 box-border bg-gradient-to-br from-[#c8eccb] via-[#A5D6A7] to-[#7dbd81] flex flex-col flex-shrink-0 overflow-hidden">
       
       {/* Hero Inner Screen/Card: borderless with soft realistic shadow onto the bezel */}
-      <section className="relative w-full h-full flex flex-col justify-between bg-slate-900 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[48px] overflow-hidden shadow-[0_14px_38px_rgba(0,0,0,0.25),_0_4px_12px_rgba(0,0,0,0.14)]">
+      <section id="home" className="relative w-full h-full flex flex-col justify-between bg-slate-900 rounded-[24px] sm:rounded-[32px] md:rounded-[40px] lg:rounded-[48px] overflow-hidden shadow-[0_14px_38px_rgba(0,0,0,0.25),_0_4px_12px_rgba(0,0,0,0.14)]">
         
         {/* Background Slideshow: cycling through public/hero images with smooth crossfade */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
