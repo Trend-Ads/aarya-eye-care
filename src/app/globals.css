@@ -78,3 +78,18 @@ body {
   animation: float-capsule 5s ease-in-out infinite;
 }
 
+/* Hero Carousel Slide Responsive Positioning */
+.hero-slide-offset-0,
+.hero-slide-offset-1 {
+  --slide-offset: 22%;
+}
+@media (min-width: 768px) {
+  .hero-slide-offset-0,
+  .hero-slide-offset-1 {
+    --slide-offset: 35%;
+  }
+}
+.hero-slide-offset-2 {
+  --slide-offset: 0%;
+}
+
