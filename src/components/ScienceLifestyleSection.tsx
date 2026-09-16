@@ -170,7 +170,11 @@ export default function ScienceLifestyleSection() {
 
             {/* Proactive Statement */}
             <div className="mt-3 p-3 sm:p-3.5 rounded-xl bg-white border border-slate-200/80 shadow-xs flex items-start gap-3">
-              <span className="text-lg leading-none mt-0.5">✨</span>
+              <span className="w-5 h-5 text-[#9A4F3C] mt-0.5 flex-shrink-0 flex items-center justify-center">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2L14.3 8.5L21 9.2L16 13.8L17.5 20.5L12 17L6.5 20.5L8 13.8L3 9.2L9.7 8.5L12 2Z" />
+                </svg>
+              </span>
               <p className="text-slate-700 text-xs sm:text-sm font-medium leading-relaxed">
                 <strong className="text-slate-900 font-semibold">The best way to maintain a healthy smile is to be proactive!</strong>{" "}
                 Take charge of your vision with preventative screenings and advanced eye care designed for a lifetime of crystal-clear clarity.
