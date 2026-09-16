@@ -8,7 +8,7 @@ import AppointmentModal from "@/components/AppointmentModal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white flex flex-col selection:bg-sky-200 relative pb-16 md:pb-0">
+    <main className="min-h-screen bg-white flex flex-col selection:bg-sky-200 relative">
       {/* Fixed Navigation Bar (Desktop Top + Mobile Bottom + Floating WhatsApp) */}
       <Navbar />
 

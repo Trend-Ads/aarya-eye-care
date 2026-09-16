@@ -286,7 +286,7 @@ export default function Navbar() {
       {/* ========================================================= */}
       <aside aria-label="WhatsApp quick contact">
         <a
-          href="https://wa.me/914952728800?text=Hello%20Aarya%20Eye%20Care%2C%20I%20would%20like%20to%20inquire%20about%20eye%20care%20treatments%20and%20consultations."
+          href="https://wa.me/919946322288?text=Hello%20Aarya%20Eye%20Care%2C%20I%20would%20like%20to%20inquire%20about%20eye%20care%20treatments%20and%20consultations."
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Chat with Aarya Eye Care on WhatsApp"

@@ -19,7 +19,7 @@ export default function BranchesSection() {
       name: "Main Super Speciality Hospital",
       address: "Mavoor Road Junction, Near Medical College, Calicut, Kerala 673016",
       timing: "Open 24/7 (Emergency) • OPD 8:00 AM - 8:00 PM",
-      phone: "+91 495 272 8800",
+      phone: "+91 99463 22288",
       badge: "NABH Flagship",
       isMain: true,
     },
@@ -28,7 +28,7 @@ export default function BranchesSection() {
       name: "Cataract & Cornea Care Centre",
       address: "Thavakkara Road, Opposite Railway Station, Kannur, Kerala 670001",
       timing: "Mon - Sat: 8:30 AM - 7:30 PM • Sun: Emergency Only",
-      phone: "+91 497 270 4400",
+      phone: "+91 99463 22288",
       badge: "Surgical Suite",
     },
     {
@@ -36,7 +36,7 @@ export default function BranchesSection() {
       name: "Retina & Pediatric Eye Clinic",
       address: "Down Hill, Bypass Road, Malappuram, Kerala 676505",
       timing: "Mon - Sat: 9:00 AM - 7:00 PM",
-      phone: "+91 483 273 6600",
+      phone: "+91 99463 22288",
       badge: "Speciality Hub",
     },
     {
@@ -44,7 +44,7 @@ export default function BranchesSection() {
       name: "Refractive LASIK & Aesthetic Oculoplasty",
       address: "MG Road, Ravipuram, Ernakulam, Kochi, Kerala 682016",
       timing: "Mon - Sat: 9:00 AM - 8:00 PM",
-      phone: "+91 484 235 9900",
+      phone: "+91 99463 22288",
       badge: "LASIK Center",
     },
   ];
@@ -74,7 +74,7 @@ export default function BranchesSection() {
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
               <span className="text-xs text-slate-400 block font-medium">24/7 Emergency Eye Trauma</span>
-              <span className="text-sm font-bold text-[#ff7a60]">+91 1800 425 2279</span>
+              <a href="tel:+919946322288" className="text-sm font-bold text-[#ff7a60] hover:underline">+91 99463 22288</a>
             </div>
             <Link
               href="#appointment"
