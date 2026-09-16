@@ -45,7 +45,7 @@ export default function HeroSection() {
       {/* ========================================================= */}
       {/* 2. TOP ROW: Photo Cards (Right)                           */}
       {/* ========================================================= */}
-      <div className="relative z-30 flex items-start justify-end max-w-7xl mx-auto w-full flex-shrink-0 mt-2 sm:mt-4 md:mt-6 lg:mt-8">
+      <div className="hidden sm:flex relative z-30 items-start justify-end max-w-7xl mx-auto w-full flex-shrink-0 mt-2 sm:mt-4 md:mt-6 lg:mt-8">
         {/* Top-Right Media Photo Cards */}
         <div className="flex flex-col items-end gap-1.5 sm:gap-2 flex-shrink-0 pt-1 sm:pt-2">
           <div className="flex items-center gap-2 sm:gap-3">
@@ -84,7 +84,7 @@ export default function HeroSection() {
       {/* ========================================================= */}
       {/* 3. CENTER STAGE: Giant Typography & Center Woman Cutout   */}
       {/* ========================================================= */}
-      <div className="relative flex-1 flex items-center justify-center my-auto min-h-0 w-full overflow-visible">
+      <div className="relative flex-1 flex items-center justify-center my-auto min-h-0 w-full overflow-visible pt-[13dvh] sm:pt-0">
         {/* Giant Background Typography: "CLEAR VISION" */}
         <div className="absolute inset-0 z-10 flex items-center justify-center pointer-events-none select-none overflow-hidden px-2 sm:px-4">
           <div className="w-full flex items-center justify-between max-w-7xl">
@@ -104,12 +104,34 @@ export default function HeroSection() {
         <div className="relative z-20 flex flex-col items-center justify-end w-full h-full pointer-events-none">
           {/* Title of Aarya Eye Care just above the hero section PNG image */}
           <div className="text-center z-25 pointer-events-auto mb-0 sm:mb-2.5">
-            <h1 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] uppercase tracking-wider text-slate-900 drop-shadow-xs leading-none">
+            <h1 className="font-display font-black text-4xl sm:text-3xl md:text-4xl lg:text-[42px] uppercase tracking-wider text-slate-900 drop-shadow-xs leading-none">
               Aarya Eye Care
             </h1>
-            <p className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#9A4F3C] mt-1">
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#9A4F3C] mt-1">
               Super Speciality Eye Hospital
             </p>
+          </div>
+
+          {/* Mobile-only: Two photo cards below the title */}
+          <div className="flex sm:hidden items-center justify-center gap-2.5 mt-2 pointer-events-auto">
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-md border-2 border-white relative">
+              <Image
+                src="/hero/hero1.webp"
+                alt="Pediatric Eye Care"
+                fill
+                className="object-cover"
+                sizes="56px"
+              />
+            </div>
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-md border-2 border-white relative">
+              <Image
+                src="/hero/hero2.jpg"
+                alt="Comprehensive Eye Examination"
+                fill
+                className="object-cover"
+                sizes="56px"
+              />
+            </div>
           </div>
 
           {/* Center Woman with Glasses Image (z-20 in front of giant text) */}
