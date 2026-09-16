@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,15 +14,33 @@ interface NavItem {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
+  const [navVisible, setNavVisible] = useState<boolean>(true);
+  const lastScrollY = useRef<number>(0);
 
-  // Track scroll position for top navbar blur & active section detection
+  // Track scroll position for:
+  // 1. Top navbar blur
+  // 2. Mobile bottom navbar auto-hide on scroll down & show on scroll up
+  // 3. Active section highlighting
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 20);
+
+      // Hide mobile bottom navbar when scrolling down, show when scrolling up
+      if (currentScrollY <= 40) {
+        setNavVisible(true);
+      } else if (currentScrollY > lastScrollY.current + 6) {
+        // Scrolling DOWN -> hide navbar
+        setNavVisible(false);
+      } else if (currentScrollY < lastScrollY.current - 6) {
+        // Scrolling UP -> view navbar
+        setNavVisible(true);
+      }
+      lastScrollY.current = currentScrollY;
 
       // Detect active section based on scroll position
       const sections = ["home", "facilities", "treatments", "branches"];
-      const scrollPosition = window.scrollY + 200;
+      const scrollPosition = currentScrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = document.getElementById(sections[i]);
@@ -48,7 +66,7 @@ export default function Navbar() {
       id: "home",
       icon: (isActive: boolean) => (
         <svg
-          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-110" : ""}`}
+          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
           viewBox="0 0 24 24"
           fill={isActive ? "currentColor" : "none"}
           stroke="currentColor"
@@ -67,7 +85,7 @@ export default function Navbar() {
       id: "facilities",
       icon: (isActive: boolean) => (
         <svg
-          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-110" : ""}`}
+          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
           viewBox="0 0 24 24"
           fill={isActive ? "currentColor" : "none"}
           stroke="currentColor"
@@ -87,7 +105,7 @@ export default function Navbar() {
       id: "treatments",
       icon: (isActive: boolean) => (
         <svg
-          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-110" : ""}`}
+          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
           viewBox="0 0 24 24"
           fill={isActive ? "currentColor" : "none"}
           stroke="currentColor"
@@ -106,7 +124,7 @@ export default function Navbar() {
       id: "branches",
       icon: (isActive: boolean) => (
         <svg
-          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-110" : ""}`}
+          className={`w-5 h-5 transition-transform duration-200 ${isActive ? "scale-105" : ""}`}
           viewBox="0 0 24 24"
           fill={isActive ? "currentColor" : "none"}
           stroke="currentColor"
@@ -198,7 +216,7 @@ export default function Navbar() {
               </span>
             </Link>
 
-            {/* Mobile Compact CTA (No Hamburger) */}
+            {/* Mobile Compact CTA */}
             <Link
               href="#appointment"
               className="sm:hidden inline-flex items-center gap-1.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-3 pr-1.5 py-1 rounded-full text-xs font-semibold shadow-xs"
@@ -213,13 +231,15 @@ export default function Navbar() {
       </header>
 
       {/* ========================================================= */}
-      {/* 2. MOBILE BOTTOM NAVBAR (Home, Facilities, Treatments, Branches) */}
+      {/* 2. NATIVE MOBILE APP BOTTOM TAB BAR (Docked & Auto-Hiding) */}
       {/* ========================================================= */}
       <nav
-        aria-label="Mobile Navigation"
-        className="md:hidden fixed bottom-3 sm:bottom-4 left-3 right-3 z-50 max-w-md mx-auto pointer-events-auto"
+        aria-label="Mobile Bottom App Navigation"
+        className={`md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-t border-slate-200/90 shadow-[0_-4px_20px_rgba(15,23,42,0.08)] transition-transform duration-300 ease-in-out ${
+          navVisible ? "translate-y-0" : "translate-y-full pointer-events-none"
+        }`}
       >
-        <div className="bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-[0_12px_36px_rgba(15,23,42,0.18)] rounded-full px-2 py-1.5 flex items-center justify-around">
+        <div className="max-w-lg mx-auto px-2 pt-2 pb-[max(0.6rem,env(safe-area-inset-bottom))] flex items-center justify-around">
           {navLinks.map((item) => {
             const isActive = activeSection === item.id;
             return (
@@ -227,35 +247,30 @@ export default function Navbar() {
                 key={item.label}
                 href={item.href}
                 onClick={() => setActiveSection(item.id)}
-                className={`flex-1 flex flex-col items-center justify-center py-1 px-1 rounded-full transition-all duration-200 relative group ${
+                className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors duration-150 relative ${
                   isActive
                     ? "text-[#9A4F3C]"
                     : "text-slate-500 hover:text-slate-900"
                 }`}
               >
-                {/* Active indicator bubble */}
+                {/* Top Active Line Indicator */}
                 {isActive && (
-                  <span className="absolute inset-0 bg-[#9A4F3C]/10 rounded-full -z-10 animate-in fade-in zoom-in-95 duration-200" />
+                  <span className="absolute -top-2 w-8 h-0.5 bg-[#9A4F3C] rounded-full" />
                 )}
 
-                {/* Vector SVG Icon */}
-                <div className="relative">
+                {/* Tab Icon */}
+                <div className="relative mb-0.5">
                   {item.icon(isActive)}
                 </div>
 
-                {/* Label */}
+                {/* Tab Label */}
                 <span
-                  className={`text-[10.5px] tracking-tight mt-0.5 font-medium ${
+                  className={`text-[10px] tracking-tight font-medium ${
                     isActive ? "font-bold text-[#9A4F3C]" : "text-slate-600"
                   }`}
                 >
                   {item.label}
                 </span>
-
-                {/* Tiny active bottom indicator dot */}
-                {isActive && (
-                  <span className="w-1 h-1 rounded-full bg-[#9A4F3C] mt-0.5" />
-                )}
               </Link>
             );
           })}

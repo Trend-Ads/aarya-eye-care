@@ -3,7 +3,6 @@ import HeroSection from "@/components/HeroSection";
 import ScienceLifestyleSection from "@/components/ScienceLifestyleSection";
 import ServicesSection from "@/components/ServicesSection";
 import DoctorsSection from "@/components/DoctorsSection";
-import BranchesSection from "@/components/BranchesSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -24,10 +23,7 @@ export default function Home() {
       {/* 4. Doctors Section (Our Doctors gallery) */}
       <DoctorsSection />
 
-      {/* 5. Branches Section (Locations & Contact) */}
-      <BranchesSection />
-
-      {/* 6. Comprehensive Hospital Footer */}
+      {/* 5. Clean Minimal Footer (matching reference design) */}
       <Footer />
     </main>
   );
