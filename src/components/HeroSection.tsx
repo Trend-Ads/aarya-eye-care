@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -13,6 +13,21 @@ export default function HeroSection() {
     { text: "Zeiss Ophthalmic Precision", icon: "🔬" },
     { text: "24/7 Eye Trauma Care", icon: "🚑" },
   ];
+
+  const heroSlides = [
+    { src: "/hero/hero-center-woman.png", alt: "Aarya Eye Care Clear Vision",  xOffset: "22%", sizeClass: "max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
+    { src: "/hero/second.png",            alt: "Aarya Eye Care Pediatric Care", xOffset: "22%", sizeClass: "max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
+    { src: "/hero/third.png",             alt: "Aarya Eye Care Eye Care",       xOffset: "0%",  sizeClass: "max-h-[47dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh]" },
+  ];
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <section
@@ -134,16 +149,27 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Center Woman with Glasses Image (z-20 in front of giant text) */}
+          {/* Center PNG: Crossfade Carousel */}
           <div className="relative h-full w-auto flex items-end justify-center filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.2)]">
-            <Image
-              src="/hero/hero-center-woman.png"
-              alt="Aarya Eye Care Clear Vision"
-              width={800}
-              height={1200}
-              priority
-              className="h-full w-auto object-contain max-h-[40dvh] sm:max-h-[54dvh] md:max-h-[60dvh] lg:max-h-[64dvh] pointer-events-auto select-none"
-            />
+            <div style={{ display: "grid", alignItems: "end" }}>
+              {heroSlides.map((slide, idx) => (
+                <Image
+                  key={slide.src}
+                  src={slide.src}
+                  alt={slide.alt}
+                  width={800}
+                  height={1200}
+                  priority={idx === 0}
+                  className={`w-auto object-contain pointer-events-auto select-none ${slide.sizeClass}`}
+                  style={{
+                    gridArea: "1 / 1",
+                    opacity: activeSlide === idx ? 1 : 0,
+                    transform: `translateX(${slide.xOffset}) scale(${activeSlide === idx ? 1 : 0.97})`,
+                    transition: "opacity 0.9s cubic-bezier(0.4,0,0.2,1), transform 0.9s cubic-bezier(0.4,0,0.2,1)",
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
