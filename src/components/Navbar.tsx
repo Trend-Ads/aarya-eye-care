@@ -17,11 +17,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Benefits", href: "#benefits" },
-    { label: "Ingredients", href: "#ingredients" },
-    { label: "Science", href: "#science" },
-    { label: "Reviews", href: "#reviews" },
-    { label: "FAQ", href: "#faq" },
+    { label: "Specialities", href: "#specialities" },
+    { label: "Treatments", href: "#treatments" },
+    { label: "Technology", href: "#technology" },
+    { label: "Doctors", href: "#doctors" },
+    { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
 
