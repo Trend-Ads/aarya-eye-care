@@ -4,11 +4,12 @@ import ScienceLifestyleSection from "@/components/ScienceLifestyleSection";
 import ServicesSection from "@/components/ServicesSection";
 import DoctorsSection from "@/components/DoctorsSection";
 import Footer from "@/components/Footer";
+import AppointmentModal from "@/components/AppointmentModal";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-white flex flex-col selection:bg-sky-200 relative pb-16 md:pb-0">
-      {/* Fixed Navigation Bar (Desktop Top + Mobile Bottom) */}
+      {/* Fixed Navigation Bar (Desktop Top + Mobile Bottom + Floating WhatsApp) */}
       <Navbar />
 
       {/* 1. Hero Section (with bezel frame, floating collage, and bottom logo ticker strip) */}
@@ -25,6 +26,9 @@ export default function Home() {
 
       {/* 5. Clean Minimal Footer (matching reference design) */}
       <Footer />
+
+      {/* 6. Global Appointment Modal */}
+      <AppointmentModal />
     </main>
   );
 }
