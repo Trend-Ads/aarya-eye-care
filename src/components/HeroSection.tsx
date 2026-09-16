@@ -22,24 +22,22 @@ export default function HeroSection() {
         {/* 2. Middle Content: Headline, Subtitle, and Buttons */}
         <div className="flex-shrink-0 max-w-4xl mx-auto px-3 sm:px-6 text-center mt-0 sm:mt-1 relative z-20">
           <h1 className="font-display font-black text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] tracking-tight text-slate-900 leading-[0.96] uppercase">
-            Protect Your <br className="hidden sm:inline" />
-            Vision. Naturally. Enjoy Your Life.
+            Aarya Eye Care <br className="hidden sm:inline" />
+            <span className="text-[#9A4F3C]">Super Speciality</span> Eye Care Hospital
           </h1>
 
-          <p className="mt-1.5 sm:mt-2.5 text-slate-600 text-xs sm:text-[13.5px] md:text-[15px] leading-relaxed max-w-xl mx-auto font-normal line-clamp-2 sm:line-clamp-none">
-            Advanced eye wellness supplements formulated with powerful nutrients to
-            support clearer vision, reduce digital eye strain, and maintain
-            long-term eye health.
+          <p className="mt-1.5 sm:mt-2.5 text-slate-600 text-xs sm:text-[13.5px] md:text-[15px] leading-relaxed max-w-2xl mx-auto font-normal line-clamp-2 sm:line-clamp-none">
+            Delivering advanced clinical excellence, state-of-the-art diagnostic technology, and compassionate vision treatments to safeguard and restore your eyesight.
           </p>
 
           {/* Action Buttons */}
           <div className="flex items-center justify-center gap-2.5 sm:gap-3.5 mt-2.5 sm:mt-3.5">
-            {/* Primary Shop Button */}
+            {/* Primary Appointment Button */}
             <Link
-              href="#shop"
+              href="#appointment"
               className="group inline-flex items-center gap-2 sm:gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold shadow-md hover:shadow-lg transition-all"
             >
-              <span>Shop Eye Support</span>
+              <span>Book Appointment</span>
               <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <svg
                   className="w-2.5 h-2.5 sm:w-3 sm:h-3"
@@ -58,10 +56,10 @@ export default function HeroSection() {
 
             {/* Secondary Learn More Button */}
             <Link
-              href="#science"
+              href="#specialities"
               className="group inline-flex items-center gap-2 sm:gap-2.5 bg-white/40 hover:bg-white/70 border border-slate-400/30 text-slate-800 pl-4 sm:pl-5 pr-1 sm:pr-1.5 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs md:text-[13px] font-semibold backdrop-blur-sm transition-all"
             >
-              <span>Learn More</span>
+              <span>Our Specialities</span>
               <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#9A4F3C] text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 <svg
                   className="w-2.5 h-2.5 sm:w-3 sm:h-3"

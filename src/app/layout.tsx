@@ -17,9 +17,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Aarya Eye Care - Protect Your Vision. Naturally.",
+  title: "Aarya Eye Care - Super Speciality Eye Care Hospital",
   description:
-    "Advanced eye wellness supplements formulated with powerful nutrients to support clearer vision, reduce digital eye strain, and maintain long-term eye health.",
+    "Delivering advanced clinical excellence, state-of-the-art diagnostic technology, and compassionate vision treatments to safeguard and restore your eyesight.",
 };
 
 export default function RootLayout({

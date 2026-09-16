@@ -69,10 +69,10 @@ export default function Navbar() {
         {/* Right CTA Button */}
         <div className="hidden sm:flex items-center">
           <Link
-            href="#shop"
+            href="#appointment"
             className="group inline-flex items-center gap-2.5 bg-[#9A4F3C] hover:bg-[#854231] text-white pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-1.5 rounded-full text-xs sm:text-sm font-semibold shadow-sm transition-all hover:shadow"
           >
-            <span>Shop Now</span>
+            <span>Book Appointment</span>
             <span className="w-6 h-6 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
               <svg
                 width="12"
@@ -94,10 +94,10 @@ export default function Navbar() {
         {/* Mobile menu toggle */}
         <div className="flex sm:hidden items-center gap-2">
           <Link
-            href="#shop"
+            href="#appointment"
             className="group inline-flex items-center gap-1.5 bg-[#9A4F3C] text-white pl-3 pr-1.5 py-1 rounded-full text-xs font-semibold"
           >
-            <span>Shop</span>
+            <span>Book</span>
             <span className="w-5 h-5 rounded-full bg-white text-[#9A4F3C] flex items-center justify-center">
               <svg
                 width="10"
