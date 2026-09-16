@@ -1,10 +1,26 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import LogoTicker from "./LogoTicker";
 
 export default function HeroSection() {
+  // Interactive layer states for mobile tap and desktop hover
+  const [leftFront, setLeftFront] = useState<"tablet" | "runner">("runner");
+  const [rightFront, setRightFront] = useState<"senior" | "capsule">("capsule");
+  const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+
+  const isTabletFront =
+    hoveredCard === "tablet" || (hoveredCard !== "runner" && leftFront === "tablet");
+  const isRunnerFront =
+    hoveredCard === "runner" || (hoveredCard !== "tablet" && leftFront === "runner");
+
+  const isSeniorFront =
+    hoveredCard === "senior" || (hoveredCard !== "capsule" && rightFront === "senior");
+  const isCapsuleFront =
+    hoveredCard === "capsule" || (hoveredCard !== "senior" && rightFront === "capsule");
+
   return (
     /* Outer Bezel Frame: provides the outer viewport bezel/margins on all screens */
     <div className="w-full h-[100dvh] max-h-[100dvh] p-2 sm:p-3 md:p-4 lg:p-5 box-border bg-[#edf2f7] flex flex-col flex-shrink-0 overflow-hidden">
@@ -78,14 +94,22 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* 3. Collage Showcase: Elevated & unorderly on mobile, compact & refined on desktop */}
+        {/* 3. Collage Showcase: Elevated & unorderly on mobile, compact & refined on desktop with interactive layering */}
         <div className="flex-1 min-h-0 relative w-full max-w-5xl mx-auto px-2 sm:px-4 flex items-center sm:items-end justify-center pb-0 sm:pb-2 overflow-visible">
           
           <div className="relative w-full h-full max-h-[260px] sm:max-h-[320px] md:max-h-[340px] lg:max-h-[370px] flex items-center justify-center -translate-y-2 sm:translate-y-0">
 
             {/* Card 1: Left Tablet (Woman with water) */}
-            {/* Mobile: disordered high on left with -12deg tilt; Desktop: compact & refined */}
-            <div className="absolute -left-2 sm:left-[5%] md:left-[9%] lg:left-[12%] -top-2 sm:top-[2%] -rotate-12 sm:-rotate-6 w-[112px] sm:w-[145px] md:w-[170px] lg:w-[190px] rounded-[16px] sm:rounded-[22px] md:rounded-[26px] border-[4px] sm:border-[6px] md:border-[7px] border-[#18202a] bg-[#18202a] shadow-[0_14px_30px_rgba(15,23,42,0.22)] overflow-hidden transition-transform duration-300 hover:scale-105 z-10">
+            <div
+              onClick={() => setLeftFront(leftFront === "tablet" ? "runner" : "tablet")}
+              onMouseEnter={() => setHoveredCard("tablet")}
+              onMouseLeave={() => setHoveredCard(null)}
+              className={`absolute -left-2 sm:left-[5%] md:left-[9%] lg:left-[12%] -top-2 sm:top-[2%] w-[112px] sm:w-[145px] md:w-[170px] lg:w-[190px] rounded-[16px] sm:rounded-[22px] md:rounded-[26px] border-[4px] sm:border-[6px] md:border-[7px] border-[#18202a] bg-[#18202a] overflow-hidden transition-all duration-500 [transition-timing-function:cubic-bezier(0.34,1.45,0.64,1)] cursor-pointer select-none active:scale-95 ${
+                isTabletFront
+                  ? "z-30 shadow-[0_24px_48px_rgba(15,23,42,0.38)] -rotate-3 sm:rotate-0 scale-105 sm:scale-108 -translate-y-2 sm:-translate-y-3 opacity-100"
+                  : "z-10 shadow-[0_12px_24px_rgba(15,23,42,0.18)] -rotate-12 sm:-rotate-6 scale-95 sm:scale-100 opacity-80 sm:opacity-90"
+              }`}
+            >
               <div className="w-1.5 h-1.5 bg-slate-700 rounded-full mx-auto my-0.5 hidden sm:block" />
               <div className="relative aspect-[3/4] w-full rounded-[10px] sm:rounded-[14px] overflow-hidden">
                 <Image
@@ -100,8 +124,16 @@ export default function HeroSection() {
             </div>
 
             {/* Card 2: Front-Left Card with white bezel (30k+ Runner) */}
-            {/* Mobile: tilted disorderly at +7deg overlapping bottom-left; Desktop: compact -10deg */}
-            <div className="absolute left-0 sm:left-[3%] md:left-[6%] lg:left-[9%] bottom-2 sm:bottom-[3%] rotate-[7deg] sm:-rotate-10 w-[110px] sm:w-[140px] md:w-[165px] lg:w-[185px] bg-white rounded-xl sm:rounded-2xl p-1.5 sm:p-2 shadow-[0_16px_32px_rgba(15,23,42,0.18)] border-[2px] sm:border-[2.5px] border-white transition-transform duration-300 hover:scale-105 z-20">
+            <div
+              onClick={() => setLeftFront(leftFront === "runner" ? "tablet" : "runner")}
+              onMouseEnter={() => setHoveredCard("runner")}
+              onMouseLeave={() => setHoveredCard(null)}
+              className={`absolute left-0 sm:left-[3%] md:left-[6%] lg:left-[9%] bottom-2 sm:bottom-[3%] w-[110px] sm:w-[140px] md:w-[165px] lg:w-[185px] bg-white rounded-xl sm:rounded-2xl p-1.5 sm:p-2 border-[2px] sm:border-[2.5px] border-white transition-all duration-500 [transition-timing-function:cubic-bezier(0.34,1.45,0.64,1)] cursor-pointer select-none active:scale-95 ${
+                isRunnerFront
+                  ? "z-30 shadow-[0_24px_48px_rgba(15,23,42,0.32)] rotate-[4deg] sm:-rotate-6 scale-105 sm:scale-108 -translate-y-2 sm:-translate-y-2 opacity-100"
+                  : "z-10 shadow-[0_10px_20px_rgba(15,23,42,0.15)] rotate-[-14deg] sm:-rotate-14 scale-90 sm:scale-95 opacity-80 sm:opacity-90"
+              }`}
+            >
               <div className="relative aspect-[4/3] w-full rounded-lg sm:rounded-xl overflow-hidden">
                 <Image
                   src="/images/runner.jpg"
@@ -120,8 +152,7 @@ export default function HeroSection() {
             </div>
 
             {/* Card 3: Centerpiece Supplement Bottle (VISIONOVA) */}
-            {/* Compact scaled bottle on desktop, elevated on mobile */}
-            <div className="relative z-30 h-[92%] sm:h-[95%] max-h-[230px] sm:max-h-[290px] md:max-h-[310px] lg:max-h-[330px] aspect-[3/4] transition-transform duration-300 hover:scale-105 select-none pointer-events-auto flex items-end justify-center -rotate-2 sm:-rotate-1">
+            <div className="relative z-20 h-[92%] sm:h-[95%] max-h-[230px] sm:max-h-[290px] md:max-h-[310px] lg:max-h-[330px] aspect-[3/4] transition-transform duration-300 hover:scale-105 select-none pointer-events-auto flex items-end justify-center -rotate-2 sm:-rotate-1">
               <div className="relative w-full h-full drop-shadow-[0_18px_30px_rgba(15,23,42,0.22)]">
                 <Image
                   src="/images/bottle.jpg"
@@ -133,32 +164,40 @@ export default function HeroSection() {
                 />
               </div>
 
-              {/* Floating Capsule 1 (Top right) */}
-              <div className="absolute -top-2 -right-3 sm:-right-6 w-7 sm:w-10 md:w-12 aspect-square animate-float-capsule pointer-events-none drop-shadow-md">
+              {/* Floating Specs 1 (Top right) */}
+              <div className="absolute -top-3 sm:-top-5 -right-5 sm:-right-9 md:-right-12 w-14 sm:w-20 md:w-24 aspect-[2/1] animate-float-capsule pointer-events-none drop-shadow-lg -rotate-12">
                 <Image
-                  src="/images/capsule.jpg"
-                  alt="Floating capsule supplement"
+                  src="/specs/spec1.png"
+                  alt="Aarya Eye Care optical frames"
                   fill
-                  className="object-contain rounded-full"
-                  sizes="50px"
+                  className="object-contain"
+                  sizes="100px"
                 />
               </div>
 
-              {/* Floating Capsule 2 (Mid right) */}
-              <div className="absolute top-16 sm:top-20 -right-4 sm:-right-8 w-6 sm:w-8 md:w-10 aspect-square animate-float-gentle pointer-events-none drop-shadow-md rotate-45">
+              {/* Floating Specs 2 (Mid right) */}
+              <div className="absolute top-14 sm:top-18 md:top-22 -right-6 sm:-right-10 md:-right-14 w-16 sm:w-22 md:w-26 aspect-[16/10] animate-float-gentle pointer-events-none drop-shadow-xl rotate-6">
                 <Image
-                  src="/images/capsule.jpg"
-                  alt="Floating capsule supplement"
+                  src="/specs/spec2.webp"
+                  alt="Modern precision vision specs"
                   fill
-                  className="object-contain rounded-full"
-                  sizes="40px"
+                  className="object-contain"
+                  sizes="110px"
                 />
               </div>
             </div>
 
             {/* Card 4: Top-Right Card (20k+ Satisfied Senior) */}
-            {/* Mobile: shifted high on top-right with disorderly +13deg tilt; Desktop: compact */}
-            <div className="absolute -right-2 sm:right-[5%] md:right-[8%] lg:right-[11%] -top-3 sm:top-[2%] rotate-[13deg] sm:rotate-6 w-[108px] sm:w-[140px] md:w-[165px] lg:w-[185px] bg-[#6caad8]/25 backdrop-blur-md rounded-xl sm:rounded-2xl p-1.5 sm:p-2 shadow-[0_14px_28px_rgba(15,23,42,0.15)] border border-white/70 transition-transform duration-300 hover:scale-105 z-10">
+            <div
+              onClick={() => setRightFront(rightFront === "senior" ? "capsule" : "senior")}
+              onMouseEnter={() => setHoveredCard("senior")}
+              onMouseLeave={() => setHoveredCard(null)}
+              className={`absolute -right-2 sm:right-[5%] md:right-[8%] lg:right-[11%] -top-3 sm:top-[2%] w-[108px] sm:w-[140px] md:w-[165px] lg:w-[185px] bg-[#6caad8]/25 backdrop-blur-md rounded-xl sm:rounded-2xl p-1.5 sm:p-2 border border-white/70 transition-all duration-500 [transition-timing-function:cubic-bezier(0.34,1.45,0.64,1)] cursor-pointer select-none active:scale-95 ${
+                isSeniorFront
+                  ? "z-30 shadow-[0_24px_48px_rgba(15,23,42,0.30)] rotate-[3deg] sm:rotate-2 scale-105 sm:scale-108 -translate-y-2 sm:-translate-y-3 opacity-100"
+                  : "z-10 shadow-[0_10px_20px_rgba(15,23,42,0.14)] rotate-[14deg] sm:rotate-6 scale-90 sm:scale-95 opacity-80 sm:opacity-90"
+              }`}
+            >
               <div className="relative aspect-[4/3] w-full rounded-lg sm:rounded-xl overflow-hidden">
                 <Image
                   src="/images/senior-man.jpg"
@@ -175,8 +214,16 @@ export default function HeroSection() {
             </div>
 
             {/* Card 5: Bottom-Right Dark Card (Woman with Capsule) */}
-            {/* Mobile: disordered tilt at -6deg overlapping bottom right; Desktop: compact +10deg */}
-            <div className="absolute -right-1 sm:right-[2%] md:right-[5%] lg:right-[8%] bottom-1 sm:bottom-[3%] -rotate-[6deg] sm:rotate-10 w-[112px] sm:w-[145px] md:w-[170px] lg:w-[190px] bg-[#0c1622] text-white rounded-xl sm:rounded-2xl p-1.5 sm:p-2 shadow-[0_18px_36px_rgba(15,23,42,0.28)] border-[2px] sm:border-[2.5px] border-[#1d2734] transition-transform duration-300 hover:scale-105 z-20">
+            <div
+              onClick={() => setRightFront(rightFront === "capsule" ? "senior" : "capsule")}
+              onMouseEnter={() => setHoveredCard("capsule")}
+              onMouseLeave={() => setHoveredCard(null)}
+              className={`absolute -right-1 sm:right-[2%] md:right-[5%] lg:right-[8%] bottom-1 sm:bottom-[3%] w-[112px] sm:w-[145px] md:w-[170px] lg:w-[190px] bg-[#0c1622] text-white rounded-xl sm:rounded-2xl p-1.5 sm:p-2 border-[2px] sm:border-[2.5px] border-[#1d2734] transition-all duration-500 [transition-timing-function:cubic-bezier(0.34,1.45,0.64,1)] cursor-pointer select-none active:scale-95 ${
+                isCapsuleFront
+                  ? "z-30 shadow-[0_26px_52px_rgba(15,23,42,0.38)] -rotate-[3deg] sm:rotate-6 scale-105 sm:scale-108 -translate-y-2 sm:-translate-y-2 opacity-100"
+                  : "z-10 shadow-[0_12px_22px_rgba(15,23,42,0.18)] rotate-[14deg] sm:rotate-12 scale-90 sm:scale-95 opacity-80 sm:opacity-90"
+              }`}
+            >
               <div className="relative aspect-square w-full rounded-lg sm:rounded-xl overflow-hidden mb-1">
                 <Image
                   src="/images/woman-capsule.jpg"
