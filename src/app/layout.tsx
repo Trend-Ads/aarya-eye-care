@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Plus_Jakarta_Sans } from "next/font/google";
+import { Barlow_Condensed, Plus_Jakarta_Sans, Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const barlowCondensed = Barlow_Condensed({
@@ -12,6 +12,20 @@ const barlowCondensed = Barlow_Condensed({
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const outfit = Outfit({
+  variable: "--font-brand",
+  weight: ["600", "700", "800", "900"],
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-serif",
+  weight: ["500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +44,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${plusJakarta.variable} antialiased`}
+      className={`${barlowCondensed.variable} ${plusJakarta.variable} ${outfit.variable} ${playfair.variable} antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-sky-200">
         {children}

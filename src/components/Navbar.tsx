@@ -17,12 +17,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { label: "Specialities", href: "#specialities" },
+    { label: "Home", href: "/" },
+    { label: "Facilities", href: "#facilities" },
     { label: "Treatments", href: "#treatments" },
-    { label: "Technology", href: "#technology" },
-    { label: "Doctors", href: "#doctors" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Branches", href: "#branches" },
   ];
 
   return (

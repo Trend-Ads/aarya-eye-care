@@ -7,6 +7,8 @@
 
 @theme {
   --font-display: var(--font-heading), "Barlow Condensed", sans-serif;
+  --font-brand: var(--font-brand), "Outfit", sans-serif;
+  --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
 }
 
@@ -19,6 +21,14 @@ body {
 
 .font-display {
   font-family: var(--font-heading), "Barlow Condensed", sans-serif;
+}
+
+.font-brand {
+  font-family: var(--font-brand), "Outfit", sans-serif;
+}
+
+.font-serif {
+  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
 }
 
 /* Smooth marquee animation for brand ticker */

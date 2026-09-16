@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ScienceLifestyleSection from "@/components/ScienceLifestyleSection";
+import ServicesSection from "@/components/ServicesSection";
 
 export default function Home() {
   return (
@@ -13,6 +14,9 @@ export default function Home() {
 
       {/* 2. Science & Lifestyle Section */}
       <ScienceLifestyleSection />
+
+      {/* 3. Services Section (8 Specialities in reference bento layout) */}
+      <ServicesSection />
     </main>
   );
 }

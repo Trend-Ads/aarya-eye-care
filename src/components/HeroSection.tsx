@@ -115,9 +115,13 @@ export default function HeroSection() {
           {/* Shadow in the background of the title and description */}
           <div className="absolute -inset-x-8 -inset-y-6 bg-radial from-black/65 via-black/30 to-transparent blur-2xl pointer-events-none -z-10" />
 
-          <h1 className="font-display font-black text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] tracking-tight text-white leading-[0.96] uppercase drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] [text-shadow:_0_3px_16px_rgba(0,0,0,0.95)]">
-            Aarya Eye Care <br className="hidden sm:inline" />
-            <span className="text-[#ff7a60] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">Super Speciality</span> Eye Care Hospital
+          <h1 className="leading-[0.96] text-center">
+            <span className="font-brand font-black text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] tracking-[0.03em] text-white block uppercase drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] [text-shadow:_0_3px_16px_rgba(0,0,0,0.95)]">
+              Aarya Eye Care
+            </span>
+            <span className="font-display font-black text-lg sm:text-2xl md:text-3xl lg:text-[36px] xl:text-[42px] tracking-wide text-slate-100 block uppercase mt-1 sm:mt-1.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.9)] [text-shadow:_0_2px_12px_rgba(0,0,0,0.9)]">
+              <span className="text-[#ff7a60] drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">Super Speciality</span> Eye Care Hospital
+            </span>
           </h1>
 
           <p className="mt-2 sm:mt-3 text-white/95 text-xs sm:text-[13.5px] md:text-[15px] leading-relaxed max-w-2xl mx-auto font-medium drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] [text-shadow:_0_1px_8px_rgba(0,0,0,0.9)] line-clamp-2 sm:line-clamp-none">
