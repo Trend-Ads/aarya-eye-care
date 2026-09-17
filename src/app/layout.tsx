@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Barlow_Condensed, Plus_Jakarta_Sans, Outfit, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import SmoothScrolling from "@/components/SmoothScrolling";
 
 const barlowCondensed = Barlow_Condensed({
   variable: "--font-heading",
@@ -47,7 +48,9 @@ export default function RootLayout({
       className={`${barlowCondensed.variable} ${plusJakarta.variable} ${outfit.variable} ${playfair.variable} antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-sky-200">
-        {children}
+        <SmoothScrolling>
+          {children}
+        </SmoothScrolling>
       </body>
     </html>
   );
