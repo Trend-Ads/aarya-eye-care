@@ -35,28 +35,28 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full h-[100dvh] max-h-[100dvh] bg-[#f7f8f4] flex flex-col justify-between overflow-hidden pt-14 sm:pt-16 md:pt-18 lg:pt-20 pb-16 sm:pb-16 md:pb-3 px-3 sm:px-6 lg:px-12 select-none"
+      className="relative w-full h-[100dvh] max-h-[100dvh] bg-[#F2EBEB] flex flex-col justify-between overflow-hidden pt-14 sm:pt-16 md:pt-18 lg:pt-20 pb-16 sm:pb-16 md:pb-3 px-3 sm:px-6 lg:px-12 select-none"
     >
       {/* ========================================================= */}
       {/* 1. BACKGROUND ENVIRONMENT: hero3.jpg with feathered blend */}
       {/* ========================================================= */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Subtle radial ambient warmth */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[35vh] bg-gradient-to-b from-white via-white/80 to-transparent blur-2xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[35vh] bg-gradient-to-b from-[#F2EBEB] via-[#F2EBEB]/60 to-transparent blur-2xl" />
 
-        {/* Surgical Suite Background (hero3.jpg) emerging from lower half */}
-        <div className="absolute inset-0 top-[20%] sm:top-[16%]">
+        {/* Surgical Suite Background (hero3.jpg) covering full area */}
+        <div className="absolute inset-0">
           <Image
             src="/hero/hero3.jpg"
             alt="Aarya Eye Care Surgical Operating Suite"
             fill
             priority
-            className="object-cover object-bottom filter brightness-[0.98] contrast-[1.02] saturate-[1.15]"
+            className="object-cover object-center scale-110 filter brightness-[0.98] contrast-[1.02] saturate-[1.15]"
             sizes="100vw"
           />
-          {/* Feathered gradient masks to blend upwards into #f7f8f4 */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#f7f8f4]/95 via-[#f7f8f4]/60 to-[#f7f8f4]" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#f7f8f4] via-[#f7f8f4]/40 to-[#f7f8f4]/80" />
+          {/* Feathered gradient masks to blend upwards into #F2EBEB */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F2EBEB]/85 via-[#F2EBEB]/50 to-[#F2EBEB]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F2EBEB]/40 via-[#F2EBEB]/30 to-[#F2EBEB]/70" />
         </div>
       </div>
 
@@ -117,12 +117,12 @@ export default function HeroSection() {
         >
           <div className="w-full flex items-center justify-between max-w-7xl">
             {/* Left Word: CLEAR */}
-            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#1e2722] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
               CLEAR
             </span>
 
             {/* Right Word: VISION */}
-            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#1e2722] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
               VISION
             </span>
           </div>
@@ -196,7 +196,6 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Bottom-Left CTA Pill (matching reference "Order Now" lime pill) */}
         <motion.div 
           className="absolute bottom-2 left-0 sm:left-4 z-30"
           initial={{ opacity: 0, x: -30 }}
@@ -205,10 +204,10 @@ export default function HeroSection() {
         >
           <Link
             href="#appointment"
-            className="bg-[#d6f075] hover:bg-[#c6e35c] text-slate-900 font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-black/10 shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group cursor-pointer"
+            className="bg-black hover:bg-slate-900 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-white/10 shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group cursor-pointer"
           >
             <span>Book Consultation</span>
-            <span className="w-5 h-5 rounded-full bg-slate-900 text-white flex items-center justify-center text-[10px] group-hover:rotate-45 transition-transform duration-200">
+            <span className="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center text-[10px] group-hover:rotate-45 transition-transform duration-200">
               ↗
             </span>
           </Link>

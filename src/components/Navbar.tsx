@@ -147,10 +147,10 @@ export default function Navbar() {
       {/* ========================================================= */}
       <header className="fixed top-2.5 sm:top-3.5 md:top-4.5 left-0 right-0 z-50 px-3 sm:px-6 max-w-5xl mx-auto pointer-events-none transition-all duration-300">
         <nav
-          className={`pointer-events-auto backdrop-blur-md rounded-full px-5 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 flex items-center justify-between transition-all duration-200 ${
+          className={`pointer-events-auto rounded-full px-5 sm:px-7 md:px-8 py-3 sm:py-3.5 md:py-4 flex items-center justify-between transition-all duration-500 ease-in-out ${
             scrolled
-              ? "bg-[#2A835F] shadow-[0_12px_36px_rgba(42,131,95,0.4)] border border-white/20"
-              : "bg-[#2A835F]/95 shadow-[0_8px_28px_rgba(42,131,95,0.3)] border border-white/25"
+              ? "bg-[#234623] backdrop-blur-md shadow-[0_12px_36px_rgba(35,70,35,0.4)] border border-white/20 translate-y-0"
+              : "bg-transparent backdrop-blur-none shadow-none border border-transparent translate-y-2"
           }`}
         >
           {/* Brand Logo & Name */}
@@ -167,7 +167,7 @@ export default function Navbar() {
                 priority
               />
             </div>
-            <span className="font-extrabold text-base sm:text-lg md:text-xl tracking-tight text-white font-sans whitespace-nowrap">
+            <span className={`font-extrabold text-base sm:text-lg md:text-xl tracking-tight font-sans whitespace-nowrap transition-colors duration-500 ${scrolled ? "text-white" : "text-[#234623]"}`}>
               Aarya Eye Care
             </span>
           </Link>
@@ -180,10 +180,10 @@ export default function Navbar() {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className={`text-[13.5px] lg:text-[14.5px] font-medium transition-all ${
+                  className={`text-[13.5px] lg:text-[14.5px] transition-all duration-300 ${
                     isActive
-                      ? "text-white font-bold bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs shadow-2xs"
-                      : "text-emerald-100 hover:text-white"
+                      ? (scrolled ? "text-white font-bold bg-white/20 px-3 py-1 rounded-full backdrop-blur-xs shadow-2xs" : "text-[#234623] font-bold bg-[#234623]/10 px-3 py-1 rounded-full")
+                      : (scrolled ? "text-emerald-100 hover:text-white font-medium" : "text-[#234623]/70 hover:text-[#234623] font-medium")
                   }`}
                 >
                   {item.label}
@@ -197,10 +197,14 @@ export default function Navbar() {
             {/* Desktop Full CTA (Crisp contrast white pill) */}
             <Link
               href="#appointment"
-              className="hidden sm:inline-flex group items-center gap-2.5 bg-white hover:bg-emerald-50 text-[#2A835F] pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-2 rounded-full text-xs sm:text-sm font-bold shadow-md transition-all hover:scale-105 active:scale-95"
+              className={`hidden sm:inline-flex group items-center gap-2.5 pl-4 sm:pl-5 pr-1.5 sm:pr-2 py-2 rounded-full text-xs sm:text-sm font-bold shadow-md transition-all duration-300 hover:scale-105 active:scale-95 ${
+                scrolled ? "bg-white hover:bg-stone-50 text-[#9A4F3C]" : "bg-[#9A4F3C] hover:bg-[#834131] text-white"
+              }`}
             >
               <span>Book Appointment</span>
-              <span className="w-6 h-6 rounded-full bg-[#2A835F] text-white flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+              <span className={`w-6 h-6 rounded-full flex items-center justify-center transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 ${
+                scrolled ? "bg-[#9A4F3C] text-white" : "bg-white text-[#9A4F3C]"
+              }`}>
                 <svg
                   width="12"
                   height="12"
@@ -220,10 +224,14 @@ export default function Navbar() {
             {/* Mobile Compact CTA */}
             <Link
               href="#appointment"
-              className="sm:hidden inline-flex items-center gap-1.5 bg-white hover:bg-emerald-50 text-[#2A835F] pl-3.5 pr-2 py-1.5 rounded-full text-xs font-bold shadow-sm"
+              className={`sm:hidden inline-flex items-center gap-1.5 pl-3.5 pr-2 py-1.5 rounded-full text-xs font-bold shadow-sm transition-colors duration-300 ${
+                scrolled ? "bg-white hover:bg-stone-50 text-[#9A4F3C]" : "bg-[#9A4F3C] hover:bg-[#834131] text-white"
+              }`}
             >
               <span>Book</span>
-              <span className="w-5 h-5 rounded-full bg-[#2A835F] text-white flex items-center justify-center text-[10px]">
+              <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] ${
+                scrolled ? "bg-[#9A4F3C] text-white" : "bg-white text-[#9A4F3C]"
+              }`}>
                 ↗
               </span>
             </Link>
@@ -250,13 +258,13 @@ export default function Navbar() {
                 onClick={() => setActiveSection(item.id)}
                 className={`flex-1 flex flex-col items-center justify-center py-1 transition-colors duration-150 relative ${
                   isActive
-                    ? "text-[#2A835F]"
+                    ? "text-[#234623]"
                     : "text-slate-500 hover:text-slate-900"
                 }`}
               >
                 {/* Top Active Line Indicator */}
                 {isActive && (
-                  <span className="absolute -top-2 w-8 h-0.5 bg-[#2A835F] rounded-full" />
+                  <span className="absolute -top-2 w-8 h-0.5 bg-[#234623] rounded-full" />
                 )}
 
                 {/* Tab Icon */}
@@ -267,7 +275,7 @@ export default function Navbar() {
                 {/* Tab Label */}
                 <span
                   className={`text-[10px] tracking-tight font-medium ${
-                    isActive ? "font-bold text-[#2A835F]" : "text-slate-600"
+                    isActive ? "font-bold text-[#234623]" : "text-slate-600"
                   }`}
                 >
                   {item.label}
