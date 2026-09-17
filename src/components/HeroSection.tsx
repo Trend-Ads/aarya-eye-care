@@ -117,12 +117,12 @@ export default function HeroSection() {
         >
           <div className="w-full flex items-center justify-between max-w-7xl">
             {/* Left Word: CLEAR */}
-            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
               CLEAR
             </span>
 
             {/* Right Word: VISION */}
-            <span className="font-display font-black text-[15vw] sm:text-[13.5vw] lg:text-[12.5vw] tracking-tighter text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
               VISION
             </span>
           </div>

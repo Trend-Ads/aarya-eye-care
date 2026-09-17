@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import VisionSection from "@/components/VisionSection";
 import ServicesSection from "@/components/ServicesSection";
 import DoctorsSection from "@/components/DoctorsSection";
 import AppointmentBookingSection from "@/components/AppointmentBookingSection";
@@ -16,6 +17,9 @@ export default function Home() {
 
         {/* 1. Hero Section */}
         <HeroSection />
+
+        {/* 1.5 Parallax Section */}
+        <VisionSection />
 
         {/* 2. Treatments Section (Clean Cards with Background Image & Title Only) */}
         <ServicesSection />
