@@ -8,7 +8,7 @@ export default function Footer() {
     <div className="w-full">
       <footer
         id="branches"
-        className="w-full bg-[#0d1c16] text-slate-300 px-5 sm:px-8 lg:px-16 pt-7 sm:pt-12 md:pt-14 pb-20 md:pb-10 shadow-2xl relative overflow-hidden"
+        className="w-full bg-[#0d1c16] text-slate-300 px-5 sm:px-8 lg:px-16 pt-10 sm:pt-16 md:pt-20 pb-20 md:pb-10 shadow-2xl relative overflow-hidden rounded-t-[2.5rem] sm:rounded-t-[4rem]"
       >
         <motion.div 
           className="max-w-7xl mx-auto"
