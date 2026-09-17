@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 interface TreatmentItem {
   id: string;
@@ -12,6 +13,12 @@ interface TreatmentItem {
 }
 
 export default function ServicesSection() {
+  const containerRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"]
+  });
+
   const treatments: TreatmentItem[] = [
     {
       id: "cataract",
@@ -51,25 +58,19 @@ export default function ServicesSection() {
     },
   ];
 
+  // We have 6 items, so we move the container by -83.33% to show the last one fully
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-83.333%"]);
+
   return (
-    <section
+    <section 
+      ref={containerRef} 
       id="treatments"
-      className="w-full bg-[#f8fafc] py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-12 relative select-none border-t border-slate-200/70"
+      className="w-full bg-[#f8fafc] relative h-[400vh] select-none"
     >
-      <div className="max-w-7xl mx-auto space-y-8 sm:space-y-12">
-        {/* ========================================================= */}
-        {/* Header: Title and Book Consultation Button                */}
-        {/* ========================================================= */}
-        {/* ========================================================= */}
-        {/* Header: Title and Book Consultation Button                */}
-        {/* ========================================================= */}
-        <motion.div 
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-2 border-b border-slate-200/80"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-        >
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32 pb-12 border-t border-slate-200/70">
+        
+        {/* Header */}
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 z-20 mb-8 shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-1 sm:space-y-1.5">
             <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#2A835F] flex items-center gap-2">
               <span className="w-5 h-[2px] bg-[#2A835F] inline-block rounded-full" />
@@ -87,23 +88,18 @@ export default function ServicesSection() {
             <span>Book Consultation</span>
             <span>↗</span>
           </Link>
-        </motion.div>
+        </div>
 
-        {/* ========================================================= */}
-        {/* Treatment Cards Grid: Background Image & Title Only       */}
-        {/* ========================================================= */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {treatments.map((item, index) => (
-            <motion.div
-              key={item.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <Link
-                href="#appointment"
-                className="group relative h-64 sm:h-72 md:h-80 rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-5 sm:p-6 select-none block"
+        {/* Horizontal Scrolling Track */}
+        <div className="flex-1 relative w-full flex items-center">
+          <motion.div 
+            className="flex gap-6 md:gap-12 px-4 sm:px-6 lg:px-12 h-[50vh] md:h-[65vh]" 
+            style={{ x, width: `${treatments.length * 100}vw` }}
+          >
+            {treatments.map((item, index) => (
+              <div
+                key={item.id}
+                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-slate-200/50"
               >
                 {/* Background Image */}
                 <Image
@@ -111,32 +107,57 @@ export default function ServicesSection() {
                   alt={item.title}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 60vw, 40vw"
                 />
 
                 {/* Dark Gradient Overlay for title clarity */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 group-hover:from-black/90 transition-all duration-300" />
 
                 {/* Subtle top badge for category */}
-                <div className="absolute top-4 left-4 z-10">
+                <div className="absolute top-6 left-6 z-10">
                   <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25">
                     {item.category}
                   </span>
                 </div>
 
-                {/* Title & Arrow at Bottom */}
-                <div className="relative z-10 flex items-end justify-between gap-3">
-                  <h3 className="font-display font-black text-2xl sm:text-3xl text-white uppercase tracking-tight leading-none group-hover:text-emerald-300 transition-colors drop-shadow-xs">
-                    {item.title}
-                  </h3>
-                  <span className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm group-hover:bg-[#2A835F] group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-xs">
-                    ↗
+                {/* Number Indicator (Like the story section) */}
+                <div className="absolute top-6 right-6 z-10">
+                  <span className="text-white/60 font-mono text-xl sm:text-2xl font-bold">
+                    0{index + 1}
                   </span>
                 </div>
-              </Link>
-            </motion.div>
-          ))}
+
+                {/* Title & Arrow at Bottom */}
+                <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
+                  <div className="flex items-end justify-between gap-3">
+                    <h3 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-tight leading-[0.9] group-hover:text-emerald-300 transition-colors drop-shadow-xs max-w-[80%]">
+                      {item.title}
+                    </h3>
+                    <Link
+                      href="#appointment"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#2A835F] group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-xs cursor-pointer pointer-events-auto"
+                    >
+                      ↗
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
+
+        {/* Progress Bar at the bottom */}
+        <div className="absolute bottom-6 left-0 right-0 px-4 sm:px-6 lg:px-12 z-20">
+          <div className="max-w-7xl mx-auto">
+            <div className="w-full h-[3px] bg-slate-200 rounded-full overflow-hidden">
+              <motion.div 
+                className="h-full bg-[#2A835F] origin-left"
+                style={{ scaleX: scrollYProgress }}
+              />
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

@@ -199,7 +199,7 @@ export default function DoctorsSection() {
 
         {/* Doctors Grid - matching reference layout with full-bleed image and soft tinted bottom gradient */}
         <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-10"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 mt-6 sm:mt-8"
           layout
         >
           <AnimatePresence>
@@ -225,7 +225,7 @@ export default function DoctorsSection() {
               >
                 <Link
                   href="#appointment"
-                  className="relative w-full aspect-[3/4.2] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-4 sm:p-5 group select-none cursor-pointer block"
+                  className="relative w-full aspect-[3/4.2] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-4 group select-none cursor-pointer block"
                 >
                   {/* Doctor Photo */}
                   <Image
@@ -233,7 +233,7 @@ export default function DoctorsSection() {
                     alt={doc.name}
                     fill
                     className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
                   />
 
                   {/* Soft Tinted Gradient Overlay matching reference image */}
