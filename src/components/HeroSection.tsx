@@ -35,14 +35,14 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative w-full h-[100dvh] max-h-[100dvh] bg-[#F2EBEB] flex flex-col justify-between overflow-hidden pt-14 sm:pt-16 md:pt-18 lg:pt-20 pb-16 sm:pb-16 md:pb-3 px-3 sm:px-6 lg:px-12 select-none"
+      className="relative w-full h-[100dvh] max-h-[100dvh] bg-[#F2EBDD] flex flex-col justify-between overflow-hidden pt-14 sm:pt-16 md:pt-18 lg:pt-20 pb-16 sm:pb-16 md:pb-3 px-3 sm:px-6 lg:px-12 select-none"
     >
       {/* ========================================================= */}
       {/* 1. BACKGROUND ENVIRONMENT: hero3.jpg with feathered blend */}
       {/* ========================================================= */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {/* Subtle radial ambient warmth */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[35vh] bg-gradient-to-b from-[#F2EBEB] via-[#F2EBEB]/60 to-transparent blur-2xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80vw] h-[35vh] bg-gradient-to-b from-[#F2EBDD] via-[#F2EBDD]/60 to-transparent blur-2xl" />
 
         {/* Surgical Suite Background (hero3.jpg) covering full area */}
         <div className="absolute inset-0">
@@ -51,18 +51,22 @@ export default function HeroSection() {
             alt="Aarya Eye Care Surgical Operating Suite"
             fill
             priority
-            className="object-cover object-center scale-110 filter brightness-[0.98] contrast-[1.02] saturate-[1.15]"
+            className="object-cover object-center scale-110 filter brightness-[0.98] contrast-[1.02] saturate-[1.15] mix-blend-multiply opacity-90"
             sizes="100vw"
           />
-          {/* Feathered gradient masks to blend upwards into #F2EBEB */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#F2EBEB]/85 via-[#F2EBEB]/50 to-[#F2EBEB]/40" />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F2EBEB]/40 via-[#F2EBEB]/30 to-[#F2EBEB]/70" />
-          {/* Symmetrical Grid Lines Texture Overlay */}
+          {/* Warm lighting gradient */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(255,248,230,0.4),transparent_60%)] mix-blend-overlay" />
+          
+          {/* Feathered gradient masks to blend upwards into #F2EBDD */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#F2EBDD]/90 via-[#F2EBDD]/60 to-[#F2EBDD]/40" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F2EBDD]/50 via-[#F2EBDD]/30 to-[#F2EBDD]/70" />
+          
+          {/* Subtle Paper/Fabric Grain Texture Overlay */}
           <div 
-            className="absolute inset-0 z-0 pointer-events-none opacity-[0.8] mix-blend-overlay"
+            className="absolute inset-0 z-0 pointer-events-none"
             style={{ 
-              backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px)',
-              backgroundSize: '64px 64px'
+              backgroundImage: 'radial-gradient(rgba(63, 80, 56, 0.035) 1px, transparent 1px)',
+              backgroundSize: '4px 4px'
             }}
           />
         </div>
@@ -81,7 +85,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-end gap-1.5 sm:gap-2 flex-shrink-0 pt-1 sm:pt-2">
           <div className="flex items-center gap-2 sm:gap-3">
             {/* Card 1: Pediatric & Family Exam */}
-            <div className="w-13 h-13 sm:w-18 sm:h-18 md:w-22 md:h-22 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-md border-2 border-white relative group">
+            <div className="w-13 h-13 sm:w-18 sm:h-18 md:w-22 md:h-22 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_12px_35px_rgba(48,45,35,0.10)] border border-[rgba(63,80,56,0.15)] relative group">
               <Image
                 src="/hero/hero1.webp"
                 alt="Pediatric Eye Care"
@@ -92,7 +96,7 @@ export default function HeroSection() {
             </div>
 
             {/* Card 2: Slit-Lamp Diagnostic Exam */}
-            <div className="w-13 h-13 sm:w-18 sm:h-18 md:w-22 md:h-22 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-md border-2 border-white relative group">
+            <div className="w-13 h-13 sm:w-18 sm:h-18 md:w-22 md:h-22 rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-[0_12px_35px_rgba(48,45,35,0.10)] border border-[rgba(63,80,56,0.15)] relative group">
               <Image
                 src="/hero/hero2.jpg"
                 alt="Comprehensive Eye Examination"
@@ -104,7 +108,7 @@ export default function HeroSection() {
           </div>
 
           {/* Caption below cards */}
-          <p className="hidden sm:block text-[11px] sm:text-xs text-slate-500 font-medium leading-tight max-w-[210px] text-right pt-0.5 tracking-tight">
+          <p className="hidden sm:block text-[11px] sm:text-xs text-[#69775F] font-medium leading-tight max-w-[210px] text-right pt-0.5 tracking-tight">
             Precision Microsurgery &amp; Diagnostics.
             <br />
             NABH Accredited. 100% Compassionate Care.
@@ -125,12 +129,12 @@ export default function HeroSection() {
         >
           <div className="w-full flex items-center justify-between max-w-7xl">
             {/* Left Word: CLEAR */}
-            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#3F5038] uppercase leading-none opacity-15 sm:opacity-20">
               CLEAR
             </span>
 
             {/* Right Word: VISION */}
-            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#9A4F3C] uppercase leading-none opacity-90 sm:opacity-95">
+            <span className="font-serif font-light text-[12vw] sm:text-[10vw] lg:text-[9vw] tracking-widest text-[#3F5038] uppercase leading-none opacity-15 sm:opacity-20">
               VISION
             </span>
           </div>
@@ -140,22 +144,25 @@ export default function HeroSection() {
         <div className="relative z-20 flex flex-col items-center justify-end w-full h-full pointer-events-none">
           {/* Title of Aarya Eye Care just above the hero section PNG image */}
           <motion.div 
-            className="text-center z-25 pointer-events-auto mb-0 sm:mb-2.5"
+            className="text-center z-25 pointer-events-auto mb-0 sm:mb-2.5 relative"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: LOADER_DELAY + 0.3 }}
           >
-            <h1 className="font-display font-black text-4xl sm:text-3xl md:text-4xl lg:text-[42px] uppercase tracking-wider text-slate-900 drop-shadow-xs leading-none">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#A65E3A] mb-2 hidden sm:block opacity-80">
+              Est. 2026
+            </p>
+            <h1 className="font-display font-black text-4xl sm:text-3xl md:text-4xl lg:text-[42px] uppercase tracking-wider text-[#292A25] leading-none">
               Aarya Eye Care
             </h1>
-            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#9A4F3C] mt-1">
+            <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#69775F] mt-1">
               Super Speciality Eye Hospital
             </p>
           </motion.div>
 
           {/* Mobile-only: Two photo cards below the title */}
           <div className="flex sm:hidden items-center justify-center gap-2.5 mt-2 pointer-events-auto">
-            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-md border-2 border-white relative">
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-[0_12px_35px_rgba(48,45,35,0.10)] border border-[rgba(63,80,56,0.15)] relative">
               <Image
                 src="/hero/hero1.webp"
                 alt="Pediatric Eye Care"
@@ -164,7 +171,7 @@ export default function HeroSection() {
                 sizes="56px"
               />
             </div>
-            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-md border-2 border-white relative">
+            <div className="w-14 h-14 rounded-2xl overflow-hidden shadow-[0_12px_35px_rgba(48,45,35,0.10)] border border-[rgba(63,80,56,0.15)] relative">
               <Image
                 src="/hero/hero2.jpg"
                 alt="Comprehensive Eye Examination"
@@ -177,7 +184,7 @@ export default function HeroSection() {
 
           {/* Center PNG: Crossfade Carousel */}
           <motion.div 
-            className="relative h-full w-auto flex items-end justify-center filter drop-shadow-[0_16px_36px_rgba(0,0,0,0.2)]"
+            className="relative h-full w-auto flex items-end justify-center filter drop-shadow-[0_16px_36px_rgba(48,45,35,0.12)]"
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: LOADER_DELAY + 0.5, ease: "easeOut" }}
@@ -212,10 +219,10 @@ export default function HeroSection() {
         >
           <Link
             href="#appointment"
-            className="bg-black hover:bg-slate-900 text-white font-bold text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-white/10 shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 flex items-center gap-2 group cursor-pointer"
+            className="bg-[#3F5038] hover:bg-[#46543E] text-[#F7F2E8] font-medium tracking-wide text-xs sm:text-sm px-4 sm:px-6 py-2 sm:py-2.5 rounded-full border border-[rgba(63,80,56,0.15)] shadow-[0_12px_35px_rgba(48,45,35,0.10)] transition-all duration-300 hover:-translate-y-0.5 flex items-center gap-2 group cursor-pointer"
           >
             <span>Book Consultation</span>
-            <span className="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center text-[10px] group-hover:rotate-45 transition-transform duration-200">
+            <span className="w-5 h-5 rounded-full bg-[#F2EBDD] text-[#3F5038] flex items-center justify-center text-[10px] group-hover:rotate-45 transition-transform duration-300">
               ↗
             </span>
           </Link>
@@ -231,8 +238,8 @@ export default function HeroSection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: LOADER_DELAY + 0.8 }}
       >
-        <div className="bg-white/95 backdrop-blur-md border border-slate-200/90 rounded-full py-1.5 sm:py-2 px-4 sm:px-6 shadow-[0_4px_20px_rgba(0,0,0,0.06)] overflow-hidden">
-          <div className="flex items-center animate-ticker whitespace-nowrap gap-8 text-xs sm:text-sm font-semibold text-slate-800">
+        <div className="bg-[#F4EFE4]/90 backdrop-blur-md border border-[rgba(120,82,58,0.15)] rounded-full py-1.5 sm:py-2 px-4 sm:px-6 shadow-[0_12px_35px_rgba(48,45,35,0.06)] overflow-hidden">
+          <div className="flex items-center animate-ticker whitespace-nowrap gap-8 text-xs sm:text-sm font-semibold text-[#292A25]">
             {[...tickerItems, ...tickerItems, ...tickerItems].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2 flex-shrink-0">
                 <span>{item.text}</span>
