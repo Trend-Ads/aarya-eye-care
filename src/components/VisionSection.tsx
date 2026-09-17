@@ -17,10 +17,19 @@ export default function VisionSection() {
   return (
     <section ref={containerRef} id="vision" className="py-32 md:py-64 bg-slate-900 text-white relative overflow-hidden">
       
-      {/* Texture Overlay */}
+      {/* Ambient Color Textures */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
+        <div className="absolute -top-[20%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-[#2A835F]/15 blur-[120px]" />
+        <div className="absolute bottom-[10%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-sky-600/10 blur-[120px]" />
+      </div>
+
+      {/* Symmetrical Grid Lines Texture Overlay */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-overlay"
-        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
+        className="absolute inset-0 z-0 pointer-events-none opacity-40"
+        style={{ 
+          backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.07) 1px, transparent 1px)',
+          backgroundSize: '64px 64px'
+        }}
       />
 
       {/* Background massive typography (Parallax scrolling) */}
@@ -82,9 +91,9 @@ export default function VisionSection() {
           className="w-full max-w-lg aspect-square rounded-full overflow-hidden mt-16 relative bg-white/5 shadow-2xl p-12 backdrop-blur-sm border border-white/10"
         >
           <motion.img 
-            src="/logos/logo-main.png"
+            src="/logos/named-logo.png"
             alt="Aarya Eye Care Logo"
-            className="w-full h-full object-contain"
+            className="w-full h-full object-contain drop-shadow-[0_0_35px_rgba(255,255,255,0.4)]"
             initial={{ scale: 1.2 }}
             whileInView={{ scale: 1 }}
             transition={{ duration: 1.5, ease: "easeOut" }}
