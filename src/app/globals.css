@@ -8,7 +8,7 @@
 @theme {
   --font-display: var(--font-heading), "Barlow Condensed", sans-serif;
   --font-brand: var(--font-brand), "Outfit", sans-serif;
-  --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
+  --font-serif: var(--font-serif), "Syne", sans-serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-avantgarde: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "ITC Avant Garde Gothic Std", "Avant Garde", "Century Gothic", sans-serif;
   --color-dark-green: #1D4533;
@@ -50,7 +50,7 @@ body {
 }
 
 .font-serif {
-  font-family: var(--font-serif), "Playfair Display", Georgia, serif;
+  font-family: var(--font-serif), "Syne", sans-serif;
 }
 
 /* Smooth marquee animation for brand ticker */

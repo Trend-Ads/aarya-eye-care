@@ -177,7 +177,7 @@ export default function DoctorsSection() {
                 DARKNESS TO LIGHT
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-[#5E3122] tracking-tight">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-normal text-[#5E3122] tracking-tight leading-tight">
               Our Specialists &amp; Surgeons
             </h2>
             <p className="text-xs sm:text-sm text-stone-600 mt-2 max-w-2xl">

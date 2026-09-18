@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Plus_Jakarta_Sans, Outfit, Playfair_Display } from "next/font/google";
+import { Barlow_Condensed, Plus_Jakarta_Sans, Outfit, Syne } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
@@ -24,9 +24,9 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const playfair = Playfair_Display({
+const syne = Syne({
   variable: "--font-serif",
-  weight: ["500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${plusJakarta.variable} ${outfit.variable} ${playfair.variable} antialiased`}
+      className={`${barlowCondensed.variable} ${plusJakarta.variable} ${outfit.variable} ${syne.variable} antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans bg-white text-slate-900 selection:bg-sky-200">
         <SmoothScrolling>

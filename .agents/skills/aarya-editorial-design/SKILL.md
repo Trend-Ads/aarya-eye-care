@@ -31,8 +31,8 @@ This skill encodes the premium editorial SaaS aesthetic refined for the Aarya Ey
    - Font: `AvantGarde Demi` (ITC Avant Garde Gothic Demi, Century Gothic, geometric sans).
    - Style: `font-avantgarde font-semibold tracking-tight leading-none text-[#5E3122]`.
 2. **Headings**:
-   - Primary display: `font-serif font-medium` (Playfair Display) or clean modern sans with relaxed weights.
-   - Avoid aggressive `font-black` (900); prefer `font-medium` (500) to `font-bold` (700).
+   - Primary display: `font-serif font-medium` (Syne — rigid architectural avant-garde font without bulky boldness).
+   - Avoid aggressive `font-black` (900); prefer `font-normal` (400) to `font-medium` (500).
 3. **Brand Tagline ("Darkness to Light")**:
    - Always uppercase: `DARKNESS TO LIGHT`
    - Wide tracking: `tracking-[0.22em]` or `tracking-[0.24em]`

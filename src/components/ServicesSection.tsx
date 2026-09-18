@@ -72,21 +72,27 @@ export default function ServicesSection() {
         {/* Header */}
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 z-20 mb-8 shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-1 sm:space-y-1.5">
-            <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#2A835F] flex items-center gap-2">
-              <span className="w-5 h-[2px] bg-[#2A835F] inline-block rounded-full" />
-              Specialised Clinical Treatments
-            </span>
-            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-[40px] text-slate-900 tracking-tight leading-tight uppercase">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B85338]" />
+              <span className="text-[#B85338] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
+                DARKNESS TO LIGHT
+              </span>
+              <span className="text-[#5E3122]/30 text-xs">•</span>
+              <span className="text-stone-500 text-[11px] font-medium tracking-wide">
+                Specialised Clinical Care
+              </span>
+            </div>
+            <h2 className="font-serif font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#5E3122] tracking-tight leading-tight">
               Our Treatments &amp; Procedures
             </h2>
           </div>
 
           <Link
             href="#appointment"
-            className="self-start sm:self-end px-5 py-2.5 rounded-full bg-[#2A835F] hover:bg-[#236e4f] text-white text-xs font-bold transition-all duration-200 shadow-sm hover:scale-105 active:scale-95 flex items-center gap-1.5"
+            className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1D4533] hover:bg-[#163628] text-white text-xs font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(29,69,51,0.2)] hover:shadow-[0_8px_25px_rgba(29,69,51,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
           >
             <span>Book Consultation</span>
-            <span>↗</span>
+            <span>→</span>
           </Link>
         </div>
 
@@ -99,7 +105,7 @@ export default function ServicesSection() {
             {treatments.map((item, index) => (
               <div
                 key={item.id}
-                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-slate-200/50"
+                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-[#5E3122]/10"
               >
                 {/* Background Image */}
                 <Image
@@ -130,12 +136,12 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-emerald-200 transition-colors max-w-[85%]">
+                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#F9D2BA] transition-colors max-w-[85%]">
                       {item.title}
                     </h3>
                     <Link
                       href="#appointment"
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#2A835F] group-hover:scale-110 transition-all duration-300 flex-shrink-0 shadow-xs cursor-pointer pointer-events-auto"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#1D4533] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs cursor-pointer pointer-events-auto"
                     >
                       ↗
                     </Link>
@@ -149,9 +155,9 @@ export default function ServicesSection() {
         {/* Progress Bar at the bottom */}
         <div className="absolute bottom-6 left-0 right-0 px-4 sm:px-6 lg:px-12 z-20">
           <div className="max-w-7xl mx-auto">
-            <div className="w-full h-[3px] bg-slate-200 rounded-full overflow-hidden">
+            <div className="w-full h-[3px] bg-stone-200 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-[#2A835F] origin-left"
+                className="h-full bg-[#1D4533] origin-left"
                 style={{ scaleX: scrollYProgress }}
               />
             </div>
