@@ -104,9 +104,12 @@ export default function Navbar() {
             
             <div className="flex flex-col justify-center">
               <span 
-                className={`font-extrabold text-[#5E3122] tracking-tight whitespace-nowrap leading-none transition-all duration-300 ${
+                className={`font-avantgarde font-semibold text-[#5E3122] tracking-tight whitespace-nowrap leading-none transition-all duration-300 ${
                   scrolled ? "text-[14px] sm:text-[15.5px]" : "text-base sm:text-lg lg:text-[19.5px]"
                 }`}
+                style={{
+                  fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
+                }}
               >
                 Aarya Eye Care
               </span>
@@ -121,20 +124,32 @@ export default function Navbar() {
           </Link>
 
           {/* Center Links (Desktop) */}
-          <nav className="hidden md:flex items-center gap-2.5 lg:gap-4 text-[13.5px] sm:text-[14px] font-semibold text-[#5E3122]">
+          <nav className="hidden md:flex items-center gap-1.5 lg:gap-3 text-[13.5px] sm:text-[14px] text-[#5E3122]">
             {navLinks.map((item, idx) => {
               const isActive = activeSection === item.id;
               return (
-                <div key={item.id} className="flex items-center gap-2.5 lg:gap-4">
+                <div key={item.id} className="flex items-center gap-1.5 lg:gap-3">
                   <Link
                     href={item.href}
-                    className={`transition-all duration-200 rounded-full px-3 py-1 ${
-                      isActive && scrolled
-                        ? "bg-[#5E3122]/15 text-[#5E3122] font-bold"
-                        : "text-[#5E3122]/85 hover:text-[#5E3122]"
-                    }`}
+                    className="relative group/nav px-2.5 py-1 text-[#5E3122] transition-colors duration-200"
                   >
-                    {item.label}
+                    <span 
+                      className={`transition-colors duration-200 ${
+                        isActive && scrolled
+                          ? "font-bold text-[#5E3122]"
+                          : "font-medium text-[#5E3122]/85 group-hover/nav:text-[#5E3122]"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+                    {/* Animated Underline on Hover */}
+                    <span 
+                      className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#5E3122] rounded-full transition-all duration-300 origin-left ease-out ${
+                        isActive && scrolled 
+                          ? "scale-x-100 opacity-100" 
+                          : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                      }`}
+                    />
                   </Link>
                   {idx < navLinks.length - 1 && (
                     <span className="text-[#5E3122]/30 text-xs pointer-events-none">•</span>
@@ -201,7 +216,12 @@ export default function Navbar() {
                   />
                 </div>
                 <div className="flex flex-col">
-                  <span className="font-bold text-base text-neutral-950 tracking-tight leading-none">
+                  <span 
+                    className="font-avantgarde font-semibold text-base text-neutral-950 tracking-tight leading-none"
+                    style={{
+                      fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
+                    }}
+                  >
                     Aarya Eye Care
                   </span>
                   <span className="text-[9px] font-bold tracking-[0.2em] text-[#B85338] uppercase leading-none mt-1">

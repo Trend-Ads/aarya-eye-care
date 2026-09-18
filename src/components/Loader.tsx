@@ -1,64 +1,73 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export default function Loader() {
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] bg-[#f7f8f4] flex flex-col items-center justify-center pointer-events-none"
+      className="fixed inset-0 z-[9999] bg-[#F9D2BA] flex flex-col items-center justify-center pointer-events-none select-none"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="flex flex-col items-center justify-center gap-6">
-        {/* Animated Abstract Eye Concept */}
+        {/* Animated Brand Eye Concept */}
         <div className="relative w-24 h-24 flex items-center justify-center">
           {/* Outer Ring */}
           <motion.div
-            className="absolute w-full h-full border-[1.5px] border-[#2A835F]/40 rounded-full"
+            className="absolute w-full h-full border-[1.5px] border-[#5E3122]/25 rounded-full"
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
+            transition={{ duration: 1.1, ease: "easeOut" }}
           />
           {/* Middle Ring */}
           <motion.div
-            className="absolute w-2/3 h-2/3 border-[1.5px] border-[#9A4F3C]/60 rounded-full"
+            className="absolute w-2/3 h-2/3 border-[1.5px] border-[#B85338]/45 rounded-full"
             initial={{ scale: 0, opacity: 0, rotate: -45 }}
             animate={{ scale: 1, opacity: 1, rotate: 0 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
+            transition={{ duration: 1.1, delay: 0.2, ease: "easeOut" }}
           />
-          {/* Inner Iris (Lime accent) */}
+          {/* Center Logo Icon */}
           <motion.div
-            className="absolute w-3 h-3 bg-[#d6f075] rounded-full shadow-[0_0_15px_rgba(214,240,117,0.8)]"
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
+            className="relative w-8 h-8 flex items-center justify-center"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
             transition={{
               duration: 0.8,
-              delay: 0.5,
+              delay: 0.45,
               type: "spring",
-              stiffness: 200,
-              damping: 12,
+              stiffness: 220,
+              damping: 14,
             }}
-          />
+          >
+            <Image
+              src="/logos/logo-main.png"
+              alt="Aarya Eye Care logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </motion.div>
         </div>
         
         {/* Text Reveal */}
-        <div className="overflow-hidden flex flex-col items-center gap-1">
+        <div className="overflow-hidden flex flex-col items-center gap-1.5 text-center">
           <motion.h1 
-            className="font-display font-black text-2xl sm:text-3xl tracking-[0.25em] text-[#1e2722] uppercase"
-            initial={{ y: 50 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6, ease: [0.33, 1, 0.68, 1] }}
+            className="font-serif font-medium text-2xl sm:text-3xl text-[#5E3122] tracking-tight"
+            initial={{ y: 40, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
           >
             Aarya Eye Care
           </motion.h1>
           <motion.p
-             className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.24em] text-[#9A4F3C]"
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 0.8, delay: 1 }}
+            className="text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.24em] text-[#B85338]"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.75, ease: "easeOut" }}
           >
-            Super Speciality Eye Hospital
+            Darkness to Light
           </motion.p>
         </div>
       </div>

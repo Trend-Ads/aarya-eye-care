@@ -15,7 +15,10 @@ export default function HeroSection() {
       {/* Thinner side bezels: px-2 sm:px-3 md:px-4 lg:px-5         */}
       {/* ========================================================= */}
       <div className="w-full max-w-[1500px] mx-auto px-2 sm:px-3 md:px-4 lg:px-5 flex-1 flex flex-col justify-center min-h-0 my-auto py-1">
-        <div 
+        <motion.div 
+          initial={{ opacity: 0, y: 25, scale: 0.985 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           className="relative w-full rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden border border-white/20 px-5 sm:px-8 lg:px-12 py-5 sm:py-7 lg:py-8 shadow-[0_24px_60px_rgba(94,49,34,0.25)] flex flex-col justify-center"
           style={{
             background: "linear-gradient(145deg, #5E3122 0%, #52291B 50%, #441F13 100%)",
@@ -31,12 +34,12 @@ export default function HeroSection() {
             {/* ========================================================= */}
             <div className="lg:col-span-7 flex flex-col justify-center pl-2 sm:pl-4 lg:pl-6 xl:pl-8">
               
-              {/* Top Badge: 20M+ User / Read Our Success Stories */}
+              {/* Top Badge: 1500+ Happy Patients */}
               <motion.div 
                 className="flex items-center gap-3 mb-4 sm:mb-5 lg:mb-6"
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
               >
                 {/* Badge circle with white dual-avatar icon */}
                 <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-white/15 backdrop-blur-xs flex items-center justify-center flex-shrink-0 shadow-xs border border-white/20">
@@ -59,11 +62,11 @@ export default function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Main Headline: Grow⁺ */}
+              {/* Main Headline: Aarya Eye care⁺ */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.1 }}
+                initial={{ opacity: 0, y: 25, filter: "blur(4px)" }}
+                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
                 <h1 className="font-serif font-medium text-4xl sm:text-5xl md:text-6xl lg:text-[72px] xl:text-[80px] text-white tracking-tight leading-[1.02] select-none flex items-start">
@@ -74,17 +77,23 @@ export default function HeroSection() {
                 </h1>
               </motion.div>
 
-              {/* Divider Line 1 */}
-              <div className="w-full max-w-xl h-px bg-white/20 my-4 sm:my-5 lg:my-6" />
+              {/* Divider Line 1 (Smooth line expansion) */}
+              <motion.div 
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
+                style={{ transformOrigin: "left" }}
+                className="w-full max-w-xl h-px bg-white/20 my-4 sm:my-5 lg:my-6" 
+              />
 
               {/* Subtitle */}
               <motion.p 
                 className="text-white/90 text-sm sm:text-base lg:text-[17.5px] font-medium leading-snug max-w-lg"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2 }}
+                transition={{ duration: 0.7, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
               >
-                From Darkness to Light - Restoring clear vision and brighter tomorrows with advanced, compassionate eye care.
+                From Darkness to Light — Restoring clear vision and brighter tomorrows with advanced, compassionate eye care.
               </motion.p>
 
               {/* Testimonial Snippet */}
@@ -127,15 +136,21 @@ export default function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Divider Line 2 */}
-              <div className="w-full max-w-xl h-px bg-white/20 mb-5 sm:mb-6" />
+              {/* Divider Line 2 (Smooth line expansion) */}
+              <motion.div 
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
+                style={{ transformOrigin: "left" }}
+                className="w-full max-w-xl h-px bg-white/20 mb-5 sm:mb-6" 
+              />
 
               {/* CTA Action Buttons */}
               <motion.div 
                 className="flex items-center gap-4 sm:gap-6 pt-0.5"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.4 }}
+                transition={{ duration: 0.7, delay: 0.62, ease: [0.16, 1, 0.3, 1] }}
               >
                 <Link
                   href="#appointment"
@@ -166,15 +181,15 @@ export default function HeroSection() {
               
               <div className="relative w-[265px] sm:w-[305px] lg:w-[330px] xl:w-[345px]">
                 
-                {/* 1. Main Orange Pillar Card with Athlete */}
+                {/* 1. Main Orange Pillar Card with Looping Video */}
                 <motion.div 
                   className="relative w-full h-[360px] sm:h-[415px] lg:h-[440px] xl:h-[465px] rounded-[32px] sm:rounded-[38px] lg:rounded-[42px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.35)] border-2 border-white/25"
                   style={{
                     background: "linear-gradient(160deg, #FF6633 0%, #FF5520 40%, #E63E0B 100%)",
                   }}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  initial={{ opacity: 0, scale: 0.92, y: 30 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ duration: 0.85, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <video
                     autoPlay
@@ -190,9 +205,9 @@ export default function HeroSection() {
                 {/* 2. Floating Question Pill 1: "Need an eye checkup?" */}
                 <motion.div 
                   className="absolute -left-6 sm:-left-9 top-[25%] sm:top-[23%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.45 }}
+                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="w-4.5 h-4.5 rounded-md bg-[#1D4533] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
@@ -207,9 +222,9 @@ export default function HeroSection() {
                 {/* 3. Floating Question Pill 2: "Ready for 20/20 vision?" */}
                 <motion.div 
                   className="absolute -left-9 sm:-left-14 top-[39%] sm:top-[37%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, delay: 0.55 }}
+                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
+                  animate={{ opacity: 1, x: 0, scale: 1 }}
+                  transition={{ duration: 0.65, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className="w-4.5 h-4.5 rounded-md bg-[#0284C7] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
@@ -224,9 +239,9 @@ export default function HeroSection() {
                 {/* 4. Top-Right Stat Card: "15+ Doctors Support" */}
                 <motion.div 
                   className="absolute -right-8 sm:-right-14 lg:-right-16 xl:-right-20 top-2 sm:top-4 z-25 bg-white/45 backdrop-blur-xl border border-[#1D4533]/40 rounded-[24px] sm:rounded-[26px] p-3.5 sm:p-4.5 shadow-[0_20px_45px_rgba(0,0,0,0.18)] min-w-[145px] sm:min-w-[170px]"
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.5 }}
+                  initial={{ opacity: 0, y: -25, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.75, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <span className="text-[9.5px] sm:text-[10.5px] font-medium text-[#1D4533]/75 tracking-wider uppercase block">
                     — EXPERT CARE
@@ -242,9 +257,9 @@ export default function HeroSection() {
                 {/* 5. Bottom-Right Eyewear Card */}
                 <motion.div 
                   className="absolute -right-10 sm:-right-16 lg:-right-20 xl:-right-24 bottom-2 sm:bottom-4 z-30 bg-white/50 backdrop-blur-2xl border border-[#1D4533]/40 rounded-[24px] sm:rounded-[28px] p-2.5 sm:p-3 shadow-[0_24px_50px_rgba(0,0,0,0.2)] flex items-center gap-3 sm:gap-3.5 min-w-[245px] sm:min-w-[280px]"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.6 }}
+                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.75, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
                 >
                   {/* Eyewear Model Thumbnail */}
                   <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-white/85 border border-[#1D4533]/30 overflow-hidden flex-shrink-0 relative shadow-2xs">
@@ -278,13 +293,18 @@ export default function HeroSection() {
             </div>
 
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* ========================================================= */}
       {/* 3. BOTTOM EYE CARE ACCREDITATIONS & TECH TICKER           */}
       {/* ========================================================= */}
-      <footer className="w-full max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-14 py-2 sm:py-2.5 overflow-hidden flex-shrink-0 relative">
+      <motion.footer 
+        initial={{ opacity: 0, y: 15 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.75, delay: 0.8, ease: "easeOut" }}
+        className="w-full max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-14 py-2 sm:py-2.5 overflow-hidden flex-shrink-0 relative"
+      >
         <div className="flex items-center animate-ticker hover:[animation-play-state:running] select-none">
           {/* 2 identical sets for seamless -50% infinite marquee loop */}
           {[0, 1].map((setIdx) => (
@@ -361,7 +381,7 @@ export default function HeroSection() {
             </div>
           ))}
         </div>
-      </footer>
+      </motion.footer>
     </section>
   );
 }

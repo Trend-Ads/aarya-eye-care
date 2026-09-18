@@ -159,22 +159,28 @@ export default function DoctorsSection() {
   });
 
   return (
-    <section id="doctors" className="w-full bg-[#fcfdfd] py-16 sm:py-20 md:py-24 px-3 sm:px-6 lg:px-8 border-t border-slate-200/60">
+    <section id="doctors" className="w-full bg-[#fcfdfd] py-16 sm:py-20 md:py-24 px-3 sm:px-6 lg:px-8 border-t border-[#5E3122]/10">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
         <motion.div 
-          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-slate-200/80"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-8 border-b border-[#5E3122]/10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
         >
           <div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#9A4F3C] tracking-tight">
-              Our Doctors
+            <div className="flex items-center gap-2 mb-2">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#B85338]" />
+              <span className="text-[#B85338] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
+                DARKNESS TO LIGHT
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-medium text-[#5E3122] tracking-tight">
+              Our Specialists &amp; Surgeons
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-2xl">
+            <p className="text-xs sm:text-sm text-stone-600 mt-2 max-w-2xl">
               Our panel of highly qualified, compassionate and experienced ophthalmologists and super-speciality eye surgeons ensures the highest standards of clinical precision and patient care.
             </p>
           </div>
@@ -185,10 +191,10 @@ export default function DoctorsSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#2A835F] text-white shadow-xs"
-                    : "bg-white text-slate-600 border border-slate-200 hover:border-slate-300"
+                    ? "bg-[#1D4533] text-white shadow-xs"
+                    : "bg-white text-stone-700 border border-[#5E3122]/15 hover:border-[#1D4533]/40 hover:text-[#1D4533]"
                 }`}
               >
                 {cat}
@@ -205,10 +211,10 @@ export default function DoctorsSection() {
           <AnimatePresence>
             {filteredDoctors.map((doc, idx) => {
             const cardGradients = [
-              "from-neutral-950/75 via-neutral-900/25 to-transparent", // Soft neutral charcoal
-              "from-[#162a21]/75 via-[#162a21]/20 to-transparent", // Subtle deep forest
-              "from-[#281b16]/75 via-[#281b16]/20 to-transparent", // Subtle muted warm brown
-              "from-[#172530]/75 via-[#172530]/20 to-transparent", // Subtle deep slate
+              "from-neutral-950/70 via-neutral-900/20 to-transparent", // Soft neutral charcoal
+              "from-[#162a21]/70 via-[#162a21]/15 to-transparent", // Subtle deep forest
+              "from-[#281b16]/70 via-[#281b16]/15 to-transparent", // Subtle muted warm brown
+              "from-[#172530]/70 via-[#172530]/15 to-transparent", // Subtle deep slate
             ];
             const gradient = cardGradients[idx % cardGradients.length];
 
@@ -225,7 +231,7 @@ export default function DoctorsSection() {
               >
                 <Link
                   href="#appointment"
-                  className="relative w-full aspect-[3/4.2] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-4 group select-none cursor-pointer block"
+                  className="relative w-full aspect-[3/4.2] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-4 group select-none cursor-pointer block border border-[#5E3122]/10"
                 >
                   {/* Doctor Photo */}
                   <Image
@@ -236,17 +242,17 @@ export default function DoctorsSection() {
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
                   />
 
-                  {/* Soft Tinted Gradient Overlay matching reference image */}
+                  {/* Soft Tinted Gradient Overlay */}
                   <div
                     className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
                   />
 
                   {/* Doctor Name & Role / Speciality at bottom inside gradient */}
                   <div className="relative z-10 text-left">
-                    <h3 className="font-bold text-sm sm:text-base md:text-lg text-white leading-tight drop-shadow-xs group-hover:underline">
+                    <h3 className="font-serif font-medium text-sm sm:text-base md:text-lg text-white leading-tight drop-shadow-xs group-hover:underline">
                       {doc.name}
                     </h3>
-                    <p className="text-[11px] sm:text-xs md:text-[13px] text-white/90 font-medium leading-snug mt-1 line-clamp-1">
+                    <p className="text-[11px] sm:text-xs md:text-[13px] text-white/90 font-normal leading-snug mt-1 line-clamp-1">
                       {doc.speciality || doc.role}
                     </p>
                   </div>
@@ -259,14 +265,14 @@ export default function DoctorsSection() {
 
         {/* Bottom Banner Reassurance */}
         <motion.div 
-          className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#2A835F]/10 border border-[#2A835F]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
+          className="mt-12 p-4 sm:p-5 rounded-2xl bg-[#1D4533]/5 border border-[#1D4533]/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#2A835F] text-white flex items-center justify-center flex-shrink-0">
+            <div className="w-10 h-10 rounded-xl bg-[#1D4533] text-white flex items-center justify-center shrink-0 shadow-xs">
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
@@ -275,10 +281,10 @@ export default function DoctorsSection() {
               </svg>
             </div>
             <div>
-              <h4 className="font-bold text-sm text-slate-900">
+              <h4 className="font-semibold text-sm text-[#5E3122]">
                 Over 20+ Experienced Ophthalmologists &amp; Surgeons
               </h4>
-              <p className="text-xs text-slate-600">
+              <p className="text-xs text-stone-600">
                 Committed to delivering individualized and NABH-accredited vision care for every patient.
               </p>
             </div>
@@ -286,7 +292,7 @@ export default function DoctorsSection() {
 
           <Link
             href="#appointment"
-            className="inline-flex items-center gap-2 bg-[#2A835F] hover:bg-[#236e4f] text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm transition-all"
+            className="inline-flex items-center gap-2 bg-[#1D4533] hover:bg-[#163628] text-white px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm transition-all"
           >
             <span>Book Consultation With a Specialist</span>
             <span>→</span>

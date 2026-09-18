@@ -10,9 +10,24 @@
   --font-brand: var(--font-brand), "Outfit", sans-serif;
   --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-avantgarde: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "ITC Avant Garde Gothic Std", "Avant Garde", "Century Gothic", sans-serif;
   --color-dark-green: #1D4533;
   --color-ivory: #FFFFF0;
   --color-leaf: #52B788;
+}
+
+@font-face {
+  font-family: "AvantGarde Demi";
+  font-style: normal;
+  font-weight: 600;
+  src: local("AvantGarde-Demi"),
+       local("AvantGarde Demi"),
+       local("ITCAvantGardeStd-Demi"),
+       local("ITC Avant Garde Gothic Demi"),
+       local("ITC Avant Garde Gothic Std Demi"),
+       local("Avant Garde Demi"),
+       local("Avant Garde");
+  font-display: swap;
 }
 
 body {
@@ -20,6 +35,10 @@ body {
   color: var(--foreground);
   font-family: var(--font-body), "Plus Jakarta Sans", sans-serif;
   overflow-x: hidden;
+}
+
+.font-avantgarde {
+  font-family: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "ITC Avant Garde Gothic Std", "Avant Garde", "Century Gothic", sans-serif;
 }
 
 .font-display {
