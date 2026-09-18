@@ -102,13 +102,22 @@ export default function Navbar() {
               />
             </div>
             
-            <span 
-              className={`font-extrabold text-[#5E3122] tracking-tight whitespace-nowrap transition-all duration-300 ${
-                scrolled ? "text-[14.5px] sm:text-[16px]" : "text-base sm:text-lg lg:text-[20px]"
-              }`}
-            >
-              Aarya Eye Care
-            </span>
+            <div className="flex flex-col justify-center">
+              <span 
+                className={`font-extrabold text-[#5E3122] tracking-tight whitespace-nowrap leading-none transition-all duration-300 ${
+                  scrolled ? "text-[14px] sm:text-[15.5px]" : "text-base sm:text-lg lg:text-[19.5px]"
+                }`}
+              >
+                Aarya Eye Care
+              </span>
+              <span 
+                className={`font-bold tracking-[0.22em] text-[#B85338] uppercase leading-none transition-all duration-300 mt-0.5 sm:mt-1 ${
+                  scrolled ? "text-[7.5px] sm:text-[8px]" : "text-[8px] sm:text-[9.5px]"
+                }`}
+              >
+                Darkness to Light
+              </span>
+            </div>
           </Link>
 
           {/* Center Links (Desktop) */}
@@ -195,8 +204,8 @@ export default function Navbar() {
                   <span className="font-bold text-base text-neutral-950 tracking-tight leading-none">
                     Aarya Eye Care
                   </span>
-                  <span className="text-[10.5px] font-semibold text-neutral-500 uppercase tracking-widest mt-0.5">
-                    Super Speciality
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#B85338] uppercase leading-none mt-1">
+                    Darkness to Light
                   </span>
                 </div>
               </div>

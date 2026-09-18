@@ -115,14 +115,14 @@ export default function ServicesSection() {
 
                 {/* Subtle top badge for category */}
                 <div className="absolute top-6 left-6 z-10">
-                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold uppercase tracking-wider bg-white/20 backdrop-blur-md text-white border border-white/25">
+                  <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-normal tracking-wide bg-white/20 backdrop-blur-md text-white/95 border border-white/25">
                     {item.category}
                   </span>
                 </div>
 
-                {/* Number Indicator (Like the story section) */}
+                {/* Number Indicator */}
                 <div className="absolute top-6 right-6 z-10">
-                  <span className="text-white/60 font-mono text-xl sm:text-2xl font-bold">
+                  <span className="text-white/60 font-mono text-lg sm:text-xl font-normal">
                     0{index + 1}
                   </span>
                 </div>
@@ -130,7 +130,7 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <h3 className="font-display font-black text-3xl sm:text-4xl lg:text-5xl text-white uppercase tracking-tight leading-[0.9] group-hover:text-emerald-300 transition-colors drop-shadow-xs max-w-[80%]">
+                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-emerald-200 transition-colors max-w-[85%]">
                       {item.title}
                     </h3>
                     <Link

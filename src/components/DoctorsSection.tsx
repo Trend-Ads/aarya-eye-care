@@ -205,10 +205,10 @@ export default function DoctorsSection() {
           <AnimatePresence>
             {filteredDoctors.map((doc, idx) => {
             const cardGradients = [
-              "from-[#1b5043]/95 via-[#2b6d5d]/60 to-transparent", // Teal / Sage
-              "from-[#9e3b4b]/95 via-[#b64f60]/60 to-transparent", // Rose / Coral
-              "from-[#887a32]/95 via-[#a19241]/60 to-transparent", // Gold / Olive
-              "from-[#2d5d7e]/95 via-[#41769d]/60 to-transparent", // Sky / Slate Blue
+              "from-neutral-950/75 via-neutral-900/25 to-transparent", // Soft neutral charcoal
+              "from-[#162a21]/75 via-[#162a21]/20 to-transparent", // Subtle deep forest
+              "from-[#281b16]/75 via-[#281b16]/20 to-transparent", // Subtle muted warm brown
+              "from-[#172530]/75 via-[#172530]/20 to-transparent", // Subtle deep slate
             ];
             const gradient = cardGradients[idx % cardGradients.length];
 
