@@ -187,37 +187,37 @@ export default function HeroSection() {
                   </video>
                 </motion.div>
 
-                {/* 2. Floating Question Pill 1: "How is the fit?" */}
+                {/* 2. Floating Question Pill 1: "Need an eye checkup?" */}
                 <motion.div 
                   className="absolute -left-6 sm:-left-9 top-[25%] sm:top-[23%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: 0.45 }}
                 >
-                  <div className="w-4.5 h-4.5 rounded-md bg-[#FF5C28] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
+                  <div className="w-4.5 h-4.5 rounded-md bg-[#1D4533] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                   <span className="text-[11.5px] sm:text-xs font-bold text-neutral-900 whitespace-nowrap">
-                    How is the fit?
+                    Need an eye checkup?
                   </span>
                 </motion.div>
 
-                {/* 3. Floating Question Pill 2: "Do you like the design?" */}
+                {/* 3. Floating Question Pill 2: "Ready for 20/20 vision?" */}
                 <motion.div 
                   className="absolute -left-9 sm:-left-14 top-[39%] sm:top-[37%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(0,0,0,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, delay: 0.55 }}
                 >
-                  <div className="w-4.5 h-4.5 rounded-md bg-[#2563EB] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
+                  <div className="w-4.5 h-4.5 rounded-md bg-[#0284C7] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
                     <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                   <span className="text-[11.5px] sm:text-xs font-bold text-neutral-900 whitespace-nowrap">
-                    Do you like the design?
+                    Ready for 20/20 vision?
                   </span>
                 </motion.div>
 
