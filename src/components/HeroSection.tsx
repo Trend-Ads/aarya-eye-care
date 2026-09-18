@@ -1,389 +1,648 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+
+interface Hotspot {
+  id: number;
+  title: string;
+  subtitle: string;
+  description: string;
+  position: {
+    top?: string;
+    bottom?: string;
+    left?: string;
+    right?: string;
+  };
+  align: "left" | "right";
+}
+
+const hotspots: Hotspot[] = [
+  {
+    id: 0,
+    title: "Zeiss BlueGuard Optics",
+    subtitle: "Anti-reflective & 100% UV block",
+    description:
+      "Bespoke high-contrast lenses crafted for zero screen glare, digital fatigue prevention, and crystal clarity.",
+    position: { top: "calc(28% + 175px)", right: "calc(43% - 185px)" },
+    align: "right",
+  },
+  {
+    id: 1,
+    title: "Blade-Free SMILE / LASIK",
+    subtitle: "Sub-second laser mapping",
+    description:
+      "Custom wavefront precision for painless 20/20 vision restoration with rapid 24-hour healing.",
+    position: { top: "calc(40% - 100px)", left: "calc(41% + 305px)" },
+    align: "left",
+  },
+  {
+    id: 2,
+    title: "NABH Accredited Care",
+    subtitle: "15,000+ successful treatments",
+    description:
+      "Kerala's premier eye care center equipped with Zeiss & Alcon diagnostic surgical suites.",
+    position: { bottom: "calc(25% + 105px)", left: "calc(44% + 170px)" },
+    align: "left",
+  },
+];
 
 export default function HeroSection() {
+  const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
+
+  const handlePrev = () => {
+    setActiveHotspot((prev) => {
+      if (prev === null) return hotspots.length - 1;
+      return prev === 0 ? hotspots.length - 1 : prev - 1;
+    });
+  };
+
+  const handleNext = () => {
+    setActiveHotspot((prev) => {
+      if (prev === null) return 0;
+      return prev === hotspots.length - 1 ? 0 : prev + 1;
+    });
+  };
+
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <section 
-      id="home" 
-      className="w-full bg-[#F2E9DC] min-h-screen lg:h-screen lg:max-h-screen flex flex-col justify-between pt-15 sm:pt-17 lg:pt-19 pb-2 sm:pb-3 select-none overflow-hidden"
+    <section
+      id="home"
+      className="w-full bg-[#F2E9DC] h-[100dvh] max-h-[100dvh] flex flex-col justify-between p-1.5 sm:p-2.5 lg:p-3 select-none overflow-hidden"
     >
       {/* ========================================================= */}
-      {/* MAIN HERO CARD (Large Satin Rounded Container)            */}
-      {/* Thinner side bezels: px-2 sm:px-3 md:px-4 lg:px-5         */}
+      {/* 1. SCULPTURAL FRAMED CARD CONTAINER (Flexible 100dvh Fit) */}
       {/* ========================================================= */}
-      <div className="w-full max-w-[1500px] mx-auto px-2 sm:px-3 md:px-4 lg:px-5 flex-1 flex flex-col justify-center min-h-0 my-auto py-1">
-        <motion.div 
-          initial={{ opacity: 0, y: 25, scale: 0.985 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full rounded-[28px] sm:rounded-[36px] lg:rounded-[44px] overflow-hidden border border-white/20 px-5 sm:px-8 lg:px-12 py-5 sm:py-7 lg:py-8 shadow-[0_24px_60px_rgba(103,94,49,0.22)] flex flex-col justify-center"
+      <div className="w-full max-w-[1540px] mx-auto flex-1 min-h-0 flex flex-col justify-between">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.985, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="relative w-full h-full flex-1 min-h-0 flex flex-col justify-between rounded-[22px] sm:rounded-[34px] lg:rounded-[44px] overflow-hidden border-[6px] sm:border-[10px] lg:border-[13px] border-[#F2E9DC] shadow-[0_18px_50px_rgba(48,41,31,0.16)] ring-1 ring-[#C9A581]/30"
           style={{
-            background: "linear-gradient(145deg, #675E31 0%, #544D28 50%, #433D1F 100%)",
+            background:
+              "radial-gradient(ellipse at 50% 46%, #B8632E 0%, #A55322 45%, #753813 100%)",
           }}
         >
-          {/* Subtle soft ambient light sheen on top-left */}
-          <div className="absolute -top-32 -left-32 w-96 h-96 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+          {/* Subtle ambient light bloom */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[450px] lg:w-[600px] h-[300px] sm:h-[450px] lg:h-[600px] bg-[#C9A581]/16 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            
-            {/* ========================================================= */}
-            {/* LEFT COLUMN: Typography & Content                         */}
-            {/* ========================================================= */}
-            <div className="lg:col-span-7 flex flex-col justify-center pl-2 sm:pl-4 lg:pl-6 xl:pl-8">
-              
-              {/* Top Badge: 1500+ Happy Patients */}
-              <motion.div 
-                className="flex items-center gap-3 mb-4 sm:mb-5 lg:mb-6"
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-              >
-                {/* Badge circle with white dual-avatar icon */}
-                <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full bg-white/15 backdrop-blur-xs flex items-center justify-center flex-shrink-0 shadow-xs border border-white/20">
-                  <svg className="w-4 h-4 sm:w-5 sm:h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-                    <circle cx="17.5" cy="8.5" r="2.5" />
-                    <path d="M17.5 13c1.66 0 4.5.83 4.5 2.5V18h-2v-2.5c0-.85-1.52-1.77-2.5-2.08z" opacity="0.8" />
-                  </svg>
-                </div>
-                <div className="flex flex-col">
-                  <span className="font-extrabold text-[13.5px] sm:text-[14.5px] lg:text-[15px] text-white tracking-tight leading-none">
-                    1500+ Happy Patients
-                  </span>
-                  <span className="text-[11.5px] sm:text-[12.5px] text-white/85 font-medium leading-tight mt-0.5">
-                    Read Our{" "}
-                    <Link href="#stories" className="font-bold underline decoration-white/70 decoration-1 underline-offset-2 hover:opacity-80">
-                      Success Stories
-                    </Link>
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Main Headline: AARYA EYE CARE⁺ */}
-              <motion.div
-                initial={{ opacity: 0, y: 25, filter: "blur(4px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
-              >
-                <h1 
-                  className="font-avantgarde font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-[56px] xl:text-[64px] text-white tracking-[0.05em] sm:tracking-[0.06em] leading-[1.08] select-none flex items-start"
-                  style={{
-                    fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
-                  }}
-                >
-                  <span>AARYA EYE CARE</span>
-                </h1>
-              </motion.div>
-
-              {/* Divider Line 1 (Smooth line expansion) */}
-              <motion.div 
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.35, ease: "easeOut" }}
-                style={{ transformOrigin: "left" }}
-                className="w-full max-w-xl h-px bg-white/20 my-4 sm:my-5 lg:my-6" 
+          {/* ========================================================= */}
+          {/* TOP NOTCH / TAB (Brand Logo Mark)                         */}
+          {/* ========================================================= */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-40 w-[190px] sm:w-[230px] md:w-[260px] h-[32px] sm:h-[38px] pointer-events-auto">
+            <svg
+              viewBox="0 0 260 38"
+              className="w-full h-full drop-shadow-[0_2px_4px_rgba(48,41,31,0.06)]"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 0 C 14 0, 18 5, 18 14 L 18 22 C 18 32, 26 38, 38 38 L 222 38 C 234 38, 242 32, 242 22 L 242 14 C 242 5, 246 0, 260 0 Z"
+                fill="#F2E9DC"
               />
+            </svg>
 
-              {/* Subtitle */}
-              <motion.p 
-                className="text-white/90 text-sm sm:text-base lg:text-[17.5px] font-medium leading-snug max-w-lg"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-              >
-                From Darkness to Light — Restoring clear vision and brighter tomorrows with advanced, compassionate eye care.
-              </motion.p>
+            {/* Brand Logo & Name */}
+            <Link
+              href="#home"
+              className="absolute inset-0 flex items-center justify-center gap-2 sm:gap-2.5 px-2.5 pb-0.5 hover:opacity-90 transition-opacity"
+            >
+              <div className="relative w-5.5 h-5.5 sm:w-7 sm:h-7 shrink-0">
+                <Image
+                  src="/logos/logo-main.png"
+                  alt="Aarya Eye Care logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="relative h-[16px] sm:h-[21px] w-[96px] sm:w-[126px] shrink-0">
+                <Image
+                  src="/logos/logo-name.png"
+                  alt="Aarya Eye Care - Darkness to Light"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+            </Link>
+          </div>
 
-              {/* Testimonial Snippet */}
-              <motion.div 
-                className="flex items-center gap-3.5 my-4 sm:my-5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-              >
-                {/* Avatar with subtle ray doodle */}
-                <div className="relative">
-                  {/* Sunburst rays doodle on top-left */}
-                  <svg className="absolute -top-2.5 -left-2.5 w-5 h-5 text-amber-200/80 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <line x1="4" y1="4" x2="8" y2="8" />
-                    <line x1="12" y1="2" x2="12" y2="7" />
-                    <line x1="2" y1="12" x2="7" y2="12" />
-                  </svg>
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full overflow-hidden relative border border-white/40 shadow-xs">
-                    <Image
-                      src="/hero/avatar-curly.jpg"
-                      alt="Customer testimonial reviewer"
-                      fill
-                      className="object-cover"
-                      sizes="40px"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="flex items-center gap-2 text-xs sm:text-[13px] font-semibold text-white">
-                    <span>Loved the experience</span>
-                    <span className="text-white/40 font-light">/</span>
-                    <span className="flex items-center gap-1 font-bold text-amber-300">
-                      ★ 4.9
-                    </span>
-                  </div>
-                  <span className="text-[11px] sm:text-xs text-white/75 font-medium mt-0.5">
-                    100% Satisfied
-                  </span>
-                </div>
-              </motion.div>
-
-              {/* Divider Line 2 (Smooth line expansion) */}
-              <motion.div 
-                initial={{ opacity: 0, scaleX: 0 }}
-                animate={{ opacity: 1, scaleX: 1 }}
-                transition={{ duration: 0.7, delay: 0.55, ease: "easeOut" }}
-                style={{ transformOrigin: "left" }}
-                className="w-full max-w-xl h-px bg-white/20 mb-5 sm:mb-6" 
+          {/* ========================================================= */}
+          {/* BOTTOM NOTCH / TAB (Scroll Down Arrow)                     */}
+          {/* ========================================================= */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-40 w-[74px] sm:w-[86px] h-[26px] sm:h-[32px] pointer-events-auto">
+            <svg
+              viewBox="0 0 86 32"
+              className="w-full h-full drop-shadow-[0_-2px_4px_rgba(48,41,31,0.06)]"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 32 C 10 32, 14 26, 14 18 L 14 12 C 14 4, 20 0, 28 0 L 58 0 C 66 0, 72 4, 72 12 L 72 18 C 72 26, 76 32, 86 32 Z"
+                fill="#F2E9DC"
               />
+            </svg>
 
-              {/* CTA Action Buttons */}
-              <motion.div 
-                className="flex items-center gap-4 sm:gap-6 pt-0.5"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.62, ease: [0.16, 1, 0.3, 1] }}
+            <button
+              type="button"
+              onClick={() => scrollToSection("treatments")}
+              aria-label="Scroll to treatments"
+              className="absolute inset-0 flex items-center justify-center pt-0.5 group cursor-pointer"
+            >
+              <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#30291F] text-[#F2E9DC] group-hover:bg-[#A55322] group-hover:scale-110 active:scale-95 transition-all flex items-center justify-center shadow-xs">
+                <svg
+                  className="w-2.5 h-2.5 group-hover:translate-y-0.5 transition-transform"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <polyline points="19 12 12 19 5 12" />
+                </svg>
+              </div>
+            </button>
+          </div>
+
+          {/* ========================================================= */}
+          {/* LEFT & RIGHT NOTCHES (< and > Arrows)                     */}
+          {/* ========================================================= */}
+          <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-40 w-[26px] sm:w-[30px] h-[64px] sm:h-[72px] pointer-events-auto">
+            <svg
+              viewBox="0 0 30 72"
+              className="w-full h-full drop-shadow-[2px_0_4px_rgba(48,41,31,0.06)]"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 0 0 C 0 8, 4 12, 12 12 L 15 12 C 23 12, 30 19, 30 28 L 30 44 C 30 53, 23 60, 15 60 L 12 60 C 4 60, 0 64, 0 72 Z"
+                fill="#F2E9DC"
+              />
+            </svg>
+            <button
+              type="button"
+              onClick={handlePrev}
+              aria-label="Previous specialty highlight"
+              className="absolute inset-0 flex items-center justify-center pr-1 group cursor-pointer"
+            >
+              <div className="w-5 h-5 rounded-full bg-white/30 text-white group-hover:bg-[#30291F] group-hover:text-white transition-all flex items-center justify-center text-xs font-bold">
+                ‹
+              </div>
+            </button>
+          </div>
+
+          <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-40 w-[26px] sm:w-[30px] h-[64px] sm:h-[72px] pointer-events-auto">
+            <svg
+              viewBox="0 0 30 72"
+              className="w-full h-full drop-shadow-[-2px_0_4px_rgba(48,41,31,0.06)]"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M 30 0 C 30 8, 26 12, 18 12 L 15 12 C 7 12, 0 19, 0 28 L 0 44 C 0 53, 7 60, 15 60 L 18 60 C 26 60, 30 64, 30 72 Z"
+                fill="#F2E9DC"
+              />
+            </svg>
+            <button
+              type="button"
+              onClick={handleNext}
+              aria-label="Next specialty highlight"
+              className="absolute inset-0 flex items-center justify-center pl-1 group cursor-pointer"
+            >
+              <div className="w-5 h-5 rounded-full bg-white/30 text-white group-hover:bg-[#30291F] group-hover:text-white transition-all flex items-center justify-center text-xs font-bold">
+                ›
+              </div>
+            </button>
+          </div>
+
+          {/* ========================================================= */}
+          {/* INTEGRATED TOP BAR (Inside the Frame)                     */}
+          {/* ========================================================= */}
+          <div className="relative z-30 w-full px-2 sm:px-4 lg:px-6 pt-2 sm:pt-3 flex items-center justify-between text-xs flex-shrink-0">
+            {/* Left Wing - Centered in Left Half */}
+            <div className="flex-1 flex items-center justify-center gap-2.5 sm:gap-3.5 lg:gap-5">
+              <Link
+                href="#home"
+                className="relative group/nav px-3.5 sm:px-4 py-1 rounded-full bg-white/20 hover:bg-white/28 backdrop-blur-md border border-white/35 text-white font-semibold shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
               >
-                <Link
-                  href="#appointment"
-                  className="bg-[#A55322] hover:bg-[#8D451B] text-white text-xs sm:text-[14px] font-bold px-6 sm:px-8 py-3 sm:py-3.5 rounded-full shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 flex items-center gap-2"
-                >
-                  <span>Book Appointment</span>
-                </Link>
-
-                <Link
-                  href="#vision"
-                  className="text-white hover:text-white/80 text-xs sm:text-[14px] font-bold flex items-center gap-1 group transition-colors"
-                >
-                  <span className="underline decoration-white/70 decoration-1 underline-offset-4">
-                    About Us
-                  </span>
-                  <span className="text-base group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
-                    ↗
-                  </span>
-                </Link>
-              </motion.div>
-
+                <span>Home</span>
+              </Link>
+              <Link
+                href="#treatments"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>Treatments</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
+              <Link
+                href="#doctors"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>Doctors</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
             </div>
 
-            {/* ========================================================= */}
-            {/* RIGHT COLUMN: Visual Composite & Floating Glass Cards     */}
-            {/* ========================================================= */}
-            <div className="lg:col-span-5 relative flex items-center justify-center lg:justify-center lg:-translate-x-6 xl:-translate-x-12 mt-2 lg:mt-0">
-              
-              <div className="relative w-[265px] sm:w-[305px] lg:w-[330px] xl:w-[345px]">
-                
-                {/* 1. Main Orange Pillar Card with Looping Video */}
-                <motion.div 
-                  className="relative w-full h-[360px] sm:h-[415px] lg:h-[440px] xl:h-[465px] rounded-[32px] sm:rounded-[38px] lg:rounded-[42px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.35)] border-2 border-white/25"
-                  style={{
-                    background: "linear-gradient(160deg, #A55322 0%, #B85D28 40%, #8D451B 100%)",
-                  }}
-                  initial={{ opacity: 0, scale: 0.92, y: 30 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.85, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="w-full h-full object-cover object-[center_top]"
-                  >
-                    <source src="/videos/hero1.mp4" type="video/mp4" />
-                  </video>
-                </motion.div>
+            {/* Spacer matching Center Notch Tab */}
+            <div className="w-[190px] sm:w-[230px] md:w-[260px] shrink-0 pointer-events-none" />
 
-                {/* 2. Floating Question Pill 1: "Need an eye checkup?" */}
-                <motion.div 
-                  className="absolute -left-6 sm:-left-9 top-[25%] sm:top-[23%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(48,41,31,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
-                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.65, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="w-4.5 h-4.5 rounded-md bg-[#675E31] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </div>
-                  <span className="text-[11.5px] sm:text-xs font-bold text-[#30291F] whitespace-nowrap">
-                    Need an eye checkup?
-                  </span>
-                </motion.div>
+            {/* Right Wing - Centered in Right Half */}
+            <div className="flex-1 flex items-center justify-end md:justify-center gap-2.5 sm:gap-3.5 lg:gap-5">
+              <Link
+                href="#vision"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>About Us</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
+              <Link
+                href="#branches"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>Branches</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
 
-                {/* 3. Floating Question Pill 2: "Ready for 20/20 vision?" */}
-                <motion.div 
-                  className="absolute -left-9 sm:-left-14 top-[39%] sm:top-[37%] z-30 bg-white/95 backdrop-blur-md px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full shadow-[0_10px_25px_rgba(48,41,31,0.18)] border border-white/80 flex items-center gap-2 transition-transform hover:scale-105 cursor-default"
-                  initial={{ opacity: 0, x: -30, scale: 0.9 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  transition={{ duration: 0.65, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="w-4.5 h-4.5 rounded-md bg-[#A55322] text-white flex items-center justify-center flex-shrink-0 shadow-2xs">
-                    <svg className="w-2.5 h-2.5 stroke-current" viewBox="0 0 24 24" fill="none" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </div>
-                  <span className="text-[11.5px] sm:text-xs font-bold text-[#30291F] whitespace-nowrap">
-                    Ready for 20/20 vision?
-                  </span>
-                </motion.div>
+              {/* "Appointment" Button (Desktop only) */}
+              <Link
+                href="#appointment"
+                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-bold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
+              >
+                <span className="text-[10.5px] sm:text-[11.5px]">Book Appointment</span>
+                <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </div>
+              </Link>
 
-                {/* 4. Top-Right Stat Card: "15+ Doctors Support" */}
-                <motion.div 
-                  className="absolute -right-8 sm:-right-14 lg:-right-16 xl:-right-20 top-2 sm:top-4 z-25 bg-white/50 backdrop-blur-xl border border-[#675E31]/30 rounded-[24px] sm:rounded-[26px] p-3.5 sm:p-4.5 shadow-[0_20px_45px_rgba(48,41,31,0.15)] min-w-[145px] sm:min-w-[170px]"
-                  initial={{ opacity: 0, y: -25, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.75, delay: 0.65, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <span className="text-[9.5px] sm:text-[10.5px] font-semibold text-[#675E31] tracking-wider uppercase block">
-                    — EXPERT CARE
-                  </span>
-                  <div className="font-sans font-medium text-3xl sm:text-4xl lg:text-[42px] text-[#30291F] leading-tight my-0.5 sm:my-1 tracking-normal">
-                    15+
-                  </div>
-                  <span className="text-[11px] sm:text-xs font-medium text-[#30291F]/80 leading-snug block">
-                    Doctors Support
-                  </span>
-                </motion.div>
+              {/* Mobile Hamburger Trigger */}
+              <button
+                type="button"
+                aria-label="Open menu"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-mobile-menu"));
+                  }
+                }}
+                className="md:hidden w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors shrink-0 shadow-xs"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
+                </svg>
+              </button>
+            </div>
+          </div>
 
-                {/* 5. Bottom-Right Eyewear Card */}
-                <motion.div 
-                  className="absolute -right-10 sm:-right-16 lg:-right-20 xl:-right-24 bottom-2 sm:bottom-4 z-30 bg-white/55 backdrop-blur-2xl border border-[#675E31]/30 rounded-[24px] sm:rounded-[28px] p-2.5 sm:p-3 shadow-[0_24px_50px_rgba(48,41,31,0.18)] flex items-center gap-3 sm:gap-3.5 min-w-[245px] sm:min-w-[280px]"
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.75, delay: 0.75, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  {/* Eyewear Model Thumbnail */}
-                  <div className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl bg-white/90 border border-[#675E31]/25 overflow-hidden flex-shrink-0 relative shadow-2xs">
+          {/* ========================================================= */}
+          {/* MAIN HERO STAGE (Flex-1 and strictly non-overflowing)     */}
+          {/* ========================================================= */}
+          <div className="relative w-full flex-1 min-h-0 px-3 sm:px-6 lg:px-10 flex items-center justify-between overflow-hidden">
+            
+
+
+            {/* ------------------------------------------------------- */}
+            {/* CENTERPIECE: Woman Model Image (Fluids to available h)  */}
+            {/* ------------------------------------------------------- */}
+            <div className="absolute inset-x-0 bottom-0 top-6 sm:top-8 flex items-end justify-center pointer-events-none z-20">
+              <div className="relative w-auto h-full flex items-end justify-center pb-1">
+                {/* Mobile Model Image (Portrait view for mobile screens) */}
+                <Image
+                  src="/Mains/hero6-mobile.png"
+                  alt="Aarya Eye Care patient with designer spectacles"
+                  width={1024}
+                  height={1536}
+                  priority
+                  className="block md:hidden w-auto h-full max-h-full object-contain object-bottom pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] translate-y-8"
+                />
+
+                {/* Desktop Model Image */}
+                <Image
+                  src="/Mains/hero6.png"
+                  alt="Aarya Eye Care patient with designer spectacles"
+                  width={1024}
+                  height={1536}
+                  priority
+                  className="hidden md:block w-auto h-full max-h-full object-contain object-bottom pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] translate-y-8"
+                />
+
+                {/* Ground Shadow */}
+                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-5 sm:h-7 bg-black/40 blur-lg rounded-full pointer-events-none" />
+
+                {/* Center subtle label */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] sm:text-[10.5px] font-semibold tracking-widest text-white/60 uppercase pointer-events-none">
+                  Since 2015 • Thrissur, Kerala
+                </div>
+
+                {/* --------------------------------------------------- */}
+                {/* INTERACTIVE HOTSPOTS (+) ON THE MODEL (Desktop only)*/}
+                {/* --------------------------------------------------- */}
+                <div className="hidden md:block absolute inset-0 pointer-events-none">
+                  {hotspots.map((spot) => {
+                    const isOpen = activeHotspot === spot.id;
+                    return (
+                      <div
+                        key={spot.id}
+                        className="absolute z-30 pointer-events-auto"
+                        style={spot.position}
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setActiveHotspot(isOpen ? null : spot.id)}
+                          aria-label={`View details about ${spot.title}`}
+                          className="relative w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-md border border-white/30 hover:border-white/55 text-white/85 hover:text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-xs group cursor-pointer"
+                        >
+                          <span className="absolute inset-0 rounded-full bg-white/25 animate-ping pointer-events-none opacity-30" />
+                          <span className="relative text-[9px] sm:text-[10px] font-medium leading-none select-none">
+                            {isOpen ? "×" : "+"}
+                          </span>
+                        </button>
+
+                        {/* Tooltip Card */}
+                        <AnimatePresence>
+                          {isOpen && (
+                            <motion.div
+                              initial={{ opacity: 0, scale: 0.9, y: 6 }}
+                              animate={{ opacity: 1, scale: 1, y: 0 }}
+                              exit={{ opacity: 0, scale: 0.9, y: 6 }}
+                              transition={{ duration: 0.2, ease: "easeOut" }}
+                              className={`absolute z-50 w-48 sm:w-56 p-2.5 sm:p-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/80 shadow-[0_16px_40px_rgba(48,41,31,0.22)] text-[#30291F] mt-1.5 ${
+                                spot.align === "right"
+                                  ? "left-1/2 -translate-x-1/2 sm:left-full sm:translate-x-2"
+                                  : "left-1/2 -translate-x-1/2 sm:right-full sm:-translate-x-2"
+                              }`}
+                            >
+                              <span className="text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider text-[#A55322] block">
+                                {spot.subtitle}
+                              </span>
+                              <h4 className="font-bold text-[11px] sm:text-xs text-[#30291F] mt-0.5 leading-snug">
+                                {spot.title}
+                              </h4>
+                              <p className="text-[10px] text-[#30291F]/75 leading-relaxed mt-0.5 line-clamp-3">
+                                {spot.description}
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            {/* ------------------------------------------------------- */}
+            {/* LEFT COLUMN: Editorial Narrative & Action               */}
+            {/* ------------------------------------------------------- */}
+            <div className="relative z-30 flex flex-col justify-between h-full pt-4 sm:pt-8 pb-4 sm:pb-6 max-w-[200px] sm:max-w-[280px] lg:max-w-[320px] pointer-events-auto">
+              <div className="space-y-2 sm:space-y-3">
+                <div className="space-y-1 sm:space-y-1.5">
+                  <div className="relative w-[150px] sm:w-[185px] lg:w-[215px] h-[24px] sm:h-[29px] lg:h-[34px]">
                     <Image
-                      src="/hero/model-woman.jpg"
-                      alt="Stylish Glasses & Designer Frames"
+                      src="/logos/logo-name.png"
+                      alt="AARYA EYE CARE - Darkness to Light"
                       fill
-                      className="object-cover"
-                      sizes="72px"
+                      className="object-contain object-left brightness-0 invert"
+                      priority
                     />
                   </div>
+                  <p className="text-[#F2E9DC]/90 text-[11px] sm:text-[12.5px] lg:text-[13.5px] font-semibold tracking-wide leading-snug">
+                    Super Speciality Eye Care Hospital
+                  </p>
+                </div>
 
-                  {/* Product Copy */}
-                  <div className="flex flex-col">
-                    <span className="text-xs sm:text-[13px] font-medium text-[#675E31] leading-tight">
-                      Stylish Eyewear
-                    </span>
-                    <span className="text-[14px] sm:text-[15.5px] font-semibold text-[#30291F] mt-0.5 tracking-normal">
-                      Premium Optics
-                    </span>
-                    <div className="flex items-center gap-1.5 text-[10.5px] sm:text-[11.5px] font-medium text-[#30291F]/90 mt-0.5">
-                      <span className="text-amber-600">★</span>
-                      <span>4.9</span>
-                      <span className="text-[#30291F]/65 font-normal ml-0.5">• Custom Fit</span>
-                    </div>
-                  </div>
-                </motion.div>
+                <p className="text-white/85 text-[10.5px] sm:text-[12px] lg:text-[13px] font-normal leading-relaxed">
+                  Aarya Eye Care provides the finest eye care with trusted hands!
+                </p>
 
+                <div className="pt-0.5 sm:pt-1">
+                  <Link
+                    href="#treatments"
+                    className="inline-flex items-center gap-1.5 bg-white hover:bg-[#F2E9DC] text-[#30291F] text-[10.5px] sm:text-xs lg:text-[13px] font-bold px-3.5 sm:px-5 py-1.5 sm:py-2.5 rounded-full shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+                  >
+                    <span>View All Treatments</span>
+                  </Link>
+                </div>
               </div>
 
+              {/* Social Media Buttons */}
+              <div className="flex items-center gap-1.5 sm:gap-2 pt-2">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#30291F] flex items-center justify-center transition-all shadow-2xs"
+                >
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#30291F] flex items-center justify-center transition-all shadow-2xs"
+                >
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://wa.me/919447000000"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-white/20 hover:bg-white text-white hover:text-[#30291F] flex items-center justify-center transition-all shadow-2xs"
+                >
+                  <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* ------------------------------------------------------- */}
+            {/* RIGHT COLUMN: Consultation Card                         */}
+            {/* ------------------------------------------------------- */}
+            <div className="relative z-30 flex flex-col justify-end items-end h-full pt-4 sm:pt-8 pb-4 sm:pb-6 max-w-[190px] sm:max-w-[270px] pointer-events-auto">
+              {/* Consultation Card */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.35 }}
+                className="w-full bg-[#F2E9DC] rounded-[18px] sm:rounded-[24px] p-2.5 sm:p-3.5 shadow-[0_16px_40px_rgba(48,41,31,0.22)] border border-white/60 text-[#30291F]"
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div>
+                    <h3 className="font-bold text-[11px] sm:text-xs text-[#30291F] leading-tight">
+                      Free Consultation
+                    </h3>
+                    <p className="text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
+                      Our specialist will reach out to assist you.
+                    </p>
+                  </div>
+                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 rounded-full overflow-hidden border border-[#C9A581]/40 shrink-0 shadow-2xs">
+                    <Image
+                      src="/hero/avatar-curly.jpg"
+                      alt="Consultation Specialist"
+                      fill
+                      className="object-cover"
+                      sizes="36px"
+                    />
+                  </div>
+                </div>
+
+                <Link
+                  href="#appointment"
+                  className="w-full bg-[#A55322] hover:bg-[#8D451B] text-white text-[10.5px] sm:text-xs font-bold py-1.5 sm:py-2 px-3 rounded-full flex items-center justify-between shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
+                >
+                  <span>Request Call</span>
+                  <div className="w-3.5 h-3.5 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg className="w-2 h-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <line x1="7" y1="17" x2="17" y2="17" />
+                      <polyline points="7 7 17 7 17 17" />
+                    </svg>
+                  </div>
+                </Link>
+              </motion.div>
             </div>
 
           </div>
+
+          {/* ========================================================= */}
+          {/* FLOWING TICKER COMPONENT (Inside Hero Card on the Bottom) */}
+          {/* ========================================================= */}
+          <div className="relative z-30 w-full border-t border-white/10 bg-black/20 backdrop-blur-xs py-1.5 sm:py-2 overflow-hidden flex-shrink-0 select-none">
+            <div className="flex items-center animate-ticker hover:[animation-play-state:running]">
+              {[0, 1].map((setIdx) => (
+                <div
+                  key={setIdx}
+                  className="flex items-center gap-7 sm:gap-12 md:gap-16 pr-7 sm:pr-12 md:pr-16 flex-shrink-0 opacity-90"
+                >
+                  {/* 1. ZEISS Medical Optics */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg
+                      className="w-4 h-4 text-[#C9A581]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                    >
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="3" />
+                      <line x1="12" y1="3" x2="12" y2="7" />
+                      <line x1="12" y1="17" x2="12" y2="21" />
+                      <line x1="3" y1="12" x2="7" y2="12" />
+                      <line x1="17" y1="12" x2="21" y2="12" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-black tracking-wider text-[#F2E9DC] font-sans">
+                      ZEISS{" "}
+                      <span className="text-[9.5px] font-medium tracking-normal text-[#C9A581] uppercase">
+                        Medical
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* 2. NABH Accredited Hospital */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-[#A55322]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-extrabold tracking-tight text-[#F2E9DC] font-sans">
+                      NABH{" "}
+                      <span className="text-[10px] font-semibold tracking-normal text-[#C9A581]">
+                        Accredited
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* 3. Alcon Vision */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg
+                      className="w-4 h-4 text-[#C9A581]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                    >
+                      <circle cx="12" cy="12" r="4" />
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-black tracking-tight text-[#F2E9DC] font-sans">
+                      Alcon{" "}
+                      <span className="text-[10px] font-light text-[#F2E9DC]/75">Vision Suite</span>
+                    </span>
+                  </div>
+
+                  {/* 4. Essilor Optics */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg
+                      className="w-4 h-4 text-[#A55322]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                    >
+                      <circle cx="7" cy="12" r="4" />
+                      <circle cx="17" cy="12" r="4" />
+                      <line x1="11" y1="12" x2="13" y2="12" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-bold tracking-tight text-[#F2E9DC] font-sans">
+                      Essilor{" "}
+                      <span className="text-[9.5px] font-semibold text-[#C9A581] uppercase tracking-wider">
+                        Optics
+                      </span>
+                    </span>
+                  </div>
+
+                  {/* 5. Bausch + Lomb */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg className="w-4 h-4 text-[#C9A581]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-bold tracking-tight text-[#F2E9DC] font-sans">
+                      Bausch + Lomb
+                    </span>
+                  </div>
+
+                  {/* 6. Blade-Free LASIK */}
+                  <div className="h-5 flex items-center gap-1.5">
+                    <svg
+                      className="w-4 h-4 text-[#A55322]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                    >
+                      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    <span className="text-xs sm:text-sm font-extrabold tracking-tight text-[#F2E9DC] font-sans">
+                      Blade-Free{" "}
+                      <span className="text-[10px] font-semibold text-[#C9A581] uppercase tracking-wide">
+                        LASIK
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </motion.div>
       </div>
-
-      {/* ========================================================= */}
-      {/* 3. BOTTOM EYE CARE ACCREDITATIONS & TECH TICKER           */}
-      {/* ========================================================= */}
-      <motion.footer 
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.75, delay: 0.8, ease: "easeOut" }}
-        className="w-full max-w-[1500px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-14 py-2 sm:py-2.5 overflow-hidden flex-shrink-0 relative"
-      >
-        <div className="flex items-center animate-ticker hover:[animation-play-state:running] select-none">
-          {/* 2 identical sets for seamless -50% infinite marquee loop */}
-          {[0, 1].map((setIdx) => (
-            <div key={setIdx} className="flex items-center gap-9 sm:gap-14 md:gap-18 pr-9 sm:pr-14 md:pr-18 flex-shrink-0 opacity-95">
-              
-              {/* 1. ZEISS Medical Optics */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="9" />
-                  <circle cx="12" cy="12" r="3" />
-                  <line x1="12" y1="3" x2="12" y2="7" />
-                  <line x1="12" y1="17" x2="12" y2="21" />
-                  <line x1="3" y1="12" x2="7" y2="12" />
-                  <line x1="17" y1="12" x2="21" y2="12" />
-                </svg>
-                <span className="text-lg sm:text-xl font-black tracking-wider text-[#30291F] font-sans">
-                  ZEISS <span className="text-[12px] font-medium tracking-normal text-[#30291F]/70 uppercase">Medical</span>
-                </span>
-              </div>
-
-              {/* 2. NABH Accredited Hospital */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                </svg>
-                <span className="text-lg sm:text-xl font-extrabold tracking-tight text-[#30291F] font-sans">
-                  NABH <span className="text-[13px] font-semibold tracking-normal text-[#30291F]/75">Accredited</span>
-                </span>
-              </div>
-
-              {/* 3. Alcon Vision */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="12" cy="12" r="4" />
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                </svg>
-                <span className="text-lg sm:text-xl font-black tracking-tight text-[#30291F] font-sans">
-                  Alcon <span className="text-[12.5px] font-light text-[#30291F]/75">Vision Suite</span>
-                </span>
-              </div>
-
-              {/* 4. Essilor Optics */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <circle cx="7" cy="12" r="4" />
-                  <circle cx="17" cy="12" r="4" />
-                  <line x1="11" y1="12" x2="13" y2="12" />
-                </svg>
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-[#30291F] font-sans">
-                  Essilor <span className="text-[12px] font-semibold text-[#30291F]/70 uppercase tracking-wider">Optics</span>
-                </span>
-              </div>
-
-              {/* 5. Bausch + Lomb */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
-                </svg>
-                <span className="text-lg sm:text-xl font-bold tracking-tight text-[#30291F] font-sans">
-                  Bausch + Lomb
-                </span>
-              </div>
-
-              {/* 6. Blade-Free LASIK */}
-              <div className="h-6 flex items-center gap-2">
-                <svg className="w-5 h-5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-                </svg>
-                <span className="text-lg sm:text-xl font-extrabold tracking-tight text-[#30291F] font-sans">
-                  Blade-Free <span className="text-[12.5px] font-semibold text-[#30291F]/75 uppercase tracking-wide">LASIK</span>
-                </span>
-              </div>
-
-            </div>
-          ))}
-        </div>
-      </motion.footer>
     </section>
   );
 }

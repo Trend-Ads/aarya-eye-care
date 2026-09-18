@@ -30,14 +30,21 @@ export default function Navbar() {
     };
   }, [mobileMenuOpen]);
 
+  // Listen for open-mobile-menu custom event from hero
+  useEffect(() => {
+    const handleOpenMobile = () => setMobileMenuOpen(true);
+    window.addEventListener("open-mobile-menu", handleOpenMobile);
+    return () => window.removeEventListener("open-mobile-menu", handleOpenMobile);
+  }, []);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrolled(currentScrollY > 25);
+      setScrolled(currentScrollY > 60);
       lastScrollY.current = currentScrollY;
 
       // Active section highlighting
-      const sections = ["home", "treatments", "doctors", "branches"];
+      const sections = ["home", "treatments", "doctors", "vision", "branches"];
       const scrollPosition = currentScrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -57,42 +64,73 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks: NavItem[] = [
+  const leftNavLinks: NavItem[] = [
+    { label: "Home", href: "#home", id: "home", subtitle: "Main Overview" },
     { label: "Treatments", href: "#treatments", id: "treatments", subtitle: "LASIK, Cataract & Super Specialities" },
     { label: "Doctors", href: "#doctors", id: "doctors", subtitle: "Senior Surgeons & Specialists" },
+  ];
+
+  const rightNavLinks: NavItem[] = [
     { label: "About Us", href: "#vision", id: "vision", subtitle: "NABH Accredited Hospital & Technology" },
     { label: "Branches", href: "#branches", id: "branches", subtitle: "Thrissur & Regional Centers" },
   ];
 
+  const allNavLinks: NavItem[] = [...leftNavLinks, ...rightNavLinks];
+
   return (
     <>
       {/* ========================================================= */}
-      {/* UNIFIED MORPHING WHITE NAVBAR                             */}
-      {/* Top State: Flat & embedded above hero card (max-w-1500px) */}
-      {/* Scrolled State: Morphs into floating frosted pill         */}
+      {/* FLOATING FROSTED PILL NAVBAR (Reveals on Scroll)           */}
+      {/* Centered logo matching the hero layout for seamless flow  */}
       {/* ========================================================= */}
       <div
-        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          scrolled ? "pt-2 sm:pt-3.5 px-3 sm:px-6" : "pt-2 sm:pt-3.5 lg:pt-4 px-0"
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          scrolled
+            ? "opacity-100 translate-y-0 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-auto"
+            : "opacity-0 -translate-y-6 pointer-events-none"
         }`}
       >
         <header
-          className={`pointer-events-auto mx-auto flex items-center justify-between select-none transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-            scrolled
-              ? "max-w-[940px] bg-[#30291F]/95 backdrop-blur-md rounded-full px-5 sm:px-8 py-3 sm:py-3.5 shadow-[0_16px_45px_rgba(48,41,31,0.25)] border border-[#C9A581]/20"
-              : "w-full max-w-[1500px] bg-[#F2E9DC] rounded-none px-5 sm:px-8 lg:px-12 xl:px-14 py-2.5 sm:py-3 border-b border-transparent shadow-none"
-          }`}
+          className="mx-auto flex items-center justify-between select-none max-w-[1080px] bg-[#30291F]/95 backdrop-blur-md rounded-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(48,41,31,0.25)] border border-[#C9A581]/20"
         >
-          {/* Left Brand Identity */}
+          {/* Left Wing (Desktop) */}
+          <nav className="hidden md:flex flex-1 items-center justify-center gap-1.5 lg:gap-3 text-[13px] sm:text-[13.5px]">
+            {leftNavLinks.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <Link
+                  key={item.id}
+                  href={item.href}
+                  className="relative group/nav px-2.5 py-1 transition-colors duration-200"
+                >
+                  <span 
+                    className={`transition-colors duration-200 ${
+                      isActive
+                        ? "font-bold text-[#A55322]"
+                        : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
+                    }`}
+                  >
+                    {item.label}
+                  </span>
+                  {/* Animated Underline on Hover */}
+                  <span 
+                    className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#A55322] rounded-full transition-all duration-300 origin-left ease-out ${
+                      isActive 
+                        ? "scale-x-100 opacity-100" 
+                        : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                    }`}
+                  />
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Center Brand Identity (Matching Hero Center Notch Axis) */}
           <Link
             href="#home"
-            className="flex items-center gap-2.5 sm:gap-3 hover:opacity-90 transition-opacity flex-shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 hover:opacity-90 transition-opacity flex-shrink-0 px-1 sm:px-3 lg:px-5"
           >
-            <div 
-              className={`relative flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
-                scrolled ? "w-7 h-7 sm:w-8 sm:h-8" : "w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10"
-              }`}
-            >
+            <div className="relative flex items-center justify-center flex-shrink-0 w-6.5 h-6.5 sm:w-7.5 sm:h-7.5">
               <Image
                 src="/logos/logo-main.png"
                 alt="AARYA EYE CARE logo"
@@ -104,9 +142,7 @@ export default function Navbar() {
             
             <div className="flex flex-col justify-center">
               <span 
-                className={`font-avantgarde font-semibold tracking-[0.04em] whitespace-nowrap leading-none transition-all duration-300 ${
-                  scrolled ? "text-[14px] sm:text-[15.5px] text-[#F2E9DC]" : "text-base sm:text-lg lg:text-[19.5px] text-[#30291F]"
-                }`}
+                className="font-avantgarde font-semibold tracking-[0.04em] whitespace-nowrap leading-none text-[13px] sm:text-[14.5px] text-[#F2E9DC]"
                 style={{
                   fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                 }}
@@ -114,22 +150,22 @@ export default function Navbar() {
                 AARYA EYE CARE
               </span>
               <span 
-                className={`font-bold tracking-[0.22em] uppercase leading-none transition-all duration-300 mt-0.5 sm:mt-1 ${
-                  scrolled ? "text-[7.5px] sm:text-[8px] text-[#C9A581]" : "text-[8px] sm:text-[9.5px] text-[#A55322]"
-                }`}
+                className="font-bold tracking-[0.22em] uppercase leading-none mt-0.5 text-[7px] sm:text-[7.5px] text-[#C9A581]"
               >
                 Darkness to Light
               </span>
             </div>
           </Link>
 
-          {/* Center Links (Desktop) */}
-          <nav className={`hidden md:flex items-center gap-1.5 lg:gap-3 text-[13.5px] sm:text-[14px] ${scrolled ? "text-[#F2E9DC]" : "text-[#30291F]"}`}>
-            {navLinks.map((item, idx) => {
-              const isActive = activeSection === item.id;
-              return (
-                <div key={item.id} className="flex items-center gap-1.5 lg:gap-3">
+          {/* Right Wing (Desktop & Mobile Actions) */}
+          <div className="flex-1 flex items-center justify-end md:justify-center gap-2 sm:gap-3.5">
+            {/* Right Nav Links (Desktop) */}
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-3 text-[13px] sm:text-[13.5px]">
+              {rightNavLinks.map((item) => {
+                const isActive = activeSection === item.id;
+                return (
                   <Link
+                    key={item.id}
                     href={item.href}
                     className="relative group/nav px-2.5 py-1 transition-colors duration-200"
                   >
@@ -137,9 +173,7 @@ export default function Navbar() {
                       className={`transition-colors duration-200 ${
                         isActive
                           ? "font-bold text-[#A55322]"
-                          : scrolled 
-                            ? "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]" 
-                            : "font-medium text-[#30291F]/85 group-hover/nav:text-[#30291F]"
+                          : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
                       }`}
                     >
                       {item.label}
@@ -153,27 +187,22 @@ export default function Navbar() {
                       }`}
                     />
                   </Link>
-                  {idx < navLinks.length - 1 && (
-                    <span className={`text-xs pointer-events-none ${scrolled ? "text-[#F2E9DC]/30" : "text-[#30291F]/30"}`}>•</span>
-                  )}
-                </div>
-              );
-            })}
-          </nav>
+                );
+              })}
+            </nav>
 
-          {/* Right Actions (Desktop & Mobile Hamburger) */}
-          <div className="flex items-center gap-2.5 sm:gap-4">
-            {/* Desktop Appointment CTA Button */}
+            {/* Book Appointment CTA Button */}
             <Link
               href="#appointment"
-              className={`hidden sm:inline-flex rounded-full transition-all duration-300 items-center gap-1.5 shadow-2xs hover:scale-[1.02] active:scale-[0.98] ${
-                scrolled
-                  ? "bg-[#A55322] text-white hover:bg-[#8D451B] text-xs sm:text-[13px] font-bold px-4 sm:px-5 py-2 sm:py-2.5 shadow-sm"
-                  : "border border-[#675E31]/40 hover:border-[#675E31] text-[#675E31] hover:bg-[#675E31] hover:text-[#F2E9DC] text-[13.5px] sm:text-sm lg:text-[14.5px] font-bold px-5 sm:px-6 lg:px-7 py-2 sm:py-2.5"
-              }`}
+              className="hidden sm:inline-flex rounded-full transition-all duration-300 items-center gap-1.5 shadow-2xs hover:scale-[1.02] active:scale-[0.98] bg-white hover:bg-[#F2E9DC] text-[#30291F] text-xs sm:text-[12.5px] font-bold pl-3 sm:pl-3.5 pr-1 py-1 sm:py-1.5 shadow-sm whitespace-nowrap"
             >
               <span>Book Appointment</span>
-              <span className="text-xs">↗</span>
+              <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
+                <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </div>
             </Link>
 
             {/* Mobile Hamburger Button */}
@@ -181,11 +210,9 @@ export default function Navbar() {
               type="button"
               aria-label="Open mobile menu"
               onClick={() => setMobileMenuOpen(true)}
-              className={`md:hidden w-9 h-9 rounded-full flex items-center justify-center transition-colors shadow-2xs ${
-                scrolled ? "bg-white/15 hover:bg-white/25 text-white" : "bg-[#C9A581]/30 hover:bg-[#C9A581]/50 text-[#30291F]"
-              }`}
+              className="md:hidden w-8.5 h-8.5 rounded-full flex items-center justify-center transition-colors shadow-2xs bg-white/15 hover:bg-white/25 text-white"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="4" y1="7" x2="20" y2="7" />
                 <line x1="4" y1="12" x2="20" y2="12" />
                 <line x1="4" y1="17" x2="20" y2="17" />
@@ -250,10 +277,7 @@ export default function Navbar() {
 
             {/* Menu Links List */}
             <div className="flex flex-col gap-6 my-auto py-6">
-              {[
-                { label: "Home", href: "#home", subtitle: "AARYA EYE CARE Main" },
-                ...navLinks,
-              ].map((item, idx) => (
+              {allNavLinks.map((item, idx) => (
                 <motion.div
                   key={item.label}
                   initial={{ opacity: 0, x: -20 }}

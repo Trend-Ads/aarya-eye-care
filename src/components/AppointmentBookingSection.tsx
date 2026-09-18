@@ -2,6 +2,7 @@
 
 import { useState, FormEvent, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const departments = [
   "General Eye Examination",
@@ -139,6 +140,47 @@ export default function AppointmentBookingSection() {
         <div className="w-[120%] h-[120%] rounded-[100%] border-[40px] border-[#C9A581]/15 absolute -top-[50%] -left-[10%]" />
         <div className="w-[80%] h-[80%] rounded-[100%] border-[20px] border-[#C9A581]/15 absolute -bottom-[30%] -right-[10%]" />
       </div>
+
+      {/* Background Scattered Floating Leaves */}
+      <div className="absolute inset-0 pointer-events-none select-none z-0 overflow-hidden">
+        <motion.div
+          animate={{
+            y: [0, -14, 0],
+            rotate: [0, 1.2, 0],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute -top-10 -left-10 w-[calc(100%+5rem)] h-[calc(100%+5rem)] opacity-60 sm:opacity-75"
+        >
+          <Image
+            src="/bg-pngs/leaves.png"
+            alt="Floating Leaves Background"
+            fill
+            className="object-cover object-center pointer-events-none"
+          />
+        </motion.div>
+      </div>
+
+      {/* Botanical Leaf Branch - Coming from Edge */}
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 0.9, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.2, ease: "easeOut" }}
+        className="absolute -bottom-10 -left-10 sm:-bottom-14 sm:-left-8 md:-bottom-16 md:-left-6 pointer-events-none select-none z-0 w-[240px] sm:w-[320px] md:w-[420px] lg:w-[480px] max-w-none"
+      >
+        <Image
+          src="/bg-pngs/leaf.png"
+          alt="Botanical Leaf Accent"
+          width={800}
+          height={533}
+          className="w-full h-auto object-contain transform -rotate-12 drop-shadow-[0_20px_35px_rgba(48,41,31,0.12)]"
+          priority
+        />
+      </motion.div>
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8 items-center">
