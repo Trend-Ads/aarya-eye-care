@@ -10,6 +10,9 @@
   --font-brand: var(--font-brand), "Outfit", sans-serif;
   --font-serif: var(--font-serif), "Playfair Display", Georgia, serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
+  --color-dark-green: #1D4533;
+  --color-ivory: #FFFFF0;
+  --color-leaf: #52B788;
 }
 
 body {
