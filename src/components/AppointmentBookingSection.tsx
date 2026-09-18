@@ -61,11 +61,11 @@ function CustomSelect({
       {icon}
       <div 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full pl-12 pr-10 py-3 sm:py-3.5 rounded-full border border-stone-200 text-sm text-stone-800 bg-[#FCFAF8] cursor-pointer flex items-center justify-between hover:border-[#1D4533] transition-colors select-none"
+        className="w-full pl-12 pr-10 py-3 sm:py-3.5 rounded-full border border-[#C9A581]/40 text-sm text-[#30291F] bg-[#F2E9DC]/30 cursor-pointer flex items-center justify-between hover:border-[#675E31] transition-colors select-none"
       >
         <span className="truncate">{value}</span>
         <svg 
-          className={`w-4 h-4 text-stone-400 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
+          className={`w-4 h-4 text-[#675E31]/70 transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180' : ''}`} 
           viewBox="0 0 24 24" 
           fill="none" 
           stroke="currentColor" 
@@ -84,7 +84,7 @@ function CustomSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute z-50 w-full mt-2 bg-white border border-stone-200/80 rounded-2xl shadow-xl overflow-hidden py-2"
+            className="absolute z-50 w-full mt-2 bg-white border border-[#C9A581]/40 rounded-2xl shadow-xl overflow-hidden py-2"
           >
             <div className="max-h-60 overflow-y-auto scrollbar-hide">
               {options.map((option) => (
@@ -96,8 +96,8 @@ function CustomSelect({
                   }}
                   className={`px-5 py-2.5 text-sm cursor-pointer transition-colors ${
                     value === option 
-                      ? 'text-[#1D4533] font-semibold bg-[#1D4533]/8' 
-                      : 'text-stone-700 hover:bg-[#F9D2BA]/20'
+                      ? 'text-[#675E31] font-semibold bg-[#8A875C]/15' 
+                      : 'text-[#30291F] hover:bg-[#C9A581]/20'
                   }`}
                 >
                   {option}
@@ -128,16 +128,16 @@ export default function AppointmentBookingSection() {
   };
 
   const inputClasses =
-    "w-full pl-12 pr-4 py-3 sm:py-3.5 rounded-full border border-stone-200 text-sm text-stone-900 placeholder-stone-400 outline-none focus:border-[#1D4533] focus:ring-1 focus:ring-[#1D4533]/20 transition-all bg-[#FCFAF8]";
+    "w-full pl-12 pr-4 py-3 sm:py-3.5 rounded-full border border-[#C9A581]/40 text-sm text-[#30291F] placeholder-[#30291F]/40 outline-none focus:border-[#675E31] focus:ring-1 focus:ring-[#675E31]/20 transition-all bg-[#F2E9DC]/30";
 
-  const iconClasses = "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1D4533] z-10 pointer-events-none";
+  const iconClasses = "absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#675E31] z-10 pointer-events-none";
 
   return (
-    <section id="appointment" className="w-full relative overflow-hidden bg-[#FAF7F4] py-16 sm:py-24 border-t border-[#5E3122]/10">
+    <section id="appointment" className="w-full relative overflow-hidden bg-[#F2E9DC] py-16 sm:py-24 border-t border-[#C9A581]/30">
       {/* Background Subtle Shapes */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden flex items-center justify-center opacity-40">
-        <div className="w-[120%] h-[120%] rounded-[100%] border-[40px] border-[#5E3122]/5 absolute -top-[50%] -left-[10%]" />
-        <div className="w-[80%] h-[80%] rounded-[100%] border-[20px] border-[#5E3122]/5 absolute -bottom-[30%] -right-[10%]" />
+        <div className="w-[120%] h-[120%] rounded-[100%] border-[40px] border-[#C9A581]/15 absolute -top-[50%] -left-[10%]" />
+        <div className="w-[80%] h-[80%] rounded-[100%] border-[20px] border-[#C9A581]/15 absolute -bottom-[30%] -right-[10%]" />
       </div>
 
       <div className="max-w-[1200px] mx-auto px-6 relative z-10">
@@ -153,7 +153,7 @@ export default function AppointmentBookingSection() {
           >
             {/* Tagline */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 rounded-full bg-[#5E3122] flex items-center justify-center text-[#F9D2BA]">
+              <div className="w-7 h-7 rounded-full bg-[#675E31] flex items-center justify-center text-[#C9A581]">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                   <polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline>
@@ -163,69 +163,69 @@ export default function AppointmentBookingSection() {
                   <line x1="12" y1="22.08" x2="12" y2="12"></line>
                 </svg>
               </div>
-              <span className="text-[#B85338] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
+              <span className="text-[#A55322] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
             </div>
 
-            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-serif font-medium text-[#5E3122] mb-5 tracking-tight">
+            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-serif font-medium text-[#30291F] mb-5 tracking-tight">
               Book Your <span className="italic font-normal">Appointment</span>
             </h2>
             
-            <p className="text-stone-600 text-sm leading-relaxed mb-12 max-w-md">
+            <p className="text-[#30291F]/75 text-sm leading-relaxed mb-12 max-w-md">
               Schedule your visit with our expert ophthalmologists. We provide world-class eye care services with state-of-the-art diagnostic technology.
             </p>
 
             {/* Contact Row: 4 items in 1 row on mobile and desktop */}
-            <div className="grid grid-cols-4 gap-1.5 sm:gap-4 md:gap-6 mb-8 sm:mb-12 lg:mb-16 border-b border-[#5E3122]/10 pb-6 sm:pb-10">
+            <div className="grid grid-cols-4 gap-1.5 sm:gap-4 md:gap-6 mb-8 sm:mb-12 lg:mb-16 border-b border-[#C9A581]/30 pb-6 sm:pb-10">
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#1D4533]/8 flex items-center justify-center mb-2 text-[#1D4533]">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-stone-900 leading-tight">Call Us</h4>
-                <p className="text-[9px] sm:text-[11px] text-stone-600 mt-0.5 leading-tight font-medium">+91 99463 22288</p>
+                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Call Us</h4>
+                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">+91 99463 22288</p>
               </div>
 
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#1D4533]/8 flex items-center justify-center mb-2 text-[#1D4533]">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-stone-900 leading-tight">Full Week</h4>
-                <p className="text-[9px] sm:text-[11px] text-stone-600 mt-0.5 leading-tight font-medium">Mon – Sun</p>
+                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Full Week</h4>
+                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Mon – Sun</p>
               </div>
 
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#1D4533]/8 flex items-center justify-center mb-2 text-[#1D4533]">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-stone-900 leading-tight">Email</h4>
-                <p className="text-[9px] sm:text-[11px] text-stone-600 mt-0.5 leading-tight font-medium truncate" title="info@aaryaeyecare.com">info@aarya...</p>
+                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Email</h4>
+                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium truncate" title="info@aaryaeyecare.com">info@aarya...</p>
               </div>
 
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#1D4533]/8 flex items-center justify-center mb-2 text-[#1D4533]">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
                   <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-stone-900 leading-tight">Facility</h4>
-                <p className="text-[9px] sm:text-[11px] text-stone-600 mt-0.5 leading-tight font-medium">Kochi, Kerala</p>
+                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Facility</h4>
+                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Kochi, Kerala</p>
               </div>
             </div>
 
             {/* Social Links */}
             <div className="flex items-center gap-4">
-              <span className="text-stone-800 font-semibold text-xs">Stay Connected:</span>
+              <span className="text-[#30291F] font-semibold text-xs">Stay Connected:</span>
               <div className="flex gap-2">
                 {['facebook', 'instagram', 'youtube'].map((platform) => (
-                  <a key={platform} href={`#${platform}`} className="w-8 h-8 rounded-full bg-white border border-stone-200 flex items-center justify-center text-stone-400 hover:text-[#1D4533] hover:border-[#1D4533] transition-colors">
+                  <a key={platform} href={`#${platform}`} className="w-8 h-8 rounded-full bg-white border border-[#C9A581]/40 flex items-center justify-center text-[#675E31] hover:text-[#A55322] hover:border-[#A55322] transition-colors">
                     <div className="w-3.5 h-3.5 bg-current rounded-[2px] opacity-70" style={{ maskImage: platform === 'facebook' ? 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\'/%3E%3C/svg%3E")' : platform === 'instagram' ? 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Crect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\'/%3E%3Cpath d=\'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\'/%3E%3Cline x1=\'17.5\' y1=\'6.5\' x2=\'17.51\' y2=\'6.5\'/%3E%3C/svg%3E")' : 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\'%3E%3Cpath d=\'M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z\'/%3E%3Cpolygon points=\'9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02\'/%3E%3C/svg%3E")', WebkitMaskImage: platform === 'facebook' ? 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpath d=\'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z\'/%3E%3C/svg%3E")' : platform === 'instagram' ? 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Crect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\' ry=\'5\'/%3E%3Cpath d=\'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\'/%3E%3Cline x1=\'17.5\' y1=\'6.5\' x2=\'17.51\' y2=\'6.5\'/%3E%3C/svg%3E")' : 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'%3E%3Cpath d=\'M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z\'/%3E%3Cpolygon points=\'9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02\'/%3E%3C/svg%3E")', WebkitMaskRepeat: 'no-repeat', maskRepeat: 'no-repeat', WebkitMaskPosition: 'center', maskPosition: 'center' }} />
                   </a>
                 ))}
@@ -239,19 +239,19 @@ export default function AppointmentBookingSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white rounded-3xl p-8 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(94,49,34,0.06)] relative z-10 w-full max-w-lg lg:ml-auto border border-[#5E3122]/10"
+            className="bg-white rounded-3xl p-8 sm:p-10 lg:p-12 shadow-[0_20px_50px_rgba(48,41,31,0.06)] relative z-10 w-full max-w-lg lg:ml-auto border border-[#C9A581]/40"
           >
             {submitted ? (
               <div className="text-center py-12 space-y-6">
-                <div className="w-20 h-20 rounded-full mx-auto flex items-center justify-center bg-[#1D4533]/10 border border-[#1D4533]/20">
-                  <svg className="w-8 h-8 text-[#1D4533]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <div className="w-20 h-20 rounded-full mx-auto flex items-center justify-center bg-[#8A875C]/15 border border-[#8A875C]/35">
+                  <svg className="w-8 h-8 text-[#675E31]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="20 6 9 17 4 12"></polyline>
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-serif font-medium text-2xl text-[#5E3122]">Booking Request Sent!</h4>
-                  <p className="text-stone-600 text-sm mt-3 max-w-xs mx-auto leading-relaxed">
-                    We&apos;ll call <strong className="text-stone-900">{phone}</strong> shortly to confirm your appointment details.
+                  <h4 className="font-serif font-medium text-2xl text-[#30291F]">Booking Request Sent!</h4>
+                  <p className="text-[#30291F]/75 text-sm mt-3 max-w-xs mx-auto leading-relaxed">
+                    We&apos;ll call <strong className="text-[#30291F]">{phone}</strong> shortly to confirm your appointment details.
                   </p>
                 </div>
                 <div className="flex flex-col gap-3 justify-center pt-4">
@@ -268,7 +268,7 @@ export default function AppointmentBookingSection() {
                   </a>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="w-full py-3.5 rounded-full border border-stone-200 text-stone-600 font-semibold text-sm transition-all hover:bg-stone-50 mt-2 cursor-pointer"
+                    className="w-full py-3.5 rounded-full border border-[#C9A581]/40 text-[#30291F] font-semibold text-sm transition-all hover:bg-[#F2E9DC]/40 mt-2 cursor-pointer"
                   >
                     Book Another
                   </button>
@@ -279,7 +279,7 @@ export default function AppointmentBookingSection() {
                 
                 {/* Your Name */}
                 <div>
-                  <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                  <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                     Your Name *
                   </label>
                   <div className="relative">
@@ -300,7 +300,7 @@ export default function AppointmentBookingSection() {
 
                 {/* Phone Number */}
                 <div>
-                  <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                  <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                     Phone Number *
                   </label>
                   <div className="relative">
@@ -322,7 +322,7 @@ export default function AppointmentBookingSection() {
                 {/* Department & Doctor Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                    <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                       Department
                     </label>
                     <CustomSelect
@@ -343,7 +343,7 @@ export default function AppointmentBookingSection() {
                   </div>
 
                   <div>
-                    <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                    <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                       Doctor
                     </label>
                     <CustomSelect
@@ -362,7 +362,7 @@ export default function AppointmentBookingSection() {
                 {/* Date & Time Row */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                    <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                       Date
                     </label>
                     <div className="relative">
@@ -384,7 +384,7 @@ export default function AppointmentBookingSection() {
                   </div>
 
                   <div>
-                    <label className="block text-stone-600 text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
+                    <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-2 pl-1">
                       Time Slot
                     </label>
                     <CustomSelect
@@ -402,28 +402,28 @@ export default function AppointmentBookingSection() {
                 </div>
 
                 {/* Submit Row */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-stone-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 pt-4 border-t border-[#C9A581]/30">
                   <label className="flex items-start sm:items-center gap-3 cursor-pointer group">
                     <div className="relative flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
                       <input
                         type="checkbox"
                         checked={agreed}
                         onChange={(e) => setAgreed(e.target.checked)}
-                        className="peer appearance-none w-5 h-5 border border-stone-300 rounded-[4px] checked:bg-[#1D4533] checked:border-[#1D4533] transition-colors cursor-pointer"
+                        className="peer appearance-none w-5 h-5 border border-[#C9A581]/60 rounded-[4px] checked:bg-[#675E31] checked:border-[#675E31] transition-colors cursor-pointer"
                         required
                       />
                       <svg className="absolute w-3 h-3 text-white pointer-events-none opacity-0 peer-checked:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <span className="text-[11px] sm:text-xs text-stone-600 leading-tight">
-                      I agree with <a href="#" className="text-[#1D4533] font-semibold hover:underline">Terms of Use</a><br className="hidden sm:block" /> and Privacy Policy.
+                    <span className="text-[11px] sm:text-xs text-[#30291F]/70 leading-tight">
+                      I agree with <a href="#" className="text-[#A55322] font-semibold hover:underline">Terms of Use</a><br className="hidden sm:block" /> and Privacy Policy.
                     </span>
                   </label>
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#1D4533] hover:bg-[#163628] text-white font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(29,69,51,0.25)] hover:shadow-[0_8px_25px_rgba(29,69,51,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
+                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(103,94,49,0.25)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
                   >
                     Submit Request
                   </button>

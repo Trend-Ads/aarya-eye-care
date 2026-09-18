@@ -11,7 +11,7 @@ import PageTransition from "@/components/PageTransition";
 export default function Home() {
   return (
     <PageTransition>
-      <main className="min-h-screen bg-white flex flex-col selection:bg-sky-200 relative">
+      <main className="min-h-screen bg-[#F2E9DC] text-[#30291F] flex flex-col selection:bg-[#C9A581]/40 relative">
         {/* Fixed Navigation Bar (Desktop Top + Mobile Bottom + Floating WhatsApp) */}
         <Navbar />
 

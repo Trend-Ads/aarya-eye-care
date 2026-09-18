@@ -65,31 +65,31 @@ export default function ServicesSection() {
     <section 
       ref={containerRef} 
       id="treatments"
-      className="w-full bg-[#f8fafc] relative h-[400vh] select-none"
+      className="w-full bg-[#F2E9DC] relative h-[400vh] select-none"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32 pb-12 border-t border-slate-200/70">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32 pb-12 border-t border-[#C9A581]/30">
         
         {/* Header */}
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 z-20 mb-8 shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 mb-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#B85338]" />
-              <span className="text-[#B85338] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#A55322]" />
+              <span className="text-[#A55322] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
                 DARKNESS TO LIGHT
               </span>
-              <span className="text-[#5E3122]/30 text-xs">•</span>
-              <span className="text-stone-500 text-[11px] font-medium tracking-wide">
+              <span className="text-[#30291F]/30 text-xs">•</span>
+              <span className="text-[#30291F]/70 text-[11px] font-medium tracking-wide">
                 Specialised Clinical Care
               </span>
             </div>
-            <h2 className="font-serif font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#5E3122] tracking-tight leading-tight">
+            <h2 className="font-serif font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#30291F] tracking-tight leading-tight">
               Our Treatments &amp; Procedures
             </h2>
           </div>
 
           <Link
             href="#appointment"
-            className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#1D4533] hover:bg-[#163628] text-white text-xs font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(29,69,51,0.2)] hover:shadow-[0_8px_25px_rgba(29,69,51,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
+            className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] text-xs font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(103,94,49,0.2)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
           >
             <span>Book Consultation</span>
             <span>→</span>
@@ -105,7 +105,7 @@ export default function ServicesSection() {
             {treatments.map((item, index) => (
               <div
                 key={item.id}
-                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-[#5E3122]/10"
+                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-[#C9A581]/30"
               >
                 {/* Background Image */}
                 <Image
@@ -121,14 +121,14 @@ export default function ServicesSection() {
 
                 {/* Subtle top badge for category */}
                 <div className="absolute top-6 left-6 z-10">
-                  <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-normal tracking-wide bg-white/20 backdrop-blur-md text-white/95 border border-white/25">
+                  <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-normal tracking-wide bg-[#30291F]/65 backdrop-blur-md text-[#F2E9DC] border border-[#F2E9DC]/25">
                     {item.category}
                   </span>
                 </div>
 
                 {/* Number Indicator */}
                 <div className="absolute top-6 right-6 z-10">
-                  <span className="text-white/60 font-mono text-lg sm:text-xl font-normal">
+                  <span className="text-[#F2E9DC]/60 font-mono text-lg sm:text-xl font-normal">
                     0{index + 1}
                   </span>
                 </div>
@@ -136,12 +136,12 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#F9D2BA] transition-colors max-w-[85%]">
+                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#C9A581] transition-colors max-w-[85%]">
                       {item.title}
                     </h3>
                     <Link
                       href="#appointment"
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#1D4533] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs cursor-pointer pointer-events-auto"
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#A55322] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs cursor-pointer pointer-events-auto"
                     >
                       ↗
                     </Link>
@@ -155,9 +155,9 @@ export default function ServicesSection() {
         {/* Progress Bar at the bottom */}
         <div className="absolute bottom-6 left-0 right-0 px-4 sm:px-6 lg:px-12 z-20">
           <div className="max-w-7xl mx-auto">
-            <div className="w-full h-[3px] bg-stone-200 rounded-full overflow-hidden">
+            <div className="w-full h-[3px] bg-[#C9A581]/30 rounded-full overflow-hidden">
               <motion.div 
-                className="h-full bg-[#1D4533] origin-left"
+                className="h-full bg-[#A55322] origin-left"
                 style={{ scaleX: scrollYProgress }}
               />
             </div>

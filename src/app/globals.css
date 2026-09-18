@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --background: #F2E9DC;
+  --foreground: #30291F;
+  --color-primary-bg: #F2E9DC;
+  --color-secondary-bg: #C9A581;
+  --color-primary-brand: #A55322;
+  --color-secondary-brand: #8A875C;
+  --color-dark-accent: #675E31;
+  --color-text-main: #30291F;
 }
 
 @theme {
@@ -11,9 +17,15 @@
   --font-serif: var(--font-serif), "Syne", sans-serif;
   --font-sans: var(--font-body), "Plus Jakarta Sans", system-ui, sans-serif;
   --font-avantgarde: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "ITC Avant Garde Gothic Std", "Avant Garde", "Century Gothic", sans-serif;
-  --color-dark-green: #1D4533;
-  --color-ivory: #FFFFF0;
-  --color-leaf: #52B788;
+  --color-primary-bg: #F2E9DC;
+  --color-secondary-bg: #C9A581;
+  --color-primary-brand: #A55322;
+  --color-secondary-brand: #8A875C;
+  --color-dark-accent: #675E31;
+  --color-text-main: #30291F;
+  --color-dark-green: #675E31;
+  --color-ivory: #F2E9DC;
+  --color-leaf: #8A875C;
 }
 
 @font-face {

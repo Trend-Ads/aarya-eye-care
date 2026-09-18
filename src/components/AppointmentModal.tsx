@@ -44,11 +44,11 @@ function ModalCustomSelect({
       {icon}
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full pl-10 pr-8 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 text-xs sm:text-[13px] cursor-pointer flex items-center justify-between hover:border-[#1D4533] focus:border-[#1D4533] transition-all shadow-2xs select-none"
+        className="w-full pl-10 pr-8 py-2.5 sm:py-3 rounded-2xl bg-white border border-[#C9A581]/40 text-[#30291F] text-xs sm:text-[13px] cursor-pointer flex items-center justify-between hover:border-[#675E31] focus:border-[#675E31] transition-all shadow-2xs select-none"
       >
         <span className="truncate">{value}</span>
         <svg
-          className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#1D4533]" : ""}`}
+          className={`w-3.5 h-3.5 text-[#675E31]/70 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#675E31]" : ""}`}
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
@@ -67,7 +67,7 @@ function ModalCustomSelect({
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 6, scale: 0.98 }}
             transition={{ duration: 0.18, ease: "easeOut" }}
-            className="absolute z-50 w-full mt-1.5 bg-white border border-stone-200/90 rounded-2xl shadow-[0_15px_35px_rgba(45,23,14,0.15)] overflow-hidden py-1.5"
+            className="absolute z-50 w-full mt-1.5 bg-white border border-[#C9A581]/40 rounded-2xl shadow-[0_15px_35px_rgba(48,41,31,0.15)] overflow-hidden py-1.5"
           >
             <div
               data-lenis-prevent
@@ -82,13 +82,13 @@ function ModalCustomSelect({
                   }}
                   className={`px-4 py-2.5 text-xs sm:text-[12.5px] cursor-pointer transition-colors flex items-center justify-between ${
                     value === option
-                      ? "text-[#1D4533] font-semibold bg-[#1D4533]/8"
-                      : "text-stone-700 hover:bg-[#F9D2BA]/20 hover:text-[#5E3122]"
+                      ? "text-[#675E31] font-semibold bg-[#8A875C]/15"
+                      : "text-[#30291F] hover:bg-[#C9A581]/20 hover:text-[#675E31]"
                   }`}
                 >
                   <span>{option}</span>
                   {value === option && (
-                    <span className="text-[#1D4533] text-xs font-bold">✓</span>
+                    <span className="text-[#675E31] text-xs font-bold">✓</span>
                   )}
                 </div>
               ))}
@@ -207,7 +207,7 @@ export default function AppointmentModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 bg-[#2D170E]/55 backdrop-blur-sm -z-10"
+            className="fixed inset-0 bg-[#30291F]/60 backdrop-blur-sm -z-10"
             onClick={handleClose}
           />
 
@@ -220,22 +220,22 @@ export default function AppointmentModal() {
             className="relative w-full max-w-md my-auto z-10 select-none"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Outer Peach Frame (#F9D2BA) */}
-            <div className="w-full bg-[#F9D2BA] p-2 sm:p-2.5 rounded-[32px] sm:rounded-[36px] shadow-[0_30px_90px_rgba(45,23,14,0.4)] border border-white/50">
+            {/* Outer Warm Beige Frame (#C9A581) */}
+            <div className="w-full bg-[#C9A581] p-2 sm:p-2.5 rounded-[32px] sm:rounded-[36px] shadow-[0_30px_90px_rgba(48,41,31,0.35)] border border-[#F2E9DC]/60">
               
-              {/* Inner White Surface Card */}
-              <div className="bg-[#FAF7F4] rounded-[24px] sm:rounded-[28px] p-6 sm:p-7 sm:px-8 relative border border-[#5E3122]/10 shadow-xs">
+              {/* Inner Warm Linen Surface Card */}
+              <div className="bg-[#F2E9DC] rounded-[24px] sm:rounded-[28px] p-6 sm:p-7 sm:px-8 relative border border-[#C9A581]/40 shadow-xs">
                 
                 {/* Subtle decorative background light sheen */}
                 <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] overflow-hidden pointer-events-none">
-                  <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#F9D2BA]/40 rounded-full blur-2xl" />
+                  <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#C9A581]/30 rounded-full blur-2xl" />
                 </div>
 
                 {/* Close Button */}
                 <button
                   onClick={handleClose}
                   aria-label="Close dialog"
-                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#5E3122]/8 hover:bg-[#5E3122] text-[#5E3122] hover:text-white flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xs group z-20"
+                  className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#30291F]/10 hover:bg-[#30291F] text-[#30291F] hover:text-[#F2E9DC] flex items-center justify-center transition-all duration-200 cursor-pointer shadow-2xs group z-20"
                 >
                   <svg className="w-4 h-4 transition-transform group-hover:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -251,29 +251,29 @@ export default function AppointmentModal() {
                         <div className="relative w-6 h-6 flex-shrink-0">
                           <Image
                             src="/logos/logo-main.png"
-                            alt="Aarya Eye Care logo"
+                            alt="AARYA EYE CARE logo"
                             fill
                             className="object-contain"
                           />
                         </div>
                         <span 
-                          className="font-avantgarde font-semibold text-xs text-[#5E3122] tracking-tight leading-none"
+                          className="font-avantgarde font-semibold text-xs text-[#30291F] tracking-[0.04em] leading-none"
                           style={{
                             fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                           }}
                         >
-                          Aarya Eye Care
+                          AARYA EYE CARE
                         </span>
-                        <span className="text-[#5E3122]/30 text-xs">•</span>
-                        <span className="text-[#B85338] text-[9.5px] font-mono font-semibold tracking-[0.2em] uppercase">
+                        <span className="text-[#30291F]/30 text-xs">•</span>
+                        <span className="text-[#A55322] text-[9.5px] font-mono font-semibold tracking-[0.2em] uppercase">
                           Darkness to Light
                         </span>
                       </div>
 
-                      <h3 className="font-serif font-medium text-2xl sm:text-[26px] text-[#5E3122] tracking-tight leading-tight">
+                      <h3 className="font-serif font-medium text-2xl sm:text-[26px] text-[#30291F] tracking-tight leading-tight">
                         Book Consultation
                       </h3>
-                      <p className="text-stone-600 text-xs mt-1 leading-relaxed">
+                      <p className="text-[#30291F]/75 text-xs mt-1 leading-relaxed">
                         Share your details and our clinical care desk will contact you to confirm your priority slot.
                       </p>
                     </div>
@@ -283,11 +283,11 @@ export default function AppointmentModal() {
                       
                       {/* Full Name */}
                       <div>
-                        <label className="block text-stone-700 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
-                          Full Name <span className="text-[#B85338]">*</span>
+                        <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
+                          Full Name <span className="text-[#A55322]">*</span>
                         </label>
                         <div className="relative">
-                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#675E31] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                             <circle cx="12" cy="7" r="4" />
                           </svg>
@@ -297,18 +297,18 @@ export default function AppointmentModal() {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder="e.g. Rahul Menon"
-                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 placeholder:text-stone-400 focus:bg-white focus:border-[#1D4533] focus:ring-2 focus:ring-[#1D4533]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
+                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-[#C9A581]/40 text-[#30291F] placeholder:text-[#30291F]/40 focus:bg-white focus:border-[#675E31] focus:ring-2 focus:ring-[#675E31]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
                           />
                         </div>
                       </div>
 
                       {/* Phone Number */}
                       <div>
-                        <label className="block text-stone-700 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
-                          Phone Number <span className="text-[#B85338]">*</span>
+                        <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
+                          Phone Number <span className="text-[#A55322]">*</span>
                         </label>
                         <div className="relative">
-                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#675E31] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
                             <line x1="12" y1="18" x2="12.01" y2="18" />
                           </svg>
@@ -318,14 +318,14 @@ export default function AppointmentModal() {
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
                             placeholder="+91 99463 22288"
-                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 placeholder:text-stone-400 focus:bg-white focus:border-[#1D4533] focus:ring-2 focus:ring-[#1D4533]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
+                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-[#C9A581]/40 text-[#30291F] placeholder:text-[#30291F]/40 focus:bg-white focus:border-[#675E31] focus:ring-2 focus:ring-[#675E31]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
                           />
                         </div>
                       </div>
 
                       {/* Care Specialty with Premium Custom Select */}
                       <div>
-                        <label className="block text-stone-700 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
+                        <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
                           Department / Treatment
                         </label>
                         <ModalCustomSelect
@@ -333,7 +333,7 @@ export default function AppointmentModal() {
                           value={department}
                           onChange={setDepartment}
                           icon={
-                            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#675E31] pointer-events-none z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                               <circle cx="12" cy="12" r="10" />
                               <polyline points="12 6 12 12 16 14" />
                             </svg>
@@ -343,11 +343,11 @@ export default function AppointmentModal() {
 
                       {/* Email (Optional) */}
                       <div>
-                        <label className="block text-stone-700 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
-                          Email Address <span className="text-stone-400 font-normal lowercase">(optional)</span>
+                        <label className="block text-[#30291F] text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
+                          Email Address <span className="text-[#30291F]/50 font-normal lowercase">(optional)</span>
                         </label>
                         <div className="relative">
-                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#675E31] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                             <polyline points="22,6 12,13 2,6" />
                           </svg>
@@ -356,19 +356,19 @@ export default function AppointmentModal() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="your.email@example.com"
-                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 placeholder:text-stone-400 focus:bg-white focus:border-[#1D4533] focus:ring-2 focus:ring-[#1D4533]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
+                            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-2xl bg-white border border-[#C9A581]/40 text-[#30291F] placeholder:text-[#30291F]/40 focus:bg-white focus:border-[#675E31] focus:ring-2 focus:ring-[#675E31]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs"
                           />
                         </div>
                       </div>
 
                       {/* Subtle Reassurance Bar */}
-                      <div className="pt-2 pb-1 flex items-center justify-between text-[10.5px] text-stone-600 font-medium border-t border-stone-200/70">
+                      <div className="pt-2 pb-1 flex items-center justify-between text-[10.5px] text-[#30291F]/80 font-medium border-t border-[#C9A581]/40">
                         <span className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#1D4533]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#675E31]" />
                           NABH Accredited Hospital
                         </span>
                         <span className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B85338]" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
                           Senior Surgeon Review
                         </span>
                       </div>
@@ -377,11 +377,11 @@ export default function AppointmentModal() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-3 sm:py-3.5 rounded-full bg-[#1D4533] hover:bg-[#163628] text-white font-semibold text-xs tracking-wider uppercase shadow-[0_10px_25px_rgba(29,69,51,0.22)] hover:shadow-[0_12px_28px_rgba(29,69,51,0.32)] transition-all hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2 mt-2"
+                        className="w-full py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-semibold text-xs tracking-wider uppercase shadow-[0_10px_25px_rgba(103,94,49,0.22)] hover:shadow-[0_12px_28px_rgba(103,94,49,0.32)] transition-all hover:-translate-y-0.5 active:translate-y-0 cursor-pointer flex items-center justify-center gap-2 mt-2"
                       >
                         {isSubmitting ? (
                           <>
-                            <svg className="animate-spin h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
+                            <svg className="animate-spin h-3.5 w-3.5 text-[#F2E9DC]" fill="none" viewBox="0 0 24 24">
                               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z" />
                             </svg>
@@ -400,28 +400,28 @@ export default function AppointmentModal() {
                 ) : (
                   /* Bespoke Confirmation Screen */
                   <div className="py-6 text-center space-y-4 animate-in fade-in zoom-in-95 duration-200">
-                    <div className="w-14 h-14 rounded-full bg-[#1D4533]/10 border border-[#1D4533]/20 text-[#1D4533] mx-auto flex items-center justify-center shadow-xs">
+                    <div className="w-14 h-14 rounded-full bg-[#8A875C]/15 border border-[#8A875C]/35 text-[#675E31] mx-auto flex items-center justify-center shadow-xs">
                       <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
 
                     <div>
-                      <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.22em] text-[#B85338] block">
+                      <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.22em] text-[#A55322] block">
                         Request Registered
                       </span>
-                      <h4 className="font-serif font-medium text-2xl text-[#5E3122] tracking-tight mt-1">
+                      <h4 className="font-serif font-medium text-2xl text-[#30291F] tracking-tight mt-1">
                         Thank You, {name || "Patient"}
                       </h4>
                     </div>
 
-                    <p className="text-xs sm:text-[13px] text-stone-600 leading-relaxed max-w-xs mx-auto">
-                      Your appointment request for <strong className="text-stone-900">{department}</strong> has been logged. Our coordination team will call you on <strong className="text-stone-900">{phone}</strong> shortly.
+                    <p className="text-xs sm:text-[13px] text-[#30291F]/75 leading-relaxed max-w-xs mx-auto">
+                      Your appointment request for <strong className="text-[#30291F]">{department}</strong> has been logged. Our coordination team will call you on <strong className="text-[#30291F]">{phone}</strong> shortly.
                     </p>
 
                     <div className="pt-3 flex flex-col gap-2.5">
                       <a
-                        href={`https://wa.me/919946322288?text=Hello%20Aarya%20Eye%20Care%2C%20I%20just%20requested%20an%20appointment%20for%20${encodeURIComponent(name || "Patient")}%20(${encodeURIComponent(phone)})%20for%20${encodeURIComponent(department)}.`}
+                        href={`https://wa.me/919946322288?text=Hello%20AARYA%20EYE%20CARE%2C%20I%20just%20requested%20an%20appointment%20for%20${encodeURIComponent(name || "Patient")}%20(${encodeURIComponent(phone)})%20for%20${encodeURIComponent(department)}.`}
                         target="_blank"
                         rel="noreferrer"
                         className="w-full py-3 px-5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-semibold text-xs flex items-center justify-center gap-2 shadow-sm transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
@@ -434,7 +434,7 @@ export default function AppointmentModal() {
 
                       <button
                         onClick={handleClose}
-                        className="w-full py-2.5 px-4 rounded-full border border-stone-200 text-stone-600 hover:text-stone-900 hover:bg-white text-xs font-semibold transition-colors cursor-pointer"
+                        className="w-full py-2.5 px-4 rounded-full border border-[#C9A581]/40 text-[#30291F] hover:text-[#30291F] hover:bg-white text-xs font-semibold transition-colors cursor-pointer"
                       >
                         Dismiss
                       </button>

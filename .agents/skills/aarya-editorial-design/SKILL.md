@@ -9,19 +9,16 @@ This skill encodes the premium editorial SaaS aesthetic refined for the Aarya Ey
 
 ---
 
-## 1. Brand Color Palette
+## 1. Brand Color Palette (6-Color System)
 
 | Token Role | Hex Code | Tailwind / RGBA Equivalent | Usage |
 |---|---|---|---|
-| **Outer Bezel & Framing** | `#F9D2BA` | `bg-[#F9D2BA]`, `border-[#F9D2BA]` | Surrounding outer bezels, navbar surface, section margins |
-| **Primary Deep Surface** | `#5E3122` | `bg-[#5E3122]`, `text-[#5E3122]` | Hero main card, footer container, dark card backgrounds |
-| **Primary Surface Gradient** | `linear-gradient(145deg, #5E3122 0%, #52291B 50%, #441F13 100%)` | Rich satin chocolate background for hero and prominent cards |
-| **Interactive CTA & Buttons**| `#1D4533` | `bg-[#1D4533] hover:bg-[#163628]` | Primary action buttons, active filters, WhatsApp buttons |
-| **Brand Tagline & Accents** | `#B85338` | `text-[#B85338]`, `border-[#B85338]` | "Darkness to Light" tagline, badge accents, category tags |
-| **Glass Card Background** | `rgba(255, 255, 255, 0.45-0.50)` | `bg-white/45 backdrop-blur-xl` | Floating badges, floating stat & eyewear cards |
-| **Glass Card Border** | `rgba(29, 69, 51, 0.40)` | `border border-[#1D4533]/40` | Subtle green-tinted borders for glass elements |
-| **Glass Card Text** | `#1D4533` | `text-[#1D4533]` | Primary text inside frosted glass cards |
-| **Parallax Section** | `#1D4533` & `#FFFFF0` | `bg-dark-green text-ivory text-leaf` | Bold statement section with `#52B788` serif italic accent |
+| **Primary Background** | `#F2E9DC` | `bg-[#F2E9DC]`, `text-[#F2E9DC]` | Warm ivory/linen canvas for page body, modal surface, light card backgrounds |
+| **Secondary Background** | `#C9A581` | `bg-[#C9A581]`, `border-[#C9A581]` | Warm beige outer framing bezels, subtle card outlines, warm badges |
+| **Primary Brand** | `#A55322` | `bg-[#A55322]`, `text-[#A55322]` | Terracotta interactive CTAs, active highlights, taglines, accent badges |
+| **Secondary Brand** | `#8A875C` | `bg-[#8A875C]`, `text-[#8A875C]` | Muted sage secondary accents, soft notification pings, organic badges |
+| **Dark Accent** | `#675E31` | `bg-[#675E31]`, `border-[#675E31]` | Deep olive hero satin gradient, vision section, dark surface containers |
+| **Warm Charcoal Text** | `#30291F` | `text-[#30291F]`, `selection:bg-[#C9A581]/40` | Used everywhere for primary headings, body copy, and UI text |
 
 ---
 
@@ -29,19 +26,19 @@ This skill encodes the premium editorial SaaS aesthetic refined for the Aarya Ey
 
 1. **Brand Logo Mark**:
    - Font: `AvantGarde Demi` (ITC Avant Garde Gothic Demi, Century Gothic, geometric sans).
-   - Style: `font-avantgarde font-semibold tracking-tight leading-none text-[#5E3122]`.
+   - Style: `font-avantgarde font-semibold tracking-tight leading-none text-[#30291F]` on light, `text-white` on deep cards.
 2. **Headings**:
    - Primary display: `font-serif font-medium` (Syne — rigid architectural avant-garde font without bulky boldness).
-   - Avoid aggressive `font-black` (900); prefer `font-normal` (400) to `font-medium` (500).
+   - Text color: `#30291F` on ivory/linen surfaces.
 3. **Brand Tagline ("Darkness to Light")**:
    - Always uppercase: `DARKNESS TO LIGHT`
    - Wide tracking: `tracking-[0.22em]` or `tracking-[0.24em]`
-   - Color: `#B85338` (warm terracotta/copper)
+   - Color: `#A55322` (terracotta)
    - Size: `text-[8px]` to `text-[11px]` font-bold.
 4. **Nav Links Interaction**:
-   - Hover underline: Animated expanding bottom line (`h-[2px] bg-[#5E3122] origin-left duration-300 ease-out scale-x-0 group-hover/nav:scale-x-100`).
+   - Hover underline: Animated expanding bottom line (`h-[2px] bg-[#A55322] origin-left duration-300 ease-out scale-x-0 group-hover/nav:scale-x-100`).
 5. **Body Copy & Subtitles**:
-   - Clean geometric sans: `font-sans font-normal` (Plus Jakarta Sans).
+   - Clean geometric sans: `font-sans font-normal text-[#30291F]/75`.
    - Generous line height and comfortable letter spacing.
 
 ---
