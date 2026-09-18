@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+
+import { useLenis } from "lenis/react";
 
 const departments = [
   "General Eye Examination",
@@ -13,16 +15,130 @@ const departments = [
   "Pediatric & Cornea Clinic",
 ];
 
+function ModalCustomSelect({
+  options,
+  value,
+  onChange,
+  icon,
+}: {
+  options: string[];
+  value: string;
+  onChange: (val: string) => void;
+  icon: React.ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      {icon}
+      <div
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full pl-10 pr-8 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 text-xs sm:text-[13px] cursor-pointer flex items-center justify-between hover:border-[#1D4533] focus:border-[#1D4533] transition-all shadow-2xs select-none"
+      >
+        <span className="truncate">{value}</span>
+        <svg
+          className={`w-3.5 h-3.5 text-stone-400 transition-transform duration-300 shrink-0 ${isOpen ? "rotate-180 text-[#1D4533]" : ""}`}
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 6, scale: 0.98 }}
+            transition={{ duration: 0.18, ease: "easeOut" }}
+            className="absolute z-50 w-full mt-1.5 bg-white border border-stone-200/90 rounded-2xl shadow-[0_15px_35px_rgba(45,23,14,0.15)] overflow-hidden py-1.5"
+          >
+            <div
+              data-lenis-prevent
+              className="max-h-48 overflow-y-auto overscroll-contain scrollbar-hide"
+            >
+              {options.map((option) => (
+                <div
+                  key={option}
+                  onClick={() => {
+                    onChange(option);
+                    setIsOpen(false);
+                  }}
+                  className={`px-4 py-2.5 text-xs sm:text-[12.5px] cursor-pointer transition-colors flex items-center justify-between ${
+                    value === option
+                      ? "text-[#1D4533] font-semibold bg-[#1D4533]/8"
+                      : "text-stone-700 hover:bg-[#F9D2BA]/20 hover:text-[#5E3122]"
+                  }`}
+                >
+                  <span>{option}</span>
+                  {value === option && (
+                    <span className="text-[#1D4533] text-xs font-bold">✓</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function AppointmentModal() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [submitted, setSubmitted] = useState<boolean>(false);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const lenis = useLenis();
 
   // Form State
   const [name, setName] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [department, setDepartment] = useState<string>("General Eye Examination");
   const [email, setEmail] = useState<string>("");
+
+  // Lock background scroll (both native body and Lenis) when modal is open
+  useEffect(() => {
+    if (isOpen) {
+      lenis?.stop();
+      const originalBodyOverflow = document.body.style.overflow;
+      const originalHtmlOverflow = document.documentElement.style.overflow;
+      const originalBodyPaddingRight = document.body.style.paddingRight;
+
+      // Compensate for scrollbar width to prevent horizontal layout shift
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+
+      return () => {
+        lenis?.start();
+        document.body.style.overflow = originalBodyOverflow;
+        document.documentElement.style.overflow = originalHtmlOverflow;
+        document.body.style.paddingRight = originalBodyPaddingRight;
+      };
+    } else {
+      lenis?.start();
+    }
+  }, [isOpen, lenis]);
 
   // Global click interception on any href="#appointment" or data-open-appointment
   useEffect(() => {
@@ -82,7 +198,8 @@ export default function AppointmentModal() {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-[100] flex items-center justify-center p-3.5 sm:p-4 overflow-y-auto"
+          data-lenis-prevent
+          className="fixed inset-0 z-[100] flex items-center justify-center p-3.5 sm:p-4 overflow-y-auto overscroll-contain"
         >
           {/* Ambient Warm Backdrop */}
           <motion.div
@@ -90,7 +207,7 @@ export default function AppointmentModal() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 bg-[#2D170E]/55 backdrop-blur-sm"
+            className="fixed inset-0 bg-[#2D170E]/55 backdrop-blur-sm -z-10"
             onClick={handleClose}
           />
 
@@ -107,10 +224,12 @@ export default function AppointmentModal() {
             <div className="w-full bg-[#F9D2BA] p-2 sm:p-2.5 rounded-[32px] sm:rounded-[36px] shadow-[0_30px_90px_rgba(45,23,14,0.4)] border border-white/50">
               
               {/* Inner White Surface Card */}
-              <div className="bg-[#FAF7F4] rounded-[24px] sm:rounded-[28px] p-6 sm:p-7 sm:px-8 relative overflow-hidden border border-[#5E3122]/10 shadow-xs">
+              <div className="bg-[#FAF7F4] rounded-[24px] sm:rounded-[28px] p-6 sm:p-7 sm:px-8 relative border border-[#5E3122]/10 shadow-xs">
                 
                 {/* Subtle decorative background light sheen */}
-                <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#F9D2BA]/40 rounded-full blur-2xl pointer-events-none" />
+                <div className="absolute inset-0 rounded-[24px] sm:rounded-[28px] overflow-hidden pointer-events-none">
+                  <div className="absolute -top-20 -right-20 w-48 h-48 bg-[#F9D2BA]/40 rounded-full blur-2xl" />
+                </div>
 
                 {/* Close Button */}
                 <button
@@ -204,31 +323,22 @@ export default function AppointmentModal() {
                         </div>
                       </div>
 
-                      {/* Care Specialty */}
+                      {/* Care Specialty with Premium Custom Select */}
                       <div>
                         <label className="block text-stone-700 text-[11px] font-semibold uppercase tracking-wider mb-1.5 pl-0.5">
                           Department / Treatment
                         </label>
-                        <div className="relative">
-                          <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <circle cx="12" cy="12" r="10" />
-                            <polyline points="12 6 12 12 16 14" />
-                          </svg>
-                          <select
-                            value={department}
-                            onChange={(e) => setDepartment(e.target.value)}
-                            className="w-full pl-10 pr-8 py-2.5 sm:py-3 rounded-2xl bg-white border border-stone-200 text-stone-900 focus:bg-white focus:border-[#1D4533] focus:ring-2 focus:ring-[#1D4533]/15 outline-none text-xs sm:text-[13px] transition-all shadow-2xs cursor-pointer appearance-none"
-                          >
-                            {departments.map((dept) => (
-                              <option key={dept} value={dept}>
-                                {dept}
-                              </option>
-                            ))}
-                          </select>
-                          <svg className="absolute right-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                            <polyline points="6 9 12 15 18 9" />
-                          </svg>
-                        </div>
+                        <ModalCustomSelect
+                          options={departments}
+                          value={department}
+                          onChange={setDepartment}
+                          icon={
+                            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#1D4533] pointer-events-none z-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                              <circle cx="12" cy="12" r="10" />
+                              <polyline points="12 6 12 12 16 14" />
+                            </svg>
+                          }
+                        />
                       </div>
 
                       {/* Email (Optional) */}
