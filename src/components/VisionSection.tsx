@@ -93,7 +93,7 @@ export default function VisionSection() {
   return (
     <section
       id="vision"
-      className="relative bg-[#F2E9DC] text-[#30291F] py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#C9A581]/30 select-none"
+      className="relative bg-[#F2E9DC] text-[#30291F] font-helvetica py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#C9A581]/30 select-none"
     >
       {/* Subtle Warm Linen Glow */}
       <div
@@ -113,7 +113,7 @@ export default function VisionSection() {
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A581]/20 border border-[#C9A581]/40 mb-3">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
-              <span className="text-[10px] sm:text-[11px] font-mono tracking-[0.2em] uppercase font-semibold text-[#A55322]">
+              <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-semibold text-[#A55322]">
                 PERSPECTIVE &amp; CARE
               </span>
               <span className="text-[#30291F]/30 text-xs">•</span>
@@ -122,6 +122,7 @@ export default function VisionSection() {
               </span>
             </div>
 
+            {/* Main Title keeps font-serif */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-[#30291F] tracking-tight leading-snug">
               Say farewell to blurred vision &amp;{" "}
               <span className="italic font-serif font-normal text-[#A55322]">
@@ -130,7 +131,7 @@ export default function VisionSection() {
             </h2>
           </div>
 
-          {/* Segmented Preset Controls (Emil / Apple style) */}
+          {/* Segmented Preset Controls (Helvetica) */}
           <div className="flex items-center gap-1.5 bg-[#C9A581]/20 p-1 rounded-full border border-[#C9A581]/40 self-start sm:self-end">
             {presets.map((preset, idx) => (
               <button
@@ -229,34 +230,34 @@ export default function VisionSection() {
             </div>
           </div>
 
-          {/* TOP TAGS */}
+          {/* TOP TAGS (Helvetica) */}
           <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none">
             {/* Left Pill: Blurred Vision State */}
-            <div className="px-3 py-1 rounded-full bg-[#30291F]/70 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-[10px] sm:text-xs font-mono flex items-center gap-1.5">
+            <div className="px-3 py-1 rounded-full bg-[#30291F]/70 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-[10px] sm:text-xs font-medium tracking-wide flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A581]" />
               <span>Prior: 20/80 Blurred</span>
             </div>
 
             {/* Right Pill: Restored Acuity State */}
-            <div className="px-3 py-1 rounded-full bg-[#F2E9DC]/90 backdrop-blur-md border border-[#C9A581]/40 text-[#30291F] text-[10px] sm:text-xs font-mono font-semibold flex items-center gap-1.5 shadow-xs">
+            <div className="px-3 py-1 rounded-full bg-[#F2E9DC]/90 backdrop-blur-md border border-[#C9A581]/40 text-[#30291F] text-[10px] sm:text-xs font-semibold tracking-wide flex items-center gap-1.5 shadow-xs">
               <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
               <span>Restored: Natural 20/20</span>
             </div>
           </div>
 
-          {/* BOTTOM INTERACTION HINT & NOTE */}
+          {/* BOTTOM INTERACTION HINT & NOTE (Helvetica) */}
           <div className="absolute bottom-3 sm:bottom-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none text-[#F2E9DC]">
-            <p className="text-xs sm:text-sm font-serif italic text-[#F2E9DC]/90 drop-shadow-sm hidden sm:block">
+            <p className="text-xs sm:text-sm text-[#F2E9DC]/90 drop-shadow-sm hidden sm:block tracking-wide">
               “{presets[activePreset].note}”
             </p>
-            <span className="text-[10px] sm:text-xs font-mono uppercase tracking-widest text-[#F2E9DC]/80 bg-[#30291F]/60 px-2.5 py-1 rounded-md backdrop-blur-xs ml-auto">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#F2E9DC]/80 bg-[#30291F]/60 px-2.5 py-1 rounded-md backdrop-blur-xs ml-auto font-medium">
               ↔ Drag or Tap to Focus
             </span>
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* 3. THREE COMPACT MICRO-PILLARS (1 ROW, ZERO BLOAT)       */}
+        {/* 3. THREE COMPACT MICRO-PILLARS (Helvetica)                */}
         {/* ========================================================= */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
           
@@ -264,19 +265,19 @@ export default function VisionSection() {
           <div className="p-4 sm:p-5 rounded-[20px] bg-[#C9A581]/15 border border-[#C9A581]/35 flex flex-col justify-between group hover:border-[#C9A581]/60 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono font-semibold text-[#A55322]">
+                <span className="text-xs font-semibold tracking-wider text-[#A55322] uppercase">
                   01 / GENTLE PACE
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
               </div>
-              <h3 className="font-serif font-medium text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
+              <h3 className="font-semibold text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
                 Unhurried Consultations
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#30291F]/75 font-sans leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-[#30291F]/75 leading-relaxed font-normal">
                 45-minute calm examinations with warm, personal attention.
               </p>
             </div>
-            <span className="text-[11px] font-mono text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25">
+            <span className="text-[11px] text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25 tracking-wide">
               100% Patient-Centric
             </span>
           </div>
@@ -285,19 +286,19 @@ export default function VisionSection() {
           <div className="p-4 sm:p-5 rounded-[20px] bg-[#C9A581]/15 border border-[#C9A581]/35 flex flex-col justify-between group hover:border-[#C9A581]/60 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono font-semibold text-[#8A875C]">
+                <span className="text-xs font-semibold tracking-wider text-[#8A875C] uppercase">
                   02 / PRECISION CARE
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#8A875C]" />
               </div>
-              <h3 className="font-serif font-medium text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
+              <h3 className="font-semibold text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
                 Sub-Micron Diagnostics
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#30291F]/75 font-sans leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-[#30291F]/75 leading-relaxed font-normal">
                 Zeiss OCT &amp; bladeless lasers for microscopic accuracy.
               </p>
             </div>
-            <span className="text-[11px] font-mono text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25">
+            <span className="text-[11px] text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25 tracking-wide">
               Sub-Micron Accuracy
             </span>
           </div>
@@ -306,30 +307,30 @@ export default function VisionSection() {
           <div className="p-4 sm:p-5 rounded-[20px] bg-[#C9A581]/15 border border-[#C9A581]/35 flex flex-col justify-between group hover:border-[#C9A581]/60 transition-colors">
             <div>
               <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-mono font-semibold text-[#675E31]">
+                <span className="text-xs font-semibold tracking-wider text-[#675E31] uppercase">
                   03 / RESTORED RITUALS
                 </span>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#675E31]" />
               </div>
-              <h3 className="font-serif font-medium text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
+              <h3 className="font-semibold text-base sm:text-lg text-[#30291F] tracking-tight mb-1">
                 Effortless Daily Living
               </h3>
-              <p className="text-xs sm:text-[13px] text-[#30291F]/75 font-sans leading-relaxed">
+              <p className="text-xs sm:text-[13px] text-[#30291F]/75 leading-relaxed font-normal">
                 Reading, driving, and savoring morning coffee without strain.
               </p>
             </div>
-            <span className="text-[11px] font-mono text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25">
+            <span className="text-[11px] text-[#30291F]/60 mt-3 pt-2 border-t border-[#C9A581]/25 tracking-wide">
               15,000+ Clear Journeys
             </span>
           </div>
 
         </div>
 
-        {/* Quick Underline Action */}
-        <div className="mt-6 flex items-center justify-between text-xs text-[#30291F]/70 font-mono">
+        {/* Quick Underline Action (Helvetica) */}
+        <div className="mt-6 flex items-center justify-between text-xs text-[#30291F]/70">
           <span className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-[#8A875C]" />
-            <span>EST. 2012 · COIMBATORE, TAMIL NADU</span>
+            <span className="tracking-wide">EST. 2012 · COIMBATORE, TAMIL NADU</span>
           </span>
           <Link
             href="#appointment"
