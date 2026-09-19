@@ -86,14 +86,32 @@ export default function HeroSection() {
           initial={{ opacity: 0, scale: 0.985, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full h-full flex-1 min-h-0 flex flex-col justify-between rounded-[22px] sm:rounded-[34px] lg:rounded-[44px] overflow-hidden border-[6px] sm:border-[10px] lg:border-[13px] border-[#F2E9DC] shadow-[0_18px_50px_rgba(48,41,31,0.16)] ring-1 ring-[#C9A581]/30"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 46%, #B8632E 0%, #A55322 45%, #753813 100%)",
-          }}
+          className="relative w-full h-full flex-1 min-h-0 flex flex-col justify-between rounded-[22px] sm:rounded-[34px] lg:rounded-[44px] overflow-hidden border-[6px] sm:border-[10px] lg:border-[13px] border-[#F2E9DC] shadow-[0_18px_50px_rgba(48,41,31,0.16)] ring-1 ring-[#C9A581]/30 bg-[#F2E9DC]"
         >
-          {/* Subtle ambient light bloom */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[450px] lg:w-[600px] h-[300px] sm:h-[450px] lg:h-[600px] bg-[#C9A581]/16 rounded-full blur-3xl pointer-events-none" />
+          {/* Background Images: Desktop & Mobile */}
+          <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
+            {/* Mobile Background */}
+            <Image
+              src="/bg-pngs/hero-bg-mobile.png"
+              alt="Hero Background Mobile"
+              fill
+              priority
+              className="block md:hidden object-cover object-center pointer-events-none select-none"
+              sizes="100vw"
+            />
+            {/* Desktop Background */}
+            <Image
+              src="/bg-pngs/hero-bg.png"
+              alt="Hero Background"
+              fill
+              priority
+              className="hidden md:block object-cover object-center pointer-events-none select-none"
+              sizes="100vw"
+            />
+          </div>
+
+          {/* Full Hero Section Black Transparent Layer Coverage */}
+          <div className="absolute inset-0 bg-black/45 pointer-events-none z-10" />
 
           {/* ========================================================= */}
           {/* TOP NOTCH / TAB (Brand Logo Mark)                         */}
@@ -231,20 +249,20 @@ export default function HeroSection() {
             <div className="flex-1 flex items-center justify-center gap-2.5 sm:gap-3.5 lg:gap-5">
               <Link
                 href="#home"
-                className="relative group/nav px-3.5 sm:px-4 py-1 rounded-full bg-white/20 hover:bg-white/28 backdrop-blur-md border border-white/35 text-white font-semibold shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_4px_14px_rgba(0,0,0,0.1)] transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
+                className="relative group/nav px-3.5 sm:px-4 py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-gotham font-semibold shadow-2xs transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
               >
                 <span>Home</span>
               </Link>
               <Link
                 href="#treatments"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>Treatments</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
               </Link>
               <Link
                 href="#doctors"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>Doctors</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
@@ -258,14 +276,14 @@ export default function HeroSection() {
             <div className="flex-1 flex items-center justify-end md:justify-center gap-2.5 sm:gap-3.5 lg:gap-5">
               <Link
                 href="#vision"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>About Us</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
               </Link>
               <Link
                 href="#branches"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-medium transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>Branches</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
@@ -274,7 +292,7 @@ export default function HeroSection() {
               {/* "Appointment" Button (Desktop only) */}
               <Link
                 href="#appointment"
-                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-bold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-xs transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
+                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-gotham font-semibold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
               >
                 <span className="text-[10.5px] sm:text-[11.5px]">Book Appointment</span>
                 <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
@@ -294,7 +312,7 @@ export default function HeroSection() {
                     window.dispatchEvent(new CustomEvent("open-mobile-menu"));
                   }
                 }}
-                className="md:hidden w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors shrink-0 shadow-xs"
+                className="md:hidden w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs"
               >
                 <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="4" y1="7" x2="20" y2="7" />
@@ -382,13 +400,13 @@ export default function HeroSection() {
                                   : "left-1/2 -translate-x-1/2 sm:right-full sm:-translate-x-2"
                               }`}
                             >
-                              <span className="text-[8.5px] sm:text-[9.5px] font-bold uppercase tracking-wider text-[#A55322] block">
+                              <span className="text-[8.5px] sm:text-[9.5px] font-gotham font-semibold uppercase tracking-wider text-[#A55322] block">
                                 {spot.subtitle}
                               </span>
-                              <h4 className="font-bold text-[11px] sm:text-xs text-[#30291F] mt-0.5 leading-snug">
+                              <h4 className="font-gotham font-semibold text-[11px] sm:text-xs text-[#30291F] mt-0.5 leading-snug">
                                 {spot.title}
                               </h4>
-                              <p className="text-[10px] text-[#30291F]/75 leading-relaxed mt-0.5 line-clamp-3">
+                              <p className="font-helvetica text-[10px] text-[#30291F]/75 leading-relaxed mt-0.5 line-clamp-3">
                                 {spot.description}
                               </p>
                             </motion.div>
@@ -404,8 +422,9 @@ export default function HeroSection() {
             {/* ------------------------------------------------------- */}
             {/* LEFT COLUMN: Editorial Narrative & Action               */}
             {/* ------------------------------------------------------- */}
-            <div className="relative z-30 flex flex-col justify-between h-full pt-4 sm:pt-8 pb-4 sm:pb-6 max-w-[200px] sm:max-w-[280px] lg:max-w-[320px] pointer-events-auto">
-              <div className="space-y-2 sm:space-y-3">
+            <div className="relative z-30 flex flex-col justify-between h-full pt-3 sm:pt-6 pb-3 sm:pb-5 max-w-[210px] sm:max-w-[290px] lg:max-w-[340px] pointer-events-auto">
+              {/* Black transparent card layer below the texts */}
+              <div className="relative p-3.5 sm:p-4.5 rounded-2xl sm:rounded-3xl bg-black/35 backdrop-blur-md border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.35)] space-y-2.5 sm:space-y-3">
                 <div className="space-y-1 sm:space-y-1.5">
                   <div className="relative w-[150px] sm:w-[185px] lg:w-[215px] h-[24px] sm:h-[29px] lg:h-[34px]">
                     <Image
@@ -416,19 +435,19 @@ export default function HeroSection() {
                       priority
                     />
                   </div>
-                  <p className="text-[#F2E9DC]/90 text-[11px] sm:text-[12.5px] lg:text-[13.5px] font-semibold tracking-wide leading-snug">
+                  <h1 className="font-avantgarde font-semibold text-[#F2E9DC] text-[11.5px] sm:text-[13px] lg:text-[14px] tracking-wide leading-snug">
                     Super Speciality Eye Care Hospital
-                  </p>
+                  </h1>
                 </div>
 
-                <p className="text-white/85 text-[10.5px] sm:text-[12px] lg:text-[13px] font-normal leading-relaxed">
+                <p className="font-helvetica text-white/90 text-[10.5px] sm:text-[12px] lg:text-[13px] font-normal leading-relaxed">
                   Aarya Eye Care provides the finest eye care with trusted hands!
                 </p>
 
                 <div className="pt-0.5 sm:pt-1">
                   <Link
                     href="#treatments"
-                    className="inline-flex items-center gap-1.5 bg-white hover:bg-[#F2E9DC] text-[#30291F] text-[10.5px] sm:text-xs lg:text-[13px] font-bold px-3.5 sm:px-5 py-1.5 sm:py-2.5 rounded-full shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="inline-flex items-center gap-1.5 bg-white hover:bg-[#F2E9DC] text-[#30291F] text-[10.5px] sm:text-xs lg:text-[13px] font-gotham font-semibold px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     <span>View All Treatments</span>
                   </Link>
@@ -488,10 +507,10 @@ export default function HeroSection() {
               >
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div>
-                    <h3 className="font-bold text-[11px] sm:text-xs text-[#30291F] leading-tight">
+                    <h3 className="font-gotham font-semibold text-[11px] sm:text-xs text-[#30291F] leading-tight">
                       Free Consultation
                     </h3>
-                    <p className="text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
+                    <p className="font-helvetica text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
                       Our specialist will reach out to assist you.
                     </p>
                   </div>
@@ -508,7 +527,7 @@ export default function HeroSection() {
 
                 <Link
                   href="#appointment"
-                  className="w-full bg-[#A55322] hover:bg-[#8D451B] text-white text-[10.5px] sm:text-xs font-bold py-1.5 sm:py-2 px-3 rounded-full flex items-center justify-between shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
+                  className="w-full bg-[#A55322] hover:bg-[#8D451B] text-white text-[10.5px] sm:text-xs font-gotham font-semibold py-1.5 sm:py-2 px-3 rounded-full flex items-center justify-between shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
                 >
                   <span>Request Call</span>
                   <div className="w-3.5 h-3.5 rounded-full bg-white/20 flex items-center justify-center">

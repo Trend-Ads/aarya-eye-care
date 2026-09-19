@@ -82,14 +82,14 @@ export default function ServicesSection() {
                 Specialised Clinical Care
               </span>
             </div>
-            <h2 className="font-serif font-medium text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#30291F] tracking-tight leading-tight">
+            <h2 className="font-avantgarde font-semibold text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-[#30291F] tracking-tight leading-tight">
               Our Treatments &amp; Procedures
             </h2>
           </div>
 
           <Link
             href="#appointment"
-            className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] text-xs font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(103,94,49,0.2)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
+            className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] text-xs font-gotham font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(103,94,49,0.2)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
           >
             <span>Book Consultation</span>
             <span>→</span>
@@ -121,7 +121,7 @@ export default function ServicesSection() {
 
                 {/* Subtle top badge for category */}
                 <div className="absolute top-6 left-6 z-10">
-                  <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-normal tracking-wide bg-[#30291F]/65 backdrop-blur-md text-[#F2E9DC] border border-[#F2E9DC]/25">
+                  <span className="px-3 py-1 rounded-full text-[11px] sm:text-xs font-helvetica font-medium tracking-wide bg-[#30291F]/65 backdrop-blur-md text-[#F2E9DC] border border-[#F2E9DC]/25">
                     {item.category}
                   </span>
                 </div>
@@ -136,7 +136,7 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <h3 className="font-sans font-normal text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#C9A581] transition-colors max-w-[85%]">
+                    <h3 className="font-gotham font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#C9A581] transition-colors max-w-[85%]">
                       {item.title}
                     </h3>
                     <Link

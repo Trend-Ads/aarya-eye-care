@@ -1,32 +1,11 @@
 import type { Metadata } from "next";
-import { Barlow_Condensed, Plus_Jakarta_Sans, Outfit, Syne } from "next/font/google";
+import { Montserrat } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-heading",
-  weight: ["600", "700", "800", "900"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-brand",
-  weight: ["600", "700", "800", "900"],
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const syne = Syne({
-  variable: "--font-serif",
-  weight: ["400", "500", "600", "700"],
+const montserrat = Montserrat({
+  variable: "--font-gotham-fallback",
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -45,9 +24,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${barlowCondensed.variable} ${plusJakarta.variable} ${outfit.variable} ${syne.variable} antialiased`}
+      className={`${montserrat.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col font-sans bg-[#F2E9DC] text-[#30291F] selection:bg-[#C9A581]/40 selection:text-[#30291F]">
+      <body className="min-h-full flex flex-col font-helvetica bg-[#F2E9DC] text-[#30291F] selection:bg-[#C9A581]/40 selection:text-[#30291F]">
         <SmoothScrolling>
           {children}
         </SmoothScrolling>

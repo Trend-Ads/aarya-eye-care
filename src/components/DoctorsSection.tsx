@@ -177,10 +177,10 @@ export default function DoctorsSection() {
                 DARKNESS TO LIGHT
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-normal text-[#30291F] tracking-tight leading-tight">
+            <h2 className="font-avantgarde font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#30291F] tracking-tight leading-tight">
               Our Specialists &amp; Surgeons
             </h2>
-            <p className="text-xs sm:text-sm text-[#30291F]/75 mt-2 max-w-2xl">
+            <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/75 mt-2 max-w-2xl">
               Our panel of highly qualified, compassionate and experienced ophthalmologists and super-speciality eye surgeons ensures the highest standards of clinical precision and patient care.
             </p>
           </div>
@@ -191,7 +191,7 @@ export default function DoctorsSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-gotham font-semibold transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-[#675E31] text-[#F2E9DC] shadow-xs"
                     : "bg-white text-[#30291F] border border-[#C9A581]/40 hover:border-[#675E31] hover:text-[#675E31]"
@@ -249,10 +249,10 @@ export default function DoctorsSection() {
 
                   {/* Doctor Name & Role / Speciality at bottom inside gradient */}
                   <div className="relative z-10 text-left">
-                    <h3 className="font-serif font-medium text-sm sm:text-base md:text-lg text-[#F2E9DC] leading-tight drop-shadow-xs group-hover:underline">
+                    <h3 className="font-gotham font-semibold text-sm sm:text-base md:text-lg text-[#F2E9DC] leading-tight drop-shadow-xs group-hover:underline">
                       {doc.name}
                     </h3>
-                    <p className="text-[11px] sm:text-xs md:text-[13px] text-[#F2E9DC]/90 font-normal leading-snug mt-1 line-clamp-1">
+                    <p className="font-helvetica text-[11px] sm:text-xs md:text-[13px] text-[#F2E9DC]/90 font-normal leading-snug mt-1 line-clamp-1">
                       {doc.speciality || doc.role}
                     </p>
                   </div>

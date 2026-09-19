@@ -270,10 +270,10 @@ export default function AppointmentModal() {
                         </span>
                       </div>
 
-                      <h3 className="font-serif font-medium text-2xl sm:text-[26px] text-[#30291F] tracking-tight leading-tight">
+                      <h3 className="font-avantgarde font-semibold text-2xl sm:text-[26px] text-[#30291F] tracking-tight leading-tight">
                         Book Consultation
                       </h3>
-                      <p className="text-[#30291F]/75 text-xs mt-1 leading-relaxed">
+                      <p className="font-helvetica text-[#30291F]/75 text-xs mt-1 leading-relaxed">
                         Share your details and our clinical care desk will contact you to confirm your priority slot.
                       </p>
                     </div>

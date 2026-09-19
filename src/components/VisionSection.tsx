@@ -122,25 +122,25 @@ export default function VisionSection() {
               </span>
             </div>
 
-            {/* Main Title keeps font-serif */}
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-serif font-medium text-[#30291F] tracking-tight leading-snug">
+            {/* Main Title: AvantGarde Demi */}
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-avantgarde font-semibold text-[#30291F] tracking-tight leading-snug">
               Say farewell to blurred vision &amp;{" "}
-              <span className="italic font-serif font-normal text-[#A55322]">
+              <span className="font-avantgarde font-semibold text-[#A55322]">
                 welcome the quiet, clearer days.
               </span>
             </h2>
           </div>
 
-          {/* Segmented Preset Controls (Helvetica) */}
+          {/* Segmented Preset Controls */}
           <div className="flex items-center gap-1.5 bg-[#C9A581]/20 p-1 rounded-full border border-[#C9A581]/40 self-start sm:self-end">
             {presets.map((preset, idx) => (
               <button
                 key={preset.name}
                 type="button"
                 onClick={() => setPreset(idx, preset.pos)}
-                className={`relative px-3 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all duration-200 cursor-pointer ${
+                className={`relative px-3 py-1.5 rounded-full text-xs font-gotham font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
                   activePreset === idx
-                    ? "bg-[#F2E9DC] text-[#30291F] shadow-xs font-semibold"
+                    ? "bg-[#F2E9DC] text-[#30291F] shadow-xs"
                     : "text-[#30291F]/70 hover:text-[#30291F]"
                 }`}
               >

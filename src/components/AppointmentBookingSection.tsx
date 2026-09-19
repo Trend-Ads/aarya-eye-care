@@ -208,11 +208,11 @@ export default function AppointmentBookingSection() {
               <span className="text-[#A55322] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
             </div>
 
-            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-serif font-medium text-[#30291F] mb-5 tracking-tight">
-              Book Your <span className="italic font-normal">Appointment</span>
+            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-avantgarde font-semibold text-[#30291F] mb-5 tracking-tight">
+              Book Your <span className="font-avantgarde font-semibold text-[#A55322]">Appointment</span>
             </h2>
             
-            <p className="text-[#30291F]/75 text-sm leading-relaxed mb-12 max-w-md">
+            <p className="font-helvetica text-[#30291F]/75 text-sm leading-relaxed mb-12 max-w-md">
               Schedule your visit with our expert ophthalmologists. We provide world-class eye care services with state-of-the-art diagnostic technology.
             </p>
 
@@ -224,8 +224,8 @@ export default function AppointmentBookingSection() {
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Call Us</h4>
-                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">+91 99463 22288</p>
+                <h4 className="font-gotham font-semibold text-[11px] sm:text-xs md:text-sm text-[#30291F] leading-tight">Call Us</h4>
+                <p className="font-helvetica text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">+91 99463 22288</p>
               </div>
 
               <div className="flex flex-col">
@@ -235,8 +235,8 @@ export default function AppointmentBookingSection() {
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Full Week</h4>
-                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Mon – Sun</p>
+                <h4 className="font-gotham font-semibold text-[11px] sm:text-xs md:text-sm text-[#30291F] leading-tight">Full Week</h4>
+                <p className="font-helvetica text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Mon – Sun</p>
               </div>
 
               <div className="flex flex-col">
@@ -465,7 +465,7 @@ export default function AppointmentBookingSection() {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(103,94,49,0.25)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
+                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-gotham font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(103,94,49,0.25)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
                   >
                     Submit Request
                   </button>
