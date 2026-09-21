@@ -278,39 +278,36 @@ export default function HeroSection() {
         {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
-          animate={{ opacity: 0.95, y: 0, scale: 1 }}
+          animate={{ opacity: 0.98, y: 0, scale: 1 }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none select-none overflow-hidden -translate-y-12 lg:-translate-y-16 xl:-translate-y-20"
         >
-          <h1 className="font-sans font-bold tracking-tight uppercase leading-[0.88] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
-            <span className="md:text-[5vw] lg:text-[4.5rem] xl:text-[5.25rem] font-bold tracking-tight text-white">
-              AARYA
-            </span>
-            <span className="md:text-[8.5vw] lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-tight text-white">
-              EYE CARE
-            </span>
-            <span className="mt-2.5 sm:mt-3 text-xs sm:text-sm lg:text-base font-gotham font-medium tracking-[0.32em] text-[#C9A581] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
-              Super Speciality Hospital
-            </span>
-          </h1>
+          {/* Pure soft shadow halo (no card, no borders) */}
+          <div className="relative flex flex-col items-center py-6 px-16 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.28)_45%,transparent_75%)]">
+            <h1 className="font-oswald font-bold uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full [text-shadow:0_4px_24px_rgba(0,0,0,0.92),0_12px_45px_rgba(0,0,0,0.85)]">
+              <span className="md:text-[5.8vw] lg:text-[5.8rem] xl:text-[7rem] font-bold tracking-[0.03em] text-white whitespace-nowrap">
+                AARYA EYE CARE
+              </span>
+              <span className="mt-3.5 text-xs sm:text-sm lg:text-base font-gotham font-semibold tracking-[0.32em] text-[#F7DEB4] uppercase [text-shadow:0_2px_12px_rgba(0,0,0,0.95)]">
+                Super Speciality Hospital
+              </span>
+            </h1>
+          </div>
         </motion.div>
 
         {/* ─── MOBILE VIEW CONTENT (Centered & balanced, no overflow) ─── */}
         <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1.5 pb-2.5 z-10 gap-2 sm:gap-2.5">
-          {/* 1. Main Headline */}
+          {/* 1. Main Headline with pure shadow (no card, no borders) */}
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-0.5 sm:pt-1 shrink-0"
+            className="flex flex-col items-center text-center font-oswald font-bold uppercase leading-[0.95] text-white pt-1 pb-1.5 px-6 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.58)_0%,rgba(0,0,0,0.22)_50%,transparent_75%)] shrink-0"
           >
-            <span className="text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-tight text-white">
-              AARYA
+            <span className="text-[clamp(1.55rem,7.5vw,2.5rem)] font-bold tracking-[0.02em] text-white whitespace-nowrap [text-shadow:0_4px_20px_rgba(0,0,0,0.95),0_8px_32px_rgba(0,0,0,0.9)]">
+              AARYA EYE CARE
             </span>
-            <span className="text-[clamp(2.5rem,10vw,3.75rem)] font-bold tracking-tight text-white">
-              EYE CARE
-            </span>
-            <span className="mt-1 text-[9.5px] sm:text-xs font-gotham font-medium tracking-[0.24em] text-[#C9A581] uppercase">
+            <span className="mt-1.5 text-[9.5px] sm:text-xs font-gotham font-semibold tracking-[0.24em] text-[#F7DEB4] uppercase [text-shadow:0_2px_10px_rgba(0,0,0,0.95)]">
               Super Speciality Hospital
             </span>
           </motion.div>

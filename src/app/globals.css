@@ -21,6 +21,11 @@
   --font-display: "Gotham", "Gotham Medium", "Gotham Bold", var(--font-gotham-fallback), "Montserrat", sans-serif;
   --font-serif: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
   --font-brand: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+  --font-syne: var(--font-syne), "AvantGarde Demi", "Century Gothic", sans-serif;
+  --font-outfit: var(--font-outfit), "Montserrat", sans-serif;
+  --font-anton: var(--font-anton), "Impact", "Arial Black", sans-serif;
+  --font-oswald: var(--font-oswald), "Impact", sans-serif;
+  --font-bebas: var(--font-bebas), "Oswald", sans-serif;
   --color-primary-bg: #F2E9DC;
   --color-secondary-bg: #C9A581;
   --color-primary-brand: #A55322;
@@ -79,6 +84,26 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-gotham {
 .font-title, .font-avantgarde, .title {
   font-family: "AvantGarde Demi", "AvantGarde-Demi", "ITC Avant Garde Gothic", "ITC Avant Garde Gothic Std", "Avant Garde", "Century Gothic", sans-serif;
   font-weight: 600;
+}
+
+/* Eye-catchy modern luxury display font: Syne */
+.font-syne {
+  font-family: var(--font-syne), "AvantGarde Demi", "ITC Avant Garde Gothic", "Century Gothic", sans-serif;
+}
+
+/* Bold impact display font: Anton */
+.font-anton {
+  font-family: var(--font-anton), "Impact", "Arial Black", sans-serif;
+}
+
+/* Authentic game & military style headline font: Oswald (flat-top A, bold geometry) */
+.font-oswald {
+  font-family: var(--font-oswald), sans-serif;
+}
+
+/* Tall condensed display font: Bebas Neue */
+.font-bebas {
+  font-family: var(--font-bebas), sans-serif;
 }
 
 /* Base Body: Helvetica Family */
