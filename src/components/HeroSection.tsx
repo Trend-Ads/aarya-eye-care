@@ -98,15 +98,15 @@ export default function HeroSection() {
             className="md:hidden w-full h-full object-cover object-right animate-mobile-hero-pan"
           />
 
-          {/* Desktop Image: Balanced micro-zoom (centered) */}
+          {/* Desktop Image: Normal centered zoom with expansive movement space and calm speed */}
           <motion.img
             src="/bg-pngs/herobg- lat.png"
             alt="Aarya Eye Care Background"
             className="hidden md:block w-full h-full object-cover object-center will-change-transform"
             initial={{ scale: 1 }}
-            animate={{ scale: [1, 1.07, 1] }}
+            animate={{ scale: [1, 1.16, 1] }}
             transition={{
-              duration: 10,
+              duration: 11,
               repeat: Infinity,
               ease: "easeInOut",
             }}
@@ -299,10 +299,10 @@ export default function HeroSection() {
         <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1.5 pb-2.5 z-10 gap-2 sm:gap-2.5">
           {/* 1. Main Headline */}
           <motion.div
-            initial={{ opacity: 0, y: -20, scale: 0.94 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-0.5 sm:pt-1"
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-0.5 sm:pt-1 shrink-0"
           >
             <span className="text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-tight text-white">
               AARYA
@@ -317,10 +317,10 @@ export default function HeroSection() {
 
           {/* 2. Review Badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.88 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md rounded-full py-1.5 px-4 border border-white/15 shadow-md shrink-0"
+            className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md rounded-full py-1.5 px-4 border border-white/15 shadow-md shrink-0 my-0.5"
           >
             <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-inner shrink-0">
               <Image src="/logos/logo-main.png" alt="Aarya" width={24} height={24} className="w-full h-full object-contain" />
