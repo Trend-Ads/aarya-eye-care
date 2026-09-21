@@ -282,11 +282,14 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none select-none overflow-hidden -translate-y-12 lg:-translate-y-16 xl:-translate-y-20"
         >
-          <h1 className="font-sans font-black tracking-tight uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_32px_rgba(0,0,0,0.65)]">
-            <span className="md:text-[5vw] lg:text-[4.75rem] xl:text-[5.75rem] font-black tracking-tight text-white">
-              AARYA EYE CARE
+          <h1 className="font-sans font-bold tracking-tight uppercase leading-[0.88] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.5)]">
+            <span className="md:text-[5vw] lg:text-[4.5rem] xl:text-[5.25rem] font-bold tracking-tight text-white">
+              AARYA
             </span>
-            <span className="mt-3 lg:mt-4 text-xs sm:text-sm lg:text-base font-gotham font-bold tracking-[0.34em] text-[#C9A581] uppercase drop-shadow-[0_2px_10px_rgba(0,0,0,0.7)]">
+            <span className="md:text-[8.5vw] lg:text-[7.5rem] xl:text-[8.75rem] font-bold tracking-tight text-white">
+              EYE CARE
+            </span>
+            <span className="mt-2.5 sm:mt-3 text-xs sm:text-sm lg:text-base font-gotham font-medium tracking-[0.32em] text-[#C9A581] uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
               Super Speciality Hospital
             </span>
           </h1>
@@ -299,12 +302,15 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative top-14 flex flex-col items-center text-center font-sans font-black tracking-tight uppercase leading-none text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.7)] pt-7 sm:pt-9"
+            className="relative top-14 flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-7 sm:pt-9"
           >
-            <span className="text-[clamp(1.4rem,6.8vw,2.25rem)] tracking-tight text-white font-black whitespace-nowrap">
-              AARYA EYE CARE
+            <span className="text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-tight text-white">
+              AARYA
             </span>
-            <span className="mt-1.5 text-[9.5px] sm:text-xs font-gotham font-bold tracking-[0.24em] text-[#C9A581] uppercase">
+            <span className="text-[clamp(2.5rem,10vw,3.75rem)] font-bold tracking-tight text-white">
+              EYE CARE
+            </span>
+            <span className="mt-1 text-[9.5px] sm:text-xs font-gotham font-medium tracking-[0.24em] text-[#C9A581] uppercase">
               Super Speciality Hospital
             </span>
           </motion.div>
