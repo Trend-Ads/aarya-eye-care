@@ -155,12 +155,12 @@ export default function AppointmentBookingSection() {
           }}
           className="absolute -top-10 -left-10 w-[calc(100%+5rem)] h-[calc(100%+5rem)] opacity-60 sm:opacity-75"
         >
-          <Image
+          {/* <Image
             src="/bg-pngs/leaves.png"
             alt="Floating Leaves Background"
             fill
             className="object-cover object-center pointer-events-none"
-          />
+          /> */}
         </motion.div>
       </div>
 

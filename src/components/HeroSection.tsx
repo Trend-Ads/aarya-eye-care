@@ -357,11 +357,6 @@ export default function HeroSection() {
                 {/* Ground Shadow */}
                 <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-5 sm:h-7 bg-black/40 blur-lg rounded-full pointer-events-none" />
 
-                {/* Center subtle label */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 whitespace-nowrap text-[9px] sm:text-[10.5px] font-semibold tracking-widest text-white/60 uppercase pointer-events-none">
-                  Since 2015 • Thrissur, Kerala
-                </div>
-
                 {/* --------------------------------------------------- */}
                 {/* INTERACTIVE HOTSPOTS (+) ON THE MODEL (Desktop only)*/}
                 {/* --------------------------------------------------- */}
@@ -420,42 +415,15 @@ export default function HeroSection() {
             </div>
 
             {/* ------------------------------------------------------- */}
-            {/* LEFT COLUMN: Editorial Narrative & Action               */}
+            {/* LEFT COLUMN: Social Media Channels                      */}
             {/* ------------------------------------------------------- */}
-            <div className="relative z-30 flex flex-col justify-between h-full pt-3 sm:pt-6 pb-3 sm:pb-5 max-w-[210px] sm:max-w-[290px] lg:max-w-[340px] pointer-events-auto">
-              {/* Black transparent card layer below the texts */}
-              <div className="relative p-3.5 sm:p-4.5 rounded-2xl sm:rounded-3xl bg-black/35 backdrop-blur-md border border-white/15 shadow-[0_16px_40px_rgba(0,0,0,0.35)] space-y-2.5 sm:space-y-3">
-                <div className="space-y-1 sm:space-y-1.5">
-                  <div className="relative w-[150px] sm:w-[185px] lg:w-[215px] h-[24px] sm:h-[29px] lg:h-[34px]">
-                    <Image
-                      src="/logos/logo-name.png"
-                      alt="AARYA EYE CARE - Darkness to Light"
-                      fill
-                      className="object-contain object-left brightness-0 invert"
-                      priority
-                    />
-                  </div>
-                  <h1 className="font-avantgarde font-semibold text-[#F2E9DC] text-[11.5px] sm:text-[13px] lg:text-[14px] tracking-wide leading-snug">
-                    Super Speciality Eye Care Hospital
-                  </h1>
-                </div>
-
-                <p className="font-helvetica text-white/90 text-[10.5px] sm:text-[12px] lg:text-[13px] font-normal leading-relaxed">
-                  Aarya Eye Care provides the finest eye care with trusted hands!
-                </p>
-
-                <div className="pt-0.5 sm:pt-1">
-                  <Link
-                    href="#treatments"
-                    className="inline-flex items-center gap-1.5 bg-white hover:bg-[#F2E9DC] text-[#30291F] text-[10.5px] sm:text-xs lg:text-[13px] font-gotham font-semibold px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full shadow-md hover:scale-[1.02] active:scale-[0.98] transition-all"
-                  >
-                    <span>View All Treatments</span>
-                  </Link>
-                </div>
-              </div>
+            <div className="relative z-30 flex flex-col justify-end h-full pt-4 sm:pt-8 pb-4 sm:pb-6 pointer-events-auto">
+              <h1 className="sr-only">
+                Aarya Eye Care - Super Speciality Eye Care Hospital
+              </h1>
 
               {/* Social Media Buttons */}
-              <div className="flex items-center gap-1.5 sm:gap-2 pt-2">
+              <div className="flex items-center gap-1.5 sm:gap-2">
                 <a
                   href="https://facebook.com"
                   target="_blank"

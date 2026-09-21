@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import TheQuestion from "@/components/TheQuestion";
 import VisionSection from "@/components/VisionSection";
 import ServicesSection from "@/components/ServicesSection";
 import DoctorsSection from "@/components/DoctorsSection";
@@ -18,7 +19,10 @@ export default function Home() {
         {/* 1. Hero Section */}
         <HeroSection />
 
-        {/* 1.5 Parallax Section */}
+        {/* 2. The Question (Kinetic Parallax Section) */}
+        <TheQuestion />
+
+        {/* 3. Vision Acuity Section */}
         <VisionSection />
 
         {/* 2. Treatments Section (Clean Cards with Background Image & Title Only) */}

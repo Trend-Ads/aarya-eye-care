@@ -33,7 +33,7 @@ export default function Footer() {
               <div className="col-span-2 lg:col-span-4 space-y-3.5">
                 <Link
                   href="#home"
-                  className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 rounded-2xl bg-[#F2E9DC] hover:bg-white border border-white/40 shadow-sm transition-all duration-200 hover:scale-[1.01]"
+                  className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 rounded-lg bg-[#F2E9DC] hover:bg-white border border-white/40 shadow-sm transition-all duration-200 hover:scale-[1.01]"
                 >
                   <div className="relative w-6 h-6 sm:w-7 sm:h-7 shrink-0">
                     <Image
