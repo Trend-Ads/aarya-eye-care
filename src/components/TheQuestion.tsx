@@ -75,10 +75,10 @@ export function TheQuestion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-avantgarde font-semibold tracking-tight leading-[1.15] uppercase max-w-3xl text-balance text-white"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-avantgarde font-semibold tracking-tight leading-[1.15] uppercase max-w-4xl text-balance text-white"
         >
           It begins long before the lens is crafted. <br />
-          <span className="text-[#FCECDD] italic font-serif lowercase font-normal">
+          <span className="block mt-2 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-[#FCECDD] italic font-serif lowercase font-normal tracking-normal">
             It begins with trusted care.
           </span>
         </motion.h2>
@@ -86,7 +86,7 @@ export function TheQuestion() {
         {/* Circular Floating Focal Frame with Vertical Parallax */}
         <motion.div
           style={{ y }}
-          className="w-full max-w-[190px] sm:max-w-[240px] md:max-w-[270px] aspect-square rounded-full overflow-hidden mt-3 sm:mt-5 relative bg-[#F2E9DC] shadow-[0_24px_55px_rgba(48,41,31,0.35)] ring-4 sm:ring-[6px] ring-white/20 border-2 border-white/80 flex items-center justify-center group"
+          className="w-full max-w-[160px] sm:max-w-[200px] md:max-w-[230px] aspect-square rounded-full overflow-hidden mt-2 sm:mt-4 relative bg-[#F2E9DC] shadow-[0_24px_55px_rgba(48,41,31,0.35)] ring-4 sm:ring-[6px] ring-white/20 border-2 border-white/80 flex items-center justify-center group"
         >
           {/* Ambient soft glow */}
           <div className="absolute inset-0 rounded-full bg-radial from-white/60 via-transparent to-transparent pointer-events-none" />

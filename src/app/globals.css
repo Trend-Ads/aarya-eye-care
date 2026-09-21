@@ -143,3 +143,17 @@ h1, h2, h3, h4, h5, h6, .font-heading, .font-gotham {
   }
 }
 
+/* Cinematic subtle mobile hero pan */
+@keyframes mobile-hero-pan {
+  0%, 100% {
+    object-position: 70% center;
+  }
+  50% {
+    object-position: 40% center;
+  }
+}
+
+.animate-mobile-hero-pan {
+  animation: mobile-hero-pan 12s ease-in-out infinite;
+}
+
