@@ -1,71 +1,10 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-
-interface Hotspot {
-  id: number;
-  title: string;
-  subtitle: string;
-  description: string;
-  position: {
-    top?: string;
-    bottom?: string;
-    left?: string;
-    right?: string;
-  };
-  align: "left" | "right";
-}
-
-const hotspots: Hotspot[] = [
-  {
-    id: 0,
-    title: "Zeiss BlueGuard Optics",
-    subtitle: "Anti-reflective & 100% UV block",
-    description:
-      "Bespoke high-contrast lenses crafted for zero screen glare, digital fatigue prevention, and crystal clarity.",
-    position: { top: "calc(28% + 175px)", right: "calc(43% - 185px)" },
-    align: "right",
-  },
-  {
-    id: 1,
-    title: "Blade-Free SMILE / LASIK",
-    subtitle: "Sub-second laser mapping",
-    description:
-      "Custom wavefront precision for painless 20/20 vision restoration with rapid 24-hour healing.",
-    position: { top: "calc(40% - 100px)", left: "calc(41% + 305px)" },
-    align: "left",
-  },
-  {
-    id: 2,
-    title: "NABH Accredited Care",
-    subtitle: "15,000+ successful treatments",
-    description:
-      "Kerala's premier eye care center equipped with Zeiss & Alcon diagnostic surgical suites.",
-    position: { bottom: "calc(25% + 105px)", left: "calc(44% + 170px)" },
-    align: "left",
-  },
-];
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
-  const [activeHotspot, setActiveHotspot] = useState<number | null>(null);
-
-  const handlePrev = () => {
-    setActiveHotspot((prev) => {
-      if (prev === null) return hotspots.length - 1;
-      return prev === 0 ? hotspots.length - 1 : prev - 1;
-    });
-  };
-
-  const handleNext = () => {
-    setActiveHotspot((prev) => {
-      if (prev === null) return 0;
-      return prev === hotspots.length - 1 ? 0 : prev + 1;
-    });
-  };
-
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -92,7 +31,7 @@ export default function HeroSection() {
           <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
             {/* Mobile Background */}
             <Image
-              src="/bg-pngs/hero-bg-mobile.png"
+              src="/bg-pngs/hero-lat-mobile.png"
               alt="Hero Background Mobile"
               fill
               priority
@@ -101,7 +40,7 @@ export default function HeroSection() {
             />
             {/* Desktop Background */}
             <Image
-              src="/bg-pngs/hero-bg.png"
+              src="/bg-pngs/herobg- lat.png"
               alt="Hero Background"
               fill
               priority
@@ -111,7 +50,7 @@ export default function HeroSection() {
           </div>
 
           {/* Full Hero Section Black Transparent Layer Coverage */}
-          <div className="absolute inset-0 bg-black/45 pointer-events-none z-10" />
+          <div className="absolute inset-0 bg-black/25 pointer-events-none z-10" />
 
           {/* ========================================================= */}
           {/* TOP NOTCH / TAB (Brand Logo Mark)                         */}
@@ -192,54 +131,7 @@ export default function HeroSection() {
             </button>
           </div>
 
-          {/* ========================================================= */}
-          {/* LEFT & RIGHT NOTCHES (< and > Arrows)                     */}
-          {/* ========================================================= */}
-          <div className="hidden md:block absolute left-0 top-1/2 -translate-y-1/2 z-40 w-[26px] sm:w-[30px] h-[64px] sm:h-[72px] pointer-events-auto">
-            <svg
-              viewBox="0 0 30 72"
-              className="w-full h-full drop-shadow-[2px_0_4px_rgba(48,41,31,0.06)]"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M 0 0 C 0 8, 4 12, 12 12 L 15 12 C 23 12, 30 19, 30 28 L 30 44 C 30 53, 23 60, 15 60 L 12 60 C 4 60, 0 64, 0 72 Z"
-                fill="#F2E9DC"
-              />
-            </svg>
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous specialty highlight"
-              className="absolute inset-0 flex items-center justify-center pr-1 group cursor-pointer"
-            >
-              <div className="w-5 h-5 rounded-full bg-white/30 text-white group-hover:bg-[#30291F] group-hover:text-white transition-all flex items-center justify-center text-xs font-bold">
-                ‹
-              </div>
-            </button>
-          </div>
 
-          <div className="hidden md:block absolute right-0 top-1/2 -translate-y-1/2 z-40 w-[26px] sm:w-[30px] h-[64px] sm:h-[72px] pointer-events-auto">
-            <svg
-              viewBox="0 0 30 72"
-              className="w-full h-full drop-shadow-[-2px_0_4px_rgba(48,41,31,0.06)]"
-              preserveAspectRatio="none"
-            >
-              <path
-                d="M 30 0 C 30 8, 26 12, 18 12 L 15 12 C 7 12, 0 19, 0 28 L 0 44 C 0 53, 7 60, 15 60 L 18 60 C 26 60, 30 64, 30 72 Z"
-                fill="#F2E9DC"
-              />
-            </svg>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next specialty highlight"
-              className="absolute inset-0 flex items-center justify-center pl-1 group cursor-pointer"
-            >
-              <div className="w-5 h-5 rounded-full bg-white/30 text-white group-hover:bg-[#30291F] group-hover:text-white transition-all flex items-center justify-center text-xs font-bold">
-                ›
-              </div>
-            </button>
-          </div>
 
           {/* ========================================================= */}
           {/* INTEGRATED TOP BAR (Inside the Frame)                     */}
@@ -329,90 +221,7 @@ export default function HeroSection() {
             
 
 
-            {/* ------------------------------------------------------- */}
-            {/* CENTERPIECE: Woman Model Image (Fluids to available h)  */}
-            {/* ------------------------------------------------------- */}
-            <div className="absolute inset-x-0 bottom-0 top-6 sm:top-8 flex items-end justify-center pointer-events-none z-20">
-              <div className="relative w-auto h-full flex items-end justify-center pb-1">
-                {/* Mobile Model Image (Portrait view for mobile screens) */}
-                <Image
-                  src="/Mains/hero6-mobile.png"
-                  alt="Aarya Eye Care patient with designer spectacles"
-                  width={1024}
-                  height={1536}
-                  priority
-                  className="block md:hidden w-auto h-full max-h-full object-contain object-bottom pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] translate-y-8"
-                />
 
-                {/* Desktop Model Image */}
-                <Image
-                  src="/Mains/hero6.png"
-                  alt="Aarya Eye Care patient with designer spectacles"
-                  width={1024}
-                  height={1536}
-                  priority
-                  className="hidden md:block w-auto h-full max-h-full object-contain object-bottom pointer-events-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.4)] translate-y-8"
-                />
-
-                {/* Ground Shadow */}
-                <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-3/4 h-5 sm:h-7 bg-black/40 blur-lg rounded-full pointer-events-none" />
-
-                {/* --------------------------------------------------- */}
-                {/* INTERACTIVE HOTSPOTS (+) ON THE MODEL (Desktop only)*/}
-                {/* --------------------------------------------------- */}
-                <div className="hidden md:block absolute inset-0 pointer-events-none">
-                  {hotspots.map((spot) => {
-                    const isOpen = activeHotspot === spot.id;
-                    return (
-                      <div
-                        key={spot.id}
-                        className="absolute z-30 pointer-events-auto"
-                        style={spot.position}
-                      >
-                        <button
-                          type="button"
-                          onClick={() => setActiveHotspot(isOpen ? null : spot.id)}
-                          aria-label={`View details about ${spot.title}`}
-                          className="relative w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-white/15 hover:bg-white/30 backdrop-blur-md border border-white/30 hover:border-white/55 text-white/85 hover:text-white flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200 shadow-xs group cursor-pointer"
-                        >
-                          <span className="absolute inset-0 rounded-full bg-white/25 animate-ping pointer-events-none opacity-30" />
-                          <span className="relative text-[9px] sm:text-[10px] font-medium leading-none select-none">
-                            {isOpen ? "×" : "+"}
-                          </span>
-                        </button>
-
-                        {/* Tooltip Card */}
-                        <AnimatePresence>
-                          {isOpen && (
-                            <motion.div
-                              initial={{ opacity: 0, scale: 0.9, y: 6 }}
-                              animate={{ opacity: 1, scale: 1, y: 0 }}
-                              exit={{ opacity: 0, scale: 0.9, y: 6 }}
-                              transition={{ duration: 0.2, ease: "easeOut" }}
-                              className={`absolute z-50 w-48 sm:w-56 p-2.5 sm:p-3 rounded-2xl bg-white/95 backdrop-blur-xl border border-white/80 shadow-[0_16px_40px_rgba(48,41,31,0.22)] text-[#30291F] mt-1.5 ${
-                                spot.align === "right"
-                                  ? "left-1/2 -translate-x-1/2 sm:left-full sm:translate-x-2"
-                                  : "left-1/2 -translate-x-1/2 sm:right-full sm:-translate-x-2"
-                              }`}
-                            >
-                              <span className="text-[8.5px] sm:text-[9.5px] font-gotham font-semibold uppercase tracking-wider text-[#A55322] block">
-                                {spot.subtitle}
-                              </span>
-                              <h4 className="font-gotham font-semibold text-[11px] sm:text-xs text-[#30291F] mt-0.5 leading-snug">
-                                {spot.title}
-                              </h4>
-                              <p className="font-helvetica text-[10px] text-[#30291F]/75 leading-relaxed mt-0.5 line-clamp-3">
-                                {spot.description}
-                              </p>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
 
             {/* ------------------------------------------------------- */}
             {/* LEFT COLUMN: Social Media Channels                      */}
