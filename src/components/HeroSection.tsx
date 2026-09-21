@@ -296,13 +296,13 @@ export default function HeroSection() {
         </motion.div>
 
         {/* ─── MOBILE VIEW CONTENT (Centered & balanced, no overflow) ─── */}
-        <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1 pb-3 z-10">
-          {/* 1. Main Headline with Smooth Entrance Transition - positioned lower toward reviews badge */}
+        <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1.5 pb-2.5 z-10 gap-2 sm:gap-2.5">
+          {/* 1. Main Headline */}
           <motion.div
-            initial={{ opacity: 0, y: -24, scale: 0.94 }}
+            initial={{ opacity: 0, y: -20, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="relative top-14 flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-7 sm:pt-9"
+            className="flex flex-col items-center text-center font-sans font-bold tracking-tight uppercase leading-[0.9] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-0.5 sm:pt-1"
           >
             <span className="text-[clamp(1.75rem,6vw,2.5rem)] font-bold tracking-tight text-white">
               AARYA
@@ -320,7 +320,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.88 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md rounded-full py-1.5 px-4 border border-white/15 shadow-md"
+            className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md rounded-full py-1.5 px-4 border border-white/15 shadow-md shrink-0"
           >
             <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center p-0.5 overflow-hidden shadow-inner shrink-0">
               <Image src="/logos/logo-main.png" alt="Aarya" width={24} height={24} className="w-full h-full object-contain" />
@@ -343,7 +343,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.28, ease: [0.16, 1, 0.3, 1] }}
-            className="text-xs sm:text-sm text-[#EDE9E6] font-medium text-center max-w-[300px] sm:max-w-[340px] leading-relaxed drop-shadow-sm px-1"
+            className="text-[11.5px] sm:text-xs text-[#EDE9E6] font-medium text-center max-w-[290px] sm:max-w-[340px] leading-relaxed drop-shadow-sm px-1 shrink-0"
           >
             Delivering clinical excellence, advanced diagnostics, and compassionate eye treatments to protect your vision.
           </motion.p>
@@ -353,7 +353,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full max-w-sm bg-black/35 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 border border-white/15 flex flex-col gap-1.5 shadow-lg"
+            className="w-full max-w-xs sm:max-w-sm bg-black/35 backdrop-blur-md rounded-2xl p-2 sm:p-2.5 border border-white/15 flex flex-col gap-1 shadow-lg shrink-0"
           >
             {/* Header: Speciality Care */}
             <div className="flex items-center justify-between border-b border-white/10 pb-1 px-1">
@@ -368,47 +368,47 @@ export default function HeroSection() {
             {/* 3 Metrics Row */}
             <div className="grid grid-cols-3 gap-1.5 items-center text-center">
               {/* Metric 1: 100% Blade-Free */}
-              <div className="flex flex-col items-center justify-center py-1.5 px-0.5 bg-white/5 rounded-xl border border-white/5">
-                <span className="text-base sm:text-lg font-bold tracking-tight text-[#A55322] leading-none">100%</span>
-                <span className="text-[8.5px] sm:text-[9.5px] font-semibold text-[#F2E9DC] mt-1 leading-tight">Blade-Free</span>
+              <div className="flex flex-col items-center justify-center py-1 px-0.5 bg-white/5 rounded-xl border border-white/5">
+                <span className="text-sm sm:text-base font-bold tracking-tight text-[#A55322] leading-none">100%</span>
+                <span className="text-[8px] sm:text-[9px] font-semibold text-[#F2E9DC] mt-0.5 leading-tight">Blade-Free</span>
               </div>
 
               {/* Metric 2: 25+ Years */}
-              <div className="flex flex-col items-center justify-center py-1.5 px-0.5 bg-white/5 rounded-xl border border-white/5">
+              <div className="flex flex-col items-center justify-center py-1 px-0.5 bg-white/5 rounded-xl border border-white/5">
                 <div className="flex items-center gap-1 leading-none">
                   <svg className="w-2.5 h-2.5 text-[#C9A581]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <circle cx="12" cy="12" r="9" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
-                  <span className="font-bold text-[#A55322] text-sm sm:text-base">25+</span>
+                  <span className="font-bold text-[#A55322] text-xs sm:text-sm">25+</span>
                 </div>
-                <span className="text-[8.5px] sm:text-[9.5px] font-semibold text-[#EDE9E6] uppercase mt-1 leading-tight">Years Care</span>
+                <span className="text-[8px] sm:text-[9px] font-semibold text-[#EDE9E6] uppercase mt-0.5 leading-tight">Years Care</span>
               </div>
 
               {/* Metric 3: 15k+ Surgeries */}
-              <div className="flex flex-col items-center justify-center py-1.5 px-0.5 bg-white/5 rounded-xl border border-white/5">
+              <div className="flex flex-col items-center justify-center py-1 px-0.5 bg-white/5 rounded-xl border border-white/5">
                 <div className="flex items-center gap-1 leading-none">
                   <svg className="w-2.5 h-2.5 text-[#C9A581]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                     <circle cx="12" cy="12" r="3" />
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                   </svg>
-                  <span className="font-bold text-[#A55322] text-sm sm:text-base">15k+</span>
+                  <span className="font-bold text-[#A55322] text-xs sm:text-sm">15k+</span>
                 </div>
-                <span className="text-[8.5px] sm:text-[9.5px] font-semibold text-[#EDE9E6] uppercase mt-1 leading-tight">Surgeries</span>
+                <span className="text-[8px] sm:text-[9px] font-semibold text-[#EDE9E6] uppercase mt-0.5 leading-tight">Surgeries</span>
               </div>
             </div>
           </motion.div>
 
-          {/* 5. Order Now Button (Positioned exactly with relative -top-7) */}
+          {/* 5. Book Appointment Button */}
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-            className="relative -top-7 flex justify-center w-full"
+            className="flex justify-center w-full shrink-0 pb-1"
           >
             <Link
               href="#appointment"
-              className="bg-white text-[#30291F] hover:bg-white/90 px-8 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95 hover:shadow-xl flex items-center gap-2"
+              className="bg-white text-[#30291F] hover:bg-white/90 px-7 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95 hover:shadow-xl flex items-center gap-2"
             >
               <span>Book Appointment</span>
               <div className="w-4 h-4 rounded-full bg-[#A55322] text-white flex items-center justify-center">
