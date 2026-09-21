@@ -285,7 +285,7 @@ export default function HeroSection() {
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div>
                     <h3 className="font-gotham font-semibold text-[11px] sm:text-xs text-[#30291F] leading-tight">
-                      Free Consultation
+                      Consultation
                     </h3>
                     <p className="font-helvetica text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
                       Our specialist will reach out to assist you.
