@@ -46,6 +46,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://aaryaeyecare.com"),
   title: "AARYA EYE CARE - Super Speciality Eye Care Hospital",
   description:
     "Delivering advanced clinical excellence, state-of-the-art diagnostic technology, and compassionate vision treatments to safeguard and restore your eyesight.",

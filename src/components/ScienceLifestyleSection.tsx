@@ -64,7 +64,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-[#2A835F] hover:underline inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 
@@ -101,7 +101,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-white/95 hover:text-white inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 
@@ -131,7 +131,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-[#2A835F] hover:underline inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 
@@ -168,7 +168,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-white/95 hover:text-white inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 
@@ -198,7 +198,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-[#2A835F] hover:underline inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 
@@ -228,7 +228,7 @@ export default function ScienceLifestyleSection() {
               className="mt-4 text-xs sm:text-sm font-bold text-[#2A835F] hover:underline inline-flex items-center gap-1 group-hover:gap-1.5 transition-all"
             >
               <span>Learn more</span>
-              <span className="text-xs">↗</span>
+              <svg className="w-3.5 h-3.5 text-current transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
             </Link>
           </div>
 

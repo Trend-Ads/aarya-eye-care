@@ -250,8 +250,9 @@ export default function VisionSection() {
             <p className="text-xs sm:text-sm text-[#F2E9DC]/90 drop-shadow-sm hidden sm:block tracking-wide">
               “{presets[activePreset].note}”
             </p>
-            <span className="text-[10px] sm:text-xs uppercase tracking-wider text-[#F2E9DC]/80 bg-[#30291F]/60 px-2.5 py-1 rounded-md backdrop-blur-xs ml-auto font-medium">
-              ↔ Drag or Tap to Focus
+            <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-wider text-[#F2E9DC]/80 bg-[#30291F]/60 px-2.5 py-1 rounded-md backdrop-blur-xs ml-auto font-medium">
+              <svg className="w-3.5 h-3.5 text-[#C9A581] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/><path d="M3 12h18"/></svg>
+              <span>Drag or Tap to Focus</span>
             </span>
           </div>
         </div>

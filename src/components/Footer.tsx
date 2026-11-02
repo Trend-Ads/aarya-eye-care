@@ -64,28 +64,33 @@ export default function Footer() {
               </h4>
               <ul className="space-y-1.5 sm:space-y-2.5 text-xs sm:text-[13.5px]">
                 <li>
-                  <Link href="#home" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="#vision" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/about" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Treatments
                   </Link>
                 </li>
                 <li>
-                  <Link href="#doctors" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                    Doctors
+                  <Link href="/facilities" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                    Facilities &amp; Tech
                   </Link>
                 </li>
                 <li>
-                  <Link href="#appointment" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                    Book Appointment
+                  <Link href="/branches" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                    Our 4 Branches
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                    Contact &amp; Emergency
                   </Link>
                 </li>
               </ul>
@@ -98,28 +103,33 @@ export default function Footer() {
               </h4>
               <ul className="space-y-1.5 sm:space-y-2.5 text-xs sm:text-[13.5px]">
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/treatments/lasik" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Blade-Free LASIK
                   </Link>
                 </li>
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/treatments/cataract" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Micro-Incision Cataract
                   </Link>
                 </li>
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/treatments/trans-prk" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                    Trans-PRK (SmartSurface)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/treatments/retina-and-uveitis" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Retina &amp; Vitreous Care
                   </Link>
                 </li>
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                  <Link href="/treatments/glaucoma" className="text-white/75 hover:text-[#C9A581] transition-colors">
                     Glaucoma Management
                   </Link>
                 </li>
                 <li>
-                  <Link href="#treatments" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                    Cornea &amp; Pediatric Care
+                  <Link href="/treatments/cornea" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                    Cornea &amp; Keratoconus C3R
                   </Link>
                 </li>
               </ul>

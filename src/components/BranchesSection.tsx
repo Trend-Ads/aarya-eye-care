@@ -120,11 +120,11 @@ export default function BranchesSection() {
 
                 <div className="mt-3.5 pt-3 border-t border-slate-700/60 space-y-1.5 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-400">🕒</span>
+                    <span className="text-slate-400"></span>
                     <span className="text-[11px]">{b.timing}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-slate-400">📞</span>
+                    <span className="text-slate-400"></span>
                     <a href={`tel:${b.phone}`} className="text-[11px] font-semibold text-rose-300 hover:underline">
                       {b.phone}
                     </a>

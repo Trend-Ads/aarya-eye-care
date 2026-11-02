@@ -10,6 +10,7 @@ interface TreatmentItem {
   title: string;
   category: string;
   image: string;
+  href: string;
 }
 
 export default function ServicesSection() {
@@ -25,36 +26,42 @@ export default function ServicesSection() {
       title: "Cataract Surgery",
       category: "Micro-Incision Phaco",
       image: "/images/eye-care-consultation.jpg",
+      href: "/treatments/cataract",
     },
     {
       id: "lasik",
       title: "Blade-Free LASIK",
       category: "Laser Vision Correction",
       image: "/images/eye-closeup.jpg",
+      href: "/treatments/lasik",
     },
     {
       id: "retina",
       title: "Retina & Vitreous",
       category: "Advanced Vitreo-Retinal Care",
       image: "/hero/hero2.jpg",
+      href: "/treatments/retina-and-uveitis",
     },
     {
       id: "glaucoma",
       title: "Glaucoma Care",
       category: "Early Pressure & OCT Shield",
       image: "/images/doctor-exam.jpg",
+      href: "/treatments/glaucoma",
     },
     {
       id: "pediatric",
       title: "Pediatric Ophthalmology",
       category: "Child Eye Care & Squint",
       image: "/hero/hero1.webp",
+      href: "/treatments/pediatric-ophthalmology",
     },
     {
       id: "emergency",
       title: "24/7 Eye Trauma",
       category: "Emergency Surgical Care",
       image: "/hero/hero3.webp",
+      href: "/contact",
     },
   ];
 
@@ -74,7 +81,7 @@ export default function ServicesSection() {
           <div className="space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 mb-1">
               <span className="h-1.5 w-1.5 rounded-full bg-[#A55322]" />
-              <span className="text-[#A55322] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
+              <span className="text-[#A55322] text-[11px] font-sans font-semibold uppercase tracking-[0.22em]">
                 DARKNESS TO LIGHT
               </span>
               <span className="text-[#30291F]/30 text-xs">•</span>
@@ -88,10 +95,10 @@ export default function ServicesSection() {
           </div>
 
           <Link
-            href="#appointment"
+            href="/treatments"
             className="self-start sm:self-end px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] text-xs font-gotham font-semibold tracking-wide transition-all shadow-[0_6px_20px_rgba(103,94,49,0.2)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.3)] hover:-translate-y-0.5 active:translate-y-0 flex items-center gap-2 cursor-pointer"
           >
-            <span>Book Consultation</span>
+            <span>Explore All 11 Treatments</span>
             <span>→</span>
           </Link>
         </div>
@@ -128,7 +135,7 @@ export default function ServicesSection() {
 
                 {/* Number Indicator */}
                 <div className="absolute top-6 right-6 z-10">
-                  <span className="text-[#F2E9DC]/60 font-mono text-lg sm:text-xl font-normal">
+                  <span className="text-[#F2E9DC]/60 font-sans text-lg sm:text-xl font-normal">
                     0{index + 1}
                   </span>
                 </div>
@@ -136,14 +143,17 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <h3 className="font-gotham font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug group-hover:text-[#C9A581] transition-colors max-w-[85%]">
-                      {item.title}
-                    </h3>
+                    <Link href={item.href} className="group-hover:text-[#C9A581] transition-colors max-w-[85%]">
+                      <h3 className="font-gotham font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug">
+                        {item.title}
+                      </h3>
+                    </Link>
                     <Link
-                      href="#appointment"
+                      href={item.href}
                       className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#A55322] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs cursor-pointer pointer-events-auto"
+                      aria-label={`Learn more about ${item.title}`}
                     >
-                      ↗
+                      <svg className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
                     </Link>
                   </div>
                 </div>

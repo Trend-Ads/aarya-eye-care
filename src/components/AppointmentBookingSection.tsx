@@ -205,7 +205,7 @@ export default function AppointmentBookingSection() {
                   <line x1="12" y1="22.08" x2="12" y2="12"></line>
                 </svg>
               </div>
-              <span className="text-[#A55322] text-[11px] font-mono font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
+              <span className="text-[#A55322] text-[11px] font-sans font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
             </div>
 
             <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-avantgarde font-semibold text-[#30291F] mb-5 tracking-tight">

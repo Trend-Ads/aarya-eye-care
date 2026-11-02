@@ -3,7 +3,11 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
+import NavMegaMenu, { MegaMenuType } from "@/components/NavMegaMenu";
+import { TREATMENTS } from "@/data/treatments";
+import { FACILITIES } from "@/data/facilities";
 
 interface NavItem {
   label: string;
@@ -13,10 +17,32 @@ interface NavItem {
 }
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<string>("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
+  const [activeDropdown, setActiveDropdown] = useState<MegaMenuType | null>(null);
+  const [mobileExpandedSection, setMobileExpandedSection] = useState<string | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const lastScrollY = useRef<number>(0);
+
+  // Close dropdown on route change
+  useEffect(() => {
+    setActiveDropdown(null);
+    setMobileMenuOpen(false);
+  }, [pathname]);
+
+  // Handle Escape key to close dropdown
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActiveDropdown(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Lock body scroll when mobile full-screen menu is open
   useEffect(() => {
@@ -41,9 +67,16 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       setScrolled(currentScrollY > 60);
+
+      // Close dropdown if user is actively scrolling significantly
+      if (Math.abs(currentScrollY - lastScrollY.current) > 30) {
+        setActiveDropdown(null);
+      }
       lastScrollY.current = currentScrollY;
 
-      // Active section highlighting
+      if (!isHomePage) return;
+
+      // Active section highlighting on home page
       const sections = ["home", "treatments", "doctors", "vision", "branches"];
       const scrollPosition = currentScrollY + 200;
 
@@ -62,73 +95,175 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isHomePage]);
+
+  const handleMouseEnter = (type: MegaMenuType) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(type);
+  };
+
+  const handleMouseLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 220);
+  };
+
+  const handleDropdownEnter = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  const handleDropdownLeave = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 220);
+  };
 
   const leftNavLinks: NavItem[] = [
-    { label: "Home", href: "#home", id: "home", subtitle: "Main Overview" },
-    { label: "Treatments", href: "#treatments", id: "treatments", subtitle: "LASIK, Cataract & Super Specialities" },
-    { label: "Doctors", href: "#doctors", id: "doctors", subtitle: "Senior Surgeons & Specialists" },
+    { label: "Home", href: "/", id: "home", subtitle: "Main Overview" },
+    { label: "Treatments", href: isHomePage ? "#treatments" : "/treatments", id: "treatments", subtitle: "LASIK, Cataract & Super Specialities" },
+    { label: "Facilities", href: "/facilities", id: "facilities", subtitle: "Diagnostics, Insurance & Modular OTs" },
   ];
 
   const rightNavLinks: NavItem[] = [
-    { label: "About Us", href: "#vision", id: "vision", subtitle: "NABH Accredited Hospital & Technology" },
-    { label: "Branches", href: "#branches", id: "branches", subtitle: "Thrissur & Regional Centers" },
+    { label: "About Us", href: "/about", id: "about", subtitle: "NABH Accredited Hospital & History" },
+    { label: "Branches", href: "/branches", id: "branches", subtitle: "Thrissur, Cherpu, Kunnamkulam, Kodungallur" },
+    { label: "Contact", href: "/contact", id: "contact", subtitle: "Helpline, Map Directions & Booking" },
   ];
 
-  const allNavLinks: NavItem[] = [...leftNavLinks, ...rightNavLinks];
+  const allNavLinks: NavItem[] = [
+    { label: "Home", href: "/", id: "home", subtitle: "Main Overview" },
+    { label: "Treatments", href: "/treatments", id: "treatments", subtitle: "11 Super Specialities & Procedures" },
+    { label: "Facilities", href: "/facilities", id: "facilities", subtitle: "Diagnostic Suite, Modular OTs & Insurance" },
+    { label: "Doctors", href: isHomePage ? "#doctors" : "/#doctors", id: "doctors", subtitle: "Senior Surgeons & Specialists" },
+    { label: "About Us", href: "/about", id: "about", subtitle: "NABH Accredited Hospital Story" },
+    { label: "Branches", href: "/branches", id: "branches", subtitle: "Thrissur, Cherpu, Kunnamkulam, Kodungallur" },
+    { label: "Contact", href: "/contact", id: "contact", subtitle: "24/7 Eye Trauma & Consultations" },
+  ];
+
+  const isNavVisible = !isHomePage || scrolled;
+
+  const triggerAppointment = () => {
+    setActiveDropdown(null);
+    window.dispatchEvent(new CustomEvent("open-appointment-modal"));
+  };
+
+  // Only Treatments and Facilities have a dropdown
+  const isMegaMenuType = (id: string): id is MegaMenuType => {
+    return id === "treatments" || id === "facilities";
+  };
 
   return (
     <>
       {/* ========================================================= */}
-      {/* FLOATING FROSTED PILL NAVBAR (Reveals on Scroll)           */}
+      {/* FLOATING FROSTED PILL NAVBAR                              */}
       {/* Centered logo matching the hero layout for seamless flow  */}
       {/* ========================================================= */}
       <div
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          scrolled
+          isNavVisible
             ? "opacity-100 translate-y-0 pt-3 sm:pt-4 px-3 sm:px-6 pointer-events-auto"
             : "opacity-0 -translate-y-6 pointer-events-none"
         }`}
       >
         <header
-          className="mx-auto flex items-center justify-between select-none max-w-[1080px] bg-[#30291F]/95 backdrop-blur-md rounded-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(48,41,31,0.25)] border border-[#C9A581]/20"
+          className="mx-auto flex items-center justify-between select-none max-w-[1120px] bg-[#30291F]/95 backdrop-blur-md rounded-full px-4 sm:px-6 lg:px-8 py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(48,41,31,0.25)] border border-[#C9A581]/25 relative"
         >
           {/* Left Wing (Desktop) */}
-          <nav className="hidden md:flex flex-1 items-center justify-center gap-1.5 lg:gap-3 text-[13px] sm:text-[13.5px]">
+          <nav className="hidden md:flex flex-1 items-center justify-center gap-1 lg:gap-2.5 text-[12.5px] sm:text-[13px]">
             {leftNavLinks.map((item) => {
-              const isActive = activeSection === item.id;
+              const isActive = isHomePage
+                ? activeSection === item.id
+                : pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+              const hasMega = isMegaMenuType(item.id);
+              const isMenuOpen = activeDropdown === item.id;
+
               return (
-                <Link
+                <div
                   key={item.id}
-                  href={item.href}
-                  className="relative group/nav px-2.5 py-1 transition-colors duration-200"
+                  className="relative"
+                  onMouseEnter={() => {
+                    if (hasMega) handleMouseEnter(item.id as MegaMenuType);
+                  }}
+                  onMouseLeave={() => {
+                    if (hasMega) handleMouseLeave();
+                  }}
                 >
-                  <span 
-                    className={`transition-colors duration-200 ${
-                      isActive
-                        ? "font-bold text-[#A55322]"
-                        : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
-                    }`}
+                  <Link
+                    href={hasMega ? "#" : item.href}
+                    onClick={(e) => {
+                      if (hasMega) {
+                        e.preventDefault();
+                        if (closeTimeoutRef.current) {
+                          clearTimeout(closeTimeoutRef.current);
+                          closeTimeoutRef.current = null;
+                        }
+                        setActiveDropdown((prev) => (prev === item.id ? null : (item.id as MegaMenuType)));
+                      } else {
+                        setActiveDropdown(null);
+                      }
+                    }}
+                    className="relative group/nav px-2.5 py-1 transition-colors duration-200 flex items-center gap-1 cursor-pointer"
                   >
-                    {item.label}
-                  </span>
-                  {/* Animated Underline on Hover */}
-                  <span 
-                    className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#A55322] rounded-full transition-all duration-300 origin-left ease-out ${
-                      isActive 
-                        ? "scale-x-100 opacity-100" 
-                        : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
-                    }`}
-                  />
-                </Link>
+                    <span 
+                      className={`transition-colors duration-200 ${
+                        isActive || isMenuOpen
+                          ? "font-bold text-[#A55322]"
+                          : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
+                      }`}
+                    >
+                      {item.label}
+                    </span>
+
+                    {/* Subtle dropdown chevron for mega menu items */}
+                    {hasMega && (
+                      <svg
+                        className={`w-2.5 h-2.5 transition-transform duration-200 ${
+                          isMenuOpen
+                            ? "rotate-180 text-[#A55322]"
+                            : "text-[#C9A581]/70 group-hover/nav:text-[#F2E9DC]"
+                        }`}
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    )}
+
+                    {/* Animated Underline on Hover / Active */}
+                    <span 
+                      className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#A55322] rounded-full transition-all duration-300 origin-left ease-out ${
+                        isActive || isMenuOpen
+                          ? "scale-x-100 opacity-100" 
+                          : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                      }`}
+                    />
+                  </Link>
+                </div>
               );
             })}
           </nav>
 
-          {/* Center Brand Identity (Matching Hero Center Notch Axis) */}
+          {/* Center Brand Identity */}
           <Link
-            href="#home"
-            className="flex items-center gap-2.5 sm:gap-3 hover:opacity-90 transition-opacity flex-shrink-0 px-1 sm:px-3 lg:px-5"
+            href="/"
+            onClick={() => setActiveDropdown(null)}
+            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity flex-shrink-0 px-1 sm:px-2 lg:px-4"
           >
             <div className="relative flex items-center justify-center flex-shrink-0 w-6.5 h-6.5 sm:w-7.5 sm:h-7.5">
               <Image
@@ -160,41 +295,78 @@ export default function Navbar() {
           {/* Right Wing (Desktop & Mobile Actions) */}
           <div className="flex-1 flex items-center justify-end md:justify-center gap-2 sm:gap-3.5">
             {/* Right Nav Links (Desktop) */}
-            <nav className="hidden md:flex items-center gap-1.5 lg:gap-3 text-[13px] sm:text-[13.5px]">
+            <nav className="hidden md:flex items-center gap-1.5 lg:gap-3 text-[12.5px] sm:text-[13px]">
               {rightNavLinks.map((item) => {
-                const isActive = activeSection === item.id;
+                const isActive = isHomePage
+                  ? activeSection === item.id
+                  : pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
+                const hasMega = isMegaMenuType(item.id);
+                const isMenuOpen = activeDropdown === item.id;
+
                 return (
-                  <Link
+                  <div
                     key={item.id}
-                    href={item.href}
-                    className="relative group/nav px-2.5 py-1 transition-colors duration-200"
+                    className="relative"
+                    onMouseEnter={() => {
+                      if (hasMega) handleMouseEnter(item.id as MegaMenuType);
+                    }}
+                    onMouseLeave={() => {
+                      if (hasMega) handleMouseLeave();
+                    }}
                   >
-                    <span 
-                      className={`transition-colors duration-200 ${
-                        isActive
-                          ? "font-bold text-[#A55322]"
-                          : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
-                      }`}
+                    <Link
+                      href={item.href}
+                      onClick={() => setActiveDropdown(null)}
+                      className="relative group/nav px-2.5 py-1 transition-colors duration-200 flex items-center gap-1 cursor-pointer"
                     >
-                      {item.label}
-                    </span>
-                    {/* Animated Underline on Hover */}
-                    <span 
-                      className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#A55322] rounded-full transition-all duration-300 origin-left ease-out ${
-                        isActive 
-                          ? "scale-x-100 opacity-100" 
-                          : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
-                      }`}
-                    />
-                  </Link>
+                      <span 
+                        className={`transition-colors duration-200 ${
+                          isActive || isMenuOpen
+                            ? "font-bold text-[#A55322]"
+                            : "font-medium text-[#F2E9DC]/85 group-hover/nav:text-[#F2E9DC]"
+                        }`}
+                      >
+                        {item.label}
+                      </span>
+
+                      {/* Subtle dropdown chevron for mega menu items */}
+                      {hasMega && (
+                        <svg
+                          className={`w-2.5 h-2.5 transition-transform duration-200 ${
+                            isMenuOpen
+                              ? "rotate-180 text-[#A55322]"
+                              : "text-[#C9A581]/70 group-hover/nav:text-[#F2E9DC]"
+                          }`}
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        >
+                          <polyline points="6 9 12 15 18 9" />
+                        </svg>
+                      )}
+
+                      {/* Animated Underline on Hover / Active */}
+                      <span 
+                        className={`absolute left-2.5 right-2.5 -bottom-0.5 h-[2px] bg-[#A55322] rounded-full transition-all duration-300 origin-left ease-out ${
+                          isActive || isMenuOpen
+                            ? "scale-x-100 opacity-100" 
+                            : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                        }`}
+                      />
+                    </Link>
+                  </div>
                 );
               })}
             </nav>
 
             {/* Book Appointment CTA Button */}
-            <Link
-              href="#appointment"
-              className="hidden sm:inline-flex rounded-full transition-all duration-300 items-center gap-1.5 shadow-2xs hover:scale-[1.02] active:scale-[0.98] bg-white hover:bg-[#F2E9DC] text-[#30291F] text-xs sm:text-[12.5px] font-bold pl-3 sm:pl-3.5 pr-1 py-1 sm:py-1.5 shadow-sm whitespace-nowrap"
+            <button
+              type="button"
+              onClick={triggerAppointment}
+              className="hidden sm:inline-flex rounded-full transition-all duration-300 items-center gap-1.5 shadow-2xs hover:scale-[1.02] active:scale-[0.98] bg-white hover:bg-[#F2E9DC] text-[#30291F] text-xs sm:text-[12.5px] font-bold pl-3 sm:pl-3.5 pr-1 py-1 sm:py-1.5 shadow-sm whitespace-nowrap cursor-pointer"
             >
               <span>Book Appointment</span>
               <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
@@ -203,14 +375,14 @@ export default function Navbar() {
                   <polyline points="7 7 17 7 17 17" />
                 </svg>
               </div>
-            </Link>
+            </button>
 
             {/* Mobile Hamburger Button */}
             <button
               type="button"
               aria-label="Open mobile menu"
               onClick={() => setMobileMenuOpen(true)}
-              className="md:hidden w-8.5 h-8.5 rounded-full flex items-center justify-center transition-colors shadow-2xs bg-white/15 hover:bg-white/25 text-white"
+              className="md:hidden w-8.5 h-8.5 rounded-full flex items-center justify-center transition-colors shadow-2xs bg-white/15 hover:bg-white/25 text-white cursor-pointer"
             >
               <svg className="w-4.5 h-4.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="4" y1="7" x2="20" y2="7" />
@@ -220,7 +392,35 @@ export default function Navbar() {
             </button>
           </div>
         </header>
+
+        {/* ========================================================= */}
+        {/* DESKTOP MEGA DROPDOWN (Treatments, Facilities)            */}
+        {/* ========================================================= */}
+        <AnimatePresence>
+          {activeDropdown && (
+            <NavMegaMenu
+              activeMenu={activeDropdown}
+              onClose={() => setActiveDropdown(null)}
+              onMouseEnter={handleDropdownEnter}
+              onMouseLeave={handleDropdownLeave}
+            />
+          )}
+        </AnimatePresence>
       </div>
+
+      {/* Backdrop overlay when mega menu is open */}
+      <AnimatePresence>
+        {activeDropdown && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            onClick={() => setActiveDropdown(null)}
+            className="fixed inset-0 bg-black/35 backdrop-blur-[2px] z-40 hidden md:block"
+          />
+        )}
+      </AnimatePresence>
 
       {/* ========================================================= */}
       {/* FULL-SCREEN MOBILE MENU OVERLAY                           */}
@@ -236,7 +436,7 @@ export default function Navbar() {
             className="fixed inset-0 z-[100] bg-[#F2E9DC] flex flex-col justify-between p-6 sm:p-8"
           >
             {/* Top Bar: Brand + Close Button */}
-            <div className="flex items-center justify-between border-b border-[#C9A581]/30 pb-4">
+            <div className="flex items-center justify-between border-b border-[#C9A581]/30 pb-4 shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="relative w-8 h-8 flex items-center justify-center flex-shrink-0">
                   <Image
@@ -266,7 +466,7 @@ export default function Navbar() {
                 type="button"
                 aria-label="Close mobile menu"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-[#C9A581]/25 hover:bg-[#C9A581]/40 text-[#30291F] flex items-center justify-center transition-colors shadow-2xs"
+                className="w-10 h-10 rounded-full bg-[#C9A581]/25 hover:bg-[#C9A581]/40 text-[#30291F] flex items-center justify-center transition-colors shadow-2xs cursor-pointer"
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
@@ -275,63 +475,169 @@ export default function Navbar() {
               </button>
             </div>
 
-            {/* Menu Links List */}
-            <div className="flex flex-col gap-6 my-auto py-6">
-              {allNavLinks.map((item, idx) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.35, delay: idx * 0.06 }}
-                >
-                  <Link
-                    href={item.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="group flex flex-col"
+            {/* Menu Links List (Scrollable for full listings) */}
+            <div className="flex flex-col gap-3 my-auto py-4 overflow-y-auto max-h-[calc(100dvh-200px)] pr-1">
+              {allNavLinks.map((item, idx) => {
+                const hasSub = isMegaMenuType(item.id);
+                const isExpanded = mobileExpandedSection === item.id;
+
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.35, delay: idx * 0.04 }}
+                    className="border-b border-[#C9A581]/20 pb-2.5"
                   >
                     <div className="flex items-center justify-between">
-                      <span className="font-serif text-3xl sm:text-4xl text-[#30291F] group-hover:text-[#A55322] transition-colors font-medium">
-                        {item.label}
-                      </span>
-                      <span className="text-xl text-[#8A875C] group-hover:text-[#A55322] group-hover:translate-x-1 transition-all">
-                        ↗
-                      </span>
+                      <Link
+                        href={item.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="group flex-1"
+                      >
+                        <span className="font-serif text-2xl sm:text-3xl text-[#30291F] group-hover:text-[#A55322] transition-colors font-medium">
+                          {item.label}
+                        </span>
+                        {item.subtitle && (
+                          <span className="text-[11px] text-[#30291F]/70 font-medium block mt-0.5">
+                            {item.subtitle}
+                          </span>
+                        )}
+                      </Link>
+
+                      {hasSub ? (
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setMobileExpandedSection(
+                              isExpanded ? null : item.id
+                            )
+                          }
+                          className="w-9 h-9 rounded-full bg-[#C9A581]/20 flex items-center justify-center text-[#A55322] font-bold text-sm shrink-0 ml-2 cursor-pointer"
+                          aria-label={`Toggle ${item.label} sub-menu`}
+                        >
+                          <svg
+                            className={`w-4 h-4 transition-transform duration-300 ${
+                              isExpanded ? "rotate-180" : ""
+                            }`}
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2.5"
+                          >
+                            <polyline points="6 9 12 15 18 9" />
+                          </svg>
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="text-lg text-[#8A875C] hover:text-[#A55322] p-2 flex items-center justify-center"
+                        >
+                          <svg className="w-4 h-4 text-current" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                        </Link>
+                      )}
                     </div>
-                    {item.subtitle && (
-                      <span className="text-xs text-[#30291F]/70 font-medium mt-1">
-                        {item.subtitle}
-                      </span>
-                    )}
-                  </Link>
-                </motion.div>
-              ))}
+
+                    {/* Expandable Sub-items for Treatments & Facilities only */}
+                    <AnimatePresence>
+                      {hasSub && isExpanded && (
+                        <motion.div
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                          transition={{ duration: 0.25 }}
+                          className="overflow-hidden mt-3 pt-2 pl-3 border-l-2 border-[#A55322]/40 space-y-2"
+                        >
+                          {/* 11 Treatments */}
+                          {item.id === "treatments" && (
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                              {TREATMENTS.map((treatment) => (
+                                <Link
+                                  key={treatment.slug}
+                                  href={`/treatments/${treatment.slug}`}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="text-xs font-semibold text-[#30291F]/90 hover:text-[#A55322] py-1 px-2 rounded-lg bg-black/[0.03] flex items-center justify-between"
+                                >
+                                  <span>{treatment.name}</span>
+                                  <svg className="w-3 h-3 text-[#A55322] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </Link>
+                              ))}
+                              <Link
+                                href="/treatments"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-xs font-bold text-[#A55322] py-1.5 px-2 col-span-full underline decoration-[#A55322]/40"
+                              >
+                                <span>View All 11 Treatments</span> <svg className="w-3 h-3 inline ml-1 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                              </Link>
+                            </div>
+                          )}
+
+                          {/* 4 Facilities */}
+                          {item.id === "facilities" && (
+                            <div className="space-y-1.5">
+                              {FACILITIES.map((facility) => (
+                                <Link
+                                  key={facility.slug}
+                                  href={`/facilities/${facility.slug}`}
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="text-xs font-semibold text-[#30291F]/90 hover:text-[#A55322] py-1 px-2 rounded-lg bg-black/[0.03] flex items-center justify-between"
+                                >
+                                  <span>{facility.title}</span>
+                                  <svg className="w-3 h-3 text-[#A55322] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                </Link>
+                              ))}
+                              <Link
+                                href="/facilities"
+                                onClick={() => setMobileMenuOpen(false)}
+                                className="text-xs font-bold text-[#A55322] py-1.5 px-2 block underline decoration-[#A55322]/40"
+                              >
+                                <span>Explore All Hospital Facilities</span> <svg className="w-3 h-3 inline ml-1 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                              </Link>
+                            </div>
+                          )}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                );
+              })}
             </div>
 
             {/* Bottom Actions & Contacts */}
-            <div className="flex flex-col gap-3 pt-4 border-t border-[#C9A581]/30">
-              <Link
-                href="#appointment"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3.5 rounded-full bg-[#675E31] text-[#F2E9DC] font-bold text-sm text-center shadow-md hover:bg-[#524B27] transition-colors flex items-center justify-center gap-2"
+            <div className="flex flex-col gap-3 pt-3 border-t border-[#C9A581]/30 shrink-0">
+              <button
+                type="button"
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  triggerAppointment();
+                }}
+                className="w-full py-3.5 rounded-full bg-[#A55322] text-white font-bold text-sm text-center shadow-md hover:bg-[#8C4318] transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Book Appointment</span>
-                <span>↗</span>
-              </Link>
+                <span>Book Appointment Online</span>
+                <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+              </button>
 
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <a
                   href="tel:04872322288"
-                  className="py-2.5 px-4 rounded-full bg-[#C9A581]/25 text-[#30291F] text-xs font-semibold text-center hover:bg-[#C9A581]/40 transition-colors"
+                  className="py-2.5 px-4 rounded-full bg-[#C9A581]/25 text-[#30291F] text-xs font-semibold text-center hover:bg-[#C9A581]/40 transition-colors flex items-center justify-center gap-1.5"
                 >
-                  📞 Call Helpline
+                  <svg className="w-3.5 h-3.5 text-[#30291F]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                  </svg>
+                  <span>Call Helpline</span>
                 </a>
                 <a
                   href="https://wa.me/919946322288"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-2.5 px-4 rounded-full bg-[#25D366]/15 text-[#1b9e4b] text-xs font-semibold text-center hover:bg-[#25D366]/25 border border-[#25D366]/30 transition-colors"
+                  className="py-2.5 px-4 rounded-full bg-[#25D366]/15 text-[#1b9e4b] text-xs font-semibold text-center hover:bg-[#25D366]/25 border border-[#25D366]/30 transition-colors flex items-center justify-center gap-1.5"
                 >
-                  💬 WhatsApp
+                  <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                  </svg>
+                  <span>WhatsApp</span>
                 </a>
               </div>
             </div>

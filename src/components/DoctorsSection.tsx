@@ -173,7 +173,7 @@ export default function DoctorsSection() {
           <div>
             <div className="flex items-center gap-2 mb-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#A55322]" />
-              <span className="text-[#A55322] text-[11px] font-mono font-semibold uppercase tracking-[0.22em]">
+              <span className="text-[#A55322] text-[11px] font-sans font-semibold uppercase tracking-[0.22em]">
                 DARKNESS TO LIGHT
               </span>
             </div>

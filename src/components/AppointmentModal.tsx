@@ -88,7 +88,7 @@ function ModalCustomSelect({
                 >
                   <span>{option}</span>
                   {value === option && (
-                    <span className="text-[#675E31] text-xs font-bold">✓</span>
+                    <svg className="w-3.5 h-3.5 text-[#675E31] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12" /></svg>
                   )}
                 </div>
               ))}
@@ -265,7 +265,7 @@ export default function AppointmentModal() {
                           AARYA EYE CARE
                         </span>
                         <span className="text-[#30291F]/30 text-xs">•</span>
-                        <span className="text-[#A55322] text-[9.5px] font-mono font-semibold tracking-[0.2em] uppercase">
+                        <span className="text-[#A55322] text-[9.5px] font-sans font-semibold tracking-[0.2em] uppercase">
                           Darkness to Light
                         </span>
                       </div>
@@ -407,7 +407,7 @@ export default function AppointmentModal() {
                     </div>
 
                     <div>
-                      <span className="text-[10px] font-mono font-semibold uppercase tracking-[0.22em] text-[#A55322] block">
+                      <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#A55322] block">
                         Request Registered
                       </span>
                       <h4 className="font-serif font-medium text-2xl text-[#30291F] tracking-tight mt-1">

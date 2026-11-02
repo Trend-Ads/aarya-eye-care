@@ -1,8 +1,10 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import NavMegaMenu, { MegaMenuType } from "@/components/NavMegaMenu";
 
 const MARQUEE_ITEMS = [
   {
@@ -70,6 +72,52 @@ const MARQUEE_ITEMS = [
 ];
 
 export default function HeroSection() {
+  const [openDropdown, setOpenDropdown] = useState<"treatments" | "facilities" | null>(null);
+  const closeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleDropdownOpen = (type: "treatments" | "facilities") => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setOpenDropdown(type);
+  };
+
+  const handleDropdownClose = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+    }
+    closeTimeoutRef.current = setTimeout(() => {
+      setOpenDropdown(null);
+    }, 220);
+  };
+
+  const handleDropdownKeep = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setOpenDropdown(null);
+      }
+    };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpenDropdown(null);
+      }
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -190,88 +238,176 @@ export default function HeroSection() {
         </div>
 
         {/* ─── INTEGRATED TOP BAR (Inside the Frame) ─── */}
-        <div className="relative z-30 w-full px-3 sm:px-6 lg:px-8 -mt-9 sm:-mt-11 md:-mt-12 lg:-mt-14 flex items-center justify-between text-xs flex-shrink-0">
-          {/* Left Wing - Desktop Nav Links */}
-          <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3.5 lg:gap-5">
-            <Link
-              href="#home"
-              className="relative group/nav px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-gotham font-semibold shadow-2xs transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
-            >
-              <span>Home</span>
-            </Link>
-            <Link
-              href="#clarity"
-              className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
-            >
-              <span>Clarity</span>
-              <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
-            </Link>
-            <Link
-              href="#treatments"
-              className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
-            >
-              <span>Treatments</span>
-              <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
-            </Link>
-            <Link
-              href="#doctors"
-              className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
-            >
-              <span>Doctors</span>
-              <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
-            </Link>
+        <div className="relative z-40 w-full px-3 sm:px-6 lg:px-8 -mt-9 sm:-mt-11 md:-mt-12 lg:-mt-14 flex flex-col flex-shrink-0">
+          <div className="w-full flex items-center justify-between text-xs">
+            {/* Left Wing - Desktop Nav Links */}
+            <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3.5 lg:gap-5">
+              <Link
+                href="#home"
+                className="relative group/nav px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-gotham font-semibold shadow-2xs transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
+              >
+                <span>Home</span>
+              </Link>
+
+              {/* Treatments with Mega Dropdown */}
+              <div
+                className="relative hidden md:inline-flex"
+                onMouseEnter={() => handleDropdownOpen("treatments")}
+                onMouseLeave={handleDropdownClose}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (closeTimeoutRef.current) {
+                      clearTimeout(closeTimeoutRef.current);
+                      closeTimeoutRef.current = null;
+                    }
+                    setOpenDropdown((prev) => (prev === "treatments" ? null : "treatments"));
+                  }}
+                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span className={openDropdown === "treatments" ? "text-white font-bold" : ""}>
+                    Treatments
+                  </span>
+                  <svg
+                    className={`w-2.5 h-2.5 text-white/70 group-hover/nav:text-white transition-transform duration-200 ${
+                      openDropdown === "treatments" ? "rotate-180 text-white" : ""
+                    }`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                  <span
+                    className={`absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out ${
+                      openDropdown === "treatments"
+                        ? "scale-x-100 opacity-100"
+                        : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* Facilities with Mega Dropdown */}
+              <div
+                className="relative hidden md:inline-flex"
+                onMouseEnter={() => handleDropdownOpen("facilities")}
+                onMouseLeave={handleDropdownClose}
+              >
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    if (closeTimeoutRef.current) {
+                      clearTimeout(closeTimeoutRef.current);
+                      closeTimeoutRef.current = null;
+                    }
+                    setOpenDropdown((prev) => (prev === "facilities" ? null : "facilities"));
+                  }}
+                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
+                >
+                  <span className={openDropdown === "facilities" ? "text-white font-bold" : ""}>
+                    Facilities
+                  </span>
+                  <svg
+                    className={`w-2.5 h-2.5 text-white/70 group-hover/nav:text-white transition-transform duration-200 ${
+                      openDropdown === "facilities" ? "rotate-180 text-white" : ""
+                    }`}
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                  >
+                    <polyline points="6 9 12 15 18 9" />
+                  </svg>
+                  <span
+                    className={`absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out ${
+                      openDropdown === "facilities"
+                        ? "scale-x-100 opacity-100"
+                        : "scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <Link
+                href="#doctors"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>Doctors</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
+            </div>
+
+            {/* Spacer matching Center Notch Tab */}
+            <div className="w-[170px] sm:w-[215px] md:w-[260px] shrink-0 pointer-events-none" />
+
+            {/* Right Wing - Desktop Nav Links & CTA / Mobile Hamburger */}
+            <div className="flex-1 flex items-center justify-end md:justify-center gap-2 sm:gap-3.5 lg:gap-5">
+              <Link
+                href="/about"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>About Us</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
+              <Link
+                href="/branches"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+              >
+                <span>Branches</span>
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
+              </Link>
+
+              {/* "Appointment" Button (Desktop only) */}
+              <Link
+                href="#appointment"
+                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-gotham font-semibold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
+              >
+                <span className="text-[10.5px] sm:text-[11.5px]">Book Appointment</span>
+                <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                  </svg>
+                </div>
+              </Link>
+
+              {/* Mobile Hamburger Trigger */}
+              <button
+                type="button"
+                aria-label="Open menu"
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.dispatchEvent(new CustomEvent("open-mobile-menu"));
+                  }
+                }}
+                className="md:hidden w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="4" y1="7" x2="20" y2="7" />
+                  <line x1="4" y1="17" x2="20" y2="17" />
+                </svg>
+              </button>
+            </div>
           </div>
 
-          {/* Spacer matching Center Notch Tab */}
-          <div className="w-[170px] sm:w-[215px] md:w-[260px] shrink-0 pointer-events-none" />
-
-          {/* Right Wing - Desktop Nav Links & CTA / Mobile Hamburger */}
-          <div className="flex-1 flex items-center justify-end md:justify-center gap-2 sm:gap-3.5 lg:gap-5">
-            <Link
-              href="#vision"
-              className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
-            >
-              <span>About Us</span>
-              <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
-            </Link>
-            <Link
-              href="#branches"
-              className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
-            >
-              <span>Branches</span>
-              <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
-            </Link>
-
-            {/* "Appointment" Button (Desktop only) */}
-            <Link
-              href="#appointment"
-              className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-gotham font-semibold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
-            >
-              <span className="text-[10.5px] sm:text-[11.5px]">Book Appointment</span>
-              <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
-                <svg className="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <line x1="7" y1="17" x2="17" y2="7" />
-                  <polyline points="7 7 17 7 17 17" />
-                </svg>
-              </div>
-            </Link>
-
-            {/* Mobile Hamburger Trigger */}
-            <button
-              type="button"
-              aria-label="Open menu"
-              onClick={() => {
-                if (typeof window !== "undefined") {
-                  window.dispatchEvent(new CustomEvent("open-mobile-menu"));
-                }
-              }}
-              className="md:hidden w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/20 hover:bg-white/30 text-white flex items-center justify-center transition-colors shrink-0 shadow-2xs"
-            >
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="4" y1="7" x2="20" y2="7" />
-                <line x1="4" y1="17" x2="20" y2="17" />
-              </svg>
-            </button>
+          {/* ─── DESKTOP MEGA DROPDOWN IN HERO (Exact same kind as floating navbar) ─── */}
+          <div className="relative w-full hidden md:block">
+            <AnimatePresence>
+              {openDropdown && (
+                <NavMegaMenu
+                  activeMenu={openDropdown}
+                  facilityOffset="left"
+                  onClose={() => setOpenDropdown(null)}
+                  onMouseEnter={handleDropdownKeep}
+                  onMouseLeave={handleDropdownClose}
+                />
+              )}
+            </AnimatePresence>
           </div>
         </div>
 
@@ -560,6 +696,20 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
       </motion.div>
+
+      {/* Backdrop overlay for hero dropdown */}
+      <AnimatePresence>
+        {openDropdown && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
+            onClick={() => setOpenDropdown(null)}
+            className="fixed inset-0 z-20 bg-black/30 backdrop-blur-[1px] pointer-events-auto"
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
