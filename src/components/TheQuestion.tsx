@@ -116,9 +116,9 @@ export function TheQuestion() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-helvetica text-xs sm:text-[13px] text-white/80 tracking-widest uppercase max-w-md pt-1"
+          className="font-helvetica text-[clamp(9px,2.6vw,13px)] text-white/85 tracking-[0.12em] sm:tracking-widest uppercase whitespace-nowrap text-center max-w-full pt-1"
         >
-          From Darkness to Light — Super Speciality Eye Care
+          From Darkness to Light - Super Speciality Eye Hospital
         </motion.p>
       </div>
     </section>
