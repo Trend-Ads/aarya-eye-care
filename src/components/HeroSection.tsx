@@ -6,68 +6,43 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import NavMegaMenu, { MegaMenuType } from "@/components/NavMegaMenu";
 
-const MARQUEE_ITEMS = [
+interface MarqueeItem {
+  name: string;
+  sub: string;
+  logo?: string;
+  icon?: React.ReactNode;
+}
+
+const MARQUEE_ITEMS: MarqueeItem[] = [
   {
     name: "ZEISS",
     sub: "Medical Optics",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#C9A581]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <circle cx="12" cy="12" r="9" />
-        <circle cx="12" cy="12" r="3" />
-        <line x1="12" y1="3" x2="12" y2="7" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-        <line x1="3" y1="12" x2="7" y2="12" />
-        <line x1="17" y1="12" x2="21" y2="12" />
-      </svg>
-    ),
+    logo: "/brand-logos/zeiss.webp",
   },
   {
     name: "NABH",
     sub: "Accredited",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#A55322]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-      </svg>
-    ),
+    logo: "/brand-logos/NABH-logo.png",
   },
   {
     name: "Alcon",
     sub: "Vision Suite",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#C9A581]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <circle cx="12" cy="12" r="4" />
-        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-      </svg>
-    ),
+    logo: "/brand-logos/Alcon-Emblem.png",
   },
   {
     name: "Essilor",
     sub: "Precision Optics",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <circle cx="7" cy="12" r="4" />
-        <circle cx="17" cy="12" r="4" />
-        <line x1="11" y1="12" x2="13" y2="12" />
-      </svg>
-    ),
+    logo: "/brand-logos/essilor.png",
   },
   {
     name: "Bausch + Lomb",
     sub: "Diagnostics",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#C9A581]" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 10.5h-5.5V5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.5H5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h5.5V19c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-5.5H19c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" />
-      </svg>
-    ),
+    logo: "/brand-logos/bausche-lomb.png",
   },
   {
     name: "Blade-Free LASIK",
     sub: "Advanced Laser",
-    icon: (
-      <svg className="w-3.5 h-3.5 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
+    logo: "/brand-logos/lasik.png",
   },
 ];
 
@@ -418,14 +393,14 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none select-none overflow-hidden -translate-y-12 lg:-translate-y-16 xl:-translate-y-20"
         >
-          {/* Pure soft shadow halo (no card, no borders) */}
-          <div className="relative flex flex-col items-center py-6 px-16 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.6)_0%,rgba(0,0,0,0.28)_45%,transparent_75%)]">
-            <h1 className="font-oswald font-bold uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full [text-shadow:0_4px_24px_rgba(0,0,0,0.92),0_12px_45px_rgba(0,0,0,0.85)]">
-              <span className="md:text-[5.8vw] lg:text-[5.8rem] xl:text-[7rem] font-bold tracking-[0.03em] text-white whitespace-nowrap">
+          {/* Soft ambient halo (subtle contrast, no harsh smudge) */}
+          <div className="relative flex flex-col items-center py-6 px-16 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.08)_50%,transparent_75%)]">
+            <h1 className="font-avantgarde font-semibold uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full [text-shadow:0_3px_16px_rgba(0,0,0,0.45),0_8px_30px_rgba(0,0,0,0.3)]">
+              <span className="md:text-[4.6vw] lg:text-[4.8rem] xl:text-[5.8rem] font-semibold tracking-tight text-white whitespace-nowrap">
                 AARYA EYE CARE
               </span>
-              <span className="mt-3.5 text-xs sm:text-sm lg:text-base font-gotham font-semibold tracking-[0.32em] text-[#F7DEB4] uppercase [text-shadow:0_2px_12px_rgba(0,0,0,0.95)]">
-                Super Speciality Hospital
+              <span className="mt-3.5 text-xs sm:text-sm lg:text-base font-gotham font-semibold tracking-[0.32em] text-[#F7DEB4] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+                Super Speciality Eye Hospital
               </span>
             </h1>
           </div>
@@ -433,18 +408,18 @@ export default function HeroSection() {
 
         {/* ─── MOBILE VIEW CONTENT (Centered & balanced, no overflow) ─── */}
         <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1.5 pb-2.5 z-10 gap-2 sm:gap-2.5">
-          {/* 1. Main Headline with pure shadow (no card, no borders) */}
+          {/* 1. Main Headline with soft shadow (no harsh smudge) */}
           <motion.div
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center text-center font-oswald font-bold uppercase leading-[0.95] text-white pt-1 pb-1.5 px-6 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.58)_0%,rgba(0,0,0,0.22)_50%,transparent_75%)] shrink-0"
+            className="flex flex-col items-center text-center font-avantgarde font-semibold uppercase leading-[0.95] text-white pt-1 pb-1.5 px-6 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.06)_50%,transparent_75%)] shrink-0"
           >
-            <span className="text-[clamp(1.55rem,7.5vw,2.5rem)] font-bold tracking-[0.02em] text-white whitespace-nowrap [text-shadow:0_4px_20px_rgba(0,0,0,0.95),0_8px_32px_rgba(0,0,0,0.9)]">
+            <span className="text-[clamp(1.4rem,6.8vw,2.2rem)] font-semibold tracking-tight text-white whitespace-nowrap [text-shadow:0_2px_14px_rgba(0,0,0,0.45),0_6px_24px_rgba(0,0,0,0.3)]">
               AARYA EYE CARE
             </span>
-            <span className="mt-1.5 text-[9.5px] sm:text-xs font-gotham font-semibold tracking-[0.24em] text-[#F7DEB4] uppercase [text-shadow:0_2px_10px_rgba(0,0,0,0.95)]">
-              Super Speciality Hospital
+            <span className="mt-1.5 text-[9px] sm:text-xs font-gotham font-semibold tracking-[0.2em] sm:tracking-[0.24em] text-[#F7DEB4] uppercase whitespace-nowrap [text-shadow:0_1px_6px_rgba(0,0,0,0.4)]">
+              Super Speciality Eye Hospital
             </span>
           </motion.div>
 
@@ -688,9 +663,17 @@ export default function HeroSection() {
                     {item.sub}
                   </span>
                 </span>
-                <div className="w-5 h-5 md:w-6 md:h-6 bg-white/10 rounded-full flex items-center justify-center p-1 shadow-sm border border-white/10 shrink-0">
-                  {item.icon}
-                </div>
+                {item.logo ? (
+                  <img
+                    src={item.logo}
+                    alt={`${item.name} logo`}
+                    className="h-4 sm:h-4.5 md:h-5 w-auto object-contain shrink-0"
+                  />
+                ) : (
+                  <div className="w-5 h-5 md:w-6 md:h-6 bg-white/10 rounded-full flex items-center justify-center p-1 shadow-sm border border-white/10 shrink-0">
+                    {item.icon}
+                  </div>
+                )}
               </div>
             ))}
           </motion.div>
