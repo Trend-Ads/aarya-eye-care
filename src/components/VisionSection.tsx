@@ -1,93 +1,81 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState } from "react";
+
+interface VisionPreset {
+  id: "near" | "intermediate" | "distance";
+  name: string;
+  distance: string;
+  focalTarget: string;
+  description: string;
+  focalHUD: {
+    x: string; // percentage position
+    y: string;
+    label: string;
+    sublabel: string;
+  };
+  image: string;
+}
+
+const VISION_PRESETS: VisionPreset[] = [
+  {
+    id: "near",
+    name: "Near Vision",
+    distance: "35 cm",
+    focalTarget: "Aarya Hospital Mobile Screen",
+    description:
+      "Handheld phone display featuring Aarya Eye Care hospital and specialist facilities in razor-sharp 20/20 clarity. The intermediate computer monitor and distant studio loft softly blur out.",
+    focalHUD: {
+      x: "50%",
+      y: "58%",
+      label: "FOCAL PLANE: NEAR (35 CM)",
+      sublabel: "Aarya Hospital App & Reading • Razor Sharp",
+    },
+    image: "/vision/near.png",
+  },
+  {
+    id: "intermediate",
+    name: "Intermediate",
+    distance: "70 cm",
+    focalTarget: "Computer Display & Desk",
+    description:
+      "Computer monitor and desk workspace locked in crystal-clear focus. The foreground smartphone in hand and far studio background are blurred out.",
+    focalHUD: {
+      x: "50%",
+      y: "48%",
+      label: "FOCAL PLANE: INTERMEDIATE (70 CM)",
+      sublabel: "Workstation Display • Desk Distance Sharp",
+    },
+    image: "/vision/intermediate.png",
+  },
+  {
+    id: "distance",
+    name: "Long Distance",
+    distance: "> 2.0 m",
+    focalTarget: "Creative Studio & Horizon",
+    description:
+      "Sunlit creative loft, panoramic skyline windows, and distant architecture locked in pin-sharp clarity for expansive thinking. Near phone and computer screens blur out.",
+    focalHUD: {
+      x: "50%",
+      y: "28%",
+      label: "FOCAL PLANE: DISTANCE (> 2.0 M)",
+      sublabel: "Creative Studio & Horizon • Deep Acuity",
+    },
+    image: "/vision/long.png",
+  },
+];
 
 export default function VisionSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [sliderPos, setSliderPos] = useState<number>(50); // percentage 0 - 100
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [activePreset, setActivePreset] = useState<number>(1);
-  const isDraggingRef = useRef<boolean>(false);
+  const [activeIdx, setActiveIdx] = useState<number>(0);
+  const current = VISION_PRESETS[activeIdx];
 
-  const presets = [
-    { name: "Morning Reading", pos: 25, note: "Sharp contrast for books & fine print" },
-    { name: "Cafe Ambience", pos: 50, note: "Glare-free natural light transmission" },
-    { name: "Distance Focus", pos: 78, note: "Effortless, crystal-clear 20/20 sight" },
-  ];
-
-  // Helper to compute percentage from clientX
-  const updatePosition = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const offsetX = clientX - rect.left;
-    const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
-    setSliderPos(Number(percentage.toFixed(1)));
-  }, []);
-
-  // Unified drag starter for mouse and touch
-  const startDragging = useCallback(
-    (clientX: number) => {
-      isDraggingRef.current = true;
-      setIsDragging(true);
-      updatePosition(clientX);
-
-      const handleMove = (e: MouseEvent | TouchEvent) => {
-        if (!isDraggingRef.current) return;
-        const currentX = "touches" in e ? e.touches[0]?.clientX : e.clientX;
-        if (typeof currentX === "number") {
-          updatePosition(currentX);
-        }
-      };
-
-      const handleEnd = () => {
-        isDraggingRef.current = false;
-        setIsDragging(false);
-        window.removeEventListener("mousemove", handleMove);
-        window.removeEventListener("mouseup", handleEnd);
-        window.removeEventListener("touchmove", handleMove);
-        window.removeEventListener("touchend", handleEnd);
-        window.removeEventListener("touchcancel", handleEnd);
-      };
-
-      window.addEventListener("mousemove", handleMove, { passive: true });
-      window.addEventListener("mouseup", handleEnd);
-      window.addEventListener("touchmove", handleMove, { passive: true });
-      window.addEventListener("touchend", handleEnd);
-      window.addEventListener("touchcancel", handleEnd);
-    },
-    [updatePosition]
-  );
-
-  // Mouse handler
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.button !== 0) return; // Only left click
-    e.preventDefault();
-    startDragging(e.clientX);
+  const handlePrev = () => {
+    setActiveIdx((prev) => (prev === 0 ? VISION_PRESETS.length - 1 : prev - 1));
   };
 
-  // Mobile Touch handler
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    if (e.touches.length > 0) {
-      startDragging(e.touches[0].clientX);
-    }
-  };
-
-  // Keyboard accessibility
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === "ArrowLeft") {
-      e.preventDefault();
-      setSliderPos((prev) => Math.max(0, prev - 5));
-    } else if (e.key === "ArrowRight") {
-      e.preventDefault();
-      setSliderPos((prev) => Math.min(100, prev + 5));
-    }
-  };
-
-  const setPreset = (idx: number, pos: number) => {
-    setActivePreset(idx);
-    setSliderPos(pos);
+  const handleNext = () => {
+    setActiveIdx((prev) => (prev === VISION_PRESETS.length - 1 ? 0 : prev + 1));
   };
 
   return (
@@ -95,24 +83,23 @@ export default function VisionSection() {
       id="vision"
       className="relative bg-[#F2E9DC] text-[#30291F] font-helvetica py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#C9A581]/30 select-none"
     >
-      {/* Subtle Warm Linen Glow */}
+      {/* Warm Ambient Glow Sheen */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-64 pointer-events-none opacity-40 blur-3xl"
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-5xl h-72 pointer-events-none opacity-40 blur-3xl"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 165, 129, 0.3), transparent 75%)",
+            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(201, 165, 129, 0.35), transparent 75%)",
         }}
       />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
         {/* ========================================================= */}
-        {/* 1. COMPACT HEADER & EDITORIAL STATEMENT                   */}
+        {/* 1. HEADER & SINGLE-LINE PILL NAVIGATION                   */}
         {/* ========================================================= */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-6 sm:mb-8">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C9A581]/20 border border-[#C9A581]/40 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#A55322] animate-pulse" />
               <span className="text-[10px] sm:text-[11px] tracking-[0.2em] uppercase font-semibold text-[#A55322]">
                 PERSPECTIVE &amp; CARE
               </span>
@@ -122,143 +109,182 @@ export default function VisionSection() {
               </span>
             </div>
 
-            {/* Main Title: AvantGarde Demi */}
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-avantgarde font-semibold text-[#30291F] tracking-tight leading-snug">
               Say farewell to blurred vision &amp;{" "}
               <span className="font-avantgarde font-semibold text-[#A55322]">
-                welcome the quiet, clearer days.
+                experience pure clarity at every distance.
               </span>
             </h2>
+            <p className="mt-2 text-xs sm:text-sm text-[#30291F]/70 font-sans max-w-xl leading-relaxed">
+              Experience authentic optical depth of field: seamless 20/20 focal transitions across handheld reading, intermediate computer displays, and distant horizons.
+            </p>
           </div>
 
-          {/* Segmented Preset Controls */}
-          <div className="flex items-center gap-1.5 bg-[#C9A581]/20 p-1 rounded-full border border-[#C9A581]/40 self-start sm:self-end">
-            {presets.map((preset, idx) => (
-              <button
-                key={preset.name}
-                type="button"
-                onClick={() => setPreset(idx, preset.pos)}
-                className={`relative px-3 py-1.5 rounded-full text-xs font-gotham font-semibold tracking-wide transition-all duration-200 cursor-pointer ${
-                  activePreset === idx
-                    ? "bg-[#F2E9DC] text-[#30291F] shadow-xs"
-                    : "text-[#30291F]/70 hover:text-[#30291F]"
-                }`}
-              >
-                {preset.name}
-              </button>
-            ))}
+          {/* Unified Single Segmented Pill Control (No Scrolling, Clean One-Piece Look) */}
+          <div className="w-full sm:w-auto self-start lg:self-end">
+            <div className="grid grid-cols-3 sm:flex items-center p-1 rounded-full bg-[#C9A581]/25 border border-[#C9A581]/45 shadow-xs">
+              {VISION_PRESETS.map((preset, idx) => {
+                const isActive = activeIdx === idx;
+                return (
+                  <button
+                    key={preset.id}
+                    type="button"
+                    onClick={() => setActiveIdx(idx)}
+                    className={`relative flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-gotham font-semibold tracking-wide transition-all duration-200 cursor-pointer text-center ${
+                      isActive
+                        ? "bg-[#F2E9DC] text-[#30291F] shadow-xs"
+                        : "text-[#30291F]/70 hover:text-[#30291F] hover:bg-[#F2E9DC]/30"
+                    }`}
+                    aria-pressed={isActive}
+                  >
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full transition-colors shrink-0 ${
+                        isActive ? "bg-[#A55322]" : "bg-transparent"
+                      }`}
+                    />
+                    <span className="whitespace-nowrap">{preset.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* 2. THE "COOL THING": INTERACTIVE DIRECT-MANIPULATION LENS  */}
-        {/* Wipes between Blurred Sight and 20/20 Natural Acuity       */}
+        {/* 2. HIGH CREATIVITY CINEMATIC LENS VIEWPORT                */}
         {/* ========================================================= */}
-        <div
-          ref={containerRef}
-          role="slider"
-          aria-label="Comparison slider showing blurred vision versus 20/20 clarity"
-          aria-valuenow={Math.round(sliderPos)}
-          aria-valuemin={0}
-          aria-valuemax={100}
-          tabIndex={0}
-          onKeyDown={handleKeyDown}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-          style={{ touchAction: "none" }}
-          className="relative w-full aspect-[16/9] sm:aspect-[21/9] max-h-[440px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A581]/40 shadow-[0_16px_40px_rgba(48,41,31,0.06)] cursor-ew-resize touch-none group bg-[#C9A581]/20 focus:outline-none focus:ring-2 focus:ring-[#A55322]/50"
-        >
-          {/* BASE LAYER: Crystal-Clear 20/20 Sharp Vision */}
-          <div className="absolute inset-0 pointer-events-none select-none">
-            <Image
-              src="/images/coffee-shop-vision.jpg"
-              alt="Crisp, clear vision of eyeglasses and coffee cup in morning sunlight"
-              fill
-              draggable={false}
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="object-cover pointer-events-none select-none"
-              priority={false}
-            />
-            {/* Subtle aesthetic gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#30291F]/50 via-transparent to-transparent pointer-events-none" />
-          </div>
-
-          {/* OVERLAY LAYER: Blurred Pre-Treatment Vision (Clipped to Slider) */}
-          <div
-            className="absolute inset-0 overflow-hidden pointer-events-none select-none"
-            style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
-          >
-            <div className="relative w-full h-full pointer-events-none select-none">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[21/10] md:aspect-[21/9] max-h-[520px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A581]/50 shadow-[0_24px_60px_rgba(48,41,31,0.14)] bg-[#30291F]/10 group">
+          {/* Full-Bleed Images with Smooth Cross-Fade */}
+          {VISION_PRESETS.map((preset, idx) => (
+            <div
+              key={preset.id}
+              className={`absolute inset-0 transition-opacity duration-700 ease-out select-none ${
+                activeIdx === idx ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+              }`}
+            >
               <Image
-                src="/images/coffee-shop-vision.jpg"
-                alt="Simulated blurred vision"
+                src={preset.image}
+                alt={`${preset.name}: ${preset.focalTarget}`}
                 fill
-                draggable={false}
+                priority={idx === 0}
                 sizes="(max-width: 1200px) 100vw, 1200px"
-                className="object-cover filter blur-[9px] contrast-[0.92] brightness-[0.98] pointer-events-none select-none"
-                priority={false}
+                className="object-cover select-none"
+                draggable={false}
               />
-              <div className="absolute inset-0 bg-[#F2E9DC]/10 pointer-events-none" />
+            </div>
+          ))}
+
+          {/* Aesthetic Cinema Vignette */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#30291F]/70 via-transparent to-black/25 pointer-events-none" />
+
+          {/* TOP OVERLAYS: Medical Optics Tag & Active Zone Indicator */}
+          <div className="absolute top-4 left-4 right-4 z-20 flex items-center justify-between pointer-events-none">
+            {/* Top-Left: Optical Depth Protocol Pill */}
+            <div className="px-3 py-1.5 rounded-full bg-[#30291F]/80 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-[10px] sm:text-xs font-medium tracking-wide flex items-center gap-2 shadow-sm">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A581]" />
+              <span className="uppercase tracking-widest text-[9px] sm:text-[10px] text-[#C9A581] font-semibold">
+                Multifocal Simulation
+              </span>
+              <span className="text-white/40">•</span>
+              <span className="text-[#F2E9DC]/90 font-mono text-[10px] sm:text-[11px]">
+                {current.focalTarget}
+              </span>
+            </div>
+
+            {/* Top-Right: Focal Acuity Badge */}
+            <div className="px-3.5 py-1.5 rounded-full bg-[#F2E9DC]/95 backdrop-blur-md border border-[#C9A581]/50 text-[#30291F] text-[10px] sm:text-xs font-semibold tracking-wide flex items-center gap-2 shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#A55322] animate-ping" />
+              <span className="text-[#A55322] font-mono font-bold">20/20 ACUITY</span>
+              <span className="text-[#30291F]/30">•</span>
+              <span className="font-mono text-[#30291F]/80">{current.distance}</span>
             </div>
           </div>
 
-          {/* SLIDER HANDLE & TRACK (Large touch hitbox for fingers) */}
+          {/* CREATIVE OPTICAL FOCUS RETICLE / VIEWFINDER HUD */}
           <div
-            className="absolute top-0 bottom-0 z-20"
-            style={{ left: `${sliderPos}%` }}
+            className="absolute z-20 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-700 ease-out"
+            style={{
+              left: current.focalHUD.x,
+              top: current.focalHUD.y,
+            }}
           >
-            {/* Divider Line */}
-            <div className="absolute top-0 bottom-0 w-[2px] -translate-x-1/2 bg-[#A55322] shadow-[0_0_12px_rgba(165,83,34,0.6)] pointer-events-none" />
+            {/* Optical Target Ring */}
+            <div className="relative flex items-center justify-center">
+              {/* Outer pulsing ring */}
+              <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border border-white/60 animate-ping opacity-30" />
+              {/* Mid ring */}
+              <div className="absolute w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-dashed border-[#F2E9DC]/80 shadow-[0_0_15px_rgba(255,255,255,0.4)] animate-[spin_12s_linear_infinite]" />
+              {/* Inner focal dot */}
+              <div className="absolute w-2 h-2 rounded-full bg-[#A55322] ring-2 ring-white shadow-[0_0_10px_#A55322]" />
 
-            {/* Tactile Grab Handle Hit Area (w-12 h-full ensures easy mobile dragging) */}
-            <div className="absolute top-0 bottom-0 w-12 -translate-x-1/2 flex items-center justify-center cursor-ew-resize">
-              <div
-                className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#F2E9DC] border-2 border-[#A55322] shadow-[0_4px_16px_rgba(48,41,31,0.25)] flex items-center justify-center transition-transform duration-100 ${
-                  isDragging ? "scale-110 shadow-[0_6px_22px_rgba(165,83,34,0.4)] ring-4 ring-[#A55322]/20" : "group-hover:scale-105"
-                }`}
-              >
-                <svg
-                  className="w-4 h-4 text-[#A55322]"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l-3 3m0 0l3 3m-3-3h14m-3-3l3 3m0 0l-3 3" />
-                </svg>
+              {/* Viewfinder Brackets */}
+              <div className="absolute -top-1 -left-1 w-3 h-3 border-t-2 border-l-2 border-[#F2E9DC]" />
+              <div className="absolute -top-1 -right-1 w-3 h-3 border-t-2 border-r-2 border-[#F2E9DC]" />
+              <div className="absolute -bottom-1 -left-1 w-3 h-3 border-b-2 border-l-2 border-[#F2E9DC]" />
+              <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-[#F2E9DC]" />
+
+              {/* Viewfinder Data Pill */}
+              <div className="absolute top-full mt-3 whitespace-nowrap px-3 py-1 rounded-md bg-[#30291F]/85 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-center shadow-lg">
+                <p className="text-[10px] font-mono tracking-wider font-semibold text-[#C9A581]">
+                  {current.focalHUD.label}
+                </p>
+                <p className="text-[9px] text-[#F2E9DC]/80 font-sans">
+                  {current.focalHUD.sublabel}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* TOP TAGS (Helvetica) */}
-          <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none">
-            {/* Left Pill: Blurred Vision State */}
-            <div className="px-3 py-1 rounded-full bg-[#30291F]/70 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-[10px] sm:text-xs font-medium tracking-wide flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#C9A581]" />
-              <span>Prior: 20/80 Blurred</span>
-            </div>
+          {/* NAVIGATION ARROWS (Cycle between Near / Intermediate / Distance) */}
+          <button
+            type="button"
+            onClick={handlePrev}
+            aria-label="Previous focal distance"
+            className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#30291F]/60 hover:bg-[#30291F]/80 text-[#F2E9DC] backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 shadow-md"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
 
-            {/* Right Pill: Restored Acuity State */}
-            <div className="px-3 py-1 rounded-full bg-[#F2E9DC]/90 backdrop-blur-md border border-[#C9A581]/40 text-[#30291F] text-[10px] sm:text-xs font-semibold tracking-wide flex items-center gap-1.5 shadow-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
-              <span>Restored: Natural 20/20</span>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={handleNext}
+            aria-label="Next focal distance"
+            className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-[#30291F]/60 hover:bg-[#30291F]/80 text-[#F2E9DC] backdrop-blur-md border border-white/20 flex items-center justify-center transition-all duration-200 cursor-pointer hover:scale-105 active:scale-95 shadow-md"
+          >
+            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
 
-          {/* BOTTOM INTERACTION HINT & NOTE (Helvetica) */}
-          <div className="absolute bottom-3 sm:bottom-4 left-4 right-4 z-10 flex items-center justify-between pointer-events-none text-[#F2E9DC]">
-            <p className="text-xs sm:text-sm text-[#F2E9DC]/90 drop-shadow-sm hidden sm:block tracking-wide">
-              “{presets[activePreset].note}”
-            </p>
-            <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs uppercase tracking-wider text-[#F2E9DC]/80 bg-[#30291F]/60 px-2.5 py-1 rounded-md backdrop-blur-xs ml-auto font-medium">
-              <svg className="w-3.5 h-3.5 text-[#C9A581] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m9 18-6-6 6-6"/><path d="m15 6 6 6-6 6"/><path d="M3 12h18"/></svg>
-              <span>Drag or Tap to Focus</span>
-            </span>
+          {/* Clean Bottom Pagination Dots */}
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 pointer-events-auto bg-[#30291F]/70 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/15">
+            {VISION_PRESETS.map((preset, idx) => (
+              <button
+                key={preset.id}
+                type="button"
+                onClick={() => setActiveIdx(idx)}
+                className={`transition-all duration-300 rounded-full cursor-pointer ${
+                  activeIdx === idx
+                    ? "w-6 h-2 bg-[#A55322]"
+                    : "w-2 h-2 bg-white/40 hover:bg-white/70"
+                }`}
+                aria-label={`Go to ${preset.name}`}
+              />
+            ))}
           </div>
         </div>
 
-
-
+        {/* Minimalist Editorial Footnote */}
+        <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[11px] text-[#30291F]/60 font-sans border-t border-[#C9A581]/30 pt-3">
+          <span>
+            Aarya Customized Progressive Lenses • Seamless focal continuity from 35 cm to infinity
+          </span>
+          <span className="font-mono text-[#A55322] font-medium">
+            Zero Corridor Distortion • Natural Eye Adaptation
+          </span>
+        </div>
       </div>
     </section>
   );
@@ -266,5 +292,3 @@ export default function VisionSection() {
 
 // Named alias for convenience if imported as TheQuestion
 export { VisionSection as TheQuestion };
-
-
