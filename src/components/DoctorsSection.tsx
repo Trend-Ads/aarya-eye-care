@@ -272,19 +272,19 @@ export default function DoctorsSection() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#675E31] text-[#F2E9DC] flex items-center justify-center shrink-0 shadow-xs">
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <div className="w-12 h-12 rounded-xl bg-[#675E31] text-[#F2E9DC] flex items-center justify-center shrink-0 shadow-xs">
+              <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
                 <path d="M16 3.13a4 4 0 0 1 0 7.75" />
               </svg>
             </div>
-            <div>
-              <h4 className="font-semibold text-sm text-[#30291F]">
+            <div className="space-y-1">
+              <h4 className="font-avantgarde font-semibold text-base sm:text-lg md:text-xl text-[#30291F] tracking-tight leading-snug">
                 Over 20+ Experienced Ophthalmologists &amp; Surgeons
               </h4>
-              <p className="text-xs text-[#30291F]/75">
+              <p className="text-sm sm:text-base text-[#30291F]/80 font-medium leading-relaxed">
                 Committed to delivering individualized and NABH-accredited vision care for every patient.
               </p>
             </div>
@@ -292,7 +292,7 @@ export default function DoctorsSection() {
 
           <Link
             href="#appointment"
-            className="inline-flex items-center gap-2 bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] px-5 py-2.5 rounded-full text-xs font-semibold shadow-sm transition-all"
+            className="inline-flex items-center gap-2 bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] px-6 py-3 rounded-full text-sm font-semibold shadow-sm transition-all hover:scale-105 active:scale-95 shrink-0"
           >
             <span>Book Consultation With a Specialist</span>
             <span>→</span>

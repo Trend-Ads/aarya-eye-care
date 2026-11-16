@@ -216,49 +216,61 @@ export default function AppointmentBookingSection() {
               Schedule your visit with our expert ophthalmologists. We provide world-class eye care services with state-of-the-art diagnostic technology.
             </p>
 
-            {/* Contact Row: 4 items in 1 row on mobile and desktop */}
-            <div className="grid grid-cols-4 gap-1.5 sm:gap-4 md:gap-6 mb-8 sm:mb-12 lg:mb-16 border-b border-[#C9A581]/30 pb-6 sm:pb-10">
+            {/* Contact Grid: Exactly 2 rows, two in a row */}
+            <div className="grid grid-cols-2 gap-x-6 sm:gap-x-10 gap-y-6 sm:gap-y-7 mb-8 sm:mb-12 border-b border-[#C9A581]/30 pb-6 sm:pb-8">
+              {/* Row 1, Item 1: Call Us */}
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-semibold text-[11px] sm:text-xs md:text-sm text-[#30291F] leading-tight">Call Us</h4>
-                <p className="font-helvetica text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">+91 99463 22288</p>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Call Us</h4>
+                <a href="tel:+919946322288" className="font-gotham text-sm sm:text-base md:text-lg font-bold text-[#A55322] hover:underline mt-1 leading-tight whitespace-nowrap">
+                  +91 99463 22288
+                </a>
               </div>
 
+              {/* Row 1, Item 2: Email */}
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
-                  </svg>
-                </div>
-                <h4 className="font-gotham font-semibold text-[11px] sm:text-xs md:text-sm text-[#30291F] leading-tight">Full Week</h4>
-                <p className="font-helvetica text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Mon – Sun</p>
-              </div>
-
-              <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Email</h4>
-                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium truncate" title="info@aaryaeyecare.com">info@aarya...</p>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Email</h4>
+                <a href="mailto:info@aaryaeyecare.in" className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug hover:text-[#A55322] transition-colors whitespace-nowrap">
+                  info@aaryaeyecare.in
+                </a>
               </div>
 
+              {/* Row 2, Item 1: Full Week */}
               <div className="flex flex-col">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
-                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Full Week</h4>
+                <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
+                  Mon – Sun (8 AM – 7 PM)
+                </p>
+              </div>
+
+              {/* Row 2, Item 2: Facility */}
+              <div className="flex flex-col">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
-                <h4 className="text-[11px] sm:text-xs md:text-sm font-semibold text-[#30291F] leading-tight">Facility</h4>
-                <p className="text-[9px] sm:text-[11px] text-[#30291F]/70 mt-0.5 leading-tight font-medium">Kochi, Kerala</p>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Facility</h4>
+                <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
+                  Thrissur &amp; Cherpu, KL
+                </p>
               </div>
             </div>
 

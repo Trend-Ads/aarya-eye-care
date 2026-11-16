@@ -74,10 +74,10 @@ export default function ServicesSection() {
       id="treatments"
       className="w-full bg-[#F2E9DC] relative h-[400vh] select-none"
     >
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32 pb-12 border-t border-[#C9A581]/30">
+      <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20 border-t border-[#C9A581]/30">
         
         {/* Header */}
-        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 z-20 mb-8 shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12 z-20 mb-4 sm:mb-6 shrink-0 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
           <div className="space-y-1 sm:space-y-1.5">
             <div className="flex items-center gap-2 mb-1">
               <span className="h-1.5 w-1.5 rounded-full bg-[#A55322]" />
@@ -103,10 +103,10 @@ export default function ServicesSection() {
           </Link>
         </div>
 
-        {/* Horizontal Scrolling Track */}
-        <div className="flex-1 relative w-full flex items-center">
+        {/* Horizontal Scrolling Track (Elevated with bottom padding to maintain clean breathing distance from the progress bar) */}
+        <div className="flex-1 relative w-full flex items-center pb-8 sm:pb-12 md:pb-16">
           <motion.div 
-            className="flex gap-6 md:gap-12 px-4 sm:px-6 lg:px-12 h-[50vh] md:h-[65vh]" 
+            className="flex gap-6 md:gap-10 px-4 sm:px-6 lg:px-12 h-[46vh] sm:h-[48vh] md:h-[52vh] max-h-[460px]" 
             style={{ x, width: `${treatments.length * 100}vw` }}
           >
             {treatments.map((item, index) => (
@@ -162,8 +162,8 @@ export default function ServicesSection() {
           </motion.div>
         </div>
 
-        {/* Progress Bar at the bottom */}
-        <div className="absolute bottom-6 left-0 right-0 px-4 sm:px-6 lg:px-12 z-20">
+        {/* Progress Bar at the bottom (Safely spaced with dedicated distance below the elevated cards) */}
+        <div className="absolute bottom-5 sm:bottom-6 md:bottom-8 left-0 right-0 px-4 sm:px-6 lg:px-12 z-20">
           <div className="max-w-7xl mx-auto">
             <div className="w-full h-[3px] bg-[#C9A581]/30 rounded-full overflow-hidden">
               <motion.div 
