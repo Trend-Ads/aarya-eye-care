@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface Doctor {
   name: string;
+  qualifications: string;
   role: string;
   speciality: string;
   category: string;
@@ -19,141 +20,261 @@ export default function DoctorsSection() {
 
   const doctors: Doctor[] = [
     {
-      name: "Dr. Divya Dharmarajan",
+      name: "Dr. MINUDATH .K.B",
+      qualifications: "MD Ophthalmology (AIIMS)",
+      role: "Medical Director, Phaco, Oculoplasty & Squint Surgeon",
+      speciality: "Phaco, Oculoplasty & Squint Surgeon",
+      category: "Oculoplasty & Squint",
+      image: "/doctors/minudath.png",
+    },
+    {
+      name: "Dr. MIRIAM JOSEPH",
+      qualifications: "MBBS, MS, FICO",
+      role: "Consultant Phaco Refractive Surgeon",
+      speciality: "Phaco Refractive & Cataract Surgery",
+      category: "Cornea & Refractive",
+      image: "/doctors/miriam.png",
+    },
+    {
+      name: "Dr. MAITHREYI .S.K",
+      qualifications: "DO, DOMS, DNB, FVRS",
+      role: "Vitreo - Retina Specialist",
+      speciality: "Vitreo - Retina Specialist",
+      category: "Retina",
+      image: "/doctors/mythreyi.png",
+    },
+    {
+      name: "Dr. JOEL ANTONY",
+      qualifications: "MBBS, MS, FVRS, DNB, FAICO, MRCSOPHTH (UK)",
+      role: "Vitreo - Retinal Surgeon",
+      speciality: "Vitreo - Retinal Surgeon",
+      category: "Retina",
+      image: "/doctors/joel-antony.png",
+    },
+    {
+      name: "Dr. SANAL KUMAR .J",
+      qualifications: "MBBS, DO",
       role: "Senior Consultant Ophthalmologist",
-      speciality: "General & Comprehensive Eye Care",
+      speciality: "Senior Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/sanal-kumar.png",
+    },
+    {
+      name: "Dr. DIVYA DHARMARAJAN",
+      qualifications: "MBBS, DO, FRCS (OPH) GLASGOW",
+      role: "Senior Consultant Ophthalmologist",
+      speciality: "Senior Consultant Ophthalmologist",
       category: "General",
       image: "/doctors/Dr.-Divya-Dharmsrajan-qotapjlt62r1qfr9lmtu0cu1trfev3ycy13p7mfc96.webp",
     },
     {
-      name: "Dr. Nadhna Basheer",
+      name: "Dr. NADHNA BASHEER",
+      qualifications: "MBBS, DO, DNB, FICO, MRCS, FSEH",
       role: "Cornea Specialist & Phaco Refractive Surgeon",
-      speciality: "Cornea, Cataract & LASIK",
+      speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors/Dr.Nadhan-Basheer-qotapd0xu8i1h60to1zg0whto2bud888l4jauop3gq.webp",
     },
     {
-      name: "Dr. Manju .M",
+      name: "Dr. MANJU .M",
+      qualifications: "MBBS, DO, DNB, FAEH, FICO, MRCS (Edin)",
       role: "Glaucoma Specialist & Phaco Surgeon",
-      speciality: "Glaucoma & Micro-Incision Cataract",
+      speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
       image: "/doctors/Dr.Manju_.M-qotap99l2wcw6q6aa0cxqxfzaiudiftb8lxcxkuo5m.webp",
     },
     {
-      name: "Dr. Sikha Radhakrishnan",
+      name: "Dr. SIKHA RADHAKRISHNAN",
+      qualifications: "MBBS, MS, FMR",
       role: "Medical Retina & Consultant Ophthalmologist",
-      speciality: "Retina, Diabetic Eye Care & Uveitis",
+      speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
       image: "/doctors/Dr.-Sikha-Radhakrishnan-1-qotbqtvc9hsi9lljvr12wy4a3znk6vz22kp2ir55fu.webp",
     },
     {
-      name: "Dr. Anju Jose",
+      name: "Dr. ANJU JOSE",
+      qualifications: "MBBS, MS",
       role: "Consultant Ophthalmologist",
-      speciality: "Comprehensive Ophthalmology & Refraction",
+      speciality: "Consultant Ophthalmologist",
       category: "General",
       image: "/doctors/Dr.-ANJU-JOSE-Consultant-Ophthalmologist-rr47qmm2w8jz6il2lj9tjogckzy8dc3mkcr0dhf5ca.webp",
     },
     {
-      name: "Dr. Lijo Joseph",
+      name: "Dr. LIJO JOSEPH",
+      qualifications: "MBBS, DO",
       role: "Consultant Ophthalmologist & Phaco Surgeon",
-      speciality: "Phacoemulsification & Cataract",
+      speciality: "Consultant Ophthalmologist & Phaco Surgeon",
       category: "Cataract",
       image: "/doctors/Dr.-Lijo-Joseph-scaled-r9v197ug1ilpsjrqpzyb4ldjek0uaoquvq8s5i7f0q.jpg",
     },
     {
-      name: "Dr. Roshni Robert",
+      name: "Dr. ROSHNI ROBERT",
+      qualifications: "MBBS, MS",
       role: "Consultant Ophthalmologist",
-      speciality: "Comprehensive Eye Consultations",
+      speciality: "Consultant Ophthalmologist",
       category: "General",
       image: "/doctors/Dr-copy-scaled-r9v19fd5k6w0dfgti37bojh85mzs09kpkrgnzpw9my.jpg",
     },
     {
-      name: "Dr. Surya Surendran",
+      name: "Dr. SURYA SURENDRAN",
+      qualifications: "MBBS, DO, FMR",
       role: "Medical Retina & Consultant Ophthalmologist",
-      speciality: "Retina Diagnostics & Laser Photocoagulation",
+      speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
       image: "/doctors/Dr.-SURYA-SURENDRAN-Medical-Retina-Consultant-Ophthalmologist-rr48mweljgqdsjpi5hgp5ja2t8vwn87v0335jhkjpm.webp",
     },
     {
-      name: "Dr. Jyothi .A",
+      name: "Dr. JYOTHI .A",
+      qualifications: "MBBS, MD Ophthalmology (AIIMS)",
       role: "Cornea Specialist & Phaco Refractive Surgeon",
-      speciality: "Cornea Transplants & LASIK",
+      speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors/ABP05564-scaled-r9v0ztgjp5qhoxf9lxom6yrljucpbnfhl7dzdw558q.jpg",
     },
     {
-      name: "Dr. Maya .T.J",
+      name: "Dr. MAYA .T.J",
+      qualifications: "MBBS, DNB, FAEH (Fellow Aravind)",
       role: "Glaucoma Specialist & Phaco Surgeon",
-      speciality: "Glaucoma Filtration & Cataract",
+      speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
       image: "/doctors/Dr.-MAYA-.T.J-Glaucoma-Cataract-Surgeon-rr48fpwzc0wj3s4z2vqaluibga9yugpocjomke7t8q.webp",
     },
     {
-      name: "Dr. Liya .K.Y",
+      name: "Dr. LIYA .K.Y",
+      qualifications: "MBBS, MS, DNB",
       role: "Vitreo - Retinal Surgeon",
-      speciality: "Vitrectomy & Retinal Surgery",
+      speciality: "Vitreo - Retinal Surgeon",
       category: "Retina",
       image: "/doctors/Dr.-LIYA-.K.Y-Vitreo-Retinal-Surgeon-rr48b3jjqcks0sun2dtbuihqb32001d6po7omf2hu2.webp",
     },
     {
-      name: "Dr. Praveena .S. Kumar",
+      name: "Dr. PRAVEENA. S. KUMAR",
+      qualifications: "MBBS, MS, FAEH",
       role: "Glaucoma Specialist & Phaco Surgeon",
-      speciality: "Early Glaucoma Detection & Laser SLT",
+      speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
       image: "/doctors/Dr.-PRAVEENA.-S.-KUMAR-Consultant-Ophthalmologist-Glaucoma-Specialist-rr48j6xikznnzx3dsvrobgymgj5sa7hz5qg7e72g96.webp",
     },
     {
-      name: "Dr. Rosemary Paul",
+      name: "Dr. ROSEMARY PAUL",
+      qualifications: "MBBS, MS",
       role: "Consultant Ophthalmologist",
-      speciality: "Clinical Eye Evaluations & Vision Care",
+      speciality: "Consultant Ophthalmologist",
       category: "General",
       image: "/doctors/Dr.ROSEMARY-PAUL_Consultant-Ophthalmologist-rr48shk260dqt3lbiweuz4ipxpcgegef3qp28paaq2.webp",
     },
     {
-      name: "Dr. Keziah Mary Thomas",
+      name: "Dr. KEZIAH MARY THOMAS",
+      qualifications: "MBBS, DNB, FSEH, FAICO",
       role: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
-      speciality: "Refractive Surgery & Advanced Cataract",
+      speciality: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors/Dr.-KEZIAH-MARY-THOMAS-Consultant-Phaco-Refractive-Surgeon-rr486h644o90xtkb1vwd36h55vu15m0p2sqqofx6fe.webp",
     },
     {
-      name: "Dr. Nandhinikutty .P.S",
+      name: "Dr. NANDHINIKUTTY .P.S",
+      qualifications: "MBBS, DO (Medical Retina)",
       role: "Medical Retina & Consultant Ophthalmologist",
-      speciality: "Macular Diseases & Diabetic Retinopathy",
+      speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
       image: "/doctors/Dr.NANDHINIKUTTY.P.S-MBBS.DO_.Medical-Retina-Consultant-Ophthalmologist-rr48r2srwyg9e5n1rah08hbtuwamusswwrgubrdk22.webp",
     },
     {
-      name: "Dr. Sarin Ibrahim Sha",
+      name: "Dr. SARIN IBRAHIM SHA",
+      qualifications: "MBBS, DNB, FAEH, FICO",
       role: "Cornea Specialist & Phaco Refractive Surgeon",
-      speciality: "Corneal Grafting (DMEK) & Refractive LASIK",
+      speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors/Dr.-SARIN-IBRAHIM-SHA-Cornea-Phaco-Refractive-Surgeon-rr48lb2fykjw4c0sgaogffqykqqilow8g7aj9lxk96.webp",
     },
     {
-      name: "Dr. Anjusree Nair",
+      name: "Dr. ANJUSREE NAIR",
+      qualifications: "MBBS, DNB",
       role: "Consultant Ophthalmologist",
-      speciality: "Preventative Eye Screening & Cataract",
+      speciality: "Consultant Ophthalmologist",
       category: "General",
       image: "/doctors/Dr.-ANJUSREE-NAIR-Consultant-Ophthalmologist-rr484mfknfpo1i98vl1uo5beziyyz3nr5mf9lso4p6.webp",
     },
     {
-      name: "Dr. Jayasree",
+      name: "Dr. JAYASREE",
+      qualifications: "MBBS, MS",
       role: "Glaucoma Specialist & Phaco Surgeon",
-      speciality: "Advanced Trabeculectomy & Phaco",
+      speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
       image: "/doctors/Dr.JAYASREE-Glaucoma-Phaco-Refractive-Surgeon-rr48p9xwtdzh5299a0fqyfp0vb6b3onfnugc7o1pze.webp",
     },
+    {
+      name: "Dr. ATHIRA M.R",
+      qualifications: "MBBS, DNB",
+      role: "Consultant Ophthalmologist",
+      speciality: "Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/athira.png",
+    },
+    {
+      name: "Dr. GREESHMA POULOSE",
+      qualifications: "MBBS, MS, DNB",
+      role: "Cornea & Phaco Refractive Surgeon",
+      speciality: "Cornea & Phaco Refractive Surgeon",
+      category: "Cornea & Refractive",
+      image: "/doctors/greeshma.png",
+    },
+    {
+      name: "Dr. ELIZEBATH",
+      qualifications: "MBBS, DNB",
+      role: "Senior Consultant Ophthalmologist",
+      speciality: "Senior Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/doctor-placeholder.svg",
+    },
+    {
+      name: "Dr. HEMALATHA",
+      qualifications: "MBBS, DNB",
+      role: "Senior Consultant Ophthalmologist",
+      speciality: "Senior Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/doctor-placeholder.svg",
+    },
+    {
+      name: "Dr. NANDHINI",
+      qualifications: "MBBS, DNB",
+      role: "Senior Consultant Ophthalmologist",
+      speciality: "Senior Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/doctor-placeholder.svg",
+    },
+    {
+      name: "Dr. DIVYA",
+      qualifications: "MBBS, DNB",
+      role: "Consultant Ophthalmologist",
+      speciality: "Consultant Ophthalmologist",
+      category: "General",
+      image: "/doctors/doctor-placeholder.svg",
+    },
   ];
 
-  const categories = ["All", "Cornea & Refractive", "Glaucoma", "Retina", "Cataract", "General"];
+  const categories = [
+    "All",
+    "Cornea & Refractive",
+    "Glaucoma",
+    "Retina",
+    "Cataract",
+    "Oculoplasty & Squint",
+    "General",
+  ];
 
   const filteredDoctors = doctors.filter((doc) => {
     const matchesCategory =
-      selectedCategory === "All" || doc.category === selectedCategory;
+      selectedCategory === "All" ||
+      doc.category === selectedCategory ||
+      (selectedCategory === "Cataract" &&
+        (doc.role.includes("Phaco") ||
+          doc.speciality.includes("Phaco") ||
+          doc.category === "Cataract"));
     const matchesSearch =
       doc.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
       doc.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      doc.qualifications.toLowerCase().includes(searchQuery.toLowerCase()) ||
       doc.speciality.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
@@ -210,56 +331,61 @@ export default function DoctorsSection() {
         >
           <AnimatePresence>
             {filteredDoctors.map((doc, idx) => {
-            const cardGradients = [
-              "from-[#30291F]/85 via-[#30291F]/25 to-transparent", // Warm charcoal
-              "from-[#675E31]/85 via-[#675E31]/20 to-transparent", // Deep olive
-              "from-[#544D28]/85 via-[#544D28]/20 to-transparent", // Satin olive
-              "from-[#A55322]/85 via-[#A55322]/20 to-transparent", // Terracotta
-            ];
-            const gradient = cardGradients[idx % cardGradients.length];
+              const cardGradients = [
+                "from-[#30291F]/90 via-[#30291F]/40 to-transparent", // Warm charcoal
+                "from-[#675E31]/90 via-[#675E31]/35 to-transparent", // Deep olive
+                "from-[#544D28]/90 via-[#544D28]/35 to-transparent", // Satin olive
+                "from-[#A55322]/90 via-[#A55322]/35 to-transparent", // Terracotta
+              ];
+              const gradient = cardGradients[idx % cardGradients.length];
 
-            return (
-              <motion.div
-                key={doc.name} // Key by name for AnimatePresence
-                layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.4, delay: (idx % 8) * 0.05 }} // Stagger visible items
-              >
-                <Link
-                  href="#appointment"
-                  className="relative w-full aspect-[3/4.2] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-4 group select-none cursor-pointer block border border-[#C9A581]/30"
+              return (
+                <motion.div
+                  key={doc.name}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.4, delay: (idx % 8) * 0.04 }}
                 >
-                  {/* Doctor Photo */}
-                  <Image
-                    src={doc.image}
-                    alt={doc.name}
-                    fill
-                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
-                  />
+                  <Link
+                    href="#appointment"
+                    className="relative w-full aspect-[3/4.4] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-3.5 group select-none cursor-pointer block border border-[#C9A581]/30 bg-[#E8DFD1]"
+                  >
+                    {/* Doctor Photo */}
+                    <Image
+                      src={doc.image}
+                      alt={doc.name}
+                      fill
+                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                    />
 
-                  {/* Soft Tinted Gradient Overlay */}
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
-                  />
+                    {/* Soft Tinted Gradient Overlay */}
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
+                    />
 
-                  {/* Doctor Name & Role / Speciality at bottom inside gradient */}
-                  <div className="relative z-10 text-left">
-                    <h3 className="font-gotham font-semibold text-sm sm:text-base md:text-lg text-[#F2E9DC] leading-tight drop-shadow-xs group-hover:underline">
-                      {doc.name}
-                    </h3>
-                    <p className="font-helvetica text-[11px] sm:text-xs md:text-[13px] text-[#F2E9DC]/90 font-normal leading-snug mt-1 line-clamp-1">
-                      {doc.speciality || doc.role}
-                    </p>
-                  </div>
-                </Link>
-              </motion.div>
-            );
-          })}
+                    {/* Doctor Details inside gradient */}
+                    <div className="relative z-10 text-left">
+                      <h3 className="font-gotham font-semibold text-xs sm:text-sm md:text-[15px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline">
+                        {doc.name}
+                      </h3>
+                      {doc.qualifications && (
+                        <p className="font-helvetica text-[10px] sm:text-[11px] text-[#F2E9DC]/80 font-medium leading-tight mt-0.5 line-clamp-1">
+                          {doc.qualifications}
+                        </p>
+                      )}
+                      <p className="font-helvetica text-[10px] sm:text-[11.5px] text-[#F2E9DC]/95 font-normal leading-tight mt-1 line-clamp-2">
+                        {doc.speciality || doc.role}
+                      </p>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
           </AnimatePresence>
         </motion.div>
 

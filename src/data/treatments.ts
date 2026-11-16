@@ -293,7 +293,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Trans-PRK (SmartSurface)",
     badge: "100% No-Touch Laser",
     tagline: "No Flap, No Blade, No Touch – Ultimate Cornea Stability",
-    heroImage: "/hero/hero1.webp",
+    heroImage: "/treatments/trans-prk.png",
     shortDesc: "Schwind Amaris SmartSurface Trans-PRK: all-laser, no-touch surface ablation delivering pristine biomechanical strength for athletes and thinner corneas.",
     overview: [
       "Trans-PRK (Trans-epithelial Photorefractive Keratectomy) is the most advanced all-laser surface ablation treatment available in modern ophthalmology. Unlike LASIK or SMILE, it requires no surgical cut, no mechanical spatula, and no suction ring.",
@@ -655,7 +655,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Cornea Care Specialists",
     badge: "Anterior Segment & Ocular Surface",
     tagline: "Restoring the Window of the Eye with Precision Science",
-    heroImage: "/diagnostics/astigmatism-lens.png",
+    heroImage: "/treatments/cornea.png",
     shortDesc: "Specialized management of corneal dystrophies, keratoconus cross-linking (C3R), infectious keratitis, and sutureless pterygium excision with autograft.",
     overview: [
       "The cornea is the clear dome-shaped front surface of the eye responsible for two-thirds of the eye's total focusing power. Any clouding, irregular curvature, or infection directly degrades visual sharpness.",
