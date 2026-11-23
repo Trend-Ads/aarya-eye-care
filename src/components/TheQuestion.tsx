@@ -39,10 +39,10 @@ export function TheQuestion() {
           style={{ x: x1 }}
           className="whitespace-nowrap flex gap-8 sm:gap-14 opacity-15"
         >
-          <span className="text-[12vw] sm:text-[13vw] font-avantgarde font-semibold tracking-tighter uppercase leading-none text-white">
+          <span className="text-[12vw] sm:text-[13vw] font-heading font-semibold tracking-tighter uppercase leading-none text-white">
             AARYA CARE • AARYA CARE • AARYA CARE
           </span>
-          <span className="text-[12vw] sm:text-[13vw] font-avantgarde font-semibold tracking-tighter uppercase leading-none text-white">
+          <span className="text-[12vw] sm:text-[13vw] font-heading font-semibold tracking-tighter uppercase leading-none text-white">
             AARYA CARE • AARYA CARE • AARYA CARE
           </span>
         </motion.div>
@@ -53,13 +53,13 @@ export function TheQuestion() {
           className="whitespace-nowrap flex gap-8 sm:gap-14 opacity-35 mt-1 sm:mt-2"
         >
           <span
-            className="text-[12vw] sm:text-[13vw] font-avantgarde font-semibold tracking-tighter uppercase leading-none text-transparent"
+            className="text-[12vw] sm:text-[13vw] font-heading font-semibold tracking-tighter uppercase leading-none text-transparent"
             style={{ WebkitTextStroke: "2px rgba(255, 245, 235, 0.85)" }}
           >
             AARYA CARE • AARYA CARE • AARYA CARE
           </span>
           <span
-            className="text-[12vw] sm:text-[13vw] font-avantgarde font-semibold tracking-tighter uppercase leading-none text-transparent"
+            className="text-[12vw] sm:text-[13vw] font-heading font-semibold tracking-tighter uppercase leading-none text-transparent"
             style={{ WebkitTextStroke: "2px rgba(255, 245, 235, 0.85)" }}
           >
             AARYA CARE • AARYA CARE • AARYA CARE
@@ -75,10 +75,10 @@ export function TheQuestion() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.15 }}
-          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-avantgarde font-semibold tracking-tight leading-[1.15] uppercase max-w-4xl text-balance text-white"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-semibold tracking-tight leading-[1.15] uppercase max-w-4xl text-balance text-white"
         >
           It begins long before the lens is crafted. <br />
-          <span className="block mt-2 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-[#FCECDD] italic font-serif lowercase font-normal tracking-normal">
+          <span className="block mt-2 sm:mt-3 text-sm sm:text-base md:text-lg lg:text-xl text-[#FCECDD] italic font-sans lowercase font-normal tracking-normal">
             It begins with trusted care.
           </span>
         </motion.h2>
@@ -116,7 +116,7 @@ export function TheQuestion() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-helvetica text-[clamp(9px,2.6vw,13px)] text-white/85 tracking-[0.12em] sm:tracking-widest uppercase whitespace-nowrap text-center max-w-full pt-1"
+          className="font-sans text-[clamp(9px,2.6vw,13px)] text-white/85 tracking-[0.12em] sm:tracking-widest uppercase whitespace-nowrap text-center max-w-full pt-1"
         >
           From Darkness to Light - Super Speciality Eye Hospital
         </motion.p>

@@ -125,7 +125,7 @@ export default function TreatmentTestimonials({
         </div>
 
         {/* Heading */}
-        <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#30291F] font-bold tracking-tight">
+        <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl text-[#30291F] font-bold tracking-tight">
           What Our Patients Say
         </h2>
 
@@ -183,7 +183,7 @@ export default function TreatmentTestimonials({
               {/* Card Footer: Patient Initials Avatar, Name & Verified Badge */}
               <div className="mt-5 pt-4 border-t border-[#C9A581]/25 flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#675E31] text-[#F2E9DC] font-bold text-xs sm:text-sm flex items-center justify-center font-serif shrink-0 shadow-xs">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#675E31] text-[#F2E9DC] font-bold text-xs sm:text-sm flex items-center justify-center font-sans shrink-0 shadow-xs">
                     {getInitials(item.author)}
                   </div>
                   <div>

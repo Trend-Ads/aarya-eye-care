@@ -8,7 +8,7 @@ import { useLenis } from "lenis/react";
 
 const departments = [
   "General Eye Examination",
-  "Blade-Free LASIK Laser",
+  "Trans-PRK",
   "Cataract Surgery & IOL",
   "Retina & Vitreous Care",
   "Glaucoma Management",
@@ -257,7 +257,7 @@ export default function AppointmentModal() {
                           />
                         </div>
                         <span 
-                          className="font-avantgarde font-semibold text-xs text-[#30291F] tracking-[0.04em] leading-none"
+                          className="font-heading font-semibold text-xs text-[#30291F] tracking-[0.04em] leading-none"
                           style={{
                             fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                           }}
@@ -270,10 +270,10 @@ export default function AppointmentModal() {
                         </span>
                       </div>
 
-                      <h3 className="font-avantgarde font-semibold text-2xl sm:text-[26px] text-[#30291F] tracking-tight leading-tight">
+                      <h3 className="font-heading font-semibold text-2xl sm:text-[26px] text-[#30291F] tracking-tight leading-tight">
                         Book Consultation
                       </h3>
-                      <p className="font-helvetica text-[#30291F]/75 text-xs mt-1 leading-relaxed">
+                      <p className="font-sans text-[#30291F]/75 text-xs mt-1 leading-relaxed">
                         Share your details and our clinical care desk will contact you to confirm your priority slot.
                       </p>
                     </div>
@@ -410,7 +410,7 @@ export default function AppointmentModal() {
                       <span className="text-[10px] font-sans font-semibold uppercase tracking-[0.22em] text-[#A55322] block">
                         Request Registered
                       </span>
-                      <h4 className="font-serif font-medium text-2xl text-[#30291F] tracking-tight mt-1">
+                      <h4 className="font-sans font-medium text-2xl text-[#30291F] tracking-tight mt-1">
                         Thank You, {name || "Patient"}
                       </h4>
                     </div>

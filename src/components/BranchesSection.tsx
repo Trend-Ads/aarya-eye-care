@@ -66,7 +66,7 @@ export default function BranchesSection() {
                 • Accredited Super Speciality Centres
               </span>
             </div>
-            <h2 className="font-display font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
+            <h2 className="font-sans font-black text-3xl sm:text-4xl text-white uppercase tracking-tight">
               Our Branches &amp; Locations
             </h2>
           </div>

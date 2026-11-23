@@ -24,7 +24,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "AARYA EYE CARE - THRISSUR",
     shortName: "Thrissur",
     badge: "Super Speciality & Surgical Center",
-    image: "/branches/Thrissur-aarya.webp",
+    image: "/clinical/thrissur.webp",
     addressLines: [
       "2nd Floor Pallithamam Building Near North Bus Stand",
       "Thrissur - 680 020"
@@ -39,7 +39,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     },
     features: [
       "Modular Laminar Flow Operation Theatres",
-      "Blade-Free LASIK & Trans-PRK Refractive Suite",
+      "Trans-PRK Refractive Suite",
       "Optical Biometer OA-2000 & REVO Spectral Domain OCT",
       "Full Cashless TPA & Mediclaim Insurance Desk",
       "Ocular Trauma & Emergency Surgical Care"
@@ -52,7 +52,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "AARYA EYE CARE - CHERPU",
     shortName: "Cherpu",
     badge: "Regional Eye Health Center",
-    image: "/branches/Cherpu-aarya.webp",
+    image: "/clinical/cherpu.webp",
     addressLines: [
       "Near Cherpu Grama Panchayat Thayamkulangara,",
       "Cherpu - 680 561"
@@ -80,7 +80,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "AARYA EYE CARE - KUNNAMKULAM",
     shortName: "Kunnamkulam",
     badge: "Comprehensive Diagnostic Center",
-    image: "/branches/Kunnamkulam-aarya.webp",
+    image: "/clinical/kunnamkulam.webp",
     addressLines: [
       "Achuthan Tower, Town Hall Road, Near New Bus Stand,",
       "Kunnamkulam - 680 503"
@@ -108,7 +108,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "AARYA EYE CARE - KODUNGALLUR",
     shortName: "Kodungallur",
     badge: "Coastal Vision Care Center",
-    image: "/branches/kodungallur-2-aarya.webp",
+    image: "/clinical/kodungallur.webp",
     addressLines: [
       "Seashore Arcade, Near Kalyan Jewellers Chandapura,",
       "Kodungallur - 680 664"

@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 const BRANCH_FAQS = [
   {
     question: "Do all 4 branches perform eye surgeries?",
-    answer: "Our Thrissur Main Hospital (near North Bus Stand) houses our major surgical suites, including our positive-pressure modular laminar airflow operation theatres, Blade-Free LASIK, and Trans-PRK suites. Our Cherpu, Kunnamkulam, and Kodungallur regional centers provide comprehensive outpatient consultations, computerized diagnostic testing, glaucoma/retina checkups, minor procedures, pre-operative workups, and post-operative follow-up care."
+    answer: "Our Thrissur Main Hospital (near North Bus Stand) houses our major surgical suites, including our positive-pressure modular laminar airflow operation theatres, and the Trans-PRK suite. Our Cherpu, Kunnamkulam, and Kodungallur regional centers provide comprehensive outpatient consultations, computerized diagnostic testing, glaucoma/retina checkups, minor procedures, pre-operative workups, and post-operative follow-up care."
   },
   {
     question: "Are appointments mandatory before visiting a branch?",
@@ -118,7 +118,7 @@ export default function BranchesPage() {
             <span>4 Centers Across Central Kerala</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl text-[#30291F] font-bold tracking-tight">
+          <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl text-[#30291F] font-bold tracking-tight">
             Our Hospital Branches
           </h1>
 
@@ -145,7 +145,7 @@ export default function BranchesPage() {
                   <div className="relative w-full h-32 sm:h-40 md:h-44 overflow-hidden bg-black/10 shrink-0">
                     <Image
                       src={branch.image}
-                      alt={branch.name}
+                      alt=""
                       fill
                       className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                     />
@@ -181,7 +181,7 @@ export default function BranchesPage() {
                   <div className="p-3.5 sm:p-4.5 flex-1 flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
                       {/* Full Branch Title (wraps naturally over 2 lines) */}
-                      <h2 className="font-serif font-bold text-sm sm:text-base text-[#30291F] group-hover:text-[#A55322] transition-colors leading-snug">
+                      <h2 className="font-sans font-bold text-sm sm:text-base text-[#30291F] group-hover:text-[#A55322] transition-colors leading-snug">
                         {branch.name}
                       </h2>
 

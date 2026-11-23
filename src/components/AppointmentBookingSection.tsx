@@ -7,7 +7,7 @@ import Image from "next/image";
 const departments = [
   "General Eye Examination",
   "Cataract Surgery & IOL",
-  "Blade-Free LASIK Laser",
+  "Trans-PRK",
   "Retina & Vitreous Care",
   "Glaucoma Management",
   "Pediatric & Squint Clinic",
@@ -224,11 +224,11 @@ export default function AppointmentBookingSection() {
               <span className="text-[#A55322] text-[11px] font-sans font-semibold tracking-[0.22em] uppercase">Darkness to Light</span>
             </div>
 
-            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-avantgarde font-semibold text-[#30291F] mb-5 tracking-tight">
-              Book Your <span className="font-avantgarde font-semibold text-[#A55322]">Appointment</span>
+            <h2 className="text-3xl sm:text-[2.75rem] leading-[1.15] font-heading font-semibold text-[#30291F] mb-5 tracking-tight">
+              Book Your <span className="font-heading font-semibold text-[#A55322]">Appointment</span>
             </h2>
             
-            <p className="font-helvetica text-[#30291F]/75 text-sm leading-relaxed mb-12 max-w-md">
+            <p className="font-sans text-[#30291F]/75 text-sm leading-relaxed mb-12 max-w-md">
               Schedule your visit with our expert ophthalmologists. We provide world-class eye care services with state-of-the-art diagnostic technology.
             </p>
 
@@ -241,8 +241,8 @@ export default function AppointmentBookingSection() {
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Call Us</h4>
-                <a href="tel:+919946322288" className="font-gotham text-sm sm:text-base md:text-lg font-bold text-[#A55322] hover:underline mt-1 leading-tight whitespace-nowrap">
+                <h4 className="font-heading font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Call Us</h4>
+                <a href="tel:+919946322288" className="font-heading text-sm sm:text-base md:text-lg font-bold text-[#A55322] hover:underline mt-1 leading-tight whitespace-nowrap">
                   +91 99463 22288
                 </a>
               </div>
@@ -255,8 +255,8 @@ export default function AppointmentBookingSection() {
                     <polyline points="22,6 12,13 2,6"></polyline>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Email</h4>
-                <a href="mailto:info@aaryaeyecare.in" className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug hover:text-[#A55322] transition-colors whitespace-nowrap">
+                <h4 className="font-heading font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Email</h4>
+                <a href="mailto:info@aaryaeyecare.in" className="font-sans text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug hover:text-[#A55322] transition-colors whitespace-nowrap">
                   info@aaryaeyecare.in
                 </a>
               </div>
@@ -269,11 +269,11 @@ export default function AppointmentBookingSection() {
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Working Hours</h4>
-                <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
+                <h4 className="font-heading font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Working Hours</h4>
+                <p className="font-sans text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
                   Mon – Sat: 8 AM – 6 PM
                 </p>
-                <p className="font-helvetica text-[11px] sm:text-xs text-[#A55322] font-semibold mt-0.5 leading-tight whitespace-nowrap">
+                <p className="font-sans text-[11px] sm:text-xs text-[#A55322] font-semibold mt-0.5 leading-tight whitespace-nowrap">
                   Sun: 10 AM – 2 PM <span className="text-[#30291F]/60 font-normal">(Thrissur)</span>
                 </p>
               </div>
@@ -286,11 +286,11 @@ export default function AppointmentBookingSection() {
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Locations</h4>
-                <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
+                <h4 className="font-heading font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Locations</h4>
+                <p className="font-sans text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
                   Thrissur &amp; 3 Regional Centers
                 </p>
-                <p className="font-helvetica text-[11px] sm:text-xs text-[#30291F]/60 font-normal mt-0.5 leading-tight whitespace-nowrap">
+                <p className="font-sans text-[11px] sm:text-xs text-[#30291F]/60 font-normal mt-0.5 leading-tight whitespace-nowrap">
                   Cherpu, Kunnamkulam, Kodungallur
                 </p>
               </div>
@@ -325,7 +325,7 @@ export default function AppointmentBookingSection() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="font-serif font-medium text-2xl text-[#30291F]">Booking Request Sent!</h4>
+                  <h4 className="font-sans font-medium text-2xl text-[#30291F]">Booking Request Sent!</h4>
                   <p className="text-[#30291F]/75 text-sm mt-3 max-w-xs mx-auto leading-relaxed">
                     We&apos;ll call <strong className="text-[#30291F]">{phone}</strong> shortly to confirm your appointment details.
                   </p>
@@ -499,7 +499,7 @@ export default function AppointmentBookingSection() {
 
                   <button
                     type="submit"
-                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-gotham font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(103,94,49,0.25)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
+                    className="w-full sm:w-auto px-10 py-3 sm:py-3.5 rounded-full bg-[#675E31] hover:bg-[#524B27] text-[#F2E9DC] font-heading font-semibold text-sm tracking-wide transition-all shadow-[0_8px_20px_rgba(103,94,49,0.25)] hover:shadow-[0_8px_25px_rgba(103,94,49,0.35)] hover:-translate-y-0.5 active:translate-y-0 shrink-0 cursor-pointer"
                   >
                     Submit Request
                   </button>

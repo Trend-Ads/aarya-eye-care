@@ -20,7 +20,7 @@ export default function ScienceLifestyleSection() {
               <span className="w-5 h-[1.5px] bg-slate-400 inline-block" />
               Our Specialities
             </span>
-            <h2 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-[40px] text-slate-900 tracking-tight leading-tight">
+            <h2 className="font-sans font-black text-2xl sm:text-3xl md:text-4xl lg:text-[40px] text-slate-900 tracking-tight leading-tight">
               Explore Our Range of Eye Care Services
             </h2>
           </div>

@@ -72,10 +72,10 @@ export default function SubpageHero({
         )}
 
         {/* Main Title */}
-        <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#30291F] tracking-tight leading-[1.15]">
+        <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#30291F] tracking-tight leading-[1.15]">
           {title}{" "}
           {titleAccent && (
-            <span className="text-[#A55322] font-serif">{titleAccent}</span>
+            <span className="text-[#A55322] font-sans">{titleAccent}</span>
           )}
         </h1>
 
@@ -91,7 +91,7 @@ export default function SubpageHero({
           <div className="flex items-center justify-center gap-6 sm:gap-10 pt-5 mt-4 border-t border-[#C9A581]/25 flex-wrap">
             {stats.map((st, i) => (
               <div key={i} className="text-center">
-                <div className="text-lg sm:text-xl font-bold font-serif text-[#30291F]">
+                <div className="text-lg sm:text-xl font-bold font-sans text-[#30291F]">
                   {st.value}
                 </div>
                 <div className="text-[10px] sm:text-[11px] text-[#30291F]/60 font-medium uppercase tracking-wider">

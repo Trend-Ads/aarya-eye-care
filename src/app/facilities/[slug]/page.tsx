@@ -81,8 +81,13 @@ export default async function FacilityDetailPage({ params }: PageProps) {
             {facility.contentSections.map((sec, idx) => (
               <div
                 key={idx}
-                className="rounded-[2.25rem] p-7 sm:p-10 md:p-14 bg-white/75 border border-[#C9A581]/35 shadow-sm space-y-6"
+                className="flow-root rounded-[2.25rem] p-7 sm:p-10 md:p-14 bg-white/75 border border-[#C9A581]/35 shadow-sm space-y-6"
               >
+                {idx === 0 && (
+                  <div className="relative aspect-[3/2] w-full max-w-xl overflow-hidden rounded-2xl md:float-right md:mb-5 md:ml-8 md:w-2/5">
+                    <Image src={facility.heroImage} alt="" fill sizes="(min-width: 768px) 40vw, 90vw" className="object-cover" />
+                  </div>
+                )}
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-[#A55322]" />
                   <span className="text-[11px] font-sans font-semibold uppercase tracking-[0.22em] text-[#A55322]">
@@ -140,9 +145,9 @@ export default async function FacilityDetailPage({ params }: PageProps) {
                         <div className="relative w-full h-52 sm:h-60 rounded-2xl overflow-hidden bg-[#FAF6F0] border border-[#C9A581]/25 flex items-center justify-center p-4 group-hover:bg-white transition-colors">
                           <Image
                             src={eq.image}
-                            alt={eq.name}
+                            alt=""
                             fill
-                            className="object-contain p-3 group-hover:scale-105 transition-transform duration-500 ease-out"
+                            className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                             sizes="(max-width: 768px) 100vw, 50vw"
                           />
                         </div>

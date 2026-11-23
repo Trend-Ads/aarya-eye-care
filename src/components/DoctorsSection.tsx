@@ -266,10 +266,10 @@ export default function DoctorsSection() {
                 DARKNESS TO LIGHT
               </span>
             </div>
-            <h2 className="font-avantgarde font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#30291F] tracking-tight leading-tight">
+            <h2 className="font-heading font-semibold text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] text-[#30291F] tracking-tight leading-tight">
               Our Specialists &amp; Surgeons
             </h2>
-            <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/75 mt-2 max-w-2xl">
+            <p className="font-sans text-xs sm:text-sm text-[#30291F]/75 mt-2 max-w-2xl">
               Our panel of highly qualified, compassionate and experienced ophthalmologists and super-speciality eye surgeons ensures the highest standards of clinical precision and patient care.
             </p>
           </div>
@@ -280,7 +280,7 @@ export default function DoctorsSection() {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-gotham font-semibold transition-all duration-200 cursor-pointer ${
+                className={`px-3.5 py-1.5 rounded-full text-xs font-heading font-semibold transition-all duration-200 cursor-pointer ${
                   selectedCategory === cat
                     ? "bg-[#675E31] text-[#F2E9DC] shadow-xs"
                     : "bg-white text-[#30291F] border border-[#C9A581]/40 hover:border-[#675E31] hover:text-[#675E31]"
@@ -338,15 +338,15 @@ export default function DoctorsSection() {
 
                     {/* Doctor Details inside gradient */}
                     <div className="relative z-10 text-left">
-                      <h3 className="font-gotham font-semibold text-xs sm:text-sm md:text-[15px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline">
+                      <h3 className="font-heading font-semibold text-xs sm:text-sm md:text-[15px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline">
                         {doc.name}
                       </h3>
                       {doc.qualifications && (
-                        <p className="font-helvetica text-[10px] sm:text-[11px] text-[#F2E9DC]/80 font-medium leading-tight mt-0.5 line-clamp-1">
+                        <p className="font-sans text-[10px] sm:text-[11px] text-[#F2E9DC]/80 font-medium leading-tight mt-0.5 line-clamp-1">
                           {doc.qualifications}
                         </p>
                       )}
-                      <p className="font-helvetica text-[10px] sm:text-[11.5px] text-[#F2E9DC]/95 font-normal leading-tight mt-1 line-clamp-2">
+                      <p className="font-sans text-[10px] sm:text-[11.5px] text-[#F2E9DC]/95 font-normal leading-tight mt-1 line-clamp-2">
                         {doc.speciality || doc.role}
                       </p>
                     </div>
@@ -375,7 +375,7 @@ export default function DoctorsSection() {
               </svg>
             </div>
             <div className="space-y-1">
-              <h4 className="font-avantgarde font-semibold text-base sm:text-lg md:text-xl text-[#30291F] tracking-tight leading-snug">
+              <h4 className="font-heading font-semibold text-base sm:text-lg md:text-xl text-[#30291F] tracking-tight leading-snug">
                 Over 25 Experienced Ophthalmologists &amp; Surgeons
               </h4>
               <p className="text-sm sm:text-base text-[#30291F]/80 font-medium leading-relaxed">

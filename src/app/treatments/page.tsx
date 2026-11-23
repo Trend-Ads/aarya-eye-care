@@ -14,13 +14,13 @@ import { TREATMENTS } from "@/data/treatments";
 export const metadata: Metadata = {
   title: "Treatments & Super Specialities | Aarya Eye Care Thrissur",
   description:
-    "Explore our 11 advanced ophthalmic super specialities including Blade-Free LASIK, Micro-Incision Cataract, Trans-PRK, Vitreo-Retinal surgery, Glaucoma care, and pediatric ophthalmology.",
+    "Explore our 10 advanced ophthalmic super specialities including Micro-Incision Cataract, Trans-PRK, Vitreo-Retinal surgery, Glaucoma care, and pediatric ophthalmology.",
 };
 
 const GENERAL_TREATMENT_FAQS = [
   {
     question: "How do I know which vision correction procedure is right for me?",
-    answer: "Every patient undergoes a thorough pre-refractive or surgical evaluation—including Sirius 3D corneal tomography, dilated retinal screening, and optical biometry. Based on your exact corneal thickness, lifestyle demands, and optical power, our senior surgeons recommend whether Blade-Free LASIK, Trans-PRK, or ICL is safest and most effective for you."
+    answer: "Every patient undergoes a thorough pre-refractive or surgical evaluation—including Sirius 3D corneal tomography, dilated retinal screening, and optical biometry. Based on your exact corneal thickness, lifestyle demands, and optical power, our senior surgeons recommend whether Trans-PRK is appropriate for you."
   },
   {
     question: "Are treatments done as outpatient day-care procedures?",
@@ -44,13 +44,13 @@ export default function TreatmentsPage() {
 
         <SubpageHero
           badge="CLINICAL SUPER SPECIALITIES"
-          tagline="11 Centers of Excellence"
+          tagline="10 Centers of Excellence"
           title="Advanced Ophthalmic Treatments &"
           titleAccent="Microsurgery"
           description="Combining international clinical protocols, sub-micron diagnostic precision, and compassionate surgical care to restore, protect, and enhance your vision."
           breadcrumbs={[{ label: "Treatments" }]}
           stats={[
-            { value: "11+", label: "Super Specialities" },
+            { value: "10", label: "Super Specialities" },
             { value: "25k+", label: "Surgeries Performed" },
             { value: "100%", label: "NABH Protocol" },
           ]}

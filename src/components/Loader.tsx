@@ -54,7 +54,7 @@ export default function Loader() {
         {/* Text Reveal */}
         <div className="overflow-hidden flex flex-col items-center gap-1.5 text-center">
           <motion.h1 
-            className="font-avantgarde font-semibold text-2xl sm:text-3xl text-[#30291F] tracking-[0.06em]"
+            className="font-heading font-semibold text-2xl sm:text-3xl text-[#30291F] tracking-[0.06em]"
             style={{
               fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
             }}

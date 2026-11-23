@@ -20,7 +20,7 @@ const TREATMENT_GROUPS = [
   {
     category: "Refractive & Laser Surgery",
     badge: "Spectacle Freedom",
-    slugs: ["lasik", "trans-prk"],
+    slugs: ["trans-prk"],
   },
   {
     category: "Cataract & Corneal Care",
@@ -86,13 +86,13 @@ export default function NavMegaMenu({
               <div>
                 <div className="flex items-center gap-2 mb-1">
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#A55322]/25 text-[#C9A581] border border-[#A55322]/40">
-                    11 Super Specialities
+                    10 Super Specialities
                   </span>
                   <span className="text-[11px] text-[#C9A581]/80">
                     NABH Accredited Tertiary Center
                   </span>
                 </div>
-                <h3 className="font-serif text-xl sm:text-2xl text-[#F2E9DC] font-medium tracking-tight">
+                <h3 className="font-sans text-xl sm:text-2xl text-[#F2E9DC] font-medium tracking-tight">
                   Comprehensive Eye Treatments & Laser Surgeries
                 </h3>
               </div>
@@ -103,7 +103,7 @@ export default function NavMegaMenu({
                   onClick={onClose}
                   className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#C9A581] hover:text-white transition-colors group/link"
                 >
-                  <span>View All 11 Treatments</span>
+                  <span>View All 10 Treatments</span>
                   <svg className="w-3.5 h-3.5 text-[#C9A581] group-hover/link:text-white transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
                 </Link>
                 <button
@@ -176,7 +176,7 @@ export default function NavMegaMenu({
                 <span className="hidden sm:inline text-[#C9A581]/40">•</span>
                 <span className="flex items-center gap-1.5 text-white/90">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A55322]" />
-                  Custom Contoura LASIK
+                  Trans-PRK
                 </span>
                 <span className="hidden sm:inline text-[#C9A581]/40">•</span>
                 <span className="flex items-center gap-1.5 text-white/90">
@@ -203,7 +203,7 @@ export default function NavMegaMenu({
             <div className="flex items-center justify-between pb-3 border-b border-[#C9A581]/15">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#A55322]" />
-                <h3 className="font-serif text-base sm:text-lg text-[#F2E9DC] font-medium tracking-tight">
+                <h3 className="font-sans text-base sm:text-lg text-[#F2E9DC] font-medium tracking-tight">
                   Hospital Facilities
                 </h3>
               </div>
@@ -256,17 +256,6 @@ export default function NavMegaMenu({
 // Crisp, bespoke SVG glyphs for treatments
 function TreatmentGlyph({ slug }: { slug: string }) {
   switch (slug) {
-    case "lasik":
-      return (
-        <svg className="w-3.5 h-3.5 text-[#C9A581] group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
-          <circle cx="12" cy="12" r="9" />
-          <circle cx="12" cy="12" r="3" />
-          <line x1="12" y1="2" x2="12" y2="6" />
-          <line x1="12" y1="18" x2="12" y2="22" />
-          <line x1="2" y1="12" x2="6" y2="12" />
-          <line x1="18" y1="12" x2="22" y2="12" />
-        </svg>
-      );
     case "trans-prk":
       return (
         <svg className="w-3.5 h-3.5 text-[#C9A581] group-hover:text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">

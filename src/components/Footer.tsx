@@ -110,8 +110,8 @@ export default function Footer() {
                 </h4>
                 <ul className="space-y-1.5 sm:space-y-2.5 text-xs sm:text-[13.5px]">
                   <li>
-                    <Link href="/treatments/lasik" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                      Blade-Free LASIK
+                    <Link href="/treatments/trans-prk" className="text-white/75 hover:text-[#C9A581] transition-colors">
+                      Trans-PRK
                     </Link>
                   </li>
                   <li>
@@ -258,7 +258,7 @@ export default function Footer() {
               </div>
 
               {/* Right Tagline (Increased font size: text-sm sm:text-base md:text-lg) */}
-              <p className="font-serif italic text-[#F2E9DC] text-sm sm:text-base md:text-lg font-medium order-3 sm:order-none tracking-wide drop-shadow-xs">
+              <p className="font-sans italic text-[#F2E9DC] text-sm sm:text-base md:text-lg font-medium order-3 sm:order-none tracking-wide drop-shadow-xs">
                 From Darkness to Light — Restoring clear vision.
               </p>
             </div>

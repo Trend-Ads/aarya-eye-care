@@ -132,7 +132,7 @@ export default function Navbar() {
 
   const leftNavLinks: NavItem[] = [
     { label: "Home", href: "/", id: "home", subtitle: "Main Overview" },
-    { label: "Treatments", href: isHomePage ? "#treatments" : "/treatments", id: "treatments", subtitle: "LASIK, Cataract & Super Specialities" },
+    { label: "Treatments", href: isHomePage ? "#treatments" : "/treatments", id: "treatments", subtitle: "Trans-PRK, Cataract & Super Specialities" },
     { label: "Facilities", href: "/facilities", id: "facilities", subtitle: "Diagnostics, Insurance & Modular OTs" },
   ];
 
@@ -144,7 +144,7 @@ export default function Navbar() {
 
   const allNavLinks: NavItem[] = [
     { label: "Home", href: "/", id: "home", subtitle: "Main Overview" },
-    { label: "Treatments", href: "/treatments", id: "treatments", subtitle: "11 Super Specialities & Procedures" },
+    { label: "Treatments", href: "/treatments", id: "treatments", subtitle: "10 Super Specialities & Procedures" },
     { label: "Facilities", href: "/facilities", id: "facilities", subtitle: "Diagnostic Suite, Modular OTs & Insurance" },
     { label: "Doctors", href: isHomePage ? "#doctors" : "/#doctors", id: "doctors", subtitle: "Senior Surgeons & Specialists" },
     { label: "About Us", href: "/about", id: "about", subtitle: "NABH Accredited Hospital Story" },
@@ -277,7 +277,7 @@ export default function Navbar() {
             
             <div className="flex flex-col justify-center">
               <span 
-                className="font-avantgarde font-semibold tracking-[0.04em] whitespace-nowrap leading-none text-[13px] sm:text-[14.5px] text-[#F2E9DC]"
+                className="font-heading font-semibold tracking-[0.04em] whitespace-nowrap leading-none text-[13px] sm:text-[14.5px] text-[#F2E9DC]"
                 style={{
                   fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                 }}
@@ -448,7 +448,7 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-col">
                   <span 
-                    className="font-avantgarde font-semibold text-base text-[#30291F] tracking-[0.04em] leading-none"
+                    className="font-heading font-semibold text-base text-[#30291F] tracking-[0.04em] leading-none"
                     style={{
                       fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                     }}
@@ -495,7 +495,7 @@ export default function Navbar() {
                         onClick={() => setMobileMenuOpen(false)}
                         className="group flex-1"
                       >
-                        <span className="font-serif text-2xl sm:text-3xl text-[#30291F] group-hover:text-[#A55322] transition-colors font-medium">
+                        <span className="font-sans text-2xl sm:text-3xl text-[#30291F] group-hover:text-[#A55322] transition-colors font-medium">
                           {item.label}
                         </span>
                         {item.subtitle && (
@@ -549,7 +549,7 @@ export default function Navbar() {
                           transition={{ duration: 0.25 }}
                           className="overflow-hidden mt-3 pt-2 pl-3 border-l-2 border-[#A55322]/40 space-y-2"
                         >
-                          {/* 11 Treatments */}
+                          {/* 10 Treatments */}
                           {item.id === "treatments" && (
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                               {TREATMENTS.map((treatment) => (
@@ -568,7 +568,7 @@ export default function Navbar() {
                                 onClick={() => setMobileMenuOpen(false)}
                                 className="text-xs font-bold text-[#A55322] py-1.5 px-2 col-span-full underline decoration-[#A55322]/40"
                               >
-                                <span>View All 11 Treatments</span> <svg className="w-3 h-3 inline ml-1 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
+                                <span>View All 10 Treatments</span> <svg className="w-3 h-3 inline ml-1 text-[#A55322]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
                               </Link>
                             </div>
                           )}

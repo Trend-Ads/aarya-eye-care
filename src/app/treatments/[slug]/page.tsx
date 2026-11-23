@@ -136,7 +136,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
 
                 {/* Quick Doctor Consultation Quote */}
                 <div className="p-5 sm:p-6 rounded-2xl bg-white/70 border border-[#C9A581]/30 backdrop-blur-sm">
-                  <p className="italic text-xs sm:text-sm text-[#30291F]/80 font-serif leading-relaxed">
+                  <p className="italic text-xs sm:text-sm text-[#30291F]/80 font-sans leading-relaxed">
                     &ldquo;Our treatment philosophy marries surgical mastery with patient-first compassion. Every eye is anatomically unique, and we tailor technology to individual vision goals.&rdquo;
                   </p>
                   <div className="mt-3 flex items-center gap-3">

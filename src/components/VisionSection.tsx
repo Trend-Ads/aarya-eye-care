@@ -81,7 +81,7 @@ export default function VisionSection() {
   return (
     <section
       id="vision"
-      className="relative bg-[#F2E9DC] text-[#30291F] font-helvetica py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#C9A581]/30 select-none"
+      className="relative bg-[#F2E9DC] text-[#30291F] font-sans py-12 sm:py-16 lg:py-20 overflow-hidden border-t border-[#C9A581]/30 select-none"
     >
       {/* Warm Ambient Glow Sheen */}
       <div
@@ -109,9 +109,9 @@ export default function VisionSection() {
               </span>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-avantgarde font-semibold text-[#30291F] tracking-tight leading-snug">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-heading font-semibold text-[#30291F] tracking-tight leading-snug">
               Say farewell to blurred vision &amp;{" "}
-              <span className="font-avantgarde font-semibold text-[#A55322]">
+              <span className="font-heading font-semibold text-[#A55322]">
                 experience pure clarity at every distance.
               </span>
             </h2>
@@ -130,7 +130,7 @@ export default function VisionSection() {
                     key={preset.id}
                     type="button"
                     onClick={() => setActiveIdx(idx)}
-                    className={`relative flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-gotham font-semibold tracking-wide transition-all duration-200 cursor-pointer text-center ${
+                    className={`relative flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 rounded-full text-[11px] sm:text-xs font-heading font-semibold tracking-wide transition-all duration-200 cursor-pointer text-center ${
                       isActive
                         ? "bg-[#F2E9DC] text-[#30291F] shadow-xs"
                         : "text-[#30291F]/70 hover:text-[#30291F] hover:bg-[#F2E9DC]/30"
@@ -186,7 +186,7 @@ export default function VisionSection() {
                 Multifocal Simulation
               </span>
               <span className="text-white/40">•</span>
-              <span className="text-[#F2E9DC]/90 font-mono text-[10px] sm:text-[11px]">
+              <span className="text-[#F2E9DC]/90 font-sans tabular-nums text-[10px] sm:text-[11px]">
                 {current.focalTarget}
               </span>
             </div>
@@ -194,9 +194,9 @@ export default function VisionSection() {
             {/* Top-Right: Focal Acuity Badge */}
             <div className="px-3.5 py-1.5 rounded-full bg-[#F2E9DC]/95 backdrop-blur-md border border-[#C9A581]/50 text-[#30291F] text-[10px] sm:text-xs font-semibold tracking-wide flex items-center gap-2 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#A55322] animate-ping" />
-              <span className="text-[#A55322] font-mono font-bold">20/20 ACUITY</span>
+              <span className="text-[#A55322] font-sans tabular-nums font-bold">20/20 ACUITY</span>
               <span className="text-[#30291F]/30">•</span>
-              <span className="font-mono text-[#30291F]/80">{current.distance}</span>
+              <span className="font-sans tabular-nums text-[#30291F]/80">{current.distance}</span>
             </div>
           </div>
 
@@ -225,7 +225,7 @@ export default function VisionSection() {
 
               {/* Viewfinder Data Pill */}
               <div className="absolute top-full mt-3 whitespace-nowrap px-3 py-1 rounded-md bg-[#30291F]/85 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-center shadow-lg">
-                <p className="text-[10px] font-mono tracking-wider font-semibold text-[#C9A581]">
+                <p className="text-[10px] font-sans tabular-nums tracking-wider font-semibold text-[#C9A581]">
                   {current.focalHUD.label}
                 </p>
                 <p className="text-[9px] text-[#F2E9DC]/80 font-sans">
@@ -281,7 +281,7 @@ export default function VisionSection() {
           <span>
             Aarya Customized Progressive Lenses • Seamless focal continuity from 35 cm to infinity
           </span>
-          <span className="font-mono text-[#A55322] font-medium">
+          <span className="font-sans tabular-nums text-[#A55322] font-medium">
             Zero Corridor Distortion • Natural Eye Adaptation
           </span>
         </div>

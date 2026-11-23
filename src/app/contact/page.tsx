@@ -8,7 +8,7 @@ import SubpageHero from "@/components/SubpageHero";
 import CtaBanner from "@/components/CtaBanner";
 import AppointmentModal from "@/components/AppointmentModal";
 import PageTransition from "@/components/PageTransition";
-import { BRANCHES_DATA } from "@/data/branches";
+import Image from "next/image";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -105,7 +105,10 @@ export default function ContactPage() {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
                     </div>
-                    <h3 className="font-heading font-bold text-xl text-[#30291F]">
+                    <div className="relative aspect-[2/1] overflow-hidden rounded-2xl">
+                    <Image src="/clinical/reception.webp" alt="A patient services coordinator answering a call" fill sizes="(min-width: 1024px) 38vw, 90vw" className="object-cover" />
+                  </div>
+                  <h3 className="font-heading font-bold text-xl text-[#30291F]">
                       Inquiry Received Successfully!
                     </h3>
                     <p className="text-xs sm:text-sm text-[#30291F]/80 font-sans max-w-md mx-auto">
@@ -184,7 +187,6 @@ export default function ContactPage() {
                           className="w-full px-4 py-3 rounded-xl bg-[#F2E9DC]/60 border border-[#C9A581]/40 text-sm text-[#30291F] focus:outline-none focus:ring-2 focus:ring-[#A55322]/40"
                         >
                           <option value="Cataract Evaluation">Cataract Surgery (Phaco)</option>
-                          <option value="Blade-Free LASIK">Blade-Free LASIK</option>
                           <option value="Trans-PRK SmartSurface">Trans-PRK (No-Touch)</option>
                           <option value="Retina & Vitreous">Retina & Diabetic Eye</option>
                           <option value="Glaucoma Checkup">Glaucoma Evaluation</option>
@@ -236,6 +238,9 @@ export default function ContactPage() {
                 
                 {/* Central Office Directory */}
                 <div className="rounded-[2.25rem] p-7 sm:p-8 bg-white/75 border border-[#C9A581]/35 shadow-sm space-y-5">
+                  <div className="relative aspect-[2/1] overflow-hidden rounded-2xl">
+                    <Image src="/clinical/reception.webp" alt="A patient services coordinator answering a call" fill sizes="(min-width: 1024px) 38vw, 90vw" className="object-cover" />
+                  </div>
                   <h3 className="font-heading font-bold text-xl text-[#30291F] pb-3 border-b border-[#C9A581]/25">
                     Hospital Department Contacts
                   </h3>

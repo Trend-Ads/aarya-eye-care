@@ -21,42 +21,42 @@ const DOCTOR_LEADERS = [
     name: "Dr. Sanal Kumar",
     role: "Senior Consultant Phaco & Refractive Surgeon",
     qualification: "MBBS, MS (Ophthalmology), FICO",
-    image: "/doctors/Dr.-SANAL-KUMAR-Senior-Consultant-Phaco-Refractive-Surgeon-rr48n6c7h8u6w9tzf9p5f8q565k2585f6k91k9m.webp",
-    focus: "Micro-Incision Cataract Surgery, Blade-Free LASIK, Premium IOLs",
+    image: "/doctors-aligned/sanal-kumar.webp",
+    focus: "Micro-Incision Cataract Surgery, Premium IOLs",
   },
   {
     name: "Dr. Suraj C.B",
     role: "Senior Consultant Phaco & Refractive Surgeon",
     qualification: "MBBS, MS (Ophthalmology)",
-    image: "/doctors/Dr.-SURAJ-C.B-Senior-Consultant-Phaco-Refractive-Surgeon-rr48oc9f9cpt84e030f0f3t9e3j5x165d49k03.webp",
+    image: "/doctors/doctor-placeholder.svg",
     focus: "Refractive Laser Surgery, Trans-PRK, Anterior Segment Reconstruction",
   },
   {
     name: "Dr. Liya K.Y",
     role: "Consultant Vitreo-Retinal Surgeon",
     qualification: "MBBS, DNB, FVRS (Retina)",
-    image: "/doctors/Dr.-LIYA-.K.Y-Vitreo-Retinal-Surgeon-rr48b3jjqcks0sun2dtbuihqb32001d6po7omf2hu2.webp",
+    image: "/doctors-aligned/liya.webp",
     focus: "Diabetic Retinopathy, Macular Disorders, Micro-Incision Vitrectomy (MIVS)",
   },
   {
     name: "Dr. Maya T.J",
     role: "Consultant Glaucoma & Cataract Surgeon",
     qualification: "MBBS, MS, Fellowship in Glaucoma",
-    image: "/doctors/Dr.-MAYA-.T.J-Glaucoma-Cataract-Surgeon-rr48fpwzc0wj3s4z2vqaluibga9yugpocjomke7t8q.webp",
+    image: "/doctors-aligned/maya.webp",
     focus: "Early Glaucoma Detection, Visual Field Perimetry, SLT & YAG Laser",
   },
   {
     name: "Dr. Keziah Mary Thomas",
     role: "Consultant Phaco & Refractive Surgeon",
     qualification: "MBBS, MS (Ophthalmology)",
-    image: "/doctors/Dr.-KEZIAH-MARY-THOMAS-Consultant-Phaco-Refractive-Surgeon-rr486h644o90xtkb1vwd36h55vu15m0p2sqqofx6fe.webp",
+    image: "/doctors-aligned/keziah-mary-thomas.webp",
     focus: "Cornea & Ocular Surface Disease, Pediatric Ophthalmology, Dry Eye Care",
   },
   {
     name: "Dr. Sarin Ibrahim Sha",
     role: "Consultant Cornea & Refractive Surgeon",
     qualification: "MBBS, MS, Fellowship in Cornea",
-    image: "/doctors/Dr.-SARIN-IBRAHIM-SHA-Cornea-Phaco-Refractive-Surgeon-rr48lb2fykjw4c0sgaogffqykqqilow8g7aj9lxk96.webp",
+    image: "/doctors-aligned/sarin-ibrahim-sha.webp",
     focus: "Keratoconus C3R Cross-Linking, Pterygium Autografting, Complex Cornea",
   },
 ];
@@ -76,7 +76,7 @@ const ABOUT_FAQS = [
   },
   {
     question: "Do you cater to international patients and NRIs visiting Kerala?",
-    answer: "Yes! A substantial percentage of our cataract, LASIK, and retina patients are NRIs and international travelers visiting Kerala. We offer prioritized fast-track appointments, comprehensive digital reports, and expedited same-day surgical slots to accommodate limited travel itineraries."
+    answer: "Yes! A substantial percentage of our cataract, refractive surgery, and retina patients are NRIs and international travelers visiting Kerala. We offer prioritized fast-track appointments, comprehensive digital reports, and expedited same-day surgical slots to accommodate limited travel itineraries."
   }
 ];
 
@@ -125,7 +125,7 @@ export default function AboutPage() {
                     At our hospital, every patient is treated as family. We are dedicated to fostering a warm, transparent, and positive atmosphere, ensuring that you consistently feel informed, relaxed, and secure under our care.
                   </p>
                   <p>
-                    Today, Aarya Eye Care operates as a comprehensive tertiary institute with specialized wings for Blade-Free LASIK, Micro-Incision Phaco Cataract Surgery, Vitreo-Retinal disease, Glaucoma care, Cornea cross-linking, Pediatric ophthalmology, and Oculoplastic reconstruction across our 4 centers in Thrissur, Cherpu, Kunnamkulam, and Kodungallur.
+                    Today, Aarya Eye Care operates as a comprehensive tertiary institute with specialized wings for Trans-PRK, Micro-Incision Phaco Cataract Surgery, Vitreo-Retinal disease, Glaucoma care, Cornea cross-linking, Pediatric ophthalmology, and Oculoplastic reconstruction across our 4 centers in Thrissur, Cherpu, Kunnamkulam, and Kodungallur.
                   </p>
                 </div>
               </div>
@@ -133,8 +133,8 @@ export default function AboutPage() {
               <div className="lg:col-span-5 relative">
                 <div className="relative rounded-[2rem] overflow-hidden aspect-[4/3] sm:aspect-square shadow-lg border border-[#C9A581]/40">
                   <Image
-                    src="/images/doctor-exam.jpg"
-                    alt="Doctor examining patient at Aarya Eye Care"
+                    src="/clinical/about.webp"
+                    alt="Patient speaking with an eye care professional"
                     fill
                     className="object-cover"
                   />
@@ -219,7 +219,7 @@ export default function AboutPage() {
                     <div className="relative h-60 w-full rounded-2xl overflow-hidden bg-[#30291F]/10">
                       <Image
                         src={doc.image}
-                        alt={doc.name}
+                        alt={doc.image.endsWith(".svg") ? "" : doc.name}
                         fill
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                         sizes="(max-width: 768px) 100vw, 33vw"

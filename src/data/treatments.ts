@@ -47,7 +47,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Cataract Surgery",
     badge: "Micro-Incision Phaco",
     tagline: "Crystal Clear Vision Restoration with Premium IOLs",
-    heroImage: "/images/eye-care-consultation.jpg",
+    heroImage: "/clinical/cataract.webp",
     shortDesc: "Advanced stitchless, painless micro-incision cataract surgery (MICS) with cold phacoemulsification and foldable premium intraocular lenses.",
     overview: [
       "A cataract is the natural clouding of the eye's crystalline lens, preventing light from focusing sharply onto the retina. It commonly develops with age, prolonged UV exposure, genetics, or systemic conditions like diabetes.",
@@ -133,7 +133,7 @@ export const TREATMENTS: TreatmentDetail[] = [
       { time: "Week 1", milestone: "Stabilization of corneal refraction; can resume routine office work." },
       { time: "Month 1", milestone: "Full tissue healing; final prescription check and clearance for swimming/sports." }
     ],
-    relatedSlugs: ["lasik", "glaucoma", "cornea"],
+    relatedSlugs: ["trans-prk", "glaucoma", "cornea"],
     testimonials: [
       {
             author: "Sudhakar Dev",
@@ -166,134 +166,11 @@ export const TREATMENTS: TreatmentDetail[] = [
 ]
   },
   {
-    slug: "lasik",
-    name: "Blade-Free LASIK",
-    badge: "Laser Vision Correction",
-    tagline: "Permanent Freedom from Glasses and Contact Lenses",
-    heroImage: "/images/eye-closeup.jpg",
-    shortDesc: "Ultra-precise customized laser vision correction correcting myopia, hyperopia, and astigmatism with zero manual blades.",
-    overview: [
-      "Blade-Free LASIK (Laser-Assisted In Situ Keratomileusis) is the premier global gold standard for individuals wishing to liberate themselves from spectacles and contact lenses.",
-      "At Aarya Eye Care, our refractive suite combines high-frequency femtosecond laser flap creation with customized wavefront-guided excimer ablation. The corneal bed is reshaped with microscopic precision according to your eye's individual topographic map.",
-      "The entire bilateral treatment takes less than 15 minutes. Patients wake up the next morning with high-definition natural vision, ready to enjoy sports, driving, and active professional lives without visual aids."
-    ],
-    keyHighlights: [
-      {
-        title: "100% Blade-Free",
-        description: "Femtosecond infrared laser creates a uniform, microscopically thin corneal flap without any mechanical blades.",
-        icon: "laser"
-      },
-      {
-        title: "Wavefront Customized",
-        description: "Maps and corrects microscopic optical aberrations for superior night vision and contrast sensitivity.",
-        icon: "sparkles"
-      },
-      {
-        title: "10-15 Min Procedure",
-        description: "Both eyes are treated in a single swift outpatient session with rapid visual recovery within hours.",
-        icon: "clock"
-      },
-      {
-        title: "Rapid Visual Recovery",
-        description: "Over 95% of patients achieve 20/20 vision or better by the next morning.",
-        icon: "eye"
-      }
-    ],
-    candidates: [
-      "Age 18 or above with a stable spectacle power for at least 1 year",
-      "Diagnosed with myopia (nearsightedness), hyperopia (farsightedness), or astigmatism",
-      "Adequate central corneal thickness verified by Sirius corneal tomography",
-      "Healthy ocular surface free from severe dry eye disease or keratoconus",
-      "Not currently pregnant or breastfeeding"
-    ],
-    procedureSteps: [
-      {
-        step: "01",
-        title: "Comprehensive Refractive Workup",
-        description: "Sirius corneal topography, pachymetry, dilated retina screening, and dry eye workup to verify 100% candidacy."
-      },
-      {
-        step: "02",
-        title: "Femtosecond Flap Creation",
-        description: "An ultra-fast femtosecond laser separates a microscopic corneal flap in seconds with smooth, planoconcave geometry."
-      },
-      {
-        step: "03",
-        title: "Excimer Laser Reshaping",
-        description: "Cold ultraviolet laser pulses reshape the stromal bed in 10-20 seconds with sub-micron 3D eye tracking."
-      },
-      {
-        step: "04",
-        title: "Flap Repositioning & Natural Adhesion",
-        description: "The corneal flap is gently smoothed back into place, adhering naturally without stitches within minutes."
-      }
-    ],
-    technologies: [
-      { name: "Sirius Corneal Topographer", role: "3D Scheimpflug & Placido anterior segment structural analyzer" },
-      { name: "High-Speed Refractive Laser", role: "Wavefront-optimized corneal stromal reshaping" },
-      { name: "Dynamic Eye-Tracking System", role: "Sub-millisecond tracking compensating for involuntary saccades" }
-    ],
-    faqs: [
-      {
-        question: "Is LASIK permanent, or will my power return later?",
-        answer: "The corneal reshaping performed during LASIK is permanent. As long as your eye power was stable before the procedure, the distance vision correction remains lifelong. Normal age-related reading changes (presbyopia) after age 45 may still occur naturally."
-      },
-      {
-        question: "Does blade-free LASIK hurt?",
-        answer: "No. Numbing anesthetic drops are administered before surgery. You may feel a brief sensation of mild pressure during flap creation, but there is no sharp pain during or after the laser application."
-      },
-      {
-        question: "How long after LASIK can I use my mobile phone or laptop?",
-        answer: "We recommend resting your eyes for the first 12-24 hours. You can resume moderate screen usage and office work on day 2 while keeping eyes well-lubricated with prescribed preservative-free drops."
-      },
-      {
-        question: "What happens if I blink or move my eye during the laser?",
-        answer: "Modern refractive lasers are equipped with multi-dimensional infrared eye trackers operating at over 500-1000 frames per second. If your eye moves even a fraction of a millimeter, the laser automatically pauses and resumes only when aligned."
-      }
-    ],
-    recoveryTimeline: [
-      { time: "Hour 4", milestone: "Mild tearing and scratchiness subside; clear distance vision begins." },
-      { time: "Day 1", milestone: "Next-day clinical review; legal driving vision usually attained." },
-      { time: "Week 1", milestone: "Resumption of gym, light sports, and normal makeup (avoiding eyes)." }
-    ],
-    relatedSlugs: ["trans-prk", "cataract", "dry-eyes"],
-    testimonials: [
-      {
-            author: "Rahul Menon",
-            location: "Thrissur",
-            role: "Software Professional",
-            rating: 5,
-            text: "Working 10+ hours on screens with high cylindrical power had become exhausting. The Blade-Free LASIK suite at Aarya Eye Care corrected my vision in less than 15 minutes. The very next morning I woke up with 20/20 vision without any dry eye issues. Truly liberating experience."
-      },
-      {
-            author: "Dr. Neha Varghese",
-            location: "Kochi",
-            role: "Medical Practitioner",
-            rating: 5,
-            text: "Being in the healthcare field, clear uncompromised vision is critical. The corneal topography profiling and precision femtosecond flap creation were handled with immense clinical finesse. Highly recommend Aarya Eye Care for anyone considering LASIK."
-      },
-      {
-            author: "Sudhakar Dev",
-            location: "Thrissur",
-            role: "Laser Vision Patient",
-            rating: 5,
-            text: "Aarya eye care hospital has changed my life from blurry vision. The medical team and their support were amazing. They were very friendly and cooperative throughout my treatment procedure. Thank you Aarya Eye Care."
-      },
-      {
-            author: "Ananya S",
-            location: "Kodungallur",
-            role: "Glasses-Free Vision",
-            rating: 5,
-            text: "I was hesitant about laser surgery, but the detailed pre-LASIK corneal diagnostics and thorough doctor counseling gave me complete peace of mind. Completely painless procedure and now I enjoy life glasses-free!"
-      }
-]
-  },
-  {
     slug: "trans-prk",
     name: "Trans-PRK (SmartSurface)",
     badge: "100% No-Touch Laser",
     tagline: "No Flap, No Blade, No Touch – Ultimate Cornea Stability",
-    heroImage: "/treatments/trans-prk.png",
+    heroImage: "/clinical/trans-prk.webp",
     shortDesc: "Schwind Amaris SmartSurface Trans-PRK: all-laser, no-touch surface ablation delivering pristine biomechanical strength for athletes and thinner corneas.",
     overview: [
       "Trans-PRK (Trans-epithelial Photorefractive Keratectomy) is the most advanced all-laser surface ablation treatment available in modern ophthalmology. Unlike LASIK or SMILE, it requires no surgical cut, no mechanical spatula, and no suction ring.",
@@ -379,7 +256,7 @@ export const TREATMENTS: TreatmentDetail[] = [
       { time: "Day 4-5", milestone: "Bandage lens safely removed by ophthalmologist; crisp vision accelerates." },
       { time: "Week 2", milestone: "Excellent functional eyesight; safe for strenuous workouts and travel." }
     ],
-    relatedSlugs: ["lasik", "cornea", "dry-eyes"],
+    relatedSlugs: ["cornea", "dry-eyes"],
     testimonials: [
       {
             author: "Arjun",
@@ -409,7 +286,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Retina & Vitreous Care",
     badge: "Advanced Vitreo-Retinal Care",
     tagline: "Preserving Sight from Diabetic Retinopathy, Detachment & Macular Disease",
-    heroImage: "/hero/hero2.jpg",
+    heroImage: "/clinical/retina-and-uveitis.webp",
     shortDesc: "Comprehensive vitreo-retinal diagnostic imaging, Green PRP laser photocoagulation, anti-VEGF injections, and micro-incision vitrectomy surgery (MIVS).",
     overview: [
       "The retina is the neurosensory photographic film of the eye, capturing visual images and transmitting them via the optic nerve to the brain. Retinal diseases can cause irreversible vision loss if not diagnosed and arrested promptly.",
@@ -532,7 +409,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Glaucoma Management",
     badge: "Early Pressure & OCT Shield",
     tagline: "The Silent Thief of Sight – Early Detection & Vision Safeguarding",
-    heroImage: "/images/doctor-exam.jpg",
+    heroImage: "/clinical/glaucoma.webp",
     shortDesc: "Gold standard non-contact & applanation tonometry, Humphrey visual field perimetry, RNFL optical coherence tomography, and selective laser trabeculoplasty.",
     overview: [
       "Glaucoma is a group of eye diseases that cause progressive, irreversible damage to the optic nerve, often driven by elevated intraocular pressure (IOP). Known as the 'silent thief of sight,' it typically causes no pain or symptoms until peripheral vision has been substantially lost.",
@@ -655,7 +532,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Cornea Care Specialists",
     badge: "Anterior Segment & Ocular Surface",
     tagline: "Restoring the Window of the Eye with Precision Science",
-    heroImage: "/treatments/cornea.png",
+    heroImage: "/clinical/cornea.webp",
     shortDesc: "Specialized management of corneal dystrophies, keratoconus cross-linking (C3R), infectious keratitis, and sutureless pterygium excision with autograft.",
     overview: [
       "The cornea is the clear dome-shaped front surface of the eye responsible for two-thirds of the eye's total focusing power. Any clouding, irregular curvature, or infection directly degrades visual sharpness.",
@@ -741,7 +618,7 @@ export const TREATMENTS: TreatmentDetail[] = [
       { time: "Day 5", milestone: "Epithelial re-growth completed; therapeutic bandage lens removed." },
       { time: "Month 1", milestone: "Full corneal surface stabilization and evaluation for specialty optical correction." }
     ],
-    relatedSlugs: ["lasik", "trans-prk", "dry-eyes"],
+    relatedSlugs: ["trans-prk", "dry-eyes"],
     testimonials: [
       {
             author: "Gokul Krishna",
@@ -778,7 +655,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Dry Eyes & Ocular Surface Clinic",
     badge: "Digital Eye Strain & Tear Film",
     tagline: "Comprehensive Relief for Irritated, Strained, and Fatigued Eyes",
-    heroImage: "/hero/hero3.webp",
+    heroImage: "/clinical/dry-eyes.webp",
     shortDesc: "Targeted therapy for computer vision syndrome, Meibomian Gland Dysfunction (MGD), tear film evaporation, and chronic ocular surface inflammation.",
     overview: [
       "Dry Eye Disease (DED) is a multifaceted ocular surface condition driven by insufficient tear production, excessive tear evaporation, or abnormal tear film quality. Prolonged screen use, air-conditioned workspaces, contact lens wear, and hormonal changes exacerbate this condition.",
@@ -864,7 +741,7 @@ export const TREATMENTS: TreatmentDetail[] = [
       { time: "Week 2", milestone: "Meibomian gland oil secretion normalizes; sustained clear vision." },
       { time: "Month 1", milestone: "Substantial improvement in ocular comfort scores and contact lens tolerance." }
     ],
-    relatedSlugs: ["lasik", "trans-prk", "cornea"],
+    relatedSlugs: ["trans-prk", "cornea"],
     testimonials: [
       {
             author: "Deepa Balakrishnan",
@@ -901,7 +778,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Pediatric Ophthalmology",
     badge: "Child Eye Care & Amblyopia",
     tagline: "Nurturing Clear Childhood Vision from Early Infancy through Adolescence",
-    heroImage: "/hero/hero1.webp",
+    heroImage: "/clinical/pediatric-ophthalmology.webp",
     shortDesc: "Compassionate child-friendly eye examinations, amblyopia (lazy eye) patching therapy, pediatric refraction, congenital cataract screening, and squint correction.",
     overview: [
       "A child's visual system develops rapidly during the first 7 to 8 years of life. Undiagnosed refractive errors, squint (misaligned eyes), or media opacities can cause amblyopia (lazy eye), where the brain permanently ignores input from one eye.",
@@ -1024,7 +901,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Squint (Strabismus) Surgery",
     badge: "Ocular Motility & Alignment",
     tagline: "Restoring Binocular Eye Alignment, Depth Perception & Self-Confidence",
-    heroImage: "/images/doctor-exam.jpg",
+    heroImage: "/clinical/squint.webp",
     shortDesc: "Precision extraocular muscle surgery and optical rehabilitation for esotropia (crossed eyes), exotropia (outward drift), and paralytic strabismus in both children and adults.",
     overview: [
       "Squint, clinically known as strabismus, is a condition where the two eyes do not point in the same direction at the same time. One eye may look straight ahead while the other turns inward, outward, upward, or downward.",
@@ -1147,7 +1024,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Oculoplasty & Aesthetic Eyelid Surgery",
     badge: "Eyelid & Orbital Reconstructive Care",
     tagline: "Restoring Eyelid Function, Symmetry, and Periocular Rejuvenation",
-    heroImage: "/hero/hero3.jpg",
+    heroImage: "/clinical/oculoplasty.webp",
     shortDesc: "Comprehensive surgical care for ptosis (drooping eyelids), blepharoplasty, ectropion/entropion correction, tear duct dacryocystorhinostomy (DCR), and orbital lesion excision.",
     overview: [
       "Oculoplastic surgery is the specialized branch of ophthalmology dealing with the plastic, reconstructive, and cosmetic management of the eyelids, tear drainage pathways, orbit (eye socket), and surrounding facial structures.",
@@ -1270,7 +1147,7 @@ export const TREATMENTS: TreatmentDetail[] = [
     name: "Eyelid Wart, Skin Tag & Mole Removal",
     badge: "Cosmetic & Minor Oculoplasty",
     tagline: "Safe, Painless & Scarless Excision of Periocular Skin Lesions",
-    heroImage: "/hero/avatar-curly.jpg",
+    heroImage: "/clinical/wart-tag-mole.webp",
     shortDesc: "Radiofrequency and micro-surgical removal of eyelid skin tags, xanthelasma, papillomas, cysts, and benign moles with pristine aesthetic skin preservation.",
     overview: [
       "The delicate skin around the eyes is frequently affected by benign skin growths, including skin tags (acrochordons), viral warts (verruca), eyelid cysts (chalazion/hidrocystoma), yellow cholesterol deposits (xanthelasma), and pigmented moles (nevi).",

@@ -41,7 +41,7 @@ export const FACILITIES: FacilitySector[] = [
     title: "Hospital Facilities & Diagnostic Technology",
     badge: "NABH Accredited Infrastructure",
     tagline: "World-Class Ophthalmic Engineering & Ultra-Modern Surgical Suites",
-    heroImage: "/facilities/hospital-facilities-main.webp",
+    heroImage: "/clinical/hospital-facilities.webp",
     shortDesc: "Equipped with state-of-the-art optical biometry, high-resolution fundus OCT, green PRP lasers, Nd:YAG lasers, and positive-pressure sterile laminar airflow modular operating suites.",
     highlights: [
       "Ultra-modern modular operation theatres with HEPA laminar air filters & zero-infection protocol",
@@ -84,7 +84,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Pre-Cataract Gold Standard",
         subtitle: "A New Approach to Pre-Cataract Evaluation",
         description: "Cataract surgery is the removal of the cataractous lens and implantation of a new intraocular lens (IOL). The Optical Biometer OA-2000 is a highly accurate, non-invasive automated method for measuring IOL power, integrating axial length, keratometry, anterior chamber depth, and lens thickness in under 0.5 seconds for premium toric and multifocal implants.",
-        image: "/facilities/optical-biometer-oa2000.webp",
+        image: "/clinical/biometry.webp",
         indications: [
           "Pre-cataract surgery intraocular lens (IOL) calculation",
           "Toric IOL axis planning and post-refractive surgery lens formulas",
@@ -97,7 +97,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "High-Resolution Retinal Layering",
         subtitle: "Combined True-Color Fundus Photo & 130,000 A-Scans/sec OCT",
         description: "This state-of-the-art machine provides a detailed color photo of the retina along with high-quality OCT cross-sectional images. This helps in detecting even the minutest retinal changes invisible to the naked eye. The incorporated eye-tracking software is a major timesaver and provides utmost patient comfort.",
-        image: "/facilities/revo-fc-oct.png",
+        image: "/clinical/retinal-imaging.webp",
         indications: [
           "Diabetic macular edema and diabetic retinopathy classification",
           "Wet & dry age-related macular degeneration (AMD)",
@@ -111,7 +111,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Dye-Free Microvascular Imaging",
         subtitle: "Non-Invasive 3D Microvasculature Mapping",
         description: "Angiography SOCT is a non-invasive, dye-free technique providing a 3D image of retinal blood circulation. The software allows clinicians to observe, track, and compare subtle microvascular alterations in the retina across both eyes without intravenous fluorescein injection.",
-        image: "/diagnostics/eye-anatomy-3d.png",
+        image: "/clinical/angiography.webp",
         indications: [
           "Capillary dropout and foveal avascular zone (FAZ) enlargement in diabetics",
           "Choroidal neovascularization (CNV) in macular degeneration",
@@ -124,9 +124,9 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Anterior Segment Architecture",
         subtitle: "Placido Disk Topography + Scheimpflug Tomography",
         description: "SIRIUS combines a 24-ring Placido disk with 3D Scheimpflug tomography of the anterior segment. It creates a computer-assisted 3-dimensional elevation map of both the anterior and posterior corneal surfaces, with the critical ability to detect irregular conditions like keratoconus early.",
-        image: "/diagnostics/astigmatism-lens.png",
+        image: "/clinical/topography.webp",
         indications: [
-          "Pre-LASIK & Trans-PRK safety evaluation",
+          "Trans-PRK safety evaluation",
           "Early keratoconus detection and progression tracking for C3R",
           "Custom contact lens and scleral lens fitting"
         ],
@@ -137,7 +137,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Precision Anterior Photodisruption",
         subtitle: "Dual-Wavelength Q-Switched Laser System",
         description: "Delivers instantaneous in-clinic laser capsulotomy for cloudy capsular haze (after-cataract) following cataract surgery and peripheral iridotomy for narrow-angle glaucoma. The procedure takes under 3 minutes with zero downtime.",
-        image: "/facilities/appasamy-yag-laser.png",
+        image: "/clinical/yag-laser.webp",
         indications: [
           "YAG Capsulotomy for cloudy capsular haze after cataract surgery",
           "YAG Peripheral Iridotomy (YAG PI) to relieve pupillary block in narrow angles",
@@ -150,7 +150,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Retinal Photocoagulation",
         subtitle: "Solid-State Diode Frequency-Doubled Laser",
         description: "The 532nm wavelength provides optimal absorption by retinal pigment epithelium with minimal light scatter. It is the gold standard for pan-retinal photocoagulation (PRP) in proliferative diabetic retinopathy and barrage laser sealing of retinal tears.",
-        image: "/facilities/green-laser-prp.webp",
+        image: "/clinical/retinal-laser.webp",
         indications: [
           "Pan-retinal photocoagulation (PRP) in proliferative diabetic retinopathy",
           "Barrage laser for peripheral retinal tears and lattice degeneration",
@@ -163,7 +163,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Cosmetic Vision Rehabilitation",
         subtitle: "Custom-Fitted Artificial Eye Implants",
         description: "An ocular prosthesis is a custom-crafted artificial eye fitted for patients who have lost an eye due to trauma, surgery, or shrunken damaged eyes (phthisical eyes) with no visual potential. It restores natural facial symmetry and patient confidence.",
-        image: "/diagnostics/rehab-eye.png",
+        image: "/clinical/ocular-prosthesis.webp",
         indications: [
           "Traumatic ocular injury and surgical eye removal",
           "Shrunken damaged eye (phthisis bulbi) cosmetic masking",
@@ -176,7 +176,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Visual Enhancement Technology",
         subtitle: "Optical & Non-Optical Residual Vision Magnifiers",
         description: "Specialized optical devices that enhance residual vision by magnifying retinal image size for patients with irreversible visual impairment from AMD, advanced glaucoma, diabetic maculopathy, or optic atrophy.",
-        image: "/diagnostics/mri-scan.png",
+        image: "/clinical/low-vision.webp",
         indications: [
           "Advanced Age-Related Macular Degeneration (ARMD)",
           "End-stage Glaucoma tunnel vision magnification",
@@ -205,7 +205,7 @@ export const FACILITIES: FacilitySector[] = [
     title: "Corporate Healthcare Empanelment",
     badge: "Institutional Wellness & Screening",
     tagline: "Dedicated Corporate Eye Care Programs, Executive Health & On-Site Camps",
-    heroImage: "/images/doctor-exam.jpg",
+    heroImage: "/clinical/corporate-empanelment.webp",
     shortDesc: "In our endeavor to provide quality eye care for our privileged clientele base, we have tied up with a wide range of corporate organizations, providing special discounts for both outpatient consultation and in-patient procedures for employees and family members.",
     highlights: [
       "Special discounts on outpatient consultations and in-patient surgeries for employees and family",
@@ -274,7 +274,7 @@ export const FACILITIES: FacilitySector[] = [
     title: "Cashless Insurance & Mediclaim Facilities",
     badge: "Hassle-Free TPA Network",
     tagline: "Seamless Cashless Hospitalization with Leading Health Insurers Across India",
-    heroImage: "/images/eye-care-consultation.jpg",
+    heroImage: "/clinical/insurance-facilities.webp",
     shortDesc: "We've partnered with major medical claim service providers across India for seamless processing, eliminating the need for you to handle claim filings. AARYA EYE CARE ensures full support and documentation for insurance claims, offering hassle-free billing.",
     highlights: [
       "Direct cashless tie-ups with 17+ leading TPAs and major private/public health insurance providers",
@@ -358,8 +358,8 @@ export const FACILITIES: FacilitySector[] = [
         answer: "Yes, cataract surgery is universally recognized by all health insurers as a covered day-care procedure. The majority of insurance policies cover standard monofocal surgery completely. If you choose premium toric or multifocal IOLs, the insurer covers the base eligible amount while the patient pays the difference directly."
       },
       {
-        question: "Is blade-free LASIK covered under health insurance?",
-        answer: "Refractive LASIK performed purely for aesthetic spectacle freedom is generally excluded by standard policies. However, if your refractive error is high (usually -7.5 diopters or greater) or caused by severe trauma/anisometropia, many modern insurers and corporate policies provide coverage upon medical review."
+        question: "Is Trans-PRK covered under health insurance?",
+        answer: "Coverage depends on the terms of your policy. Contact your insurer or our insurance desk to check eligibility and preauthorization for Trans-PRK."
       },
       {
         question: "What documents must I carry for cashless admission?",
@@ -376,7 +376,7 @@ export const FACILITIES: FacilitySector[] = [
     title: "Clinical Diagnostic Lab & Neuro-Ophthalmology",
     badge: "Accurate Diagnostic Profiling",
     tagline: "Advanced Ocular Diagnostics, Automated Perimetry & Clinical Microbiology",
-    heroImage: "/diagnostics/diagnosis-hero-box.png",
+    heroImage: "/clinical/lab.webp",
     shortDesc: "Dedicated ocular diagnostic laboratory providing Humphrey visual field perimetry, pachymetry, endothelial specular microscopy, tear film osmolarity, and clinical microbiology.",
     highlights: [
       "Automated Humphrey Visual Field Analyzer for optic nerve and neurological pathway mapping",
@@ -410,7 +410,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Global Standard in Visual Fields",
         subtitle: "SITA Standard automated threshold perimetry",
         description: "The internationally recognized reference standard for detecting and tracking visual field sensitivity loss in glaucoma and neurological disorders.",
-        image: "/diagnostics/mri-scan.png",
+        image: "/clinical/glaucoma.webp",
         indications: ["Glaucoma progression staging", "Pituitary tumor visual field compression", "Optic neuritis and toxic neuropathies"],
         specs: ["SITA-Fast & SITA-Standard algorithms", "Gaze tracking with pupil measurement", "Guided Progression Analysis (GPA) software"]
       },
@@ -419,7 +419,7 @@ export const FACILITIES: FacilitySector[] = [
         badge: "Corneal Endothelial Counter",
         subtitle: "Automated endothelial cell morphology analyzer",
         description: "Non-invasively photographs and counts the non-regenerative endothelial cell layer on the back of the cornea, ensuring surgical safety before intraocular procedures.",
-        image: "/diagnostics/eye-anatomy-full.png",
+        image: "/clinical/specular-microscopy.webp",
         indications: ["Pre-cataract corneal health assessment", "Fuchs' endothelial dystrophy diagnosis", "Phakic ICL candidate eligibility"],
         specs: ["Cell density (CD), CV, and Hexagonal cell count (%)", "Non-contact rapid auto-alignment", "High-magnification dark-field optical view"]
       }

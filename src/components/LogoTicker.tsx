@@ -37,10 +37,10 @@ export default function LogoTicker() {
       id: "hidden-stories",
       render: () => (
         <div className="flex flex-col text-left">
-          <span className="font-serif font-extrabold text-[9px] sm:text-[10px] tracking-widest text-[#30291F] uppercase leading-none">
+          <span className="font-sans font-extrabold text-[9px] sm:text-[10px] tracking-widest text-[#30291F] uppercase leading-none">
             HIDDEN STORIES
           </span>
-          <span className="font-serif italic text-[7.5px] sm:text-[8px] text-[#30291F]/60 lowercase leading-none mt-0.5">
+          <span className="font-sans italic text-[7.5px] sm:text-[8px] text-[#30291F]/60 lowercase leading-none mt-0.5">
             by Jennie Hilbert
           </span>
         </div>

@@ -219,7 +219,7 @@ export default function HeroSection() {
             <div className="flex-1 flex items-center justify-center gap-2 sm:gap-3.5 lg:gap-5">
               <Link
                 href="#home"
-                className="relative group/nav px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-gotham font-semibold shadow-2xs transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
+                className="relative group/nav px-3 sm:px-4 py-0.5 sm:py-1 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-md border border-white/30 text-white font-heading font-semibold shadow-2xs transition-all duration-200 text-[11px] sm:text-xs whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] hidden md:inline-flex"
               >
                 <span>Home</span>
               </Link>
@@ -240,7 +240,7 @@ export default function HeroSection() {
                     }
                     setOpenDropdown((prev) => (prev === "treatments" ? null : "treatments"));
                   }}
-                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
+                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-heading font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span className={openDropdown === "treatments" ? "text-white font-bold" : ""}>
                     Treatments
@@ -282,7 +282,7 @@ export default function HeroSection() {
                     }
                     setOpenDropdown((prev) => (prev === "facilities" ? null : "facilities"));
                   }}
-                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
+                  className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-heading font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap inline-flex items-center gap-1 cursor-pointer"
                 >
                   <span className={openDropdown === "facilities" ? "text-white font-bold" : ""}>
                     Facilities
@@ -310,7 +310,7 @@ export default function HeroSection() {
 
               <Link
                 href="#doctors"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-heading font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>Doctors</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
@@ -324,14 +324,14 @@ export default function HeroSection() {
             <div className="flex-1 flex items-center justify-end md:justify-center gap-2 sm:gap-3.5 lg:gap-5">
               <Link
                 href="/about"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-heading font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>About Us</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
               </Link>
               <Link
                 href="/branches"
-                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-gotham font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
+                className="relative group/nav py-0.5 sm:py-1 text-white/85 hover:text-white font-heading font-semibold transition-colors text-[11px] sm:text-xs whitespace-nowrap hidden md:inline-block"
               >
                 <span>Branches</span>
                 <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-white rounded-full transition-all duration-300 origin-left ease-out scale-x-0 opacity-0 group-hover/nav:scale-x-100 group-hover/nav:opacity-100" />
@@ -340,7 +340,7 @@ export default function HeroSection() {
               {/* "Appointment" Button (Desktop only) */}
               <Link
                 href="#appointment"
-                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-gotham font-semibold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
+                className="bg-white hover:bg-[#F2E9DC] text-[#30291F] font-heading font-semibold pl-2.5 sm:pl-3.5 pr-1 py-0.5 sm:py-1 rounded-full items-center gap-1.5 shadow-sm transition-all hover:scale-[1.02] active:scale-[0.98] whitespace-nowrap hidden md:inline-flex"
               >
                 <span className="text-[10.5px] sm:text-[11.5px]">Book Appointment</span>
                 <div className="w-4.5 h-4.5 sm:w-5 sm:h-5 rounded-full bg-[#A55322] text-white flex items-center justify-center">
@@ -395,11 +395,11 @@ export default function HeroSection() {
         >
           {/* Soft ambient halo (subtle contrast, no harsh smudge) */}
           <div className="relative flex flex-col items-center py-6 px-16 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.28)_0%,rgba(0,0,0,0.08)_50%,transparent_75%)]">
-            <h1 className="font-avantgarde font-semibold uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full [text-shadow:0_3px_16px_rgba(0,0,0,0.45),0_8px_30px_rgba(0,0,0,0.3)]">
+            <h1 className="font-wordmark font-semibold uppercase leading-none text-white whitespace-nowrap text-center flex flex-col items-center w-full [text-shadow:0_3px_16px_rgba(0,0,0,0.45),0_8px_30px_rgba(0,0,0,0.3)]">
               <span className="md:text-[4.6vw] lg:text-[4.8rem] xl:text-[5.8rem] font-semibold tracking-tight text-white whitespace-nowrap">
                 AARYA EYE CARE
               </span>
-              <span className="mt-3.5 text-xs sm:text-sm lg:text-base font-gotham font-semibold tracking-[0.32em] text-[#F7DEB4] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
+              <span className="mt-3.5 text-xs sm:text-sm lg:text-base font-heading font-semibold tracking-[0.32em] text-[#F7DEB4] uppercase [text-shadow:0_1px_8px_rgba(0,0,0,0.4)]">
                 Super Speciality Eye Hospital
               </span>
             </h1>
@@ -413,12 +413,12 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center text-center font-avantgarde font-semibold uppercase leading-[0.95] text-white pt-1 pb-1.5 px-6 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.06)_50%,transparent_75%)] shrink-0"
+            className="flex flex-col items-center text-center font-wordmark font-semibold uppercase leading-[0.95] text-white pt-1 pb-1.5 px-6 [background:radial-gradient(ellipse_at_center,rgba(0,0,0,0.24)_0%,rgba(0,0,0,0.06)_50%,transparent_75%)] shrink-0"
           >
             <span className="text-[clamp(1.4rem,6.8vw,2.2rem)] font-semibold tracking-tight text-white whitespace-nowrap [text-shadow:0_2px_14px_rgba(0,0,0,0.45),0_6px_24px_rgba(0,0,0,0.3)]">
               AARYA EYE CARE
             </span>
-            <span className="mt-1.5 text-[9px] sm:text-xs font-gotham font-semibold tracking-[0.2em] sm:tracking-[0.24em] text-[#F7DEB4] uppercase whitespace-nowrap [text-shadow:0_1px_6px_rgba(0,0,0,0.4)]">
+            <span className="mt-1.5 text-[9px] sm:text-xs font-heading font-semibold tracking-[0.2em] sm:tracking-[0.24em] text-[#F7DEB4] uppercase whitespace-nowrap [text-shadow:0_1px_6px_rgba(0,0,0,0.4)]">
               Super Speciality Eye Hospital
             </span>
           </motion.div>
@@ -608,10 +608,10 @@ export default function HeroSection() {
             <div className="w-full bg-[#F2E9DC] rounded-[18px] sm:rounded-[24px] p-2.5 sm:p-3.5 shadow-[0_16px_40px_rgba(48,41,31,0.22)] border border-white/60 text-[#30291F]">
               <div className="flex items-center justify-between gap-2 mb-2">
                 <div>
-                  <h3 className="font-gotham font-semibold text-[11px] sm:text-xs text-[#30291F] leading-tight">
+                  <h3 className="font-heading font-semibold text-[11px] sm:text-xs text-[#30291F] leading-tight">
                     Consultation
                   </h3>
-                  <p className="font-helvetica text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
+                  <p className="font-sans text-[9.5px] sm:text-[10.5px] text-[#30291F]/75 leading-tight mt-0.5 hidden sm:block">
                     Our specialist will reach out to assist you.
                   </p>
                 </div>
@@ -628,7 +628,7 @@ export default function HeroSection() {
 
               <Link
                 href="#appointment"
-                className="w-full bg-[#A55322] hover:bg-[#8D451B] text-white text-[10.5px] sm:text-xs font-gotham font-semibold py-1.5 sm:py-2 px-3 rounded-full flex items-center justify-between shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full bg-[#A55322] hover:bg-[#8D451B] text-white text-[10.5px] sm:text-xs font-heading font-semibold py-1.5 sm:py-2 px-3 rounded-full flex items-center justify-between shadow-xs transition-all hover:scale-[1.01] active:scale-[0.99]"
               >
                 <span>Request Call</span>
                 <div className="w-3.5 h-3.5 rounded-full bg-white/20 flex items-center justify-center">
