@@ -29,11 +29,29 @@ const BRANCH_FAQS = [
   },
   {
     question: "What should I do in an eye emergency outside normal working hours?",
-    answer: "For severe eye trauma, chemical burns, sudden painful vision loss, or acute glaucoma crises, contact our 24/7 emergency hotline at +91 9946 322288 immediately or proceed directly to our Thrissur Main Hospital."
+    answer: "For severe eye trauma, chemical burns, sudden painful vision loss, or acute glaucoma crises, contact our hospital helpline at +91 9946 322288 or proceed directly to our Thrissur Main Hospital during operating hours (Mon – Sat: 8:00 AM – 6:00 PM, Sun: 10:00 AM – 2:00 PM)."
   }
 ];
 
 // Clean, premium Lucide-style vector SVG icons
+function ClockIcon({ className = "w-3 h-3" }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </svg>
+  );
+}
+
 function MapPinIcon({ className = "w-3.5 h-3.5" }: { className?: string }) {
   return (
     <svg
@@ -196,6 +214,17 @@ export default function BranchesPage() {
                         <span>{branch.phoneMobile}</span>
                       </div>
                     </div>
+
+                    {/* Operating Hours */}
+                    <div className="pt-2 border-t border-[#C9A581]/25 text-[11px] font-sans space-y-0.5">
+                      <div className="flex items-center gap-1.5 font-medium text-[#30291F]">
+                        <ClockIcon className="w-3 h-3 text-[#A55322] shrink-0" />
+                        <span>{branch.timings.weekdays}</span>
+                      </div>
+                      <div className={`pl-4.5 text-[10.5px] ${branch.timings.sunday.includes("Closed") ? "text-[#30291F]/50" : "text-[#675E31] font-semibold"}`}>
+                        <span>{branch.timings.sunday}</span>
+                      </div>
+                    </div>
                   </div>
                 </a>
               ))}
@@ -214,7 +243,7 @@ export default function BranchesPage() {
         <CtaBanner
           title="Have Questions or Need an Immediate Appointment?"
           tagline="CENTRALIZED CALL CENTER"
-          description="Call our 24/7 hospital helpline at +91 9946 322288 or 0487 232 2288."
+          description="Call our hospital helpline at +91 9946 322288 or 0487 232 2288 (Mon – Sat: 8:00 AM – 6:00 PM | Sun: 10:00 AM – 2:00 PM for Thrissur)."
         />
 
         <Footer />

@@ -44,18 +44,18 @@ export default function ContactPage() {
         <section className="w-full bg-[#F2E9DC] py-10 sm:py-14 px-3 sm:px-6 lg:px-10">
           <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12">
             
-            {/* 24/7 Emergency Banner */}
+            {/* Hospital Helpline & Emergency Care Banner */}
             <div className="rounded-[2rem] p-6 sm:p-8 bg-[#675E31] text-[#F2E9DC] flex flex-col md:flex-row items-center justify-between gap-6 shadow-md border border-[#C9A581]/40">
               <div className="space-y-1 text-center md:text-left">
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs font-sans font-bold uppercase tracking-wider text-[#C9A581]">
                   <span className="w-2 h-2 rounded-full bg-red-400 animate-ping" />
-                  <span>24/7 Trauma Emergency Care</span>
+                  <span>Trauma &amp; Emergency Care</span>
                 </div>
                 <h3 className="font-heading font-bold text-xl sm:text-2xl text-white">
                   Sudden Eye Injury, Chemical Splash, or Acute Pain?
                 </h3>
                 <p className="text-xs sm:text-sm text-white/80 font-sans">
-                  Our emergency ocular trauma surgical team at Thrissur Main Hospital is on stand-by round the clock.
+                  Our emergency ocular trauma surgical team at Thrissur Main Hospital is available during hospital hours (Mon – Sat: 8:00 AM – 6:00 PM, Sun: 10:00 AM – 2:00 PM).
                 </p>
               </div>
 
@@ -67,7 +67,7 @@ export default function ContactPage() {
                   <svg className="w-4 h-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
-                  <span>Call Emergency Helpline</span>
+                  <span>Call Hospital Helpline</span>
                 </a>
                 <a
                   href="tel:04872322288"
@@ -280,6 +280,11 @@ export default function ContactPage() {
                     Near North Bus Stand (Vadakke Stand),<br />
                     Opp. Elite Supermarket, Thrissur - 680 020, Kerala.
                   </p>
+                  <div className="pt-1 text-[11px] sm:text-xs text-[#C9A581] font-sans">
+                    <p className="font-semibold">Hospital Working Hours:</p>
+                    <p className="text-white/80">Mon – Sat: 8:00 AM – 6:00 PM</p>
+                    <p className="text-white/80">Sunday: 10:00 AM – 2:00 PM (Thrissur only)</p>
+                  </div>
                   <div className="pt-2 flex items-center gap-3">
                     <Link
                       href="/branches"

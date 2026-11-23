@@ -58,7 +58,7 @@ export default function ServicesSection() {
     },
     {
       id: "emergency",
-      title: "24/7 Eye Trauma",
+      title: "Eye Trauma & Care",
       category: "Emergency Surgical Care",
       image: "/hero/hero3.webp",
       href: "/contact",

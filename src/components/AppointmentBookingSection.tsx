@@ -41,16 +41,12 @@ const doctorsList = [
   "Dr. Jayasree (Glaucoma Specialist)",
   "Dr. Athira M.R (Consultant Ophthalmologist)",
   "Dr. Greeshma Poulose (Cornea & Phaco)",
-  "Dr. Elizebath (Senior Consultant)",
-  "Dr. Hemalatha (Senior Consultant)",
-  "Dr. Nandhini (Senior Consultant)",
-  "Dr. Divya (Consultant Ophthalmologist)",
 ];
 
 const timeSlots = [
-  "Morning (9–1 PM)",
-  "Afternoon (1–4 PM)",
-  "Evening (4–7:30 PM)"
+  "Morning (8 AM – 12 PM)",
+  "Afternoon (12 PM – 3 PM)",
+  "Evening (3 PM – 6 PM)"
 ];
 
 function CustomSelect({ 
@@ -265,7 +261,7 @@ export default function AppointmentBookingSection() {
                 </a>
               </div>
 
-              {/* Row 2, Item 1: Full Week */}
+              {/* Row 2, Item 1: Working Hours */}
               <div className="flex flex-col">
                 <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#675E31]/10 flex items-center justify-center mb-2 text-[#675E31]">
                   <svg className="w-4 h-4 sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -273,9 +269,12 @@ export default function AppointmentBookingSection() {
                     <polyline points="12 6 12 12 16 14"></polyline>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Full Week</h4>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Working Hours</h4>
                 <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
-                  Mon – Sun (8 AM – 7 PM)
+                  Mon – Sat: 8 AM – 6 PM
+                </p>
+                <p className="font-helvetica text-[11px] sm:text-xs text-[#A55322] font-semibold mt-0.5 leading-tight whitespace-nowrap">
+                  Sun: 10 AM – 2 PM <span className="text-[#30291F]/60 font-normal">(Thrissur)</span>
                 </p>
               </div>
 
@@ -287,9 +286,12 @@ export default function AppointmentBookingSection() {
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 </div>
-                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Facility</h4>
+                <h4 className="font-gotham font-bold text-xs sm:text-sm text-[#675E31] uppercase tracking-wider leading-tight">Locations</h4>
                 <p className="font-helvetica text-xs sm:text-sm text-[#30291F]/85 font-semibold mt-1 leading-snug whitespace-nowrap">
-                  Thrissur &amp; Cherpu, KL
+                  Thrissur &amp; 3 Regional Centers
+                </p>
+                <p className="font-helvetica text-[11px] sm:text-xs text-[#30291F]/60 font-normal mt-0.5 leading-tight whitespace-nowrap">
+                  Cherpu, Kunnamkulam, Kodungallur
                 </p>
               </div>
             </div>

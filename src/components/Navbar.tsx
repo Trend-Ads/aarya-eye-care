@@ -149,7 +149,7 @@ export default function Navbar() {
     { label: "Doctors", href: isHomePage ? "#doctors" : "/#doctors", id: "doctors", subtitle: "Senior Surgeons & Specialists" },
     { label: "About Us", href: "/about", id: "about", subtitle: "NABH Accredited Hospital Story" },
     { label: "Branches", href: "/branches", id: "branches", subtitle: "Thrissur, Cherpu, Kunnamkulam, Kodungallur" },
-    { label: "Contact", href: "/contact", id: "contact", subtitle: "24/7 Eye Trauma & Consultations" },
+    { label: "Contact", href: "/contact", id: "contact", subtitle: "Consultations, Hours & Helpline" },
   ];
 
   const isNavVisible = !isHomePage || scrolled;

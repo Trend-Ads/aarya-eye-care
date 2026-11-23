@@ -42,7 +42,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
       "Blade-Free LASIK & Trans-PRK Refractive Suite",
       "Optical Biometer OA-2000 & REVO Spectral Domain OCT",
       "Full Cashless TPA & Mediclaim Insurance Desk",
-      "24/7 Ocular Trauma & Emergency Services"
+      "Ocular Trauma & Emergency Surgical Care"
     ],
     googleMapsUrl: "https://maps.google.com/?q=Aarya+Eye+Care+Thrissur+Pallithamam+Building",
     whatsappNumber: "919946322288"
@@ -62,8 +62,8 @@ export const BRANCHES_DATA: BranchLocation[] = [
     phoneMobile: "+91 9188 885678",
     email: "cherpu@aaryaeyecare.in",
     timings: {
-      weekdays: "Monday – Saturday: 8:30 AM – 5:30 PM",
-      sunday: "Sunday: 9:30 AM – 1:30 PM"
+      weekdays: "Monday – Saturday: 8:00 AM – 6:00 PM",
+      sunday: "Sunday: Closed"
     },
     features: [
       "Senior Consultant Ophthalmologist OPD",
@@ -90,8 +90,8 @@ export const BRANCHES_DATA: BranchLocation[] = [
     phoneMobile: "+91 7994 949669",
     email: "kunnamkulam@aaryaeyecare.in",
     timings: {
-      weekdays: "Monday – Saturday: 8:30 AM – 6:00 PM",
-      sunday: "Sunday: 9:30 AM – 1:30 PM"
+      weekdays: "Monday – Saturday: 8:00 AM – 6:00 PM",
+      sunday: "Sunday: Closed"
     },
     features: [
       "Super Speciality Retina & Glaucoma Consultation",
@@ -118,7 +118,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     phoneMobile: "+91 8138 012348",
     email: "kodungallur@aaryaeyecare.in",
     timings: {
-      weekdays: "Monday – Saturday: 8:30 AM – 5:30 PM",
+      weekdays: "Monday – Saturday: 8:00 AM – 6:00 PM",
       sunday: "Sunday: Closed"
     },
     features: [

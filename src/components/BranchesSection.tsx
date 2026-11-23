@@ -15,37 +15,37 @@ interface Branch {
 export default function BranchesSection() {
   const branches: Branch[] = [
     {
-      city: "Kozhikode (Calicut)",
-      name: "Main Super Speciality Hospital",
-      address: "Mavoor Road Junction, Near Medical College, Calicut, Kerala 673016",
-      timing: "Open 24/7 (Emergency) • OPD 8:00 AM - 8:00 PM",
-      phone: "+91 99463 22288",
-      badge: "NABH Flagship",
+      city: "Thrissur",
+      name: "Super Speciality & Surgical Center",
+      address: "2nd Floor Pallithamam Building Near North Bus Stand, Thrissur - 680 020",
+      timing: "Mon – Sat: 8:00 AM – 6:00 PM • Sun: 10:00 AM – 2:00 PM",
+      phone: "+91 9946 322288",
+      badge: "Surgical Hub",
       isMain: true,
     },
     {
-      city: "Kannur",
-      name: "Cataract & Cornea Care Centre",
-      address: "Thavakkara Road, Opposite Railway Station, Kannur, Kerala 670001",
-      timing: "Mon - Sat: 8:30 AM - 7:30 PM • Sun: Emergency Only",
-      phone: "+91 99463 22288",
-      badge: "Surgical Suite",
+      city: "Cherpu",
+      name: "Regional Eye Health Center",
+      address: "Near Cherpu Grama Panchayat Thayamkulangara, Cherpu - 680 561",
+      timing: "Mon – Sat: 8:00 AM – 6:00 PM • Sun: Closed",
+      phone: "+91 9188 885678",
+      badge: "Vision Center",
     },
     {
-      city: "Malappuram",
-      name: "Retina & Pediatric Eye Clinic",
-      address: "Down Hill, Bypass Road, Malappuram, Kerala 676505",
-      timing: "Mon - Sat: 9:00 AM - 7:00 PM",
-      phone: "+91 99463 22288",
-      badge: "Speciality Hub",
+      city: "Kunnamkulam",
+      name: "Comprehensive Diagnostic Center",
+      address: "Achuthan Tower, Town Hall Road, Near New Bus Stand, Kunnamkulam - 680 503",
+      timing: "Mon – Sat: 8:00 AM – 6:00 PM • Sun: Closed",
+      phone: "+91 7994 949669",
+      badge: "Diagnostic Hub",
     },
     {
-      city: "Kochi (Cochin)",
-      name: "Refractive LASIK & Aesthetic Oculoplasty",
-      address: "MG Road, Ravipuram, Ernakulam, Kochi, Kerala 682016",
-      timing: "Mon - Sat: 9:00 AM - 8:00 PM",
-      phone: "+91 99463 22288",
-      badge: "LASIK Center",
+      city: "Kodungallur",
+      name: "Coastal Vision Care Center",
+      address: "Seashore Arcade, Near Kalyan Jewellers Chandapura, Kodungallur - 680 664",
+      timing: "Mon – Sat: 8:00 AM – 6:00 PM • Sun: Closed",
+      phone: "+91 8138 012348",
+      badge: "Optical & Clinic",
     },
   ];
 
@@ -73,8 +73,8 @@ export default function BranchesSection() {
 
           <div className="flex items-center gap-3">
             <div className="text-right hidden sm:block">
-              <span className="text-xs text-slate-400 block font-medium">24/7 Emergency Eye Trauma</span>
-              <a href="tel:+919946322288" className="text-sm font-bold text-[#ff7a60] hover:underline">+91 99463 22288</a>
+              <span className="text-xs text-slate-400 block font-medium">Hospital Helpline</span>
+              <a href="tel:+919946322288" className="text-sm font-bold text-[#ff7a60] hover:underline">+91 9946 322288</a>
             </div>
             <Link
               href="#appointment"

@@ -210,17 +210,17 @@ export default function ScienceLifestyleSection() {
               <div className="relative w-full h-44 sm:h-48 rounded-xl sm:rounded-2xl overflow-hidden mb-4 sm:mb-5">
                 <Image
                   src="/hero/hero3.webp"
-                  alt="24/7 Eye Trauma Care & Ophthalmic Surgery"
+                  alt="Eye Trauma Care & Ophthalmic Surgery"
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-300"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <h3 className="font-bold text-lg sm:text-xl text-slate-900 mb-1.5 group-hover:text-[#2A835F] transition-colors">
-                24/7 Emergency Trauma
+                Emergency Trauma Care
               </h3>
               <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
-                24/7 round-the-clock emergency surgical response with fully equipped clinical care and immediate trauma intervention.
+                Prompt emergency surgical response with fully equipped clinical care and immediate trauma intervention during hospital hours.
               </p>
             </div>
             <Link

@@ -219,38 +219,6 @@ export default function DoctorsSection() {
       category: "Cornea & Refractive",
       image: "/doctors/greeshma.png",
     },
-    {
-      name: "Dr. ELIZEBATH",
-      qualifications: "MBBS, DNB",
-      role: "Senior Consultant Ophthalmologist",
-      speciality: "Senior Consultant Ophthalmologist",
-      category: "General",
-      image: "/doctors/doctor-placeholder.svg",
-    },
-    {
-      name: "Dr. HEMALATHA",
-      qualifications: "MBBS, DNB",
-      role: "Senior Consultant Ophthalmologist",
-      speciality: "Senior Consultant Ophthalmologist",
-      category: "General",
-      image: "/doctors/doctor-placeholder.svg",
-    },
-    {
-      name: "Dr. NANDHINI",
-      qualifications: "MBBS, DNB",
-      role: "Senior Consultant Ophthalmologist",
-      speciality: "Senior Consultant Ophthalmologist",
-      category: "General",
-      image: "/doctors/doctor-placeholder.svg",
-    },
-    {
-      name: "Dr. DIVYA",
-      qualifications: "MBBS, DNB",
-      role: "Consultant Ophthalmologist",
-      speciality: "Consultant Ophthalmologist",
-      category: "General",
-      image: "/doctors/doctor-placeholder.svg",
-    },
   ];
 
   const categories = [
@@ -326,7 +294,7 @@ export default function DoctorsSection() {
 
         {/* Doctors Grid - matching reference layout with full-bleed image and soft tinted bottom gradient */}
         <motion.div 
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-5 mt-6 sm:mt-8"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-6 sm:mt-8"
           layout
         >
           <AnimatePresence>
@@ -408,7 +376,7 @@ export default function DoctorsSection() {
             </div>
             <div className="space-y-1">
               <h4 className="font-avantgarde font-semibold text-base sm:text-lg md:text-xl text-[#30291F] tracking-tight leading-snug">
-                Over 20+ Experienced Ophthalmologists &amp; Surgeons
+                Over 25 Experienced Ophthalmologists &amp; Surgeons
               </h4>
               <p className="text-sm sm:text-base text-[#30291F]/80 font-medium leading-relaxed">
                 Committed to delivering individualized and NABH-accredited vision care for every patient.
