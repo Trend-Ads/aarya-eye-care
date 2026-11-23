@@ -25,7 +25,7 @@ export default function DoctorsSection() {
       role: "Medical Director, Phaco, Oculoplasty & Squint Surgeon",
       speciality: "Phaco, Oculoplasty & Squint Surgeon",
       category: "Oculoplasty & Squint",
-      image: "/doctors/minudath.png",
+      image: "/doctors-aligned/minudath.webp",
     },
     {
       name: "Dr. MIRIAM JOSEPH",
@@ -33,7 +33,7 @@ export default function DoctorsSection() {
       role: "Consultant Phaco Refractive Surgeon",
       speciality: "Phaco Refractive & Cataract Surgery",
       category: "Cornea & Refractive",
-      image: "/doctors/miriam.png",
+      image: "/doctors-aligned/miriam-joseph.webp",
     },
     {
       name: "Dr. MAITHREYI .S.K",
@@ -41,7 +41,7 @@ export default function DoctorsSection() {
       role: "Vitreo - Retina Specialist",
       speciality: "Vitreo - Retina Specialist",
       category: "Retina",
-      image: "/doctors/mythreyi.png",
+      image: "/doctors-aligned/maithreyi.webp",
     },
     {
       name: "Dr. JOEL ANTONY",
@@ -49,7 +49,7 @@ export default function DoctorsSection() {
       role: "Vitreo - Retinal Surgeon",
       speciality: "Vitreo - Retinal Surgeon",
       category: "Retina",
-      image: "/doctors/joel-antony.png",
+      image: "/doctors-aligned/joel-antony.webp",
     },
     {
       name: "Dr. SANAL KUMAR .J",
@@ -57,7 +57,7 @@ export default function DoctorsSection() {
       role: "Senior Consultant Ophthalmologist",
       speciality: "Senior Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/sanal-kumar.png",
+      image: "/doctors-aligned/sanal-kumar.webp",
     },
     {
       name: "Dr. DIVYA DHARMARAJAN",
@@ -65,7 +65,7 @@ export default function DoctorsSection() {
       role: "Senior Consultant Ophthalmologist",
       speciality: "Senior Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/Dr.-Divya-Dharmsrajan-qotapjlt62r1qfr9lmtu0cu1trfev3ycy13p7mfc96.webp",
+      image: "/doctors-aligned/divya-dharmarajan.webp",
     },
     {
       name: "Dr. NADHNA BASHEER",
@@ -73,7 +73,7 @@ export default function DoctorsSection() {
       role: "Cornea Specialist & Phaco Refractive Surgeon",
       speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
-      image: "/doctors/Dr.Nadhan-Basheer-qotapd0xu8i1h60to1zg0whto2bud888l4jauop3gq.webp",
+      image: "/doctors-aligned/nadhna-basheer.webp",
     },
     {
       name: "Dr. MANJU .M",
@@ -81,7 +81,7 @@ export default function DoctorsSection() {
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
-      image: "/doctors/Dr.Manju_.M-qotap99l2wcw6q6aa0cxqxfzaiudiftb8lxcxkuo5m.webp",
+      image: "/doctors-aligned/manju.webp",
     },
     {
       name: "Dr. SIKHA RADHAKRISHNAN",
@@ -89,7 +89,7 @@ export default function DoctorsSection() {
       role: "Medical Retina & Consultant Ophthalmologist",
       speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
-      image: "/doctors/Dr.-Sikha-Radhakrishnan-1-qotbqtvc9hsi9lljvr12wy4a3znk6vz22kp2ir55fu.webp",
+      image: "/doctors-aligned/sikha-radhakrishnan.webp",
     },
     {
       name: "Dr. ANJU JOSE",
@@ -97,7 +97,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist",
       speciality: "Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/Dr.-ANJU-JOSE-Consultant-Ophthalmologist-rr47qmm2w8jz6il2lj9tjogckzy8dc3mkcr0dhf5ca.webp",
+      image: "/doctors-aligned/anju-jose.webp",
     },
     {
       name: "Dr. LIJO JOSEPH",
@@ -105,7 +105,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist & Phaco Surgeon",
       speciality: "Consultant Ophthalmologist & Phaco Surgeon",
       category: "Cataract",
-      image: "/doctors/Dr.-Lijo-Joseph-scaled-r9v197ug1ilpsjrqpzyb4ldjek0uaoquvq8s5i7f0q.jpg",
+      image: "/doctors-aligned/lijo-joseph.webp",
     },
     {
       name: "Dr. ROSHNI ROBERT",
@@ -113,7 +113,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist",
       speciality: "Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/Dr-copy-scaled-r9v19fd5k6w0dfgti37bojh85mzs09kpkrgnzpw9my.jpg",
+      image: "/doctors-aligned/roshni-robert.webp",
     },
     {
       name: "Dr. SURYA SURENDRAN",
@@ -121,7 +121,7 @@ export default function DoctorsSection() {
       role: "Medical Retina & Consultant Ophthalmologist",
       speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
-      image: "/doctors/Dr.-SURYA-SURENDRAN-Medical-Retina-Consultant-Ophthalmologist-rr48mweljgqdsjpi5hgp5ja2t8vwn87v0335jhkjpm.webp",
+      image: "/doctors-aligned/surya-surendran.webp",
     },
     {
       name: "Dr. JYOTHI .A",
@@ -129,7 +129,7 @@ export default function DoctorsSection() {
       role: "Cornea Specialist & Phaco Refractive Surgeon",
       speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
-      image: "/doctors/ABP05564-scaled-r9v0ztgjp5qhoxf9lxom6yrljucpbnfhl7dzdw558q.jpg",
+      image: "/doctors-aligned/jyothi.webp",
     },
     {
       name: "Dr. MAYA .T.J",
@@ -137,7 +137,7 @@ export default function DoctorsSection() {
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
-      image: "/doctors/Dr.-MAYA-.T.J-Glaucoma-Cataract-Surgeon-rr48fpwzc0wj3s4z2vqaluibga9yugpocjomke7t8q.webp",
+      image: "/doctors-aligned/maya.webp",
     },
     {
       name: "Dr. LIYA .K.Y",
@@ -145,7 +145,7 @@ export default function DoctorsSection() {
       role: "Vitreo - Retinal Surgeon",
       speciality: "Vitreo - Retinal Surgeon",
       category: "Retina",
-      image: "/doctors/Dr.-LIYA-.K.Y-Vitreo-Retinal-Surgeon-rr48b3jjqcks0sun2dtbuihqb32001d6po7omf2hu2.webp",
+      image: "/doctors-aligned/liya.webp",
     },
     {
       name: "Dr. PRAVEENA. S. KUMAR",
@@ -153,7 +153,7 @@ export default function DoctorsSection() {
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
-      image: "/doctors/Dr.-PRAVEENA.-S.-KUMAR-Consultant-Ophthalmologist-Glaucoma-Specialist-rr48j6xikznnzx3dsvrobgymgj5sa7hz5qg7e72g96.webp",
+      image: "/doctors-aligned/praveena-kumar.webp",
     },
     {
       name: "Dr. ROSEMARY PAUL",
@@ -161,7 +161,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist",
       speciality: "Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/Dr.ROSEMARY-PAUL_Consultant-Ophthalmologist-rr48shk260dqt3lbiweuz4ipxpcgegef3qp28paaq2.webp",
+      image: "/doctors-aligned/rosemary-paul.webp",
     },
     {
       name: "Dr. KEZIAH MARY THOMAS",
@@ -169,7 +169,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
       speciality: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
-      image: "/doctors/Dr.-KEZIAH-MARY-THOMAS-Consultant-Phaco-Refractive-Surgeon-rr486h644o90xtkb1vwd36h55vu15m0p2sqqofx6fe.webp",
+      image: "/doctors-aligned/keziah-mary-thomas.webp",
     },
     {
       name: "Dr. NANDHINIKUTTY .P.S",
@@ -177,7 +177,7 @@ export default function DoctorsSection() {
       role: "Medical Retina & Consultant Ophthalmologist",
       speciality: "Medical Retina & Consultant Ophthalmologist",
       category: "Retina",
-      image: "/doctors/Dr.NANDHINIKUTTY.P.S-MBBS.DO_.Medical-Retina-Consultant-Ophthalmologist-rr48r2srwyg9e5n1rah08hbtuwamusswwrgubrdk22.webp",
+      image: "/doctors-aligned/nandhinikutty.webp",
     },
     {
       name: "Dr. SARIN IBRAHIM SHA",
@@ -185,7 +185,7 @@ export default function DoctorsSection() {
       role: "Cornea Specialist & Phaco Refractive Surgeon",
       speciality: "Cornea Specialist & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
-      image: "/doctors/Dr.-SARIN-IBRAHIM-SHA-Cornea-Phaco-Refractive-Surgeon-rr48lb2fykjw4c0sgaogffqykqqilow8g7aj9lxk96.webp",
+      image: "/doctors-aligned/sarin-ibrahim-sha.webp",
     },
     {
       name: "Dr. ANJUSREE NAIR",
@@ -193,7 +193,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist",
       speciality: "Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/Dr.-ANJUSREE-NAIR-Consultant-Ophthalmologist-rr484mfknfpo1i98vl1uo5beziyyz3nr5mf9lso4p6.webp",
+      image: "/doctors-aligned/anjusree-nair.webp",
     },
     {
       name: "Dr. JAYASREE",
@@ -201,7 +201,7 @@ export default function DoctorsSection() {
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
       category: "Glaucoma",
-      image: "/doctors/Dr.JAYASREE-Glaucoma-Phaco-Refractive-Surgeon-rr48p9xwtdzh5299a0fqyfp0vb6b3onfnugc7o1pze.webp",
+      image: "/doctors-aligned/jayasree.webp",
     },
     {
       name: "Dr. ATHIRA M.R",
@@ -209,7 +209,7 @@ export default function DoctorsSection() {
       role: "Consultant Ophthalmologist",
       speciality: "Consultant Ophthalmologist",
       category: "General",
-      image: "/doctors/athira.png",
+      image: "/doctors-aligned/athira.webp",
     },
     {
       name: "Dr. GREESHMA POULOSE",
@@ -217,7 +217,7 @@ export default function DoctorsSection() {
       role: "Cornea & Phaco Refractive Surgeon",
       speciality: "Cornea & Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
-      image: "/doctors/greeshma.png",
+      image: "/doctors-aligned/greeshma-poulose.webp",
     },
   ];
 
@@ -327,7 +327,7 @@ export default function DoctorsSection() {
                       src={doc.image}
                       alt={doc.name}
                       fill
-                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
                     />
 
