@@ -22,47 +22,44 @@ const VISION_PRESETS: VisionPreset[] = [
   {
     id: "near",
     name: "Near Vision",
-    distance: "35 cm",
-    focalTarget: "Aarya Hospital Mobile Screen",
-    description:
-      "Handheld phone display featuring Aarya Eye Care hospital and specialist facilities in razor-sharp 20/20 clarity. The intermediate computer monitor and distant studio loft softly blur out.",
+    distance: "Foreground",
+    focalTarget: "Phone screen",
+    description: "A man holds a phone in sharp focus. The TV and the hall beyond it are blurred.",
     focalHUD: {
-      x: "50%",
-      y: "58%",
-      label: "FOCAL PLANE: NEAR (35 CM)",
-      sublabel: "Aarya Hospital App & Reading • Razor Sharp",
+      x: "19%",
+      y: "51%",
+      label: "Near focus",
+      sublabel: "Phone screen",
     },
-    image: "/vision/near.png",
+    image: "/vision/phone-focus.webp",
   },
   {
     id: "intermediate",
     name: "Intermediate",
-    distance: "70 cm",
-    focalTarget: "Computer Display & Desk",
-    description:
-      "Computer monitor and desk workspace locked in crystal-clear focus. The foreground smartphone in hand and far studio background are blurred out.",
+    distance: "Middle ground",
+    focalTarget: "Television",
+    description: "The mountain landscape on the TV comes into focus. The phone and distant hall are blurred.",
     focalHUD: {
-      x: "50%",
-      y: "48%",
-      label: "FOCAL PLANE: INTERMEDIATE (70 CM)",
-      sublabel: "Workstation Display • Desk Distance Sharp",
+      x: "49%",
+      y: "40%",
+      label: "Intermediate focus",
+      sublabel: "Television screen",
     },
-    image: "/vision/intermediate.png",
+    image: "/vision/tv-focus.webp",
   },
   {
     id: "distance",
     name: "Long Distance",
-    distance: "> 2.0 m",
-    focalTarget: "Creative Studio & Horizon",
-    description:
-      "Sunlit creative loft, panoramic skyline windows, and distant architecture locked in pin-sharp clarity for expansive thinking. Near phone and computer screens blur out.",
+    distance: "Background",
+    focalTarget: "Distant hall",
+    description: "The pillars, dining table, and windows at the far end of the hall come into focus. The phone and TV are blurred.",
     focalHUD: {
-      x: "50%",
-      y: "28%",
-      label: "FOCAL PLANE: DISTANCE (> 2.0 M)",
-      sublabel: "Creative Studio & Horizon • Deep Acuity",
+      x: "79%",
+      y: "46%",
+      label: "Distance focus",
+      sublabel: "Far end of the hall",
     },
-    image: "/vision/long.png",
+    image: "/vision/hall-focus.webp",
   },
 ];
 
@@ -116,7 +113,7 @@ export default function VisionSection() {
               </span>
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-[#30291F]/70 font-sans max-w-xl leading-relaxed">
-              Experience authentic optical depth of field: seamless 20/20 focal transitions across handheld reading, intermediate computer displays, and distant horizons.
+              Switch between the phone, the TV, and the far end of the hall to see how focus changes with distance.
             </p>
           </div>
 
@@ -158,13 +155,14 @@ export default function VisionSection() {
           {VISION_PRESETS.map((preset, idx) => (
             <div
               key={preset.id}
+              aria-hidden={activeIdx !== idx}
               className={`absolute inset-0 transition-opacity duration-700 ease-out select-none ${
                 activeIdx === idx ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
               }`}
             >
               <Image
                 src={preset.image}
-                alt={`${preset.name}: ${preset.focalTarget}`}
+                alt={preset.description}
                 fill
                 priority={idx === 0}
                 sizes="(max-width: 1200px) 100vw, 1200px"
@@ -182,10 +180,10 @@ export default function VisionSection() {
             {/* Top-Left: Optical Depth Protocol Pill */}
             <div className="px-3 py-1.5 rounded-full bg-[#30291F]/80 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-[10px] sm:text-xs font-medium tracking-wide flex items-center gap-2 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C9A581]" />
-              <span className="uppercase tracking-widest text-[9px] sm:text-[10px] text-[#C9A581] font-semibold">
+              <span className="hidden sm:inline uppercase tracking-widest text-[9px] sm:text-[10px] text-[#C9A581] font-semibold">
                 Multifocal Simulation
               </span>
-              <span className="text-white/40">•</span>
+              <span className="hidden sm:inline text-white/40">•</span>
               <span className="text-[#F2E9DC]/90 font-sans tabular-nums text-[10px] sm:text-[11px]">
                 {current.focalTarget}
               </span>
@@ -194,7 +192,7 @@ export default function VisionSection() {
             {/* Top-Right: Focal Acuity Badge */}
             <div className="px-3.5 py-1.5 rounded-full bg-[#F2E9DC]/95 backdrop-blur-md border border-[#C9A581]/50 text-[#30291F] text-[10px] sm:text-xs font-semibold tracking-wide flex items-center gap-2 shadow-sm">
               <span className="w-2 h-2 rounded-full bg-[#A55322] animate-ping" />
-              <span className="text-[#A55322] font-sans tabular-nums font-bold">20/20 ACUITY</span>
+              <span className="text-[#A55322] font-sans tabular-nums font-bold">FOCUS</span>
               <span className="text-[#30291F]/30">•</span>
               <span className="font-sans tabular-nums text-[#30291F]/80">{current.distance}</span>
             </div>
@@ -224,7 +222,7 @@ export default function VisionSection() {
               <div className="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-[#F2E9DC]" />
 
               {/* Viewfinder Data Pill */}
-              <div className="absolute top-full mt-3 whitespace-nowrap px-3 py-1 rounded-md bg-[#30291F]/85 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-center shadow-lg">
+              <div className="hidden sm:block absolute top-full mt-3 whitespace-nowrap px-3 py-1 rounded-md bg-[#30291F]/85 backdrop-blur-md border border-white/20 text-[#F2E9DC] text-center shadow-lg">
                 <p className="text-[10px] font-sans tabular-nums tracking-wider font-semibold text-[#C9A581]">
                   {current.focalHUD.label}
                 </p>

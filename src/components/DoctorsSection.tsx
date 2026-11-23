@@ -20,7 +20,7 @@ export default function DoctorsSection() {
 
   const doctors: Doctor[] = [
     {
-      name: "Dr. MINUDATH .K.B",
+      name: "Dr. MINUDATH K.B",
       qualifications: "MD Ophthalmology (AIIMS)",
       role: "Medical Director, Phaco, Oculoplasty & Squint Surgeon",
       speciality: "Phaco, Oculoplasty & Squint Surgeon",
@@ -31,12 +31,12 @@ export default function DoctorsSection() {
       name: "Dr. MIRIAM JOSEPH",
       qualifications: "MBBS, MS, FICO",
       role: "Consultant Phaco Refractive Surgeon",
-      speciality: "Phaco Refractive & Cataract Surgery",
+      speciality: "Phaco Refractive & Cataract Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors-aligned/miriam-joseph.webp",
     },
     {
-      name: "Dr. MAITHREYI .S.K",
+      name: "Dr. MAITHREYI S.K",
       qualifications: "DO, DOMS, DNB, FVRS",
       role: "Vitreo - Retina Specialist",
       speciality: "Vitreo - Retina Specialist",
@@ -52,7 +52,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/joel-antony.webp",
     },
     {
-      name: "Dr. SANAL KUMAR .J",
+      name: "Dr. SANAL KUMAR J",
       qualifications: "MBBS, DO",
       role: "Senior Consultant Ophthalmologist",
       speciality: "Senior Consultant Ophthalmologist",
@@ -76,7 +76,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/nadhna-basheer.webp",
     },
     {
-      name: "Dr. MANJU .M",
+      name: "Dr. MANJU M",
       qualifications: "MBBS, DO, DNB, FAEH, FICO, MRCS (Edin)",
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
@@ -124,7 +124,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/surya-surendran.webp",
     },
     {
-      name: "Dr. JYOTHI .A",
+      name: "Dr. JYOTHI A",
       qualifications: "MBBS, MD Ophthalmology (AIIMS)",
       role: "Cornea Specialist & Phaco Refractive Surgeon",
       speciality: "Cornea Specialist & Phaco Refractive Surgeon",
@@ -132,7 +132,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/jyothi.webp",
     },
     {
-      name: "Dr. MAYA .T.J",
+      name: "Dr. MAYA T.J",
       qualifications: "MBBS, DNB, FAEH (Fellow Aravind)",
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
@@ -140,7 +140,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/maya.webp",
     },
     {
-      name: "Dr. LIYA .K.Y",
+      name: "Dr. LIYA K.Y",
       qualifications: "MBBS, MS, DNB",
       role: "Vitreo - Retinal Surgeon",
       speciality: "Vitreo - Retinal Surgeon",
@@ -148,7 +148,7 @@ export default function DoctorsSection() {
       image: "/doctors-aligned/liya.webp",
     },
     {
-      name: "Dr. PRAVEENA. S. KUMAR",
+      name: "Dr. PRAVEENA S. KUMAR",
       qualifications: "MBBS, MS, FAEH",
       role: "Glaucoma Specialist & Phaco Surgeon",
       speciality: "Glaucoma Specialist & Phaco Surgeon",
@@ -167,12 +167,12 @@ export default function DoctorsSection() {
       name: "Dr. KEZIAH MARY THOMAS",
       qualifications: "MBBS, DNB, FSEH, FAICO",
       role: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
-      speciality: "Consultant Ophthalmologist & Phaco Refractive Surgeon",
+      speciality: "Phaco Refractive Surgeon",
       category: "Cornea & Refractive",
       image: "/doctors-aligned/keziah-mary-thomas.webp",
     },
     {
-      name: "Dr. NANDHINIKUTTY .P.S",
+      name: "Dr. NANDHINIKUTTY P.S",
       qualifications: "MBBS, DO (Medical Retina)",
       role: "Medical Retina & Consultant Ophthalmologist",
       speciality: "Medical Retina & Consultant Ophthalmologist",
@@ -292,21 +292,13 @@ export default function DoctorsSection() {
           </div>
         </motion.div>
 
-        {/* Doctors Grid - matching reference layout with full-bleed image and soft tinted bottom gradient */}
+        {/* Doctors Grid - 5 items per row with unified face alignment and horizontal text baseline */}
         <motion.div 
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-6 sm:mt-8"
           layout
         >
           <AnimatePresence>
             {filteredDoctors.map((doc, idx) => {
-              const cardGradients = [
-                "from-[#30291F]/90 via-[#30291F]/40 to-transparent", // Warm charcoal
-                "from-[#675E31]/90 via-[#675E31]/35 to-transparent", // Deep olive
-                "from-[#544D28]/90 via-[#544D28]/35 to-transparent", // Satin olive
-                "from-[#A55322]/90 via-[#A55322]/35 to-transparent", // Terracotta
-              ];
-              const gradient = cardGradients[idx % cardGradients.length];
-
               return (
                 <motion.div
                   key={doc.name}
@@ -320,35 +312,54 @@ export default function DoctorsSection() {
                 >
                   <Link
                     href="#appointment"
-                    className="relative w-full aspect-[3/4.4] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-3 sm:p-3.5 group select-none cursor-pointer block border border-[#C9A581]/30 bg-[#E8DFD1]"
+                    className="relative w-full aspect-[3/4.4] rounded-xl sm:rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col justify-end p-2.5 sm:p-3 md:p-3.5 group select-none cursor-pointer block border border-[#C9A581]/30 bg-[#E8DFD1]"
                   >
-                    {/* Doctor Photo */}
+                    {/* Doctor Photo (Face normalized and anchored across all cards) */}
                     <Image
                       src={doc.image}
                       alt={doc.name}
                       fill
                       className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
-                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                      sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     />
 
-                    {/* Soft Tinted Gradient Overlay */}
+                    {/* Smooth Tinted Gradient Overlay for high-contrast legible text */}
                     <div
-                      className={`absolute inset-0 bg-gradient-to-t ${gradient} transition-opacity duration-300`}
+                      className="absolute inset-0 bg-gradient-to-t from-[#221C14]/95 via-[#221C14]/50 via-[#221C14]/15 to-transparent transition-opacity duration-300"
                     />
 
-                    {/* Doctor Details inside gradient */}
-                    <div className="relative z-10 text-left">
-                      <h3 className="font-heading font-semibold text-xs sm:text-sm md:text-[15px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline">
-                        {doc.name}
-                      </h3>
-                      {doc.qualifications && (
-                        <p className="font-sans text-[10px] sm:text-[11px] text-[#F2E9DC]/80 font-medium leading-tight mt-0.5 line-clamp-1">
-                          {doc.qualifications}
+                    {/* Structured Text Content with Fixed-Height Slots for Straight Horizontal Baseline */}
+                    <div className="relative z-10 w-full text-left">
+                      {/* Name Slot: fixed height for 1 or 2 lines */}
+                      <div className="min-h-[32px] sm:min-h-[36px] md:min-h-[40px] flex items-end">
+                        <h3 className="font-heading font-semibold text-xs sm:text-[13px] md:text-[14px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline line-clamp-2">
+                          {doc.name}
+                        </h3>
+                      </div>
+
+                      {/* Qualifications Slot: fixed height */}
+                      <div className="h-[15px] sm:h-[16px] md:h-[18px] flex items-center mt-0.5">
+                        {doc.qualifications ? (
+                          <p 
+                            className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#C9A581] font-medium leading-none truncate tracking-wide"
+                            title={doc.qualifications}
+                          >
+                            {doc.qualifications}
+                          </p>
+                        ) : (
+                          <span className="block h-full" />
+                        )}
+                      </div>
+
+                      {/* Speciality / Subtext Slot: fixed height for 1 or 2 lines */}
+                      <div className="h-[26px] sm:h-[28px] md:h-[30px] flex items-start mt-0.5">
+                        <p 
+                          className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#F2E9DC]/85 font-normal leading-tight line-clamp-2"
+                          title={doc.speciality || doc.role}
+                        >
+                          {doc.speciality || doc.role}
                         </p>
-                      )}
-                      <p className="font-sans text-[10px] sm:text-[11.5px] text-[#F2E9DC]/95 font-normal leading-tight mt-1 line-clamp-2">
-                        {doc.speciality || doc.role}
-                      </p>
+                      </div>
                     </div>
                   </Link>
                 </motion.div>
