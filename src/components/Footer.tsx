@@ -27,10 +27,10 @@ export default function Footer() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
             {/* Main Content Grid: 2 columns on mobile, 12 on desktop */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-12 gap-x-6 gap-y-8 sm:gap-8 lg:gap-6 pb-8 sm:pb-12">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-12 gap-x-6 gap-y-8 sm:gap-8 lg:gap-8 pb-6 sm:pb-8">
               
               {/* Column 1: Brand Title & Tagline */}
-              <div className="col-span-2 sm:col-span-3 lg:col-span-3 space-y-3.5">
+              <div className="col-span-2 sm:col-span-3 lg:col-span-4 space-y-3.5">
                 <Link
                   href="#home"
                   className="inline-flex items-center gap-2.5 sm:gap-3 px-3.5 sm:px-4 py-2 rounded-lg bg-[#F2E9DC] hover:bg-white border border-white/40 shadow-sm transition-all duration-200 hover:scale-[1.01]"
@@ -142,43 +142,8 @@ export default function Footer() {
                 </ul>
               </div>
 
-              {/* Column 4: BRANCHES (Added along with Menu & Specialities) */}
-              <div className="col-span-1 sm:col-span-1 lg:col-span-2 space-y-2.5 sm:space-y-3">
-                <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C9A581]">
-                  Branches
-                </h4>
-                <ul className="space-y-1.5 sm:space-y-2.5 text-xs sm:text-[13.5px]">
-                  <li>
-                    <Link href="/branches" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                      Thrissur (Main)
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/branches" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                      Cherpu Branch
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/branches" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                      Kunnamkulam
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/branches" className="text-white/75 hover:text-[#C9A581] transition-colors">
-                      Kodungallur
-                    </Link>
-                  </li>
-                  <li className="pt-1">
-                    <Link href="/branches" className="text-[#C9A581] hover:underline font-semibold flex items-center gap-1">
-                      <span>View All Locations</span>
-                      <span>→</span>
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 5: CONNECT */}
-              <div className="col-span-1 sm:col-span-2 lg:col-span-2 space-y-2.5 sm:space-y-3">
+              {/* Column 4: CONNECT */}
+              <div className="col-span-2 sm:col-span-1 lg:col-span-3 space-y-2.5 sm:space-y-3">
                 <h4 className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C9A581]">
                   Connect
                 </h4>
@@ -237,6 +202,40 @@ export default function Footer() {
                 </div>
               </div>
 
+            </div>
+
+            {/* Horizontal Branches Listing (Just above the line in the footer) */}
+            <div className="pb-6 sm:pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 text-xs sm:text-[13.5px]">
+              <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C9A581] shrink-0">
+                  Branches:
+                </span>
+                <nav className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5 text-white/80" aria-label="Hospital Branches">
+                  <Link href="/branches#thrissur" className="hover:text-[#C9A581] transition-colors">
+                    Thrissur
+                  </Link>
+                  <span className="text-white/25 select-none">•</span>
+                  <Link href="/branches#cherpu" className="hover:text-[#C9A581] transition-colors">
+                    Cherpu
+                  </Link>
+                  <span className="text-white/25 select-none">•</span>
+                  <Link href="/branches#kunnamkulam" className="hover:text-[#C9A581] transition-colors">
+                    Kunnamkulam
+                  </Link>
+                  <span className="text-white/25 select-none">•</span>
+                  <Link href="/branches#kodungallur" className="hover:text-[#C9A581] transition-colors">
+                    Kodungallur
+                  </Link>
+                </nav>
+              </div>
+
+              <Link
+                href="/branches"
+                className="text-xs text-[#C9A581] hover:underline font-semibold flex items-center gap-1 shrink-0"
+              >
+                <span>View All Locations</span>
+                <span>→</span>
+              </Link>
             </div>
 
             {/* Bottom Divider & Legal Strip */}
