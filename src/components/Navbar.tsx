@@ -263,7 +263,7 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={() => setActiveDropdown(null)}
-            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity flex-shrink-0 px-1 sm:px-2 lg:px-4"
+            className="flex items-center gap-2 sm:gap-2.5 hover:opacity-90 transition-opacity flex-shrink-0 px-1 sm:px-2 lg:px-4 relative -translate-x-1 sm:-translate-x-2 md:-translate-x-2.5"
           >
             <div className="relative flex items-center justify-center flex-shrink-0 w-6.5 h-6.5 sm:w-7.5 sm:h-7.5">
               <Image

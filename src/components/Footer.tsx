@@ -55,7 +55,7 @@ export default function Footer() {
 
                 {/* Prominent Darkness to Light statement */}
                 <div className="pt-1">
-                  <span className="text-[#C9A581] text-xs sm:text-sm font-sans font-semibold tracking-[0.24em] uppercase block">
+                  <span className="text-[#A55322] text-xs sm:text-sm font-sans font-semibold tracking-[0.24em] uppercase block">
                     Darkness to Light
                   </span>
                   <p className="text-xs sm:text-[13.5px] text-white/80 font-normal leading-relaxed max-w-sm mt-1">
