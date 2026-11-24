@@ -156,7 +156,7 @@ export default function BranchesPage() {
                     {/* Badge top-left */}
                     <div className="absolute top-2.5 left-2.5 z-10">
                       <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-sans font-bold uppercase tracking-wider bg-[#221C14]/90 text-[#C9A581] border border-[#C9A581]/30 backdrop-blur-md">
-                        {branch.shortName}
+                        {branch.badge}
                       </span>
                     </div>
 
@@ -180,17 +180,17 @@ export default function BranchesPage() {
                   {/* Body: Full Title, Address with Pincode, and Both Phone Numbers */}
                   <div className="p-3.5 sm:p-4.5 flex-1 flex flex-col justify-between space-y-3">
                     <div className="space-y-2">
-                      {/* Full Branch Title (wraps naturally over 2 lines) */}
-                      <h2 className="font-sans font-bold text-sm sm:text-base text-[#30291F] group-hover:text-[#A55322] transition-colors leading-snug">
+                      {/* Branch Name Only */}
+                      <h2 className="font-heading font-bold text-base sm:text-lg md:text-xl text-[#30291F] group-hover:text-[#A55322] transition-colors leading-tight">
                         {branch.name}
                       </h2>
 
-                      {/* Address & Pincode with sleek Location Icon */}
-                      <div className="flex items-start gap-1.5 text-[11px] sm:text-xs text-[#30291F]/75 leading-relaxed font-sans">
+                      {/* Address & Pincode with sleek Location Icon - Uniform alignment across all 4 cards */}
+                      <div className="min-h-[52px] sm:min-h-[58px] flex items-start gap-1.5 text-[11px] sm:text-xs text-[#30291F]/75 leading-relaxed font-sans">
                         <MapPinIcon className="w-3.5 h-3.5 text-[#A55322] shrink-0 mt-0.5" />
-                        <div className="space-y-0.5">
+                        <div className="space-y-0.5 flex-1">
                           {branch.addressLines.map((line, i) => (
-                            <p key={i}>{line}</p>
+                            <p key={i} className="leading-snug">{line}</p>
                           ))}
                         </div>
                       </div>

@@ -34,8 +34,8 @@ export default function ContactPage() {
         <SubpageHero
           badge="GET IN TOUCH"
           tagline="We're Here to Help"
-          title="Contact Aarya Eye Care"
-          titleAccent="Hospital"
+          title="Contact"
+          titleAccent="Aarya Eye Care"
           description="Have questions about eye treatments, surgical consultations, insurance claims, or need emergency assistance? Reach our clinical team easily online or by phone."
           breadcrumbs={[{ label: "Contact Us" }]}
         />

@@ -9,7 +9,7 @@ import CtaBanner from "@/components/CtaBanner";
 import FAQSection from "@/components/FAQSection";
 import AppointmentModal from "@/components/AppointmentModal";
 import PageTransition from "@/components/PageTransition";
-import { FACILITIES, getFacilityBySlug } from "@/data/facilities";
+import { FACILITIES, LAB_FACILITY, getFacilityBySlug } from "@/data/facilities";
 
 interface PageProps {
   params: Promise<{
@@ -18,7 +18,7 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return FACILITIES.map((f) => ({
+  return FACILITIES.filter((facility) => facility.slug !== LAB_FACILITY.slug).map((f) => ({
     slug: f.slug,
   }));
 }
@@ -263,12 +263,12 @@ export default async function FacilityDetailPage({ params }: PageProps) {
           <section className="w-full bg-[#F2E9DC] py-12 px-3 sm:px-6 lg:px-10 border-t border-[#C9A581]/25">
             <div className="max-w-7xl mx-auto">
               <div className="rounded-[2.25rem] p-8 sm:p-12 md:p-14 bg-white/85 border border-[#C9A581]/35 shadow-sm flex flex-col md:flex-row items-center gap-8 md:gap-12">
-                <div className="relative w-44 h-44 sm:w-52 sm:h-52 shrink-0 bg-[#FAF6F0] rounded-2xl p-4 border border-[#C9A581]/30 flex items-center justify-center">
+                <div className="relative w-44 h-44 sm:w-52 sm:h-52 shrink-0 bg-[#30291F] rounded-2xl p-4 border border-[#C9A581]/40 shadow-md flex items-center justify-center">
                   <Image
                     src="/facilities/nabh-accreditation.png"
                     alt="NABH Accredited Hospital"
                     fill
-                    className="object-contain p-2"
+                    className="object-contain p-3 drop-shadow-sm"
                     sizes="200px"
                   />
                 </div>

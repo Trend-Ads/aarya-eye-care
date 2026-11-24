@@ -35,6 +35,23 @@ export interface FacilitySector {
   }[];
 }
 
+export const LAB_FACILITY: FacilitySector = {
+  slug: "lab",
+  title: "Aarya Neuro Lab",
+  badge: "Neurodiagnostic Services",
+  tagline: "EEG, NCS, BERA & VEP",
+  heroImage: "/clinical/neuro-lab-hero.webp",
+  shortDesc: "Neurodiagnostic testing at Aarya Eye Care for the brain, peripheral nerves, hearing pathways, and visual pathways.",
+  highlights: [
+    "Electroencephalography (EEG)",
+    "Nerve Conduction Study (NCS)",
+    "Brainstem Evoked Response Audiometry (BERA)",
+    "Visual Evoked Potential (VEP) Study",
+  ],
+  contentSections: [],
+  faqs: [],
+};
+
 export const FACILITIES: FacilitySector[] = [
   {
     slug: "hospital-facilities",
@@ -371,74 +388,7 @@ export const FACILITIES: FacilitySector[] = [
       }
     ]
   },
-  {
-    slug: "lab",
-    title: "Clinical Diagnostic Lab & Neuro-Ophthalmology",
-    badge: "Accurate Diagnostic Profiling",
-    tagline: "Advanced Ocular Diagnostics, Automated Perimetry & Clinical Microbiology",
-    heroImage: "/clinical/lab.webp",
-    shortDesc: "Dedicated ocular diagnostic laboratory providing Humphrey visual field perimetry, pachymetry, endothelial specular microscopy, tear film osmolarity, and clinical microbiology.",
-    highlights: [
-      "Automated Humphrey Visual Field Analyzer for optic nerve and neurological pathway mapping",
-      "Non-contact specular microscopy evaluating corneal endothelial cell density and morphology",
-      "Corneal pachymetry for sub-micron corneal thickness profiling",
-      "Microbiological ocular smear staining and culture for rapid infectious keratitis identification",
-      "Electro-diagnostic coordination for unexplained visual loss and optic neuritis"
-    ],
-    contentSections: [
-      {
-        heading: "Precision Diagnostics at the Core of Eye Health",
-        body: [
-          "Ophthalmic diagnostics require microscopic precision. Subtle alterations in the corneal endothelial cell count or micro-deficits in the retinal nerve fiber layer can alter surgical outcomes and long-term visual prognosis.",
-          "Aarya Eye Care's Diagnostic & Neuro Lab operates as an integrated center of excellence. Equipped with standardized automated perimetry (Humphrey Field Analyzer), ultrasonic and optical pachymetry, and specular microscopy, we deliver objective numerical indices that guide clinical decisions.",
-          "Our neuro-ophthalmology wing collaborates closely with neurologists to evaluate unexplained vision reduction, visual field defects from pituitary tumors or strokes, optic neuritis, and cranial nerve palsies."
-        ]
-      },
-      {
-        heading: "Specialized Laboratory Diagnostic Services",
-        body: [
-          "Automated Visual Field Perimetry (Humphrey): Detects subtle optic nerve damage from glaucoma, brain tumors, stroke, and toxic optic neuropathies across 24-2, 30-2, and 10-2 central field thresholds.",
-          "Specular Microscopy: Evaluates the density (cells/mm²), coefficient of variation, and hexagonal cell percentage of corneal endothelium, critical before cataract surgery, ICL phakic lens implantation, and corneal grafting.",
-          "Corneal Pachymetry: Precision corneal thickness measurement essential for accurate intraocular pressure calibration and pre-refractive surgery screening.",
-          "Ocular Microbiology: Rapid direct smears (Gram stain, KOH wet mount) for immediate identification of bacterial and fungal corneal infections, enabling targeted antimicrobial therapy within hours."
-        ]
-      }
-    ],
-    equipment: [
-      {
-        name: "Humphrey Field Analyzer (HFA)",
-        badge: "Global Standard in Visual Fields",
-        subtitle: "SITA Standard automated threshold perimetry",
-        description: "The internationally recognized reference standard for detecting and tracking visual field sensitivity loss in glaucoma and neurological disorders.",
-        image: "/clinical/glaucoma.webp",
-        indications: ["Glaucoma progression staging", "Pituitary tumor visual field compression", "Optic neuritis and toxic neuropathies"],
-        specs: ["SITA-Fast & SITA-Standard algorithms", "Gaze tracking with pupil measurement", "Guided Progression Analysis (GPA) software"]
-      },
-      {
-        name: "Non-Contact Specular Microscope",
-        badge: "Corneal Endothelial Counter",
-        subtitle: "Automated endothelial cell morphology analyzer",
-        description: "Non-invasively photographs and counts the non-regenerative endothelial cell layer on the back of the cornea, ensuring surgical safety before intraocular procedures.",
-        image: "/clinical/specular-microscopy.webp",
-        indications: ["Pre-cataract corneal health assessment", "Fuchs' endothelial dystrophy diagnosis", "Phakic ICL candidate eligibility"],
-        specs: ["Cell density (CD), CV, and Hexagonal cell count (%)", "Non-contact rapid auto-alignment", "High-magnification dark-field optical view"]
-      }
-    ],
-    faqs: [
-      {
-        question: "What should I expect during an automated visual field test?",
-        answer: "The visual field test is completely painless and takes approximately 10 to 15 minutes per eye. You sit comfortably with your chin on a rest and look at a central fixation light inside a curved bowl. Small flashes of light appear at varying brightnesses in your peripheral vision, and you simply press a handheld response button whenever you see a flash."
-      },
-      {
-        question: "Why is an endothelial cell count needed before eye surgery?",
-        answer: "The corneal endothelium is a single layer of cells responsible for pumping water out of the cornea to keep it crystal clear. Humans are born with a fixed number of these cells, which do not regenerate. Checking your cell density before surgery ensures your cornea has ample cellular reserve to remain clear and healthy."
-      },
-      {
-        question: "How quickly are emergency corneal microbiology results available?",
-        answer: "Direct microscopy smears (Gram stain and fungal KOH wet mounts) are prepared and interpreted within 1 to 2 hours, allowing our corneal specialists to begin immediate targeted antibiotic or antifungal eye drops to protect your eye."
-      }
-    ]
-  }
+  LAB_FACILITY,
 ];
 
 export function getFacilityBySlug(slug: string): FacilitySector | undefined {

@@ -6,6 +6,7 @@ interface SubpageHeroProps {
   badge?: string;
   title: string;
   titleAccent?: string;
+  titleAccentBlock?: boolean;
   tagline?: string;
   description: string;
   breadcrumbs?: {
@@ -24,6 +25,7 @@ export default function SubpageHero({
   badge = "DARKNESS TO LIGHT",
   title,
   titleAccent,
+  titleAccentBlock = false,
   tagline,
   description,
   breadcrumbs,
@@ -73,9 +75,11 @@ export default function SubpageHero({
 
         {/* Main Title */}
         <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#30291F] tracking-tight leading-[1.15]">
-          {title}{" "}
+          {title}{titleAccent && !titleAccentBlock && " "}
           {titleAccent && (
-            <span className="text-[#A55322] font-sans">{titleAccent}</span>
+            <span className={`text-[#A55322] font-sans ${titleAccentBlock ? "block mt-1 sm:mt-2" : ""}`}>
+              {titleAccent}
+            </span>
           )}
         </h1>
 

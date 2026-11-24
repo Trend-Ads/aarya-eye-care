@@ -25,11 +25,11 @@ const DOCTOR_LEADERS = [
     focus: "Micro-Incision Cataract Surgery, Premium IOLs",
   },
   {
-    name: "Dr. Suraj C.B",
-    role: "Senior Consultant Phaco & Refractive Surgeon",
-    qualification: "MBBS, MS (Ophthalmology)",
-    image: "/doctors/doctor-placeholder.svg",
-    focus: "Refractive Laser Surgery, Trans-PRK, Anterior Segment Reconstruction",
+    name: "Dr. Minudath K.B",
+    role: "Medical Director, Phaco, Oculoplasty & Squint Surgeon",
+    qualification: "MD Ophthalmology (AIIMS)",
+    image: "/doctors-aligned/minudath.webp",
+    focus: "Phacoemulsification, Oculoplasty, Squint & Pediatric Ophthalmology",
   },
   {
     name: "Dr. Liya K.Y",
@@ -89,8 +89,9 @@ export default function AboutPage() {
         <SubpageHero
           badge="OUR LEGACY & MISSION"
           tagline="Established 2011 in Thrissur"
-          title="Transforming Lives from Darkness"
-          titleAccent="to Light"
+          title="Transforming Lives from"
+          titleAccent="Darkness to Light"
+          titleAccentBlock
           description="Aarya Eye Care is a premier NABH-accredited tertiary eye hospital committed to delivering uncompromising clinical excellence, state-of-the-art surgical technology, and compassionate patient care."
           breadcrumbs={[{ label: "About Us" }]}
           stats={[
@@ -216,31 +217,30 @@ export default function AboutPage() {
                   className="rounded-[2rem] bg-white/80 border border-[#C9A581]/35 hover:border-[#A55322]/40 shadow-xs hover:shadow-md transition-all duration-300 p-6 flex flex-col justify-between group"
                 >
                   <div className="space-y-4">
-                    <div className="relative h-60 w-full rounded-2xl overflow-hidden bg-[#30291F]/10">
+                    <div className="relative aspect-[4/4.8] sm:aspect-[4/4.5] w-full rounded-2xl overflow-hidden bg-[#E8DFD1] border border-[#C9A581]/30">
                       <Image
                         src={doc.image}
-                        alt={doc.image.endsWith(".svg") ? "" : doc.name}
+                        alt={doc.name}
                         fill
                         className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3 text-white">
-                        <span className="text-[10px] font-sans text-[#C9A581] font-bold block">
+                      <div className="absolute inset-x-0 bottom-0 py-2.5 px-3 bg-gradient-to-t from-black/75 via-black/35 to-transparent">
+                        <span className="text-[11px] font-sans text-[#F2E9DC] font-semibold block tracking-wide drop-shadow-xs">
                           {doc.qualification}
                         </span>
                       </div>
                     </div>
 
-                    <div>
-                      <h3 className="font-heading font-bold text-xl text-[#30291F] group-hover:text-[#A55322] transition-colors">
+                    <div className="space-y-1">
+                      <h3 className="font-heading font-bold text-xl text-[#30291F] group-hover:text-[#A55322] transition-colors leading-snug">
                         {doc.name}
                       </h3>
-                      <p className="text-xs font-semibold text-[#8A875C] mt-0.5">
+                      <p className="text-xs font-semibold text-[#8A875C]">
                         {doc.role}
                       </p>
-                      <p className="text-xs text-[#30291F]/75 font-sans mt-2.5 leading-relaxed">
-                        <strong>Clinical Focus:</strong> {doc.focus}
+                      <p className="text-xs text-[#30291F]/75 font-sans pt-1.5 leading-relaxed">
+                        <strong className="text-[#30291F] font-semibold">Clinical Focus:</strong> {doc.focus}
                       </p>
                     </div>
                   </div>
