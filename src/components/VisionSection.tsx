@@ -24,42 +24,42 @@ const VISION_PRESETS: VisionPreset[] = [
     name: "Near Vision",
     distance: "Foreground",
     focalTarget: "Phone screen",
-    description: "A man holds a phone in sharp focus. The TV and the hall beyond it are blurred.",
+    description: "A fern on the handheld phone is sharp. The open laptop and the hall behind the desk are blurred.",
     focalHUD: {
-      x: "19%",
-      y: "51%",
+      x: "23%",
+      y: "50%",
       label: "Near focus",
       sublabel: "Phone screen",
     },
-    image: "/vision/phone-focus.webp",
+    image: "/vision/reading-phone.webp",
   },
   {
     id: "intermediate",
     name: "Intermediate",
     distance: "Middle ground",
-    focalTarget: "Television",
-    description: "The mountain landscape on the TV comes into focus. The phone and distant hall are blurred.",
+    focalTarget: "Laptop screen",
+    description: "The terraced hills on the laptop screen are sharp. The phone in front and the distant doorway are blurred.",
     focalHUD: {
-      x: "49%",
-      y: "40%",
+      x: "53%",
+      y: "50%",
       label: "Intermediate focus",
-      sublabel: "Television screen",
+      sublabel: "Laptop screen",
     },
-    image: "/vision/tv-focus.webp",
+    image: "/vision/desk-laptop.webp",
   },
   {
     id: "distance",
     name: "Long Distance",
     distance: "Background",
     focalTarget: "Distant hall",
-    description: "The pillars, dining table, and windows at the far end of the hall come into focus. The phone and TV are blurred.",
+    description: "The sunlit doorway and courtyard at the far end of the hall are sharp. The phone and laptop are blurred.",
     focalHUD: {
-      x: "79%",
-      y: "46%",
+      x: "86%",
+      y: "33%",
       label: "Distance focus",
       sublabel: "Far end of the hall",
     },
-    image: "/vision/hall-focus.webp",
+    image: "/vision/sunlit-hall.webp",
   },
 ];
 
@@ -113,7 +113,7 @@ export default function VisionSection() {
               </span>
             </h2>
             <p className="mt-2 text-xs sm:text-sm text-[#30291F]/70 font-sans max-w-xl leading-relaxed">
-              Switch between the phone, the TV, and the far end of the hall to see how focus changes with distance.
+              Switch between the phone, the laptop, and the far end of the hall to see how focus changes with distance.
             </p>
           </div>
 
@@ -150,7 +150,7 @@ export default function VisionSection() {
         {/* ========================================================= */}
         {/* 2. HIGH CREATIVITY CINEMATIC LENS VIEWPORT                */}
         {/* ========================================================= */}
-        <div className="relative w-full aspect-[16/10] sm:aspect-[21/10] md:aspect-[21/9] max-h-[520px] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A581]/50 shadow-[0_24px_60px_rgba(48,41,31,0.14)] bg-[#30291F]/10 group">
+        <div className="relative w-full aspect-[16/10] sm:aspect-[2/1] rounded-[24px] sm:rounded-[32px] overflow-hidden border border-[#C9A581]/50 shadow-[0_24px_60px_rgba(48,41,31,0.14)] bg-[#30291F]/10 group">
           {/* Full-Bleed Images with Smooth Cross-Fade */}
           {VISION_PRESETS.map((preset, idx) => (
             <div

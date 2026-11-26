@@ -323,16 +323,16 @@ export default function DoctorsSection() {
                       sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
                     />
 
-                    {/* Smooth Tinted Gradient Overlay for high-contrast legible text */}
+                    {/* Smooth Tinted Gradient Overlay with reduced intensity for bright, natural portraits */}
                     <div
-                      className="absolute inset-0 bg-gradient-to-t from-[#221C14]/95 via-[#221C14]/50 via-[#221C14]/15 to-transparent transition-opacity duration-300"
+                      className="absolute inset-x-0 bottom-0 h-[65%] bg-gradient-to-t from-[#1E1913]/75 via-[#1E1913]/35 to-transparent pointer-events-none transition-opacity duration-300"
                     />
 
                     {/* Structured Text Content with Fixed-Height Slots for Straight Horizontal Baseline */}
                     <div className="relative z-10 w-full text-left">
                       {/* Name Slot: fixed height for 1 or 2 lines */}
                       <div className="min-h-[32px] sm:min-h-[36px] md:min-h-[40px] flex items-end">
-                        <h3 className="font-heading font-semibold text-xs sm:text-[13px] md:text-[14px] text-[#F2E9DC] leading-snug drop-shadow-xs group-hover:underline line-clamp-2">
+                        <h3 className="font-heading font-semibold text-xs sm:text-[13px] md:text-[14px] text-[#F2E9DC] leading-snug drop-shadow-sm group-hover:underline line-clamp-2">
                           {doc.name}
                         </h3>
                       </div>
@@ -341,7 +341,7 @@ export default function DoctorsSection() {
                       <div className="h-[15px] sm:h-[16px] md:h-[18px] flex items-center mt-0.5">
                         {doc.qualifications ? (
                           <p 
-                            className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#C9A581] font-medium leading-none truncate tracking-wide"
+                            className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#C9A581] font-medium leading-none truncate tracking-wide drop-shadow-xs"
                             title={doc.qualifications}
                           >
                             {doc.qualifications}
@@ -354,7 +354,7 @@ export default function DoctorsSection() {
                       {/* Speciality / Subtext Slot: fixed height for 1 or 2 lines */}
                       <div className="h-[26px] sm:h-[28px] md:h-[30px] flex items-start mt-0.5">
                         <p 
-                          className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#F2E9DC]/85 font-normal leading-tight line-clamp-2"
+                          className="font-sans text-[9.5px] sm:text-[10px] md:text-[11px] text-[#F2E9DC]/90 font-normal leading-tight line-clamp-2 drop-shadow-xs"
                           title={doc.speciality || doc.role}
                         >
                           {doc.speciality || doc.role}
