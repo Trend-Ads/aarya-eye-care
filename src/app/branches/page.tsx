@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SubpageHero from "@/components/SubpageHero";
 import CtaBanner from "@/components/CtaBanner";
 import FAQSection from "@/components/FAQSection";
 import AppointmentModal from "@/components/AppointmentModal";
@@ -11,7 +12,7 @@ import { BRANCHES_DATA } from "@/data/branches";
 export const metadata: Metadata = {
   title: "Our Hospital Branches | Aarya Eye Care Thrissur, Cherpu, Kunnamkulam, Kodungallur",
   description:
-    "Find your nearest Aarya Eye Care center across Central Kerala. Click any branch to open live directions in Google Maps, or call our direct consultation lines.",
+    "Find your nearest Aarya Eye Care center across Central Kerala. Find branch addresses, opening hours, phone numbers, and directions.",
 };
 
 const BRANCH_FAQS = [
@@ -111,128 +112,85 @@ export default function BranchesPage() {
       <main className="min-h-screen bg-[#F2E9DC] text-[#30291F] flex flex-col selection:bg-[#C9A581]/40 relative">
         <Navbar />
 
-        {/* ─── STREAMLINED HEADER ─── */}
-        <section className="w-full pt-28 sm:pt-36 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] sm:text-xs font-sans font-bold uppercase tracking-wider bg-[#30291F]/8 text-[#A55322] border border-[#A55322]/20 mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#A55322] animate-pulse" />
-            <span>4 Centers Across Central Kerala</span>
-          </div>
+        <SubpageHero
+          badge="Central Kerala"
+          title="Our hospital"
+          titleAccent="branches"
+          description="Find your nearest Aarya Eye Care centre, check visiting hours, and get directions."
+          breadcrumbs={[{ label: "Branches" }]}
+        />
 
-          <h1 className="font-sans text-3xl sm:text-4xl md:text-5xl text-[#30291F] font-bold tracking-tight">
-            Our Hospital Branches
-          </h1>
-
-          <p className="text-xs sm:text-sm md:text-base text-[#30291F]/70 mt-2.5 max-w-xl mx-auto leading-relaxed font-sans">
-            Click any branch to open live navigation in Google Maps or contact our reception desk.
-          </p>
-        </section>
-
-        {/* ─── 4 COMPACT BRANCH CARDS: 4 IN 1 ROW (PC), 2 PER ROW (MOBILE) ─── */}
-        <section className="w-full bg-[#F2E9DC] pb-14 sm:pb-20 px-3 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 items-stretch">
-              {BRANCHES_DATA.map((branch, idx) => (
+        <section aria-label="Branch locations" className="mx-auto w-full max-w-7xl px-4 pb-14 pt-4 sm:px-6 sm:pb-20 lg:px-10">
+          <div className="grid gap-6 md:grid-cols-2 lg:gap-8">
+            {BRANCHES_DATA.map((branch) => (
+              <article
+                key={branch.id}
+                id={branch.id}
+                aria-labelledby={`${branch.id}-name`}
+                className="flex min-w-0 scroll-mt-28 flex-col overflow-hidden rounded-[2rem] border border-[#C9A581]/45 bg-[#FFFCF7] shadow-[0_8px_28px_rgba(48,41,31,0.06)]"
+              >
                 <a
-                  key={branch.id}
-                  id={branch.id}
                   href={branch.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col justify-between rounded-2xl sm:rounded-3xl bg-white border border-[#C9A581]/35 hover:border-[#A55322] shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden cursor-pointer"
-                  title={`Open ${branch.name} on Google Maps`}
+                  aria-label={`View the ${branch.name} branch on Google Maps`}
+                  className="group relative block aspect-[16/9] overflow-hidden bg-[#E5DACB] focus-visible:outline-2 focus-visible:-outline-offset-4 focus-visible:outline-[#A55322]"
                 >
-                  {/* Top Image Banner */}
-                  <div className="relative w-full h-32 sm:h-40 md:h-44 overflow-hidden bg-black/10 shrink-0">
-                    <Image
-                      src={branch.image}
-                      alt=""
-                      fill
-                      className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
-                    />
-
-                    {/* Gradient scrim */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent group-hover:from-black/65 transition-colors" />
-
-                    {/* Badge top-left */}
-                    <div className="absolute top-2.5 left-2.5 z-10">
-                      <span className="px-2 py-0.5 rounded-full text-[9px] sm:text-[10px] font-sans font-bold uppercase tracking-wider bg-[#221C14]/90 text-[#C9A581] border border-[#C9A581]/30 backdrop-blur-md">
-                        {branch.badge}
-                      </span>
-                    </div>
-
-                    {/* Index top-right */}
-                    <div className="absolute top-2.5 right-2.5 z-10">
-                      <span className="text-[10px] sm:text-xs font-sans font-bold text-white/90 bg-black/50 px-2 py-0.5 rounded-full backdrop-blur-sm border border-white/20">
-                        0{idx + 1}
-                      </span>
-                    </div>
-
-                    {/* Bottom Google Maps indicator on image */}
-                    <div className="absolute bottom-2.5 left-2.5 right-2.5 z-10 flex items-center justify-between text-white text-[11px] sm:text-xs">
-                      <span className="font-semibold text-white/95 truncate flex items-center gap-1.5 drop-shadow-sm font-sans">
-                        <MapPinIcon className="w-3.5 h-3.5 text-[#F2E9DC]" />
-                        <span>Open in Maps</span>
-                      </span>
-                      <ArrowUpRightIcon className="w-3.5 h-3.5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    </div>
-                  </div>
-
-                  {/* Body: Full Title, Address with Pincode, and Both Phone Numbers */}
-                  <div className="p-3.5 sm:p-4.5 flex-1 flex flex-col justify-between space-y-3">
-                    <div className="space-y-2">
-                      {/* Branch Name Only */}
-                      <h2 className="font-heading font-bold text-base sm:text-lg md:text-xl text-[#30291F] group-hover:text-[#A55322] transition-colors leading-tight">
-                        {branch.name}
-                      </h2>
-
-                      {/* Address & Pincode with sleek Location Icon - Uniform alignment across all 4 cards */}
-                      <div className="min-h-[52px] sm:min-h-[58px] flex items-start gap-1.5 text-[11px] sm:text-xs text-[#30291F]/75 leading-relaxed font-sans">
-                        <MapPinIcon className="w-3.5 h-3.5 text-[#A55322] shrink-0 mt-0.5" />
-                        <div className="space-y-0.5 flex-1">
-                          {branch.addressLines.map((line, i) => (
-                            <p key={i} className="leading-snug">{line}</p>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Both Phone Numbers */}
-                    <div className="pt-2.5 border-t border-[#C9A581]/25 flex flex-col gap-1 text-[11px] sm:text-[12px] font-sans">
-                      <div className="flex items-center justify-between">
-                        <span className="font-semibold text-[#675E31] group-hover:text-[#A55322] transition-colors flex items-center gap-1.5 truncate">
-                          <PhoneIcon className="w-3 h-3 text-[#A55322] shrink-0" />
-                          <span>Ph: {branch.phoneLandline}</span>
-                        </span>
-
-                        <span className="px-2 py-0.5 rounded-full bg-[#A55322] text-white font-bold text-[9px] sm:text-[10px] shrink-0 group-hover:bg-[#8C4318] transition-colors shadow-2xs flex items-center gap-1">
-                          <MapPinIcon className="w-2.5 h-2.5" />
-                          <span>Maps</span>
-                        </span>
-                      </div>
-
-                      <div className="font-semibold text-[#675E31] group-hover:text-[#A55322] transition-colors pl-4.5 truncate">
-                        <span>{branch.phoneMobile}</span>
-                      </div>
-                    </div>
-
-                    {/* Operating Hours */}
-                    <div className="pt-2 border-t border-[#C9A581]/25 text-[11px] font-sans space-y-0.5">
-                      <div className="flex items-center gap-1.5 font-medium text-[#30291F]">
-                        <ClockIcon className="w-3 h-3 text-[#A55322] shrink-0" />
-                        <span>{branch.timings.weekdays}</span>
-                      </div>
-                      <div className={`pl-4.5 text-[10.5px] ${branch.timings.sunday.includes("Closed") ? "text-[#30291F]/50" : "text-[#675E31] font-semibold"}`}>
-                        <span>{branch.timings.sunday}</span>
-                      </div>
-                    </div>
-                  </div>
+                  <Image
+                    src={branch.image}
+                    alt={`Exterior of the Aarya Eye Care branch in ${branch.name}`}
+                    fill
+                    sizes="(min-width: 1280px) 584px, (min-width: 768px) 48vw, 100vw"
+                    className="object-cover object-[center_36%] motion-safe:transition-transform motion-safe:duration-500 motion-safe:group-hover:scale-[1.025]"
+                  />
                 </a>
-              ))}
-            </div>
+
+                <div className="flex flex-1 flex-col px-5 pb-5 pt-5 sm:px-7 sm:pb-6">
+                  <p className="text-xs font-semibold tracking-wide text-[#675E31]">{branch.badge}</p>
+                  <h2 id={`${branch.id}-name`} className="mt-1 text-3xl font-bold tracking-tight">{branch.name}</h2>
+                  <address className="mt-3 flex items-start gap-2.5 text-sm not-italic leading-relaxed text-[#51493C]">
+                    <MapPinIcon className="mt-0.5 size-4 shrink-0 text-[#A55322]" />
+                    <span>{branch.addressLines.join(", ")}</span>
+                  </address>
+
+                  <div className="mt-5 flex-1 rounded-2xl bg-[#F2E9DC]/65 px-4 py-3.5">
+                    <h3 className="flex items-center gap-2 text-sm font-semibold">
+                      <ClockIcon className="size-4 text-[#675E31]" />
+                      Opening hours
+                    </h3>
+                    <ul className="mt-2 space-y-1 text-sm leading-relaxed text-[#51493C]">
+                      <li>{branch.timings.weekdays}</li>
+                      <li>{branch.timings.sunday}</li>
+                    </ul>
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap items-center justify-between gap-x-4 gap-y-3 border-t border-[#C9A581]/40 pt-4">
+                    <div className="flex items-start gap-2.5">
+                      <PhoneIcon className="mt-1 size-4 shrink-0 text-[#A55322]" />
+                      <div className="flex flex-col items-start text-sm font-semibold leading-7 text-[#51493C]">
+                        {[branch.phoneLandline, branch.phoneMobile].map((phone) => (
+                          <a key={phone} href={`tel:${phone.replace(/^0/, "+91").replaceAll(" ", "")}`} aria-label={`Call ${branch.name} at ${phone}`} className="hover:text-[#A55322] hover:underline">
+                            {phone}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                    <a
+                      href={branch.googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Get directions to Aarya Eye Care ${branch.name}`}
+                      className="inline-flex min-h-11 items-center gap-2 rounded-full bg-[#675E31] px-5 text-sm font-semibold text-white transition-colors hover:bg-[#514A27]"
+                    >
+                      Get directions <ArrowUpRightIcon className="size-4" />
+                    </a>
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* ─── BRANCHES FAQS ─── */}
         <FAQSection
           title="Frequently Asked Branch Questions"
           subtitle="Information on timings, doctor rotas, and emergency admission across our centers."

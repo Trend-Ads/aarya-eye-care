@@ -24,7 +24,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "Thrissur",
     shortName: "Thrissur",
     badge: "Super Speciality & Surgical Center",
-    image: "/clinical/thrissur.webp",
+    image: "/branches/Thrissur-aarya.webp",
     addressLines: [
       "2nd Floor, Pallithamam Building, Near North Bus Stand",
       "Thrissur - 680 020"
@@ -52,7 +52,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "Cherpu",
     shortName: "Cherpu",
     badge: "Regional Eye Health Center",
-    image: "/clinical/cherpu.webp",
+    image: "/branches/Cherpu-aarya.webp",
     addressLines: [
       "Near Cherpu Grama Panchayat, Thayamkulangara",
       "Cherpu - 680 561"
@@ -80,7 +80,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "Kunnamkulam",
     shortName: "Kunnamkulam",
     badge: "Comprehensive Diagnostic Center",
-    image: "/clinical/kunnamkulam.webp",
+    image: "/branches/Kunnamkulam-aarya.webp",
     addressLines: [
       "Achuthan Tower, Town Hall Road, Near New Bus Stand",
       "Kunnamkulam - 680 503"
@@ -108,7 +108,7 @@ export const BRANCHES_DATA: BranchLocation[] = [
     name: "Kodungallur",
     shortName: "Kodungallur",
     badge: "Coastal Vision Care Center",
-    image: "/clinical/kodungallur.webp",
+    image: "/branches/kodungallur-2-aarya.webp",
     addressLines: [
       "Seashore Arcade, Near Kalyan Jewellers, Chandapura",
       "Kodungallur - 680 664"

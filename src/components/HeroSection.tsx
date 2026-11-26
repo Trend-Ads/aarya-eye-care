@@ -116,14 +116,14 @@ export default function HeroSection() {
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
           {/* Mobile Image: Subtle continuous pan */}
           <img
-            src="/bg-pngs/hero-lat-mobile.png"
+            src="/bg-pngs/hero-through-the-lens-mobile.webp"
             alt="Aarya Eye Care Background"
             className="md:hidden w-full h-full object-cover object-right animate-mobile-hero-pan"
           />
 
           {/* Desktop Image: Normal centered zoom with expansive movement space and calm speed */}
           <motion.img
-            src="/bg-pngs/herobg- lat.png"
+            src="/bg-pngs/hero-through-the-lens.webp"
             alt="Aarya Eye Care Background"
             className="hidden md:block w-full h-full object-cover object-center will-change-transform"
             initial={{ scale: 1 }}
