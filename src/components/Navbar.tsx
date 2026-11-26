@@ -275,9 +275,9 @@ export default function Navbar() {
               />
             </div>
             
-            <div className="flex flex-col justify-center">
+            <div className="flex flex-col justify-center items-center text-center">
               <span 
-                className="font-heading font-semibold tracking-[0.04em] whitespace-nowrap leading-none text-[13px] sm:text-[14.5px] text-[#F2E9DC]"
+                className="font-heading font-semibold tracking-[0.04em] whitespace-nowrap leading-none text-[13px] sm:text-[14.5px] text-[#F2E9DC] text-center"
                 style={{
                   fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                 }}
@@ -285,7 +285,7 @@ export default function Navbar() {
                 AARYA EYE CARE
               </span>
               <span 
-                className="font-bold tracking-[0.22em] uppercase leading-none mt-0.5 text-[7px] sm:text-[7.5px] text-[#C9A581]"
+                className="font-bold tracking-[0.22em] uppercase leading-none mt-0.5 text-[7px] sm:text-[7.5px] text-[#C9A581] text-center w-full pl-[0.22em]"
               >
                 Darkness to Light
               </span>
@@ -446,16 +446,16 @@ export default function Navbar() {
                     className="object-contain"
                   />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col items-center text-center">
                   <span 
-                    className="font-heading font-semibold text-base text-[#30291F] tracking-[0.04em] leading-none"
+                    className="font-heading font-semibold text-base text-[#30291F] tracking-[0.04em] leading-none text-center"
                     style={{
                       fontFamily: "'AvantGarde Demi', 'AvantGarde-Demi', 'ITC Avant Garde Gothic', 'ITC Avant Garde Gothic Std', 'Avant Garde', 'Century Gothic', sans-serif",
                     }}
                   >
                     AARYA EYE CARE
                   </span>
-                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#A55322] uppercase leading-none mt-1">
+                  <span className="text-[9px] font-bold tracking-[0.2em] text-[#A55322] uppercase leading-none mt-1 text-center w-full pl-[0.2em]">
                     Darkness to Light
                   </span>
                 </div>
