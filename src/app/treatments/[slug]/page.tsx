@@ -100,7 +100,7 @@ export default async function TreatmentDetailPage({ params }: PageProps) {
                   {/* Corner Badge */}
                   <div className="absolute bottom-6 left-6 right-6">
                     <span className="text-[11px] font-sans uppercase tracking-[0.22em] text-[#C9A581] font-bold block mb-1">
-                      AARYA SPECIALITY CLINIC
+                      AARYA EYE SPECIALITY CLINIC
                     </span>
                     <h3 className="text-xl sm:text-2xl font-heading font-bold text-white leading-tight">
                       {treatment.name}

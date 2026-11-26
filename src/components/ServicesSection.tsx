@@ -110,9 +110,10 @@ export default function ServicesSection() {
             style={{ x, width: `${treatments.length * 100}vw` }}
           >
             {treatments.map((item, index) => (
-              <div
+              <Link
                 key={item.id}
-                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-[#C9A581]/30"
+                href={item.href}
+                className="group relative w-[80vw] sm:w-[60vw] md:w-[45vw] lg:w-[35vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-lg border border-[#C9A581]/30 block cursor-pointer"
               >
                 {/* Background Image */}
                 <Image
@@ -143,21 +144,20 @@ export default function ServicesSection() {
                 {/* Title & Arrow at Bottom */}
                 <div className="absolute inset-0 p-6 sm:p-8 flex flex-col justify-end">
                   <div className="flex items-end justify-between gap-3">
-                    <Link href={item.href} className="group-hover:text-[#C9A581] transition-colors max-w-[85%]">
+                    <div className="group-hover:text-[#C9A581] transition-colors max-w-[85%]">
                       <h3 className="font-heading font-semibold text-2xl sm:text-3xl lg:text-4xl text-white tracking-normal leading-snug">
                         {item.title}
                       </h3>
-                    </Link>
-                    <Link
-                      href={item.href}
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#A55322] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs cursor-pointer pointer-events-auto"
-                      aria-label={`Learn more about ${item.title}`}
+                    </div>
+                    <div
+                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center text-sm sm:text-base group-hover:bg-[#A55322] group-hover:scale-110 transition-all duration-300 shrink-0 shadow-xs"
+                      aria-hidden="true"
                     >
                       <svg className="w-4 h-4 text-white transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" /></svg>
-                    </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </motion.div>
         </div>

@@ -204,30 +204,30 @@ export default function Footer() {
 
             </div>
 
-            {/* Horizontal Branches Listing (Just above the line in the footer) */}
-            <div className="pb-6 sm:pb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-6 text-xs sm:text-[13.5px]">
-              <div className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-2">
-                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C9A581] shrink-0">
-                  Branches:
-                </span>
-                <nav className="flex flex-wrap items-center gap-x-3 sm:gap-x-4 gap-y-1.5 text-white/80" aria-label="Hospital Branches">
-                  <Link href="/branches#thrissur" className="hover:text-[#C9A581] transition-colors">
-                    Thrissur
-                  </Link>
-                  <span className="text-white/25 select-none">•</span>
-                  <Link href="/branches#cherpu" className="hover:text-[#C9A581] transition-colors">
-                    Cherpu
-                  </Link>
-                  <span className="text-white/25 select-none">•</span>
-                  <Link href="/branches#kunnamkulam" className="hover:text-[#C9A581] transition-colors">
-                    Kunnamkulam
-                  </Link>
-                  <span className="text-white/25 select-none">•</span>
-                  <Link href="/branches#kodungallur" className="hover:text-[#C9A581] transition-colors">
-                    Kodungallur
-                  </Link>
-                </nav>
-              </div>
+            {/* Horizontal Branches Listing (Just above the line in the footer, centered) */}
+            <div className="pb-6 sm:pb-8 flex flex-wrap items-center justify-center gap-x-3.5 sm:gap-x-5 gap-y-2.5 text-xs sm:text-[13.5px] text-center">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-widest text-[#C9A581] shrink-0">
+                Branches:
+              </span>
+              <nav className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-4 gap-y-1.5 text-white/80" aria-label="Hospital Branches">
+                <Link href="/branches#thrissur" className="hover:text-[#C9A581] transition-colors">
+                  Thrissur
+                </Link>
+                <span className="text-white/25 select-none">•</span>
+                <Link href="/branches#cherpu" className="hover:text-[#C9A581] transition-colors">
+                  Cherpu
+                </Link>
+                <span className="text-white/25 select-none">•</span>
+                <Link href="/branches#kunnamkulam" className="hover:text-[#C9A581] transition-colors">
+                  Kunnamkulam
+                </Link>
+                <span className="text-white/25 select-none">•</span>
+                <Link href="/branches#kodungallur" className="hover:text-[#C9A581] transition-colors">
+                  Kodungallur
+                </Link>
+              </nav>
+
+              <span className="text-white/25 select-none hidden sm:inline">•</span>
 
               <Link
                 href="/branches"
